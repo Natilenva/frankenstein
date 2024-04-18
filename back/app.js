@@ -1,4 +1,3 @@
-
 import 'dotenv/config';
 import express from 'express';
 import morgan from 'morgan';
@@ -6,21 +5,22 @@ import fileUpload from 'express-fileupload';
 import cors from 'cors';
 
 import router from './src/routes/index.js';
+import { userRouter } from './src/routes/userRouter.js';
 
 const app = express();
 
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}))
-app.set('view engine', 'ejs')
+app.use(express.urlencoded({ extended: false }));
+app.set('view engine', 'ejs');
 app.use(fileUpload());
 app.use('/uploads', express.static('./uploads'));
 app.use(cors());
 
-
-
 const { PORT } = process.env;
-app.use(router);
+// app.use(router);
+
+app.use('/users', userRouter);
 
 app.use((req, res) => {
     res.status(404).send({
