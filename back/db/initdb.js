@@ -1,40 +1,37 @@
 import 'dotenv/config';
 
-
 import getConnection from './db.js';
 
-
 async function main() {
- let connection;
+    let connection;
 
- try {
-   connection = await getConnection();
+    try {
+        connection = await getConnection();
+        console.log('Borrando base de datos existente');
+        await connection.query('DROP DATABASE IF EXISTS frankenstein');
+        await connection.query('CREATE DATABASE IF NOT EXISTS frankenstein');
+        await connection.query('USE frankenstein');
 
-   console.log('Borrando tablas existentes');
+        console.log('Borrando tablas existentes');
 
-   await connection.query('DROP TABLE IF EXISTS votes_proyects');
-   
-   
-   await connection.query('DROP TABLE IF EXISTS proyects_comments');
-   await connection.query('DROP TABLE IF EXISTS proyects');
-   await connection.query('DROP TABLE IF EXISTS votes_events');
-   await connection.query('DROP TABLE IF EXISTS events_comments');
-   await connection.query('DROP TABLE IF EXISTS events');
-   await connection.query('DROP TABLE IF EXISTS votes_responses');
-   await connection.query('DROP TABLE IF EXISTS users_responses');
-   await connection.query('DROP TABLE IF EXISTS responses');
-   await connection.query('DROP TABLE IF EXISTS questions');
-   await connection.query('DROP TABLE IF EXISTS topics');
-   await connection.query('DROP TABLE IF EXISTS users');
-   await connection.query('DROP TABLE IF EXISTS users_types');
-   await connection.query('DROP TABLE IF EXISTS persons');
-   
+        await connection.query('DROP TABLE IF EXISTS votes_proyects');
+        await connection.query('DROP TABLE IF EXISTS proyects_comments');
+        await connection.query('DROP TABLE IF EXISTS proyects');
+        await connection.query('DROP TABLE IF EXISTS votes_events');
+        await connection.query('DROP TABLE IF EXISTS events_comments');
+        await connection.query('DROP TABLE IF EXISTS events');
+        await connection.query('DROP TABLE IF EXISTS votes_responses');
+        await connection.query('DROP TABLE IF EXISTS users_responses');
+        await connection.query('DROP TABLE IF EXISTS responses');
+        await connection.query('DROP TABLE IF EXISTS questions');
+        await connection.query('DROP TABLE IF EXISTS topics');
+        await connection.query('DROP TABLE IF EXISTS users');
+        await connection.query('DROP TABLE IF EXISTS users_types');
+        await connection.query('DROP TABLE IF EXISTS persons');
 
+        console.log('Creando tablas');
 
-
-   console.log('Creando tablas');
-
-   await connection.query(`
+        await connection.query(`
 
    CREATE TABLE persons (
     person_id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -47,8 +44,7 @@ async function main() {
 
    `);
 
-
-   await connection.query(`
+        await connection.query(`
    -- DROP TABLE IF EXISTS users_types;
    CREATE TABLE users_types(
    user_type_id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -57,9 +53,8 @@ async function main() {
       
    
    `);
-   
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS users;
    -- un usu tiene varias cuentas
@@ -80,8 +75,8 @@ async function main() {
    );
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS topics;
    CREATE TABLE topics (
@@ -90,8 +85,8 @@ async function main() {
    );
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS questions;
    CREATE TABLE questions (
@@ -104,8 +99,8 @@ async function main() {
    );
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS responses;
    CREATE TABLE responses (
@@ -118,8 +113,8 @@ async function main() {
    );
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS users_responses;
    CREATE TABLE users_responses (
@@ -131,8 +126,8 @@ async function main() {
    );
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS votes_responses;
    CREATE TABLE votes_responses (
@@ -145,9 +140,8 @@ async function main() {
    );
    
    `);
-   
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS events;
    CREATE TABLE events (
@@ -163,8 +157,8 @@ async function main() {
    );
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS events_comments;
    CREATE TABLE events_comments (
@@ -178,8 +172,8 @@ async function main() {
    
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS votes_events;
    CREATE TABLE votes_events (
@@ -192,8 +186,8 @@ async function main() {
    );   
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS proyects;
    CREATE TABLE proyects (
@@ -208,9 +202,8 @@ async function main() {
    );
    
    `);
-   
-   
-   await connection.query(`
+
+        await connection.query(`
    
       CREATE TABLE proyects_comments (
    proyect_comment_id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -222,8 +215,8 @@ async function main() {
    );
    
    `);
-   
-   await connection.query(`
+
+        await connection.query(`
    
       -- DROP TABLE IF EXISTS votes_proyects;
    CREATE TABLE votes_proyects (
@@ -237,16 +230,12 @@ async function main() {
    
    
    `);
-   
-   
-
-
- } catch (error) {
-   console.error(error);
- } finally {
-   if (connection) connection.release();
-   process.exit();
- }
+    } catch (error) {
+        console.error(error);
+    } finally {
+        if (connection) connection.release();
+        process.exit();
+    }
 }
 
 main();
