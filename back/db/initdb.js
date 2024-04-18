@@ -68,9 +68,9 @@ async function main() {
      recover_pass_code varchar(36) DEFAULT NULL,
      created_at datetime DEFAULT CURRENT_TIMESTAMP,
      modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-     person_id  int NOT NULL,
+     person_id  int DEFAULT NULL,
      FOREIGN KEY (person_id) REFERENCES persons(person_id),
-     user_type_id  int NOT NULL,
+     user_type_id  int DEFAULT NULL,
       FOREIGN KEY (user_type_id) REFERENCES users_types(user_type_id)
    );
    

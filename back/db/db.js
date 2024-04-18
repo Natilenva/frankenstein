@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise';
 
-const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD } = process.env;
+const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
 
 let pool;
 
@@ -11,6 +11,7 @@ const getConnection = async () => {
             host: MYSQL_HOST,
             user: MYSQL_USER,
             password: MYSQL_PASSWORD,
+            database: MYSQL_DATABASE,
 
             timezone: 'Z',
         });
@@ -19,4 +20,4 @@ const getConnection = async () => {
     return await pool.getConnection();
 };
 
-export default getConnection;
+export { getConnection };
