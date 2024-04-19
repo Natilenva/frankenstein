@@ -6,6 +6,7 @@ import cors from 'cors';
 
 import router from './src/routes/index.js';
 import { userRouter } from './src/routes/userRouter.js';
+import { projectRouter } from './src/routes/projectRouter.js';
 
 const app = express();
 
@@ -21,6 +22,7 @@ const { PORT } = process.env;
 // app.use(router);
 
 app.use('/users', userRouter);
+app.use('/projects', projectRouter);
 
 app.use((req, res) => {
     res.status(404).send({

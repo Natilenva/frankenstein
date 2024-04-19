@@ -1,6 +1,6 @@
 import 'dotenv/config';
 
-import getConnection from './db.js';
+import { getConnection } from './db.js';
 
 async function main() {
     let connection;
@@ -189,15 +189,15 @@ async function main() {
 
         await connection.query(`
    
-      -- DROP TABLE IF EXISTS proyects;
-   CREATE TABLE proyects (
-     proyect_id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+      -- DROP TABLE IF EXISTS projects;
+   CREATE TABLE projects (
+     project_id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
      title varchar(100) NOT NULL,
      description text DEFAULT NULL,
      photo varchar(255) DEFAULT NULL,
      created_at datetime DEFAULT CURRENT_TIMESTAMP,
      modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-     user_id int NOT NULL,
+     user_id int DEFAULT NULL,
      FOREIGN KEY (user_id) REFERENCES users(user_id)
    );
    
