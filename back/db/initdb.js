@@ -1,10 +1,10 @@
 import 'dotenv/config';
 console.log('frankenstein variables: ', process.env.MYSQL_HOST, process.env.MYSQL_USER, process.env.MYSQL_PASSWORD);
 
-import { getConnection } from './db.js';
+import { getConnectionNoDb } from './getConnectionWithoutDb.js';
 
 async function main() {
-    const connection = await getConnection();
+    const connection = await getConnectionNoDb();
     console.log('Connected to MySQL server');
 
     try {
