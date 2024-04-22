@@ -1,22 +1,33 @@
-import { createProject } from '../../../db/createProject.js';
-import { getProjectById } from '../../../db/getProjectById.js';
-import { generateError } from '../../../helpers/generateError.js';
+import insertProjectModel from "../../models/entries/insertProjectModel.js";
+const newProjectController = async (req, res, next) => {
+  
+    try {
+        const {project_title, project_description}=req.body;
+        
+        if(!project_title||!project_description){
+            console.error('faltan campos');
+        }
+        const projectId = await insertProjectModel(
+            project_title,
+            project_description,
+            req.user.id,
+        );
+        res.status(201).send({
+            status:'ok',
+            message:'proyecto creado',
+            data:{
+                project:{
+                    id: projectId,
+                    project_title,
+                    project_description,
+                    userId: req.user.id,
+                    createdAt: new Date(),
+                },
+            },
+        });
+    } catch (err) {
+        next(err);
+    }
+};
 
-async function newProjectController(req, res) {
-    const { title, description } = req.body;
-    console.log(title);
-    // if (!title || !description) {
-    //     throw generateError('Título y descripción deben existir', 400);
-    // }
-    const id = await createProject(title, description, req.userId);
-    console.log(id);
-    const project = await getProjectById(id);
-    res.send({
-        status: 'ok',
-        data: project,
-    });
-    // } catch (error) {
-    //     throw generateError('Error', 400);
-    // }
-}
-export { newProjectController };
+export default newProjectController;

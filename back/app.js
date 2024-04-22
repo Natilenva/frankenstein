@@ -4,25 +4,32 @@ import morgan from 'morgan';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
 
-import router from './src/routes/index.js';
+import routes from './src/routes/index.js';
 import { userRouter } from './src/routes/userRouter.js';
-import { projectRouter } from './src/routes/projectRouter.js';
+
+const { PORT } = process.env;
+
+
 
 const app = express();
 
-app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.set('view engine', 'ejs');
+
 app.use(fileUpload());
-app.use('/uploads', express.static('./uploads'));
+
 app.use(cors());
 
-const { PORT } = process.env;
-// app.use(router);
+app.use(morgan('dev'));
+
+app.use(express.urlencoded({ extended: false }));
+app.set('view engine', 'ejs');
+
+app.use('/uploads', express.static('./uploads'));
+
 
 app.use('/users', userRouter);
-app.use('/projects', projectRouter);
+
+app.use(routes);
 
 app.use((req, res) => {
     res.status(404).send({
@@ -30,6 +37,7 @@ app.use((req, res) => {
         message: 'Not found',
     });
 });
+
 app.use((error, req, res, next) => {
     console.error(error);
     res.status(error.httpStatus || 500).send({
@@ -37,6 +45,7 @@ app.use((error, req, res, next) => {
         message: error.message,
     });
 });
+
 app.listen(PORT, () => {
     console.log(`Escuchando puerto http://localhost:${PORT} 🌠`);
 });
