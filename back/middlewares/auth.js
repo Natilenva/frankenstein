@@ -12,7 +12,7 @@ const authUser = (req, res, next) => {
         } catch (error) {
             throw generateError('Token incorrecto', 401);
         }
-        req.user_id = token.id;
+        req.register_id = token.id;
         next();
     } catch (error) {
         next(error);

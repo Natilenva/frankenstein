@@ -1,17 +1,17 @@
 import { getConnection } from './db.js';
 
-const createProject = async (title, description, user_id) => {
+const createProject = async (project_title, project_description) => {
     let connection;
     try {
         connection = await getConnection();
         console.log('Hola');
         const [result] = await connection.query(
             `
-            INSERT INTO  projects (title, description, user_id) VALUES (?, ?, ?)
+            INSERT INTO  projects (project_title, project_description) VALUES (?, ?)
             `,
-            [title, description, user_id]
+            [project_title, project_description]
         );
-        console.log(result);
+        console.log('Hola2');
         return result.insertId;
     } finally {
         if (connection) connection.release();
