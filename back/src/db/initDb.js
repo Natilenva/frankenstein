@@ -40,12 +40,12 @@ const createTables= async() =>{
 
         await connection.query(`
             CREATE TABLE questions (
-                question_id int PRIMARY KEY  AUTO_INCREMENT,
-                question_title varchar(255)   NOT NULL,
+                question_id int PRIMARY KEY AUTO_INCREMENT,
+                question_title varchar(255) NOT NULL,
                 question_description text NOT NULL,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-                register_id  int NOT NULL,
+                register_id int,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
             );   
         `);
@@ -60,7 +60,7 @@ const createTables= async() =>{
                 event_photo varchar(255),
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-                register_id  int NOT NULL,
+                register_id int NOT NULL,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
             );     
         `);
