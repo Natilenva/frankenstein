@@ -12,7 +12,7 @@ const createTables= async() =>{
 
         await connection.query(`
             CREATE TABLE register (
-                register_id INT PRIMARY KEY AUTO_INCREMENT,
+                register_id int AUTO_INCREMENT PRIMARY KEY,
                 email varchar(100) UNIQUE NOT NULL,
                 register_password varchar(100) NOT NULL,
                 register_code varchar(36),
@@ -23,7 +23,7 @@ const createTables= async() =>{
 
         await connection.query(`
             CREATE TABLE  profile (
-                profile_id INT PRIMARY KEY  AUTO_INCREMENT,
+                profile_id INT PRIMARY KEY AUTO_INCREMENT,
                 profile_name varchar(50) NOT NULL,
                 profile_lastname varchar(50) NOT NULL,
                 profile_username varchar(50),
@@ -45,8 +45,8 @@ const createTables= async() =>{
                 question_description text NOT NULL,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-                register_id int,
-                FOREIGN KEY (register_id) REFERENCES register(register_id)
+                user_id int NOT NULL,
+                FOREIGN KEY (user_id) REFERENCES register(register_id)
             );   
         `);
 

@@ -1,0 +1,14 @@
+POST http://localhost:3000  
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzEwNzM2NjYyLCJleHAiOjE3MTMzMjg2NjJ9.zse7d-HVq4qdY753yEzd0hBjGDggwEdohcEyXb78ulc
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="text"
+
+texto_e_img_from_rest_client_8
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="2.png"
+Content-Type: image/png
+
+< ../pics/black-250x250.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
