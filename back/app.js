@@ -5,7 +5,7 @@ import fileUpload from 'express-fileupload';
 import cors from 'cors';
 
 import routes from './src/routes/index.js';
-import { userRouter } from './src/routes/userRouter.js';
+
 
 const { PORT } = process.env;
 
@@ -25,9 +25,6 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 app.use('/uploads', express.static('./uploads'));
-
-
-app.use('/users', userRouter);
 
 app.use(routes);
 
