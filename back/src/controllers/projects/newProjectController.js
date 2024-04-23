@@ -21,7 +21,7 @@ const newProjectController = async (req, res, next) => {
                     project_title,
                     project_description,
                     userId: req.user.id,
-                    createdAt: new Date(),
+                    //createdAt: new Date(),
                 },
             },
         });
