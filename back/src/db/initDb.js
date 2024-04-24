@@ -1,12 +1,14 @@
-import getConnection from "./getConnection.js";
+import getConnection from './getConnection.js';
 
-const createTables= async() =>{
+const createTables = async () => {
     try {
-        const connection= await getConnection();
+        const connection = await getConnection();
 
         console.log('Borrando tablas...');
 
-        await connection.query('DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes');
+        await connection.query(
+            'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies'
+        );
 
         console.log('Creando tablas');
 
@@ -29,7 +31,6 @@ const createTables= async() =>{
                 profile_username varchar(50),
                 birthdate DATETIME,
                 profile_role enum('expert','company', 'students') ,
-                company_name varchar(100) ,
                 avatar varchar(255) ,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
@@ -96,16 +97,21 @@ const createTables= async() =>{
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
             );
         `);
+        await connection.query(`
+        CREATE TABLE companies(
+            company_id INT PRIMARY KEY AUTO_INCREMENT,
+            company_name varchar(100),
+            register_id  INT NOT NULL,
+            FOREIGN KEY (register_id) REFERENCES register(register_id)
+        )
+        `);
 
         console.log('Creando tablas');
         process.exit(0);
-
     } catch (err) {
         console.error(err);
         proccess.exit(1);
-    
     }
-  
 };
 
 createTables();
