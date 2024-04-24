@@ -7,7 +7,7 @@ import getResetPasswordController from '../controllers/users/getResetPasswordCon
 import updatePasswordController from '../controllers/users/updatePasswordController.js';
 import { profileInsertController } from '../controllers/profile/profileInsertController.js';
 import authUser from '../middlewares/auth.js';
-
+import { profileGetController } from '../controllers/profile/profileGetController.js';
 const router = express.Router();
 
 router.post('/register', registerNewUser);
@@ -16,6 +16,8 @@ router.post('/login', loginUser);
 
 //!se creo una nueva ruta para el perfil
 router.post('/myprofile', authUser, profileInsertController);
+
+router.get('/profile/:id', profileGetController);
 
 router.get('/forgot-password', (req, res, next) => {
     res.render('forgot-password');
