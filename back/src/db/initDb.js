@@ -81,18 +81,20 @@ const createTables= async() =>{
 
         await connection.query(`
             CREATE TABLE responses (
-                response_id int PRIMARY KEY AUTO_INCREMENT,
+                response_id INT PRIMARY KEY AUTO_INCREMENT,
                 response_text text NOT NULL,
-                register_id  int NOT NULL,
-                FOREIGN KEY (register_id) REFERENCES register(register_id)
+                profile_id  INT NOT NULL,
+                question_id INT NOT NULL,
+                FOREIGN KEY (profile_id) REFERENCES profile(profile_id),
+                FOREIGN KEY (question_id) REFERENCES questions(question_id) 
             );  
         `);
 
         await connection.query(`
             CREATE TABLE votes (
-                vote_response_id int PRIMARY KEY  AUTO_INCREMENT,
+                vote_response_id INT PRIMARY KEY  AUTO_INCREMENT,
                 vote_value tinyint NOT NULL,
-                register_id  int NOT NULL,
+                register_id INT NOT NULL,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
             );
         `);
