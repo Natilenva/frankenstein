@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { generateError } from '../helpers/generateError.js';
 const authUser = (req, res, next) => {
+    console.log('req.headers: ', req.headers);
     try {
         // read token from header
         const { authorization } = req.headers;
@@ -15,7 +16,7 @@ const authUser = (req, res, next) => {
             token = jwt.verify(authorization, process.env.SECRET);
             console.log('token: ', token);
             req.user = token;
-        }catch{
+        } catch {
             throw generateError('token no válido', 401);
         }
 
@@ -24,7 +25,6 @@ const authUser = (req, res, next) => {
         console.log('req.userId = token.id: ', req.userId);
 
         next(); //go to controller
-        
     } catch (error) {
         next(error);
     }

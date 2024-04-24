@@ -3,18 +3,16 @@ import jwt from 'jsonwebtoken';
 const { SECRET } = process.env;
 
 const profileInsertController = async (req, res, next) => {
+    console.log('req.body): ', req.body);
     try {
-        // read token from header
-        //! token 
         const { authorization } = req.headers;
         let tokenInfo;
 
         tokenInfo = jwt.verify(authorization, SECRET);
-        //! token sin usar
+
         const user = tokenInfo;
-        console.log('req.user.user_id): ',req.user.user_id);
-        
-        // create new connection to db
+        console.log('req.user.user_id): ', req.user.user_id);
+
         const {
             profile_name,
             profile_lastname,
@@ -25,7 +23,6 @@ const profileInsertController = async (req, res, next) => {
         } = req.body;
         const connection = await getConnection();
 
-        // insert new profile into db
         const [profile] = await connection.query(
             `INSERT INTO profile (profile_name,
                 profile_lastname,
@@ -43,13 +40,14 @@ const profileInsertController = async (req, res, next) => {
                 birthdate,
                 profile_role,
                 company_name,
-                req.user.user_id,
+                //req.user.user_id,
+                //comente la linea anterior porque no me funcionaba, igual lo miramos todos mañana
+                req.userId,
             ]
         );
         console.log(profile);
 
         res.send('Perfil creado');
-
     } catch (error) {
         console.error(error);
     }
