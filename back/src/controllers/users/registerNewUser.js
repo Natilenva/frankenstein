@@ -13,7 +13,11 @@ async function registerNewUser(req, res) {
     try {
         // zod validation for new user data
         // TODO en userSchema falta agregar la validación de register_code?
-        const {success,data: user,error} = registerSchema.safeParse(req.body);
+        const {
+            success,
+            data: user,
+            error,
+        } = registerSchema.safeParse(req.body);
 
         if (!success) {
             const errors = zodErrorMap(error.issues);
@@ -23,11 +27,16 @@ async function registerNewUser(req, res) {
         // data from body register
         //! register_code?
         const { register_id, email, register_password, register_code } = user;
-        console.log('email, register_password, register_code: ', email, register_password, register_code);
+        console.log(
+            'email, register_password, register_code: ',
+            email,
+            register_password,
+            register_code
+        );
 
         // TODO Activación de la cuenta?
         const registrationCode = crypto.randomUUID();
-        console.log('registrationCode:',registrationCode);
+        console.log('registrationCode:', registrationCode);
 
         /* const subject = 'Activa tu cuenta en Frankenstein';
         const content = `
@@ -39,7 +48,7 @@ async function registerNewUser(req, res) {
         // await sendEmail(email, subject, content);
 
         // create new connection to db
-        const connection = await getConnection(); 
+        const connection = await getConnection();
 
         // check if user exists by email
         const [userEmail] = await connection.query(
@@ -52,21 +61,20 @@ async function registerNewUser(req, res) {
             // TODO throw generateError?
             //throw generateError('Ya existe un usuario con ese mail', 409);
         }
-        
-        // hash password 
+
+        // hash password
         const saltRounds = 10;
         const hashedPassword = bcrypt.hashSync(register_password, saltRounds);
 
-        // insert new user into db 
+        // insert new user into db
         const insertInfo = await connection.query(
             `INSERT INTO register (register_id, email, register_password, register_code) VALUES (?,?,?,?)`,
-            [register_id, email, hashedPassword, register_code]
+            [register_id, email, hashedPassword, registrationCode]
         );
         // TODO falta por insertar el register_code!?
 
-
         //! define user info?
-        const userInfo = {user_id: insertInfo.insertId,user};
+        const userInfo = { user_id: insertInfo.insertId, user };
 
         // generate token
         const token = jwt.sign(userInfo, SECRET, { expiresIn: '1day' });
@@ -79,7 +87,6 @@ async function registerNewUser(req, res) {
             dataRegister: req.body,
             token: token,
         });
-
     } catch (error) {
         console.error(error.message);
     }

@@ -1,26 +1,25 @@
-import insertProjectModel from "../../models/entries/insertProjectModel.js";
+import insertProjectModel from '../../models/entries/insertProjectModel.js';
 const newProjectController = async (req, res, next) => {
-  
     try {
-        const {project_title, project_description}=req.body;
-        
-        if(!project_title||!project_description){
+        const { project_title, project_description } = req.body;
+
+        if (!project_title || !project_description) {
             console.error('faltan campos');
         }
         const projectId = await insertProjectModel(
             project_title,
             project_description,
-            req.user.id,
+            req.userId
         );
         res.status(201).send({
-            status:'ok',
-            message:'proyecto creado',
-            data:{
-                project:{
+            status: 'ok',
+            message: 'proyecto creado',
+            data: {
+                project: {
                     id: projectId,
-                    project_title,
-                    project_description,
-                    userId: req.user.id,
+                    // project_title,
+                    // project_description,
+                    // userId: req.user.id,
                     //createdAt: new Date(),
                 },
             },
