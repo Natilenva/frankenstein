@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "3e9a30bb-c894-4bed-905f-2a82f8c03027",
+		"name": "frankenstein",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32788703"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJCZWEiLCJsYXN0bmFtZSI6IlbDoXpxdWV6IiwiYmlydGhkYXRlIjoiMTk4Ny0xMS0yMFQwMDowMDowMC4wMDBaIiwiZW1haWwiOiJiZWFAZ21haWwuY29tIiwidXNlcm5hbWUiOiJiZWEiLCJwYXNzd29yZCI6IjEyMzQifSwiaWF0IjoxNzEzNTM2Njk3LCJleHAiOjE3MTM2MjMwOTd9.bXeCwYvlU2Mk3YWT-byjJJN9A7FA5uabpx-ql0yD42o\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"email\":\"beatriz@gmail.com\",\n    \"register_password\":\"1234\"\n\n    \n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJCZWF0cml6IiwibGFzdG5hbWUiOiJWw6F6cXVleiIsImJpcnRoZGF0ZSI6IjE5ODctMTEtMjBUMDA6MDA6MDAuMDAwWiIsImVtYWlsIjoiYmVhMkBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImJlYSIsInBhc3N3b3JkIjoiMTIzNCJ9LCJpYXQiOjE3MTM1MzY4NDAsImV4cCI6MTcxMzYyMzI0MH0.VowLOyuZKQ7np66ddkNa89Ts1uixZJVz6aspysNVJxo\"",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"valentina@gmail.com\",\n    \"register_password\":\"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/login"
+			},
+			"response": []
+		},
+		{
+			"name": "InsertProfile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MDM1MDE4LCJleHAiOjE3MTY2MjcwMTh9.c1qUY-kbxZr42obmJq5BMAWR0bv65f3_BCZBPSjP8Lg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"profile_name\": \"Samuel\",\n    \"profile_lastname\":\"Rodriguez\",\n    \"birthdate\":\"1994-05-21\",\n    \"profile_username\":\"Samue\",\n    \"profile_role\":\"students\",\n    \"company_name\": \"Indra\"\n  \n    \n  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/myprofile/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/profile/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"profile",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Question",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNzE0MDYwNTEwLCJleHAiOjE3MTY2NTI1MTB9.mE0SFnm9TGwxhQzjVNrNDdM3R6qJWLrb3fMKNebmx14",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"question_title\": \"Que es javascript\",\n    \"question_description\": \"1234567891012345678910123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/newquestion"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Question",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:3000/question/1"
+			},
+			"response": []
+		},
+		{
+			"name": "filtro-question",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:3000/getQuestion/3"
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Password",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:4000/forgot-password/"
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:4000/forgot-password/"
+			},
+			"response": []
+		},
+		{
+			"name": "Reset-password",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/forgot-password/:id/:token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"forgot-password",
+						":id",
+						":token"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						},
+						{
+							"key": "token",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset-password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/forgot-password/:id/:token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"forgot-password",
+						":id",
+						":token"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						},
+						{
+							"key": "token",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ResponseQuestions",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/questions/:question_id/responses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"questions",
+						":question_id",
+						"responses"
+					],
+					"variable": [
+						{
+							"key": "question_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resonse/votes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/response/:response_id/votes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"response",
+						":response_id",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "response_id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add New Project",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Valentina\",\n    \"lastname\": \"Alonso\",\n    \"birthdate\":\"1987-11-20\",\n    \"email\":\"valentina@gmail.com\",\n    \"password\":\"1234\",\n    \"username\":\"Valen\"\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/project/"
+			},
+			"response": []
+		}
+	]
+}
