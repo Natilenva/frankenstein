@@ -11,6 +11,5 @@ const router = express.Router();
 // projectRouter.get('/my', userAuth, getAllMyProjects);
 // projectRouter.get('/:entryId', getOneProject);
 router.post('/newproyect', authUser, newProjectController);
-router.post('/newquestion', authUser, newQuestionController);
 
 export default router;

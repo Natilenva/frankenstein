@@ -1,15 +1,18 @@
 import getConnection from "../../db/getConnection.js";
 
-/* const insertQuestionModel = async (question_title, question_description, userId) => { */
+// insert question 
 const insertQuestionModel = async (question_title, question_description, userId) => {
 
     const connection = await getConnection();
 
+    // insert question in db
     const [result] = await connection.query(
         `INSERT INTO questions (question_title, question_description, user_id) VALUES (?,?,?)`,
         [question_title, question_description, userId]
     );
-return result.insertId
+
+    // send response
+    return result.insertId
 };
     
 export default insertQuestionModel;
