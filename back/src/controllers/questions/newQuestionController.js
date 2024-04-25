@@ -1,41 +1,57 @@
+//import { zodErrorMap } from "../../helpers/zodError.js";
+import { zodErrorMap } from "../../helpers/zodErrorMap.js";
+import { questionSchema } from "../../schemas/questionShema.js";
 import insertQuestionModel from "../../models/entries/insertQuestionModel.js";
-const newQuestionController = async (req, res, next) => {
 
-    console.log('req.insertId2: ', req.insertId);
-    //console.log('req.x: ', req);
-  
+const newQuestionController = async (req, res, next) => {
+    console.log('req.insertId2: ', req.userId);
+
     try {
-        const {question_title, question_description}=req.body;
-        //const { text } =  req.body;
+
+        // TODO delete this old validation
+        //const {question_title, question_description}=req.body;
         
-        if(!question_title||!question_description){
+        // validation fields
+        /* if(!question_title||!question_description){
             console.error('faltan campos');
-        }
-        /* if (!text || text.length > 280) {
-            throw  generateError('Debes enviar un texto y menor de 280 caracteres', 400);
+        } */
+        // validation length
+        /* if (question_description > 280) {
+            throw  generateError('Debes enviar un texto menor de 280 caracteres', 400);
         } */
 
-        /* const projectId = await insertQuestionModel(
-            question_title,
-            question_description,
-            req.insertId
-        ); */
+        // validation schema with zod
+        const { success, data: questionDataBody, error } = questionSchema.safeParse(req.body);
+        console.log('questionDataBody:', questionDataBody); // Add this line
+        console.log('error:', error); // Add this line
 
+        if (!success) {
+            const errors = zodErrorMap(error.issues);
+            console.log('errors:', errors);
+            return res.status(400).send({ error: errors });
+        }
+
+        // validated fields
+        const { question_title, question_description } = questionDataBody;
+
+        // insert question
         const id = await insertQuestionModel(question_title, question_description,req.userId);
 
+        // send response
         res.status(201).send({
             status:'ok',
-            message:'question ok',
-            /* data:{
-                project:{
-                    id: projectId,
+            message:'insert question in db',
+            data:{
+                question:{
+                    questionId: id,
                     question_title,
                     question_description,
-                    userId: req.user.id,
-                    //createdAt: new Date(),
+                    userId: req.userId,
+                    createdAt: new Date(),
                 },
-            }, */
+            },
         });
+    
     } catch (err) {
         next(err);
     }
