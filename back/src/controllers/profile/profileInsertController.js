@@ -1,30 +1,38 @@
-import getConnection from '../../db/getConnection.js';
-// import jwt from 'jsonwebtoken';
-// const { SECRET } = process.env;
 import { profileSchema } from '../../schemas/profileSchema .js';
 import { zodErrorMap } from '../../helpers/zodError.js';
+import { createPathIfNotExists } from '../../helpers/createpath.js';
+import sharp from 'sharp';
+import url from 'url';
+import path from 'node:path';
+import { nanoid } from 'nanoid';
+import { insertProfileByModel } from '../../models/profile/insertProfileByModel.js';
+import { selectProfileById } from '../../models/users/selectProfileById.js';
 
-const profileInsertController = async (req, res, next) => {
-    console.log('req.body): ', req.body);
+const profileInsertController = async (req, res) => {
+    const { success, data: profile, error } = profileSchema.safeParse(req.body);
+    if (!success) {
+        const errors = zodErrorMap(error.issues);
+        return res.status(400).send({ error: errors });
+    }
+
+    // console.log('req.body): ', req.body);
+
     try {
-        let connection;
-        // const { authorization } = req.headers;
-        // let tokenInfo;
-
-        // tokenInfo = jwt.verify(authorization, SECRET);
-
-        // const user = tokenInfo;
-        // console.log('req.user.user_id): ', req.user.user_id);
-        const {
-            success,
-            data: profile,
-            error,
-        } = profileSchema.safeParse(req.body);
-
-        if (!success) {
-            const errors = zodErrorMap(error.issues);
-            return res.status(400).send({ error: errors });
+        let imageFileName;
+        if (req.files && req.files.avatar) {
+            console.log(req.files);
+            const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+            console.log(__dirname);
+            const uploadsDir = path.join(__dirname, '../uploads');
+            console.log(uploadsDir);
+            await createPathIfNotExists(uploadsDir);
+            const image = sharp(req.files.avatar.data);
+            image.resize(500);
+            imageFileName = `${nanoid(24)}.jpg`;
+            console.log(imageFileName);
+            await image.toFile(path.join(uploadsDir, imageFileName));
         }
+
         const {
             profile_name,
             profile_lastname,
@@ -32,50 +40,23 @@ const profileInsertController = async (req, res, next) => {
             birthdate,
             profile_role,
             company_name,
+            register_id,
         } = profile;
-        connection = await getConnection();
+        await selectProfileById(register_id);
 
-        const [profileDB] = await connection.query(
-            `INSERT INTO profile (profile_name,
-                profile_lastname,
-                profile_username,
-                birthdate,
-                profile_role,
-                register_id) 
-                VALUES (?,?,?,?,?,?)
-            `,
-            [
-                profile_name,
-                profile_lastname,
-                profile_username,
-                birthdate,
-                profile_role,
-
-                //req.user.user_id,
-                //comente la linea anterior porque no me funcionaba, igual lo miramos todos mañana
-                req.userId,
-            ]
+        await insertProfileByModel(
+            imageFileName,
+            profile_name,
+            profile_lastname,
+            profile_username,
+            birthdate,
+            profile_role,
+            company_name,
+            req.userId
         );
-        connection = await getConnection();
-
-        const [company] = await connection.query(
-            `INSERT INTO companies (company_name, 
-                register_id) 
-                VALUES (?,?)
-            `,
-            [
-                company_name,
-                //req.user.user_id,
-                //comente la linea anterior porque no me funcionaba, igual lo miramos todos mañana
-                req.userId,
-            ]
-        );
-        console.log(profileDB);
-        console.log(company);
-
         res.send('Perfil creado');
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
 };
 
