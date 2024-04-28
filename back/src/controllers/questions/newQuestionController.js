@@ -7,11 +7,9 @@ const newQuestionController = async (req, res, next) => {
     try {
         // validation schema with zod
         const { success, data: questionDataBody, error } = questionSchema.safeParse(req.body);
-        console.log('questionDataBody:', questionDataBody); 
 
         if (!success) {
             const errors = zodErrorMap(error.issues);
-            console.log('errors:', errors);
             return res.status(400).send({ error: errors });
         }
         // validated fields

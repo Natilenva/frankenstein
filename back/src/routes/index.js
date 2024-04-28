@@ -5,6 +5,7 @@ import proyectRoutes from './projectRouter.js';
 import questionRoutes from './questionRouter.js';
 import companyRoutes from './companyRouter.js';
 import skillRoutes from './skillRouter.js';
+import responseRoutes3 from './responsesRouter3.js';
 
 const router = express.Router();
 
@@ -19,6 +20,9 @@ router.use(companyRoutes);
 
 //* Expert Skills Routes
 router.use(skillRoutes);
+
+//* Response Routes
+router.use(responseRoutes3);
 
 
 export default router;
