@@ -1,7 +1,7 @@
 import getConnection from '../../db/getConnection.js';
 import { notFoundError } from '../../services/errorService.js';
 
-const selectProfileByIdModel = async (profile_id) => {
+const selectProfileByModel = async (profile_id) => {
     let connection;
 
     connection = await getConnection();
@@ -15,4 +15,4 @@ const selectProfileByIdModel = async (profile_id) => {
     }
     return profile[0];
 };
-export default selectProfileByIdModel;
+export default selectProfileByModel;
