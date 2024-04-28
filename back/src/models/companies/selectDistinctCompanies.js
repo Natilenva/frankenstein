@@ -13,7 +13,7 @@ const selectDistinctCompanies = async () => {
     // send response
     //: filter for falsy values | !! (cast to boolean)
     // return rows.map(row => row.company_name).filter(x => !!x);
-    return rows.map(row => row.company_name).filter(x => x);;
+    return rows.map(row => row.company_name).filter(x => x);
 };
     
 export default selectDistinctCompanies;
