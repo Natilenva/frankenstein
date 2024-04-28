@@ -44,6 +44,7 @@ const createTables = async () => {
                 question_id int PRIMARY KEY AUTO_INCREMENT,
                 question_title varchar(255) NOT NULL,
                 question_description text NOT NULL,
+                technology varchar(100),
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
                 user_id int NOT NULL,
