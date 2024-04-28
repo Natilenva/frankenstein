@@ -7,7 +7,7 @@ const createTables = async () => {
         console.log('Borrando tablas...');
 
         await connection.query(
-            'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies'
+            'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies, ExpertSkillsV1'
         );
 
         console.log('Creando tablas');
@@ -107,6 +107,14 @@ const createTables = async () => {
             register_id  INT NOT NULL,
             FOREIGN KEY (register_id) REFERENCES register(register_id)
         )
+        `);
+
+        await connection.query(`
+            CREATE TABLE ExpertSkillsV1 (
+                skill VARCHAR(100) PRIMARY KEY NOT NULL,
+                expertUserID INT NOT NULL,
+                FOREIGN KEY (expertUserID) REFERENCES register(register_id)
+            );        
         `);
 
         console.log('Creando tablas');
