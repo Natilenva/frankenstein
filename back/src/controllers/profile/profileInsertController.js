@@ -6,8 +6,9 @@ import url from 'url';
 import path from 'node:path';
 import { nanoid } from 'nanoid';
 import { insertProfileByModel } from '../../models/profile/insertProfileByModel.js';
-import { selectProfileById } from '../../models/users/selectProfileById.js';
-
+// import { selectProfileById } from '../../models/profile/selectProfileById.js';
+import { getProfileById } from '../../models/profile/getProfileById.js';
+import { generateError } from '../../helpers/generateError.js';
 const profileInsertController = async (req, res) => {
     const { success, data: profile, error } = profileSchema.safeParse(req.body);
     if (!success) {
@@ -23,7 +24,7 @@ const profileInsertController = async (req, res) => {
             console.log(req.files);
             const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
             console.log(__dirname);
-            const uploadsDir = path.join(__dirname, '../uploads');
+            const uploadsDir = path.join(__dirname, '../uploadsAvatar');
             console.log(uploadsDir);
             await createPathIfNotExists(uploadsDir);
             const image = sharp(req.files.avatar.data);
@@ -42,7 +43,11 @@ const profileInsertController = async (req, res) => {
             company_name,
             register_id,
         } = profile;
-        await selectProfileById(register_id);
+        // const profileId = await getProfileById(register_id);
+        // console.log(profileId);
+        // if (req.userId === register_id) {
+        //     throw generateError('Este usuario ya tiene un perfil', 401);
+        // }
 
         await insertProfileByModel(
             imageFileName,
@@ -56,7 +61,7 @@ const profileInsertController = async (req, res) => {
         );
         res.send('Perfil creado');
     } catch (error) {
-        console.log(error);
+        throw generateError('Solamente puedes generar un perfil por usuario');
     }
 };
 

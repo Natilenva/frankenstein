@@ -1,67 +1,79 @@
-import getConnection from '../../db/getConnection.js';
-
 import { profileSchema } from '../../schemas/profileSchema .js';
+import { updateProfileModel } from '../../models/profile/updateProfileModel.js';
 import { zodErrorMap } from '../../helpers/zodError.js';
-
-const profileUpdateController = async (req, res, next) => {
-    console.log('req.body): ', req.body);
+import { createPathIfNotExists } from '../../helpers/createpath.js';
+import sharp from 'sharp';
+import url from 'url';
+import path from 'node:path';
+import { nanoid } from 'nanoid';
+const updateProfileController = async (req, res) => {
     try {
-        let connection;
-
+        const { register_id } = req.user;
         const {
             success,
             data: profile,
             error,
         } = profileSchema.safeParse(req.body);
-
         if (!success) {
             const errors = zodErrorMap(error.issues);
             return res.status(400).send({ error: errors });
+        }
+
+        let imageFileName;
+        if (req.files && req.files.avatar) {
+            console.log(req.files);
+            const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+            console.log(__dirname);
+            const uploadsDir = path.join(__dirname, '../uploadsAvatar');
+            console.log(uploadsDir);
+            await createPathIfNotExists(uploadsDir);
+            const image = sharp(req.files.avatar.data);
+            image.resize(500);
+            imageFileName = `${nanoid(24)}.jpg`;
+            console.log(imageFileName);
+            await image.toFile(path.join(uploadsDir, imageFileName));
         }
         const {
             profile_name,
             profile_lastname,
             profile_username,
             birthdate,
+            avatar,
             profile_role,
             company_name,
         } = profile;
-        connection = await getConnection();
-
-        const [profileDB] = await connection.query(
-            `UPDATE profile SET profile_name = ?,
-                profile_lastname = ?,
-                profile_username = ?,
-                birthdate = ?,
-                profile_role = ? WHERE
-                register_id = ?
-               
-            `,
-            [
-                profile_name,
-                profile_lastname,
-                profile_username,
-                birthdate,
-                profile_role,
-                req.userId,
-            ]
+        console.log(profile);
+        const updateProfile = await updateProfileModel(
+            profile_name,
+            profile_lastname,
+            profile_username,
+            birthdate,
+            imageFileName,
+            profile_role,
+            company_name,
+            req.userId
         );
-        connection = await getConnection();
-
-        const [company] = await connection.query(
-            `UPDATE companies SET company_name = ? WHERE 
-                register_id = ? 
-                
-            `,
-            [company_name, req.userId]
-        );
-        console.log(profileDB);
-        console.log(company);
-
-        res.send('Perfil creado');
+        console.log(updateProfile);
+        res.status(201).send({
+            status: 'ok',
+            message: 'update profile in db',
+            data: {
+                profile: {
+                    profileId: updateProfile,
+                    profile_name,
+                    profile_lastname,
+                    birthdate,
+                    profile_username,
+                    avatar,
+                    profile_role,
+                    company_name,
+                    userId: req.userId,
+                    createdAt: new Date(),
+                },
+            },
+        });
     } catch (error) {
-        console.error(error);
+        console.error(error.message);
     }
 };
-
-export { profileUpdateController };
+export { updateProfileController };

@@ -3,7 +3,7 @@ import getConnection from '../../db/getConnection.js';
 const selectProfileById = async (id) => {
     const connection = await getConnection();
     const [profile] = await connection.query(
-        `SELECT * FROM profile WHERE register_id = ?`,
+        `SELECT * FROM profile pr INNER JOIN register re ON pr.register_id = re.register_id WHERE pr.register_id = ?`,
         [id]
     );
     console.log(profile);
