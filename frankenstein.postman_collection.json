@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n    \"email\":\"beatriz@gmail.com\",\n    \"register_password\":\"1234\"\n\n    \n    \n}",
+					"raw": "{\n\n    \"email\":\"valentina@gmail.com\",\n    \"register_password\":\"1234\"\n\n    \n    \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -37,8 +37,9 @@
 				"header": [
 					{
 						"key": "token",
-						"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJCZWF0cml6IiwibGFzdG5hbWUiOiJWw6F6cXVleiIsImJpcnRoZGF0ZSI6IjE5ODctMTEtMjBUMDA6MDA6MDAuMDAwWiIsImVtYWlsIjoiYmVhMkBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImJlYSIsInBhc3N3b3JkIjoiMTIzNCJ9LCJpYXQiOjE3MTM1MzY4NDAsImV4cCI6MTcxMzYyMzI0MH0.VowLOyuZKQ7np66ddkNa89Ts1uixZJVz6aspysNVJxo\"",
-						"type": "text"
+						"value": "",
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
@@ -50,7 +51,7 @@
 						}
 					}
 				},
-				"url": "http://localhost:8000/login"
+				"url": "http://localhost:4000/login"
 			},
 			"response": []
 		},
@@ -61,20 +62,106 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MDM1MDE4LCJleHAiOjE3MTY2MjcwMTh9.c1qUY-kbxZr42obmJq5BMAWR0bv65f3_BCZBPSjP8Lg",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0MzI3MjQwLCJleHAiOjE3MTY5MTkyNDB9.oQria2fsxjpnWkwrANpkkpISNkcvdZyRxCuM1qCXLb8",
 						"type": "text"
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"profile_name\": \"Samuel\",\n    \"profile_lastname\":\"Rodriguez\",\n    \"birthdate\":\"1994-05-21\",\n    \"profile_username\":\"Samue\",\n    \"profile_role\":\"students\",\n    \"company_name\": \"Indra\"\n  \n    \n  \n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/home/hacker/Downloads/pexels-evg-kowalievska-1170986.jpg"
+						},
+						{
+							"key": "profile_name",
+							"value": "Valentina",
+							"type": "text"
+						},
+						{
+							"key": "profile_lastname",
+							"value": "Alonso",
+							"type": "text"
+						},
+						{
+							"key": "profile_username",
+							"value": "Valen",
+							"type": "text"
+						},
+						{
+							"key": "birthdate",
+							"value": "1987-11-20",
+							"type": "text"
+						},
+						{
+							"key": "profile_role",
+							"value": "company",
+							"type": "text"
+						},
+						{
+							"key": "company_name",
+							"value": "apple",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": "http://localhost:4000/myprofile/"
+			},
+			"response": []
+		},
+		{
+			"name": "update Profile",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0MzI3MjQwLCJleHAiOjE3MTY5MTkyNDB9.oQria2fsxjpnWkwrANpkkpISNkcvdZyRxCuM1qCXLb8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/home/hacker/Downloads/pexels-pixabay-45201.jpg"
+						},
+						{
+							"key": "profile_name",
+							"value": "Valentina",
+							"type": "text"
+						},
+						{
+							"key": "profile_lastname",
+							"value": "Alonso Rodriguez",
+							"type": "text"
+						},
+						{
+							"key": "profile_username",
+							"value": "Valen",
+							"type": "text"
+						},
+						{
+							"key": "birthdate",
+							"value": "1987-11-20",
+							"type": "text"
+						},
+						{
+							"key": "profile_role",
+							"value": "student",
+							"type": "text"
+						},
+						{
+							"key": "company_name",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:4000/profileupdate/"
 			},
 			"response": []
 		},
@@ -83,24 +170,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/profile/:id",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"profile",
-						":id"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": ""
-						}
-					]
-				}
+				"url": "http://localhost:4000/profile/7"
 			},
 			"response": []
 		},
@@ -159,154 +229,100 @@
 			"response": []
 		},
 		{
-			"name": "Forgot Password",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:4000/forgot-password/"
-			},
-			"response": []
-		},
-		{
-			"name": "Forgot Password",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": "http://localhost:4000/forgot-password/"
-			},
-			"response": []
-		},
-		{
-			"name": "Reset-password",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/forgot-password/:id/:token",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"forgot-password",
-						":id",
-						":token"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": ""
-						},
-						{
-							"key": "token",
-							"value": ""
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Reset-password",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/forgot-password/:id/:token",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"forgot-password",
-						":id",
-						":token"
-					],
-					"variable": [
-						{
-							"key": "id",
-							"value": ""
-						},
-						{
-							"key": "token",
-							"value": ""
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ResponseQuestions",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/questions/:question_id/responses",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"questions",
-						":question_id",
-						"responses"
-					],
-					"variable": [
-						{
-							"key": "question_id",
-							"value": ""
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Resonse/votes",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:4000/response/:response_id/votes",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "4000",
-					"path": [
-						"response",
-						":response_id",
-						"votes"
-					],
-					"variable": [
-						{
-							"key": "response_id",
-							"value": ""
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Add New Project",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "import getConnection from \"../../db/getConnection.js\";\n\n// insert question \nconst insertQuestionModel = async (question_title, question_description, userId) => {\n\n    const connection = await getConnection();\n\n    // insert question in db\n    const [result] = await connection.query(\n        `INSERT INTO questions (question_title, question_description, user_id) VALUES (?,?,?)`,\n        [question_title, question_description, userId]\n    );\n\n    // send response\n    return result.insertId\n};\n    \nexport default insertQuestionModel;",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Valentina\",\n    \"lastname\": \"Alonso\",\n    \"birthdate\":\"1987-11-20\",\n    \"email\":\"valentina@gmail.com\",\n    \"password\":\"1234\",\n    \"username\":\"Valen\"\n    \n}",
+					"raw": "{\n   \"project_title\":\"Identidad corporativa\",\n   \"project_description\":\"bla bla bla bla\"\n    \n}",
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
-				"url": "http://localhost:5000/project/"
+				"url": "http://localhost:4000/newproject/"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Project",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0MzI3MjQwLCJleHAiOjE3MTY5MTkyNDB9.oQria2fsxjpnWkwrANpkkpISNkcvdZyRxCuM1qCXLb8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "project_title",
+							"value": "React",
+							"type": "text"
+						},
+						{
+							"key": "project_description",
+							"value": "Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin, egestas taciti facilisis tellus felis quam consequat. Vestibulum pretium ullamcorper magna facilisi dapibus eleifend praesent justo, aliquet ultrices nam felis quisque sociosqu aliquam porttitor, molestie etiam gravida malesuada sodales eu placerat. Vitae praesent sollicitudin vehicula phasellus platea nec, vel orci hac nullam vestibulum facilisis lobortis, ",
+							"type": "text"
+						},
+						{
+							"key": "project_photo",
+							"type": "file",
+							"src": "/home/hacker/Downloads/pexels-nicole-michalou-5778899.jpg"
+						},
+						{
+							"key": "project_url",
+							"value": "http://www.react.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": "http://localhost:4000/projectupdate/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Project",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+						"type": "text"
+					}
+				],
+				"url": "http://localhost:4000/project/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Project",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MzIwMTkwLCJleHAiOjE3MTY5MTIxOTB9.NT0Cpxv9_B4F3jMfsgWQWH1DdgoqIGDfDNr5WDtm-fU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": "http://localhost:4000/project/2"
 			},
 			"response": []
 		}
