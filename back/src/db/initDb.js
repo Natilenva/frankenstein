@@ -7,7 +7,7 @@ const createTables = async () => {
         console.log('Borrando tablas...');
 
         await connection.query(
-            'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies'
+            'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies, ExpertSkillsV1'
         );
 
         console.log('Creando tablas');
@@ -30,11 +30,11 @@ const createTables = async () => {
                 profile_lastname varchar(50) NOT NULL,
                 profile_username varchar(50),
                 birthdate DATETIME,
-                profile_role enum('expert','company', 'students') ,
+                profile_role enum('expert','company', 'student') ,
                 avatar varchar(255) ,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-                register_id int NOT NULL,
+                register_id int NOT NULL UNIQUE,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
             );
         `);
@@ -44,6 +44,7 @@ const createTables = async () => {
                 question_id int PRIMARY KEY AUTO_INCREMENT,
                 question_title varchar(255) NOT NULL,
                 question_description text NOT NULL,
+                technology varchar(100),
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
                 user_id int NOT NULL,
@@ -106,6 +107,14 @@ const createTables = async () => {
             register_id  INT NOT NULL,
             FOREIGN KEY (register_id) REFERENCES register(register_id)
         )
+        `);
+
+        await connection.query(`
+            CREATE TABLE ExpertSkillsV1 (
+                skill VARCHAR(100) PRIMARY KEY NOT NULL,
+                expertUserID INT NOT NULL,
+                FOREIGN KEY (expertUserID) REFERENCES register(register_id)
+            );        
         `);
 
         console.log('Creando tablas');

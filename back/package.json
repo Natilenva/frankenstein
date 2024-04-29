@@ -21,7 +21,9 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "mysql2": "^3.9.4",
+    "nanoid": "^5.0.7",
     "nodemailer": "^6.9.13",
+    "sharp": "^0.33.3",
     "zod": "^3.22.5"
   },
   "devDependencies": {
