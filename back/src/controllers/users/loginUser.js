@@ -55,6 +55,8 @@ async function loginUser(req, res) {
             user_id: userDB.register_id,
         };
 
+        console.log(userInfo);
+
         // create token
         const token = jwt.sign(userInfo, SECRET, { expiresIn: '1day' });
         res.setHeader('Authorization', token);
@@ -68,4 +70,5 @@ async function loginUser(req, res) {
         console.error(error.message);
     }
 }
+
 export { loginUser };
