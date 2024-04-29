@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { generateError } from '../helpers/generateError.js';
 const authUser = (req, res, next) => {
+
     try {
         const { authorization } = req.headers;
 
@@ -9,19 +10,16 @@ const authUser = (req, res, next) => {
         }
 
         let token;
-
         try {
             token = jwt.verify(authorization, process.env.SECRET);
-
             req.user = token;
-
-            next();
-
-        } catch (error) {
-            throw generateError('Token incorrecto', 401);
+        } catch {
+            throw generateError('token no válido', 401);
         }
-        //req.register_id = token.id;
-        
+        req.userId = token.id;
+
+        next(); 
+
     } catch (error) {
         next(error);
     }

@@ -1,16 +1,18 @@
 import express from 'express';
 
-import  authUser  from '../middlewares/auth.js';
+import authUser from '../middlewares/auth.js';
 
 import newProjectController from '../controllers/projects/newProjectController.js';
-import newQuestionController from '../controllers/questions/newQuestionController.js';
-
+import { getProjectController } from '../controllers/projects/getProjectController.js';
+import { updateProjectController } from '../controllers/projects/updateProjectController.js';
+import { deleteProjectController } from '../controllers/projects/deleteProjectController.js';
 const router = express.Router();
 
-// projectRouter.get('/', getAllprojects);
-// projectRouter.get('/my', userAuth, getAllMyProjects);
-// projectRouter.get('/:entryId', getOneProject);
-router.post('/newproyect', authUser, newProjectController);
-router.post('/newquestion', authUser, newQuestionController);
+// router.get('/', getAllprojects);
+// router.get('/my', userAuth, getAllMyProjects);
+router.get('/project/:id', getProjectController);
+router.post('/newproject', authUser, newProjectController);
+router.put('/projectupdate', authUser, updateProjectController);
+router.delete('/project/:id', authUser, deleteProjectController);
 
 export default router;

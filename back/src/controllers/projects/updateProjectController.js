@@ -1,24 +1,24 @@
-import { zodErrorMap } from '../../helpers/zodError.js';
 import { projectSchema } from '../../schemas/projectShema.js';
-import insertProjectModel from '../../models/projects/insertProjectModel.js';
+import updateProjectModel from '../../models/projects/updateProjectModel.js';
+import { zodErrorMap } from '../../helpers/zodError.js';
 import { createPathIfNotExists } from '../../helpers/createpath.js';
 import sharp from 'sharp';
 import url from 'url';
 import path from 'node:path';
 import { nanoid } from 'nanoid';
-const newProjectController = async (req, res, next) => {
+const updateProjectController = async (req, res) => {
     try {
+        const { register_id } = req.user;
         const {
             success,
             data: project,
             error,
         } = projectSchema.safeParse(req.body);
-
         if (!success) {
             const errors = zodErrorMap(error.issues);
-
             return res.status(400).send({ error: errors });
         }
+
         let imageFileName;
         if (req.files && req.files.project_photo) {
             console.log(req.files);
@@ -33,8 +33,6 @@ const newProjectController = async (req, res, next) => {
             console.log(imageFileName);
             await image.toFile(path.join(uploadsDir, imageFileName));
         }
-
-        // validated fields
         const {
             project_title,
             project_description,
@@ -42,21 +40,20 @@ const newProjectController = async (req, res, next) => {
             project_url,
         } = project;
         console.log(project);
-
-        const id = await insertProjectModel(
+        const updateProject = await updateProjectModel(
             project_title,
             project_description,
             imageFileName,
             project_url,
             req.userId
         );
-
+        console.log(updateProject);
         res.status(201).send({
             status: 'ok',
-            message: 'insert project in db',
+            message: 'update project in db',
             data: {
                 project: {
-                    projectId: id,
+                    projectId: updateProject,
                     project_title,
                     project_description,
                     project_photo,
@@ -66,8 +63,8 @@ const newProjectController = async (req, res, next) => {
                 },
             },
         });
-    } catch (err) {
-        next(err);
+    } catch (error) {
+        console.error(error.message);
     }
 };
-export default newProjectController;
+export { updateProjectController };

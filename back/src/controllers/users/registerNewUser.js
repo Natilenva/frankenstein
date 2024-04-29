@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-const { SECRET } = process.env;
+const { SECRET, PORT } = process.env;
 import getConnection from '../../db/getConnection.js';
 import { registerSchema } from '../../schemas/registerSchema.js';
 import { zodErrorMap } from '../../helpers/zodError.js';
@@ -12,7 +12,7 @@ async function registerNewUser(req, res) {
     //console.log('req.body: ',req.body );
     try {
         // zod validation for new user data
-        // TODO en userSchema falta agregar la validación de register_code
+        // TODO en userSchema falta agregar la validación de register_code?
         const {
             success,
             data: user,
@@ -23,52 +23,55 @@ async function registerNewUser(req, res) {
             const errors = zodErrorMap(error.issues);
             return res.status(400).send({ error: errors });
         }
+
+        // data from body register
+        //! register_code?
         const { register_id, email, register_password, register_code } = user;
+        console.log(
+            'email, register_password, register_code: ',
+            email,
+            register_password,
+            register_code
+        );
 
-        // // Activación de la cuenta
-        // const registrationCode = crypto.randomUUID();
-        // console.log('blablabla',registrationCode);
+        // TODO Activación de la cuenta?
+        const registrationCode = crypto.randomUUID();
+        console.log('registrationCode:', registrationCode);
 
-        //  const subject = 'Activa tu cuenta en Frankenstein';
-        //  const content = `
-        //    <h1>¡Bienvenid@ a tu web Frankenstein</h1>
-        //    <p>Activa tu cuenta haciendo click en el siguiente enlace.</p>
-        //    <a href="http://localhost:8000/users/validate/${registrationCode}">Activar cuenta</a>
-        //  `;
+        const subject = 'Activa tu cuenta en Frankenstein';
+        const content = `
+        <h1>¡Bienvenid@ a tu web Frankenstein</h1>
+        <p>Activa tu cuenta haciendo click en el siguiente enlace.</p>
+      
+        <a href="http://localhost:${PORT}/${registrationCode}">Activar cuenta</a>
+        `;
+        await sendEmail(email, subject, content);
 
-        // await sendEmail(email, subject, content);
-
-        // // TODO me está dejando insertar un email mal construido
-
-        let connection; // create new connection to db
-        connection = await getConnection(); // get connection to db
+        // create new connection to db
+        const connection = await getConnection();
 
         // check if user exists by email
         const [userEmail] = await connection.query(
             `SELECT register_id FROM register WHERE email= ?`,
             [email]
         );
-        // if user exists, throw error
+        // if user not exists, throw error
         if (userEmail.length > 0) {
             res.status(400).send('Ya existe un usuario con ese email');
-            throw generateError('Ya existe un usuario con ese mail', 409);
         }
-        // TODO si Ya existe un usuario con ese mail, Postman no recibe Response, solo la recibo en la terminal
 
         // hash password
         const saltRounds = 10;
         const hashedPassword = bcrypt.hashSync(register_password, saltRounds);
 
+        // insert new user into db
         const insertInfo = await connection.query(
             `INSERT INTO register (register_id, email, register_password, register_code) VALUES (?,?,?,?)`,
-            [register_id, email, hashedPassword, register_code]
+            [register_id, email, hashedPassword, registrationCode]
         );
 
-        // define user info
-        const userInfo = {
-            user_id: insertInfo.insertId,
-            user,
-        };
+        //! define user info?
+        const userInfo = { user_id: insertInfo.insertId, user };
 
         // generate token
         const token = jwt.sign(userInfo, SECRET, { expiresIn: '1day' });
@@ -77,8 +80,9 @@ async function registerNewUser(req, res) {
 
         res.send({
             message: `Usuario creado correctamente`,
-            user: userInfo,
-            data: token,
+            /* user: userInfo, */
+            dataRegister: req.body,
+            token: token,
         });
     } catch (error) {
         console.error(error.message);

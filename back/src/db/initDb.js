@@ -1,18 +1,20 @@
-import getConnection from "./getConnection.js";
+import getConnection from './getConnection.js';
 
-const createTables= async() =>{
+const createTables = async () => {
     try {
-        const connection= await getConnection();
+        const connection = await getConnection();
 
         console.log('Borrando tablas...');
 
-        await connection.query('DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes');
+        await connection.query(
+            'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies, ExpertSkillsV1'
+        );
 
         console.log('Creando tablas');
 
         await connection.query(`
             CREATE TABLE register (
-                register_id INT PRIMARY KEY AUTO_INCREMENT,
+                register_id int AUTO_INCREMENT PRIMARY KEY,
                 email varchar(100) UNIQUE NOT NULL,
                 register_password varchar(100) NOT NULL,
                 register_code varchar(36),
@@ -23,17 +25,16 @@ const createTables= async() =>{
 
         await connection.query(`
             CREATE TABLE  profile (
-                profile_id INT PRIMARY KEY  AUTO_INCREMENT,
+                profile_id INT PRIMARY KEY AUTO_INCREMENT,
                 profile_name varchar(50) NOT NULL,
                 profile_lastname varchar(50) NOT NULL,
                 profile_username varchar(50),
                 birthdate DATETIME,
-                profile_role enum('expert','company', 'students') ,
-                company_name varchar(100) ,
+                profile_role enum('expert','company', 'student') ,
                 avatar varchar(255) ,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-                register_id int NOT NULL,
+                register_id int NOT NULL UNIQUE,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
             );
         `);
@@ -43,10 +44,11 @@ const createTables= async() =>{
                 question_id int PRIMARY KEY AUTO_INCREMENT,
                 question_title varchar(255) NOT NULL,
                 question_description text NOT NULL,
+                technology varchar(100),
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-                register_id int,
-                FOREIGN KEY (register_id) REFERENCES register(register_id)
+                user_id int NOT NULL,
+                FOREIGN KEY (user_id) REFERENCES register(register_id)
             );   
         `);
 
@@ -81,31 +83,48 @@ const createTables= async() =>{
 
         await connection.query(`
             CREATE TABLE responses (
-                response_id int PRIMARY KEY AUTO_INCREMENT,
+                response_id INT PRIMARY KEY AUTO_INCREMENT,
                 response_text text NOT NULL,
-                register_id  int NOT NULL,
-                FOREIGN KEY (register_id) REFERENCES register(register_id)
+                profile_id  INT NOT NULL,
+                question_id INT NOT NULL,
+                FOREIGN KEY (profile_id) REFERENCES profile(profile_id),
+                FOREIGN KEY (question_id) REFERENCES questions(question_id) 
             );  
         `);
 
         await connection.query(`
             CREATE TABLE votes (
-                vote_response_id int PRIMARY KEY  AUTO_INCREMENT,
+                vote_response_id INT PRIMARY KEY  AUTO_INCREMENT,
                 vote_value tinyint NOT NULL,
-                register_id  int NOT NULL,
-                FOREIGN KEY (register_id) REFERENCES register(register_id)
+                register_id INT NOT NULL,
+                response_id INT NOT NULL,
+                FOREIGN KEY (register_id) REFERENCES register(register_id),
+                FOREIGN KEY (response_id) REFERENCES responses(response_id)
             );
+        `);
+        await connection.query(`
+        CREATE TABLE companies(
+            company_id INT PRIMARY KEY AUTO_INCREMENT,
+            company_name varchar(100),
+            register_id  INT NOT NULL,
+            FOREIGN KEY (register_id) REFERENCES register(register_id)
+        )
+        `);
+
+        await connection.query(`
+            CREATE TABLE ExpertSkillsV1 (
+                skill VARCHAR(100) PRIMARY KEY NOT NULL,
+                expertUserID INT NOT NULL,
+                FOREIGN KEY (expertUserID) REFERENCES register(register_id)
+            );        
         `);
 
         console.log('Creando tablas');
         process.exit(0);
-
     } catch (err) {
         console.error(err);
         proccess.exit(1);
-    
     }
-  
 };
 
 createTables();
