@@ -1,5 +1,5 @@
-import insertVotesModel from "../../models/votes/insertVotesModel.js";
-import selectResponseByIdModel from "../../models/entries/selectResponseByIdModel.js";
+import insertVotesModel from '../../models/votes/insertVotesModel.js';
+import selectResponseByIdModel from '../../models/responses/selectResponseByIdModel.js';
 
 import {
     cannotVoteOwnEntryError,
@@ -29,7 +29,11 @@ const voteResponseController = async (req, res, next) => {
             notValidVoteError();
         }
 
-        const votesAvg = await insertVotesModel(vote_value, responses, req.user.id);
+        const votesAvg = await insertVotesModel(
+            vote_value,
+            responses,
+            req.user.id
+        );
 
         res.status(201).send({
             status: 'ok',
