@@ -59,10 +59,18 @@ async function loginUser(req, res) {
             user_id: dataUserRegister[0].register_id,
         }; */
 
+<<<<<<< HEAD
+        console.log(userInfo);
+
+        // create token
+        const token = jwt.sign(userInfo, SECRET, { expiresIn: '1day' });
+        res.setHeader('Authorization', token);
+=======
         // create token ---------------------------------------
         const idForToken = dataUserRegister[0].register_id;
         const payload = {id: idForToken};
         console.log('el id del user del token es: ', idForToken);
+>>>>>>> 48fbbff9a45a79e5285634b7a998f2612cc3d991
 
         // generate token
         const token = jwt.sign(payload, process.env.SECRET, {
@@ -73,11 +81,11 @@ async function loginUser(req, res) {
         /* const token = jwt.sign(userInfo, SECRET, { expiresIn: '1day' });
         res.setHeader('Authorization', token); */
 
-        // send response ----------------------------------------
+        // send question ----------------------------------------
         res.send({
             status: 'ok',
             message: `Usuario ${dataUserRegister[0].email} logueado`,
-            /* token, */
+            // /* token, */
             data: token,
         });
 
@@ -85,4 +93,5 @@ async function loginUser(req, res) {
         console.error(error.message);
     }
 }
+
 export { loginUser };

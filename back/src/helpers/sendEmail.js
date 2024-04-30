@@ -1,12 +1,12 @@
 import { createTransport } from 'nodemailer';
-
-const { SMTP_HOST, SMTP_PASS, SMPT_PORT, SMPT_USER } = process.env;
+import 'dotenv/config';
+const { SMTP_HOST, SMTP_PASS, SMTP_PORT, SMTP_USER } = process.env;
 
 const transporter = createTransport({
     host: SMTP_HOST,
-    port: SMPT_PORT,
+    port: SMTP_PORT,
     auth: {
-        user: SMPT_USER,
+        user: SMTP_USER,
         pass: SMTP_PASS,
     },
 });

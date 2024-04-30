@@ -97,7 +97,9 @@ const createTables = async () => {
                 vote_response_id INT PRIMARY KEY  AUTO_INCREMENT,
                 vote_value tinyint NOT NULL,
                 register_id INT NOT NULL,
-                FOREIGN KEY (register_id) REFERENCES register(register_id)
+                response_id INT NOT NULL,
+                FOREIGN KEY (register_id) REFERENCES register(register_id),
+                FOREIGN KEY (response_id) REFERENCES responses(response_id)
             );
         `);
         await connection.query(`
