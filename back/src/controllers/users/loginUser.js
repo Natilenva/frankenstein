@@ -9,17 +9,20 @@ import { registerSchema } from '../../schemas/registerSchema.js';
 const { SECRET } = process.env;
 
 async function loginUser(req, res) {
-
     try {
         // zod validation for login data
-        const {success,data: user,error,} = registerSchema.safeParse(req.body);
-        
+        const {
+            success,
+            data: user,
+            error,
+        } = registerSchema.safeParse(req.body);
+
         if (!success) {
             const errors = zodErrorMap(error.issues);
             return res.status(400).send({ error: errors });
         }
 
-        // connection to db 
+        // connection to db
         const connection = await getConnection();
 
         // data of body from login
@@ -28,17 +31,21 @@ async function loginUser(req, res) {
 
         // select data from db
         const [dataUserRegister] = await connection.query(
-            `SELECT * FROM register WHERE email = ? ;`,[email]
+            `SELECT * FROM register WHERE email = ? ;`,
+            [email]
         );
-        
-        // check if user exists 
+
+        // check if user exists
         if (!dataUserRegister[0]) {
             res.status(400).send({
                 message: 'Email y/o contraseña incorrectos',
             });
         }
         console.log('dataUserRegister: ', dataUserRegister);
-        console.log('dataUserRegister[0].register_id: ', dataUserRegister[0].register_id);
+        console.log(
+            'dataUserRegister[0].register_id: ',
+            dataUserRegister[0].register_id
+        );
 
         // compare password -----------------------
         const passwordMatched = bcrypt.compareSync(
@@ -59,22 +66,14 @@ async function loginUser(req, res) {
             user_id: dataUserRegister[0].register_id,
         }; */
 
-<<<<<<< HEAD
-        console.log(userInfo);
-
-        // create token
-        const token = jwt.sign(userInfo, SECRET, { expiresIn: '1day' });
-        res.setHeader('Authorization', token);
-=======
         // create token ---------------------------------------
         const idForToken = dataUserRegister[0].register_id;
-        const payload = {id: idForToken};
+        const payload = { id: idForToken };
         console.log('el id del user del token es: ', idForToken);
->>>>>>> 48fbbff9a45a79e5285634b7a998f2612cc3d991
 
         // generate token
         const token = jwt.sign(payload, process.env.SECRET, {
-        expiresIn: '30d',
+            expiresIn: '30d',
         });
 
         //! valentina
@@ -88,7 +87,6 @@ async function loginUser(req, res) {
             // /* token, */
             data: token,
         });
-
     } catch (error) {
         console.error(error.message);
     }

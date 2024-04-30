@@ -12,9 +12,8 @@ const router = express.Router();
 
 router.post('/newquestion', authUser, newQuestionController);
 
-//router.get('/question/:id', authUser, selectQuestionById);
 router.get('/question/:id', authUser, questionSelectController);
-
+// filtro de búsqueda
 router.get('/getQuestion/:id', questionController);
 
 //* Endpoint listado tipologías de consultas

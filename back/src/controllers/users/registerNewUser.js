@@ -42,7 +42,7 @@ async function registerNewUser(req, res) {
         const content = `
         <h1>¡Bienvenid@ a tu web Frankenstein</h1>
         <p>Activa tu cuenta haciendo click en el siguiente enlace.</p>
-      
+
         <a href="http://localhost:${PORT}/${registrationCode}">Activar cuenta</a>
         `;
         await sendEmail(email, subject, content);
@@ -79,10 +79,9 @@ async function registerNewUser(req, res) {
         console.log(token);
 
         res.send({
+            httpstatus: '201',
+            code: 'USER_CREATED',
             message: `Usuario creado correctamente`,
-            /* user: userInfo, */
-            dataRegister: req.body,
-            token: token,
         });
     } catch (error) {
         console.error(error.message);

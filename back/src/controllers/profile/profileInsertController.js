@@ -6,7 +6,7 @@ import url from 'url';
 import path from 'node:path';
 import { nanoid } from 'nanoid';
 import { insertProfileByModel } from '../../models/profile/insertProfileByModel.js';
-// import { selectProfileById } from '../../models/profile/selectProfileById.js';
+
 import { getProfileById } from '../../models/profile/getProfileById.js';
 import { generateError } from '../../helpers/generateError.js';
 const profileInsertController = async (req, res) => {
@@ -15,8 +15,6 @@ const profileInsertController = async (req, res) => {
         const errors = zodErrorMap(error.issues);
         return res.status(400).send({ error: errors });
     }
-
-    // console.log('req.body): ', req.body);
 
     try {
         let imageFileName;
@@ -43,11 +41,6 @@ const profileInsertController = async (req, res) => {
             company_name,
             register_id,
         } = profile;
-        // const profileId = await getProfileById(register_id);
-        // console.log(profileId);
-        // if (req.userId === register_id) {
-        //     throw generateError('Este usuario ya tiene un perfil', 401);
-        // }
 
         await insertProfileByModel(
             imageFileName,
@@ -59,7 +52,11 @@ const profileInsertController = async (req, res) => {
             company_name,
             req.userId
         );
-        res.send('Perfil creado');
+        res.send({
+            httpStatus: '201',
+            code: 'PROFILE_CREATED',
+            message: 'Perfil creado',
+        });
     } catch (error) {
         throw generateError('Solamente puedes generar un perfil por usuario');
     }
