@@ -86,9 +86,7 @@ const createTables = async () => {
                 response_id INT PRIMARY KEY AUTO_INCREMENT,
                 response_text text NOT NULL,
                 register_id INT,
-                profile_id  INT NOT NULL,
                 question_id INT NOT NULL,
-                FOREIGN KEY (profile_id) REFERENCES profile(profile_id),
                 FOREIGN KEY (question_id) REFERENCES questions(question_id),
                 FOREIGN KEY (register_id) REFERENCES register (register_id) 
             );  
