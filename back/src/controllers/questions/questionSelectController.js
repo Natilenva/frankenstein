@@ -1,4 +1,4 @@
-import selectQuestionById2 from "../../models/questions/selectQuestionById2.js";
+import selectQuestionById from "../../models/questions/selectQuestionById.js";
 
 const questionSelectController = async (req, res, next) => {
 
@@ -6,18 +6,18 @@ const questionSelectController = async (req, res, next) => {
         const questionParamId = req.params.id;
   
         // select question
-        const questionSelected = await selectQuestionById2(questionParamId);
-  
+        const questionSelected = await selectQuestionById(questionParamId);
+
         // send response
-        res.send({
-          status: 'ok',
-          data: questionSelected
-  
+        res.status(200).send({
+            status: 'ok',
+            data: {
+              questionSelected
+            }
         });
         
       } catch (error) {
         next(error);
       }
-    };
-//  export default questionSelectController
+};
 export { questionSelectController };

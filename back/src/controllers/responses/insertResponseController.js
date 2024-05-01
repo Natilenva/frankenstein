@@ -1,11 +1,9 @@
 import { zodErrorMap } from "../../helpers/zodErrorMap.js";
 import insertResponseModel from "../../models/responses/insertResponseModel.js";
-//import insertResponseModel2 from "../../models/responses/insertResponseModel.js";
 import { responseSchema } from "../../schemas/responseSchema.js";
 
 const insertResponseController = async (req, res, next) => {
 
-    //const { questionID, profileID} = req.params;
     const { questionID} = req.params;
 
     try {
@@ -17,11 +15,9 @@ const insertResponseController = async (req, res, next) => {
             console.log('errors:', errors);
             return res.status(400).send({ error: errors });
         }
-        // validated field
-        const { response_text } = questionDataBody;
+        const { response_text } = questionDataBody;// validated field
  
         // insert response
-        //const id = await insertResponseModel2(response_text, profileID, questionID);
         const id = await insertResponseModel(response_text, req.userId, questionID);
 
         // send response
@@ -31,7 +27,6 @@ const insertResponseController = async (req, res, next) => {
             data:{
                 resposeID: id,
                 questionID: questionID,
-                /* profileID: profileID, */
                 userId: req.userId,
                 response_text,
             },

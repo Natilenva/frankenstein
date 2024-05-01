@@ -25,7 +25,6 @@ const newExpertSkillController = async (req, res, next) => {
             data:{
                 skill_id: id,
                 userId: req.userId,
-                createdAt: new Date(),
             },
         });
         

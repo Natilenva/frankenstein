@@ -7,7 +7,9 @@ const selectExpertSkillController = async (req, res, next) => {
         res.status(200).send({
             status: 'ok',
             message: 'Skills in dt ExpertSkillsV1',
-            skills: skillsDistinct,
+            data: {
+                skillsDistinct
+            },
         });
     } catch (err) {
         next(err);

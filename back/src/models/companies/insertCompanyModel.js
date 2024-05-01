@@ -11,6 +11,11 @@ const insertCompanyModel = async (company_name, userId) => {
         [company_name, userId]
     );
 
+     // validate?
+     if (result.affectedRows === 0) {
+        throw generateError(`No se pudo insertar la pregunta`, 400);
+    }
+
     // send response
     return result.insertId
 };

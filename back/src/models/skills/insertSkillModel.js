@@ -10,6 +10,12 @@ const insertSkillModel = async (skill, userId) => {
         `INSERT INTO ExpertSkillsV1 (skill, expertUserID) VALUES (?,?)`,
         [skill, userId]
     );
+
+     // validate?
+     if (result.affectedRows === 0) {
+        throw generateError(`No se pudo insertar la skill`, 400);
+    }
+    
     return skill 
 };
 export default insertSkillModel;
