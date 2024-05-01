@@ -1,7 +1,7 @@
 import express from 'express';
 import responsesRoutes from './responsesRoutes.js';
 import userRoutes from './usersRoutes.js';
-import proyectRoutes from './projectRouter.js';
+import projectRoutes from './projectRouter.js';
 import questionRoutes from './questionRouter.js';
 import companyRoutes from './companyRouter.js';
 import skillRoutes from './skillRouter.js';
@@ -9,7 +9,7 @@ import skillRoutes from './skillRouter.js';
 const router = express.Router();
 
 router.use(userRoutes);
-router.use(proyectRoutes);
+router.use(projectRoutes);
 
 //* Question Routes
 router.use(questionRoutes);
