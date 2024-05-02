@@ -7,26 +7,28 @@ const deleteResponseController = async (req, res, next) => {
         const { response_id } = req.params;
 
         const response = await selectResponseByIdModel(response_id);
+        console.log(response);
 
-        if (response.register_id !== req.user.id) {
-            unauthorizedUserError();
-        }
+        // if (response.register_id !== req.user.id) {
+        //     unauthorizedUserError();
+        // }
+     
 
-        //  if(response.vote_response_id[0]){
+         if(response.vote_response_id[true]){ 
+           throw({
+                    httpStatus: 400,
+                    code: 'NOT_VALID_DELETE_RESPONSE',
+                    message: 'La respuesta tiene votos',})
+                };
+
         await deleteResponseModel(response_id);
-        res.send({
+        res.status(200).send({
             status: 'ok',
             message: 'Respuesta eliminada',
         });
-        // } else{
-        //     res.send({
-        //         httpStatus: 400,
-        //         code: 'NOT_VALID_DELETE_RESPONSE',
-        //         message: 'La respuesta tiene votos',
-        //     });
-        //   };
+
     } catch (err) {
         next(err);
-    }
-};
+    }}
+
 export default deleteResponseController;
