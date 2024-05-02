@@ -113,7 +113,8 @@ const createTables = async () => {
 
         await connection.query(`
             CREATE TABLE ExpertSkillsV1 (
-                skill VARCHAR(100) PRIMARY KEY NOT NULL,
+                ExpertSkillsV1_id INT PRIMARY KEY AUTO_INCREMENT,
+                skill VARCHAR(100),
                 expertUserID INT NOT NULL,
                 FOREIGN KEY (expertUserID) REFERENCES register(register_id)
             );        
