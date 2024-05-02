@@ -3,7 +3,7 @@ import insertResponseModel2 from "../../models/responses/insertResponseModel2.js
 import { responseSchema } from "../../schemas/responseSchema.js";
 
 const insertResponseController2 = async (req, res, next) => {
-
+conso
     const { questionID, profileID} = req.params;
 
     try {

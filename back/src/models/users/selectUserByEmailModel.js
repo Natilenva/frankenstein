@@ -1,10 +1,10 @@
-import getConnection from "../../db/getConnection.js";
-const selectUserByEmailModel= async (email)=>{
+import getConnection from '../../db/getConnection.js';
+const selectUserByEmailModel = async (email) => {
     const connection = await getConnection();
 
-    const [users]= await connection.query(
+    const [users] = await connection.query(
         `SELECT register_id, register_password, email FROM register WHERE email =?`,
-        [email],
+        [email]
     );
     return users[0];
 };

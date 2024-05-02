@@ -1,14 +1,11 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import getConnection from '../../db/getConnection.js';
-import { generateError } from '../../helpers/generateError.js';
-
 import { zodErrorMap } from '../../helpers/zodError.js';
 import { registerSchema } from '../../schemas/registerSchema.js';
-
 const { SECRET } = process.env;
 
-async function loginUser(req, res) {
+async function loginUser(req, res, next) {
     try {
         // zod validation for login data
         const {
@@ -58,27 +55,15 @@ async function loginUser(req, res) {
             });
         }
 
-        //! valentina
-        /* const userInfo = {
-            user_id: userDB[0].register_id,
-        }; */
-        /* const userInfo = {
-            user_id: dataUserRegister[0].register_id,
-        }; */
-
         // create token ---------------------------------------
         const idForToken = dataUserRegister[0].register_id;
         const payload = { id: idForToken };
         console.log('el id del user del token es: ', idForToken);
 
         // generate token
-        const token = jwt.sign(payload, process.env.SECRET, {
+        const token = jwt.sign(payload, SECRET, {
             expiresIn: '30d',
         });
-
-        //! valentina
-        /* const token = jwt.sign(userInfo, SECRET, { expiresIn: '1day' });
-        res.setHeader('Authorization', token); */
 
         // send question ----------------------------------------
         res.send({
@@ -88,7 +73,7 @@ async function loginUser(req, res) {
             data: token,
         });
     } catch (error) {
-        console.error(error.message);
+        next(error);
     }
 }
 
