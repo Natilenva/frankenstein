@@ -16,6 +16,6 @@ const insertSkillModel = async (skill, userId) => {
         throw generateError(`No se pudo insertar la skill`, 400);
     }
     
-    return skill 
+    return result.insertId 
 };
 export default insertSkillModel;

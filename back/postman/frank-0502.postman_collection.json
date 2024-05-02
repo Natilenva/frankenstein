@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "faa205f4-db21-49b8-ae48-7226151ac344",
-		"name": "Frank-mon-0429-mix-todoOK+Github",
+		"name": "frank-0502",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "11539769",
 		"_collection_link": "https://grey-shuttle-870223.postman.co/workspace/New-Team-Workspace~d599e7ad-0aad-4bcf-a098-0b53ac85bd32/collection/11539769-faa205f4-db21-49b8-ae48-7226151ac344?action=share&source=collection_link&creator=11539769"
@@ -20,13 +20,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MzExNzg0LCJleHAiOjE3MTY5MDM3ODR9.jI4XWzJy1yxSkEaUmCsVU3nyZXghF_KMz-1OLu-Vokc",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTk4MDc0LCJleHAiOjE3MTcxOTAwNzR9.tAE6tLURJpBI2NA8SNsaTVLhxqBuUOsrgLTwY5qnkDg",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"question_title\": \"question_title_3\",\n    \"question_description\": \"question_description_3\",\n    \"technology\": \"technology_3\"\n    \n}",
+							"raw": "{\n    \"question_title\": \"question_title_2\",\n    \"question_description\": \"question_description_1\",\n    \"technology\": \"technology_1\"\n    \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +72,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/question/2",
+							"raw": "http://localhost:3000/question/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -80,14 +80,14 @@
 							"port": "3000",
 							"path": [
 								"question",
-								"2"
+								"1"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "questionSearchFilter",
+					"name": "question/:search",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -98,7 +98,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3000/getQuestion/3",
+							"raw": "http://localhost:3000/getQuestion/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -106,7 +106,7 @@
 							"port": "3000",
 							"path": [
 								"getQuestion",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -118,49 +118,78 @@
 			"name": "profiles",
 			"item": [
 				{
-					"name": "/insertProfile",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {}
-					},
+					"name": "InsertProfile",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTE1ODUwLCJleHAiOjE3MTcxMDc4NTB9.UK9Gbk_EcH12wrOHLcn2tOUiWtWqvjPovSRB-FvwgCw",
 								"type": "text"
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"profile_name\": \"name2\",\n    \"profile_lastname\":\"profile_lastname1\",\n    \"profile_username\":\"username1\",\n    \"birthdate\": \"1987-05-30\",\n    \"profile_role\":\"expert\",\n    \"company_name\":\"company_name1\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/hacker/Downloads/pexels-evg-kowalievska-1170986.jpg"
+								},
+								{
+									"key": "profile_name",
+									"value": "Valentina",
+									"type": "text"
+								},
+								{
+									"key": "profile_lastname",
+									"value": "Alonso",
+									"type": "text"
+								},
+								{
+									"key": "profile_username",
+									"value": "Valen",
+									"type": "text"
+								},
+								{
+									"key": "birthdate",
+									"value": "1987-11-20",
+									"type": "text"
+								},
+								{
+									"key": "profile_role",
+									"value": "company",
+									"type": "text"
+								},
+								{
+									"key": "company_name",
+									"value": "apple",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/myprofile",
+							"raw": "http://localhost:3000/myprofile/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
-								"myprofile"
+								"myprofile",
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get profile Copy",
+					"name": "Get profile",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/profile/1",
+							"raw": "http://localhost:3000/profile/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -168,7 +197,73 @@
 							"port": "3000",
 							"path": [
 								"profile",
-								"1"
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NjUyMDAyLCJleHAiOjE3MTcyNDQwMDJ9.20GqQWLK7pvJH83tBguYrLBo1AxlkNFHbW-NicgE-YM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/hacker/Downloads/pexels-pixabay-45201.jpg"
+								},
+								{
+									"key": "profile_name",
+									"value": "Valentina",
+									"type": "text"
+								},
+								{
+									"key": "profile_lastname",
+									"value": "Alonso Rodriguez",
+									"type": "text"
+								},
+								{
+									"key": "profile_username",
+									"value": "Valen",
+									"type": "text"
+								},
+								{
+									"key": "birthdate",
+									"value": "1987-11-20",
+									"type": "text"
+								},
+								{
+									"key": "profile_role",
+									"value": "student",
+									"type": "text"
+								},
+								{
+									"key": "company_name",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/profileupdate/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"profileupdate",
+								""
 							]
 						}
 					},
@@ -180,7 +275,7 @@
 			"name": "responses",
 			"item": [
 				{
-					"name": "/response/:questionID/:profileID",
+					"name": "/response/:questionID",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
 					},
@@ -189,13 +284,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MzM1OTQ2LCJleHAiOjE3MTY5Mjc5NDZ9.DN3Pzrz8ioEByoCj-cpg6rbaG2UUdoX8HJGGO9Te3Os",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTk4MDc0LCJleHAiOjE3MTcxOTAwNzR9.tAE6tLURJpBI2NA8SNsaTVLhxqBuUOsrgLTwY5qnkDg",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"response_text\": \"res_text3\"\n}",
+							"raw": "{\n    \"response_text\": \"res_text1\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -203,7 +298,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/response/2/1",
+							"raw": "http://localhost:3000/response/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -211,7 +306,6 @@
 							"port": "3000",
 							"path": [
 								"response",
-								"2",
 								"1"
 							]
 						}
@@ -224,7 +318,7 @@
 			"name": "companies",
 			"item": [
 				{
-					"name": "/newcompany(el mismo user repite data)",
+					"name": "/newcompany(q user no insert same company?)",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
 					},
@@ -233,13 +327,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MzM1OTQ2LCJleHAiOjE3MTY5Mjc5NDZ9.DN3Pzrz8ioEByoCj-cpg6rbaG2UUdoX8HJGGO9Te3Os",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NTIzMjI3LCJleHAiOjE3MTcxMTUyMjd9.HTwTmS2lYyFcqA6h6Pp9kZrG5Qpb8yfXcU_4PmFoSGI",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_name\": \"company_name x\"\n}",
+							"raw": "{\n    \"company_name\": \"company_name 3\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -304,7 +398,7 @@
 			"name": "skills",
 			"item": [
 				{
-					"name": "/newexpertskill new table ExpertSkills",
+					"name": "/newexpertskill (user1)",
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {}
 					},
@@ -313,13 +407,50 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MzIyMzc4LCJleHAiOjE3MTY5MTQzNzh9.18_aVHhQcDmULZSBncmOdfui7HHY38CjmP7TzaEGfUI",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NjA1NTg0LCJleHAiOjE3MTcxOTc1ODR9.w1PPv7sqqXlR3gI_8xZFYQk17IB7Z5tc2mK0oGJBF9o",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"skill\": \"back11\"\n}",
+							"raw": "{\n    \"skill\": \"back1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/newexpertskill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"newexpertskill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/newexpertskill (user2)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NTkwODA2LCJleHAiOjE3MTcxODI4MDZ9.GOGisjcXTrooS0zl9yYfGvXVO44mS42NE6-eNa-842s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"skill\": \"back2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -357,7 +488,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"company_name\": \"company_name x\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -522,70 +653,149 @@
 			]
 		},
 		{
-			"name": "/register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"mon2@mon.com\",\n    \"register_password\": \"1234\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "register",
+			"item": [
+				{
+					"name": "register(user1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJCZWEiLCJsYXN0bmFtZSI6IlbDoXpxdWV6IiwiYmlydGhkYXRlIjoiMTk4Ny0xMS0yMFQwMDowMDowMC4wMDBaIiwiZW1haWwiOiJiZWFAZ21haWwuY29tIiwidXNlcm5hbWUiOiJiZWEiLCJwYXNzd29yZCI6IjEyMzQifSwiaWF0IjoxNzEzNTM2Njk3LCJleHAiOjE3MTM2MjMwOTd9.bXeCwYvlU2Mk3YWT-byjJJN9A7FA5uabpx-ql0yD42o\"",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"email\":\"valentina@gmail.com\",\n    \"register_password\":\"1234\"\n\n    \n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/register",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"register"
-					]
+				{
+					"name": "/register(user2)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mon1@mon.com\",\n    \"register_password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "/login",
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTM4MjQzMTYsImV4cCI6MTcxMzkxMDcxNn0.TL40yQJCXpUupgnK5MoG826YE0uhDmpdClYc2LeL3YI",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"email\": \"mon2@mon.com\",\n    \"register_password\": \"1234\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "login",
+			"item": [
+				{
+					"name": "login(user1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"valentina@gmail.com\",\n    \"register_password\":\"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"login"
-					]
+				{
+					"name": "/login(user2)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTM4MjQzMTYsImV4cCI6MTcxMzkxMDcxNn0.TL40yQJCXpUupgnK5MoG826YE0uhDmpdClYc2LeL3YI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mon1@mon.com\",\n    \"register_password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
