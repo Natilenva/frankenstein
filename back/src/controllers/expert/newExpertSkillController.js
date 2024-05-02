@@ -22,7 +22,7 @@ const newExpertSkillController = async (req, res, next) => {
             status:'ok',
             message:'insert skill in db',
             data:{
-                skill_id: id,
+                skillID: id,
                 skill,
                 userId: req.userId,
             },
