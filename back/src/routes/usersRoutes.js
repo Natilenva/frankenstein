@@ -1,6 +1,5 @@
 import express from 'express';
-
-import { registerNewUser } from '../controllers/users/registerNewUser.js';
+import { registerNewUserController } from '../controllers/users/registerNewUserController.js';
 import { loginUser } from '../controllers/users/loginUser.js';
 import forgotPasswordController from '../controllers/users/forgotPasswordController.js';
 import getResetPasswordController from '../controllers/users/getResetPasswordController.js';
@@ -11,7 +10,7 @@ import { profileGetController } from '../controllers/profile/profileGetControlle
 import { updateProfileController } from '../controllers/profile/profileUpdateController.js';
 const router = express.Router();
 
-router.post('/register', registerNewUser);
+router.post('/register', registerNewUserController);
 
 router.post('/login', loginUser);
 
