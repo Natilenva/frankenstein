@@ -9,6 +9,11 @@ const selectDistinctSkillsModel = async () => {
         `SELECT DISTINCT skill FROM ExpertSkillsV1 ORDER BY skill ASC`
     );
 
+    // if not found
+    if (rows.length === 0) {
+        throw generateError(`No se encontraron skills`, 404);
+    }
+
     // send response
     return rows.map(row => row.skill);
 };

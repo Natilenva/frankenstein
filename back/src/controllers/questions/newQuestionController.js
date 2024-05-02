@@ -23,14 +23,11 @@ const newQuestionController = async (req, res, next) => {
             status:'ok',
             message:'insert question in db',
             data:{
-                question:{
-                    questionId: id,
-                    question_title,
-                    question_description,
-                    technology,
-                    userId: req.userId,
-                    createdAt: new Date(),
-                },
+                questionId: id,
+                question_title,
+                question_description,
+                technology,
+                userId: req.userId,
             },
         });
     

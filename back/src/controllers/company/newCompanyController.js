@@ -7,7 +7,6 @@ const newCompanyController = async (req, res, next) => {
     try {
         // validation schema with zod
         const { success, data: companyDataBody, error } = companySchema.safeParse(req.body);
-        //console.log('companyDataBody:', companyDataBody); 
   
         if (!success) {
             const errors = zodErrorMap(error.issues);
@@ -15,6 +14,8 @@ const newCompanyController = async (req, res, next) => {
         }
         // validated field
         const {company_name }= companyDataBody;
+
+        //? controlar que un usuario no inserte mas de una vez la misma empresa?
 
         // insert company
         const id = await insertCompanyModel(company_name ,req.userId);
@@ -24,12 +25,9 @@ const newCompanyController = async (req, res, next) => {
             status:'ok',
             message:'inserted company in db',
             data:{
-                companies:{
-                    company_id: id,
-                    company_name,
-                    userId: req.userId,
-                    createdAt: new Date(),
-                },
+                company_id: id,
+                company_name,
+                userId: req.userId,
             },
         });
     
