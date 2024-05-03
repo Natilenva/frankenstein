@@ -6,6 +6,7 @@ import newProjectController from '../controllers/projects/newProjectController.j
 import { getProjectController } from '../controllers/projects/getProjectController.js';
 import { updateProjectController } from '../controllers/projects/updateProjectController.js';
 import { deleteProjectController } from '../controllers/projects/deleteProjectController.js';
+import { getRegisterProjectsController } from '../controllers/projects/getRegisterProjectsController.js';
 const router = express.Router();
 
 // router.get('/', getAllprojects);
@@ -14,5 +15,5 @@ router.get('/project/:id', getProjectController);
 router.post('/newproject', authUser, newProjectController);
 router.put('/projectupdate', authUser, updateProjectController);
 router.delete('/project/:id', authUser, deleteProjectController);
-
+router.get('/register/:id/projects', getRegisterProjectsController);
 export default router;

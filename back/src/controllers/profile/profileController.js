@@ -1,5 +1,6 @@
 import getConnection from '../../db/getConnection.js';
 
+//Implementar el Controlador
 export const selectCompanyForProfile = async (req, res) => {
     try {
         const { companyId } = req.body;

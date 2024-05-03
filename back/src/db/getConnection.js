@@ -1,5 +1,6 @@
 import mysql from 'mysql2/promise';
 import 'dotenv/config';
+import { generateError } from '../helpers/generateError.js';
 
 const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
 
@@ -22,12 +23,11 @@ const getConnection = async () => {
                 password: MYSQL_PASSWORD,
                 database: MYSQL_DATABASE,
                 timezone: 'Z',
-        });
-
+            });
+        }
+        return pool;
+    } catch (err) {
+        throw generateError('Conexión fallida', 502);
     }
-    return pool;
-} catch (err) {
-        console.error(err);
-}
 };
 export default getConnection;

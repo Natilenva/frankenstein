@@ -1,20 +1,19 @@
 import express from 'express';
-//import responseRoutes from './responseRoutes.js';
+import responsesRoutes from './responsesRoutes.js';
 import userRoutes from './usersRoutes.js';
-import proyectRoutes from './projectRouter.js';
+import projectRoutes from './projectRouter.js';
 import questionRoutes from './questionRouter.js';
 import companyRoutes from './companyRouter.js';
 import skillRoutes from './skillRouter.js';
-import responseRoutes3 from './responsesRouter3.js';
 import expertUserRoutes from './expertUserRoutes.js';
 import expertRoutes from './expertRoutes.js';
-
 import { selectCompanyForProfile } from '../controllers/profile/profileController.js';
+import authUser from '../middlewares/auth.js';
 
 const router = express.Router();
 
 router.use(userRoutes);
-router.use(proyectRoutes);
+router.use(projectRoutes);
 
 //* Question Routes
 router.use(questionRoutes);
@@ -26,7 +25,8 @@ router.use(companyRoutes);
 router.use(skillRoutes);
 
 //* Response Routes
-router.use(responseRoutes3);
+
+router.use(responsesRoutes);
 
 //Validar o rechazar expertos
 router.use(expertUserRoutes);

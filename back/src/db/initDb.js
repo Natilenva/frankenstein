@@ -35,6 +35,7 @@ const createTables = async () => {
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
                 register_id int NOT NULL UNIQUE,
+                validate boolean DEFAULT false,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
             );
         `);
@@ -85,10 +86,12 @@ const createTables = async () => {
             CREATE TABLE responses (
                 response_id INT PRIMARY KEY AUTO_INCREMENT,
                 response_text text NOT NULL,
+                register_id INT,
                 profile_id  INT NOT NULL,
                 question_id INT NOT NULL,
                 FOREIGN KEY (profile_id) REFERENCES profile(profile_id),
-                FOREIGN KEY (question_id) REFERENCES questions(question_id) 
+                FOREIGN KEY (question_id) REFERENCES questions(question_id),
+                FOREIGN KEY (register_id) REFERENCES register (register_id) 
             );  
         `);
 
