@@ -7,9 +7,9 @@ import path from 'node:path';
 import { nanoid } from 'nanoid';
 import { insertProfileByModel } from '../../models/profile/insertProfileByModel.js';
 
-import { getProfileById } from '../../models/profile/getProfileById.js';
+import { getProfileByIdModel } from '../../models/profile/getProfileByIdModel.js';
 import { generateError } from '../../helpers/generateError.js';
-const profileInsertController = async (req, res) => {
+const profileInsertController = async (req, res, next) => {
     const { success, data: profile, error } = profileSchema.safeParse(req.body);
     if (!success) {
         const errors = zodErrorMap(error.issues);
@@ -39,8 +39,17 @@ const profileInsertController = async (req, res) => {
             birthdate,
             profile_role,
             company_name,
-            register_id,
         } = profile;
+
+        const profileExists = await getProfileByIdModel(req.userId);
+        console.log(profileExists);
+        if (profileExists) {
+            return res.status(400).send({
+                httpStatus: '400',
+                code: 'PROFILE_ALREADY_EXISTS',
+                message: 'Ya existe un perfil asociado a este registro',
+            });
+        }
 
         await insertProfileByModel(
             imageFileName,
@@ -58,7 +67,7 @@ const profileInsertController = async (req, res) => {
             message: 'Perfil creado',
         });
     } catch (error) {
-        throw generateError('Solamente puedes generar un perfil por usuario');
+        next(error);
     }
 };
 

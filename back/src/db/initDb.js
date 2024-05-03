@@ -35,7 +35,7 @@ const createTables = async () => {
                 avatar varchar(255) ,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-                register_id int NOT NULL UNIQUE,
+                register_id int NOT NULL,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
             );
         `);
