@@ -20,7 +20,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTk4MDc0LCJleHAiOjE3MTcxOTAwNzR9.tAE6tLURJpBI2NA8SNsaTVLhxqBuUOsrgLTwY5qnkDg",
-								"type": "text"
+								"type": "text",
+								"uuid": "80fe0a86-5ed4-4d65-aa1b-edf6bd08d7a7"
 							}
 						],
 						"body": {
@@ -48,7 +49,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
-								"type": "text"
+								"type": "text",
+								"uuid": "e003c52d-af39-4e39-8117-c13cbe4155b1"
 							}
 						],
 						"body": {
@@ -72,7 +74,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
-								"type": "text"
+								"type": "text",
+								"uuid": "ace0d0dd-d43d-4a59-9978-e8200ce1ac5e"
 							}
 						],
 						"url": "http://localhost:3000/getQuestion/2"
@@ -80,17 +83,18 @@
 					"response": []
 				},
 				{
-					"name": "Get Questions by registerId",
+					"name": "/register/:register_id/questions",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NDc4Mzc4LCJleHAiOjE3MTcwNzAzNzh9.u2vmwrKJEaVRl102SOisIA4U0r4wTEQBNaTRglB7NZ4",
-								"type": "text"
+								"type": "text",
+								"uuid": "8eb8f2ed-0285-46c6-8534-d2364e209ea1"
 							}
 						],
-						"url": "http://localhost:4000/register/2/questions"
+						"url": "http://localhost:3000/register/1/questions"
 					},
 					"response": []
 				}
@@ -100,14 +104,15 @@
 			"name": "profiles",
 			"item": [
 				{
-					"name": "InsertProfile",
+					"name": "/myprofile",
 					"request": {
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTE1ODUwLCJleHAiOjE3MTcxMDc4NTB9.UK9Gbk_EcH12wrOHLcn2tOUiWtWqvjPovSRB-FvwgCw",
-								"type": "text"
+								"type": "text",
+								"uuid": "104628a8-7180-4ddd-ab8e-9ef86e72b5fb"
 							}
 						],
 						"body": {
@@ -155,7 +160,7 @@
 					"response": []
 				},
 				{
-					"name": "Get profile",
+					"name": "/myprofile/:profile_id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -164,14 +169,15 @@
 					"response": []
 				},
 				{
-					"name": "update Profile",
+					"name": "/profileupdate",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NjUyMDAyLCJleHAiOjE3MTcyNDQwMDJ9.20GqQWLK7pvJH83tBguYrLBo1AxlkNFHbW-NicgE-YM",
-								"type": "text"
+								"type": "text",
+								"uuid": "22697685-dd99-4254-a4c2-fa417e80bb6d"
 							}
 						],
 						"body": {
@@ -234,7 +240,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTk4MDc0LCJleHAiOjE3MTcxOTAwNzR9.tAE6tLURJpBI2NA8SNsaTVLhxqBuUOsrgLTwY5qnkDg",
-								"type": "text"
+								"type": "text",
+								"uuid": "c1800968-1823-4d70-a429-405ac783503f"
 							}
 						],
 						"body": {
@@ -266,7 +273,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NTIzMjI3LCJleHAiOjE3MTcxMTUyMjd9.HTwTmS2lYyFcqA6h6Pp9kZrG5Qpb8yfXcU_4PmFoSGI",
-								"type": "text"
+								"type": "text",
+								"uuid": "01c2f522-dd5a-4a29-9337-e5b35d3060c6"
 							}
 						],
 						"body": {
@@ -294,7 +302,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
-								"type": "text"
+								"type": "text",
+								"uuid": "38d0bd7d-cffe-4459-a39f-8abe230279a8"
 							}
 						],
 						"body": {
@@ -326,7 +335,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NjA1NTg0LCJleHAiOjE3MTcxOTc1ODR9.w1PPv7sqqXlR3gI_8xZFYQk17IB7Z5tc2mK0oGJBF9o",
-								"type": "text"
+								"type": "text",
+								"uuid": "9e590bca-6454-4e10-8a89-e5d5883a26fb"
 							}
 						],
 						"body": {
@@ -353,7 +363,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NTkwODA2LCJleHAiOjE3MTcxODI4MDZ9.GOGisjcXTrooS0zl9yYfGvXVO44mS42NE6-eNa-842s",
-								"type": "text"
+								"type": "text",
+								"uuid": "e2897004-4c9a-4676-b713-6a5838060f27"
 							}
 						],
 						"body": {
@@ -381,7 +392,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
-								"type": "text"
+								"type": "text",
+								"uuid": "8b92a333-bb4a-46bc-acd6-d50e41050fed"
 							}
 						],
 						"body": {
@@ -414,7 +426,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
-								"type": "text"
+								"type": "text",
+								"uuid": "9bb86909-21bd-4b2d-90ab-4b52b3ec81ca"
 							}
 						],
 						"body": {
@@ -445,32 +458,49 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MzM1OTQ2LCJleHAiOjE3MTY5Mjc5NDZ9.DN3Pzrz8ioEByoCj-cpg6rbaG2UUdoX8HJGGO9Te3Os",
-								"type": "text"
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NzQ5Mzc2LCJleHAiOjE3MTczNDEzNzZ9.qC2wCIE4kjsJf8QSIwbdj9sWuW-ucsBDXgBPxmyyNLw",
+								"uuid": "3c5ee980-67bb-4a98-9617-9bcb23ac8fa0"
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"project_title\": \"project_title .....\",\n    \"project_description\": \"project_description .....\",\n    \"project_url\": \"http://localhost:3000/newproject\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "project_title",
+									"value": "Project 3",
+									"type": "text"
+								},
+								{
+									"key": "project_description",
+									"value": "Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin, egestas taciti facilisis tellus felis quam consequat. Vestibulum pretium ullamcorper magna facilisi dapibus eleifend praesent justo, aliquet ultrices nam felis quisque sociosqu aliquam porttitor, molestie etiam gravida malesuada sodales eu placerat. Vitae praesent sollicitudin vehicula phasellus platea nec, vel orci hac nullam vestibulum facilisis lobortis, ",
+									"type": "text"
+								},
+								{
+									"key": "project_photo",
+									"type": "file",
+									"src": "/home/hacker/Downloads/pexels-pixabay-45201.jpg"
+								},
+								{
+									"key": "project_url",
+									"value": "http://www.project3.com",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": "http://localhost:3000/newproject"
 					},
 					"response": []
 				},
 				{
-					"name": "Get Project",
+					"name": "/project/:project_id",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
-								"type": "text"
+								"type": "text",
+								"uuid": "5c685796-c202-40ec-8043-f700574164fe"
 							}
 						],
 						"url": "http://localhost:3000/project/1"
@@ -478,14 +508,30 @@
 					"response": []
 				},
 				{
-					"name": "Delete Project Copy",
+					"name": "/projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+								"uuid": "fdfd78b9-3452-4d03-89c6-4309300a59b7"
+							}
+						],
+						"url": "http://localhost:3000/projects"
+					},
+					"response": []
+				},
+				{
+					"name": "/project/:project_id",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MzM1OTQ2LCJleHAiOjE3MTY5Mjc5NDZ9.DN3Pzrz8ioEByoCj-cpg6rbaG2UUdoX8HJGGO9Te3Os",
-								"type": "text"
+								"type": "text",
+								"uuid": "2deb9cd4-2b50-40f9-8908-0fef9af35ed6"
 							}
 						],
 						"body": {
@@ -504,7 +550,8 @@
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTAxNTI2LCJleHAiOjE3MTcwOTM1MjZ9.WxwsvNkXsaMy4PB79yTKP2QWRx80aATYD5McIAg_94s",
-								"type": "text"
+								"type": "text",
+								"uuid": "a14d3f6a-43ba-4d55-acca-542555e5906a"
 							}
 						],
 						"body": {
@@ -537,35 +584,18 @@
 					"response": []
 				},
 				{
-					"name": "Get Project by registerId",
+					"name": "/register/:register_id/projects",
 					"request": {
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
-								"type": "text"
+								"type": "text",
+								"uuid": "4ef126b2-5827-4bfe-9af9-096d85dcdddc"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:4000/register/:id/projects",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"register",
-								":id",
-								"projects"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": ""
-								}
-							]
-						}
+						"url": "http://localhost:3000/register/1/projects"
 					},
 					"response": []
 				}
@@ -582,7 +612,8 @@
 							{
 								"key": "token",
 								"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJCZWEiLCJsYXN0bmFtZSI6IlbDoXpxdWV6IiwiYmlydGhkYXRlIjoiMTk4Ny0xMS0yMFQwMDowMDowMC4wMDBaIiwiZW1haWwiOiJiZWFAZ21haWwuY29tIiwidXNlcm5hbWUiOiJiZWEiLCJwYXNzd29yZCI6IjEyMzQifSwiaWF0IjoxNzEzNTM2Njk3LCJleHAiOjE3MTM2MjMwOTd9.bXeCwYvlU2Mk3YWT-byjJJN9A7FA5uabpx-ql0yD42o\"",
-								"type": "text"
+								"type": "text",
+								"uuid": "bd430794-bdbb-40da-a7eb-cf029ac1d1f1"
 							}
 						],
 						"body": {
@@ -615,6 +646,15 @@
 						"url": "http://localhost:3000/register"
 					},
 					"response": []
+				},
+				{
+					"name": "/validate/:registrationCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/validate/9c51a490-ea53-4ef8-9284-f2b51a505d6a"
+					},
+					"response": []
 				}
 			]
 		},
@@ -630,6 +670,7 @@
 								"key": "token",
 								"value": "",
 								"type": "text",
+								"uuid": "256608f9-a830-44a8-b600-f70844e7ad60",
 								"disabled": true
 							}
 						],
@@ -658,6 +699,7 @@
 								"key": "Authorization",
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTM4MjQzMTYsImV4cCI6MTcxMzkxMDcxNn0.TL40yQJCXpUupgnK5MoG826YE0uhDmpdClYc2LeL3YI",
 								"type": "text",
+								"uuid": "1aa24ee4-d4ca-4095-86cd-b3e366409207",
 								"disabled": true
 							}
 						],
