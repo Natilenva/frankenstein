@@ -1,15 +1,16 @@
-import getConnection from "../../db/getConnection.js";
+import getConnection from '../../db/getConnection.js';
 
-// insert company 
-const insertSkillModel = async (skill, userId) => {
-
+// insert company
+const insertSkillModel = async (skill, description) => {
     const connection = await getConnection();
 
     // insert company in db
+    // En la tabla skills, se guardaran todos los skill posibles para posteriormente
+    // asociarlos a los usuarios.
     const [result] = await connection.query(
-        `INSERT INTO ExpertSkillsV1 (skill, expertUserID) VALUES (?,?)`,
-        [skill, userId]
+        `INSERT INTO skillsv1 (skill, description) VALUES (?,?)`,
+        [skill, description]
     );
-    return skill 
+    return result;
 };
 export default insertSkillModel;

@@ -35,10 +35,13 @@ const createTables = async () => {
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
                 register_id int NOT NULL UNIQUE,
+                company_id int DEFAULT NULL,
                 validate boolean DEFAULT false,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
+                
             );
         `);
+        //,FOREIGN KEY (company_id) REFERENCES companies(company_id)
 
         await connection.query(`
             CREATE TABLE questions (
@@ -115,10 +118,18 @@ const createTables = async () => {
         `);
 
         await connection.query(`
+        CREATE TABLE SkillsV1 (
+            idSkill INT PRIMARY KEY AUTO_INCREMENT,
+            skill VARCHAR(100) NOT NULL,
+            description VARCHAR(100) NOT NULL
+        );        
+    `);
+        await connection.query(`
             CREATE TABLE ExpertSkillsV1 (
-                skill VARCHAR(100) PRIMARY KEY NOT NULL,
+                idSkill INT NOT NULL,
                 expertUserID INT NOT NULL,
-                FOREIGN KEY (expertUserID) REFERENCES register(register_id)
+                FOREIGN KEY (expertUserID) REFERENCES register(register_id),
+                FOREIGN KEY (idSkill) REFERENCES SkillsV1(idSkill)
             );        
         `);
 

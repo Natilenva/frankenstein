@@ -7,7 +7,8 @@ import companyRoutes from './companyRouter.js';
 import skillRoutes from './skillRouter.js';
 import expertUserRoutes from './expertUserRoutes.js';
 import expertRoutes from './expertRoutes.js';
-import { selectCompanyForProfile } from '../controllers/profile/profileController.js';
+import profileRoutes from './profileRoutes.js';
+//import { selectCompanyForProfile } from '../controllers/profile/profileController.js';
 import authUser from '../middlewares/auth.js';
 
 const router = express.Router();
@@ -32,7 +33,7 @@ router.use(responsesRoutes);
 router.use(expertUserRoutes);
 
 // Endpoint para que el experto seleccione la empresa
-router.post('/select-company', authUser, selectCompanyForProfile);
+router.use(profileRoutes);
 
 router.use(expertRoutes);
 
