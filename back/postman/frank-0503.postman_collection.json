@@ -67,6 +67,25 @@
 					"response": []
 				},
 				{
+					"name": "/questions",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NzQ5Mzc2LCJleHAiOjE3MTczNDEzNzZ9.qC2wCIE4kjsJf8QSIwbdj9sWuW-ucsBDXgBPxmyyNLw",
+								"type": "text",
+								"uuid": "36e07385-da1d-4b1d-a4a9-ff7a6ffb0d77"
+							}
+						],
+						"url": "http://localhost:3000/questions"
+					},
+					"response": []
+				},
+				{
 					"name": "question/:search",
 					"request": {
 						"method": "GET",
