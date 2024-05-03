@@ -18,6 +18,7 @@ const createTables = async () => {
                 email varchar(100) UNIQUE NOT NULL,
                 register_password varchar(100) NOT NULL,
                 register_code varchar(36),
+                active BOOLEAN DEFAULT false,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP
             );  

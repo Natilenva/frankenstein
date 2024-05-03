@@ -35,9 +35,11 @@ async function registerNewUserController(req, res, next) {
         // <h1>¡Bienvenid@ a tu web Frankenstein</h1>
         // <p>Activa tu cuenta haciendo click en el siguiente enlace.</p>
 
-        // <a href="http://localhost:${PORT}/${registrationCode}">Activar cuenta</a>
-        // `;
-        // await sendEmail(email, subject, content);
+
+        <a href="http://localhost:${PORT}/validate/${registrationCode}">Activar cuenta</a>
+        `;
+        await sendEmail(email, subject, content);
+
 
         await selectRegisterByEmailModel(email);
 
