@@ -49,8 +49,8 @@ async function registerNewUserController(req, res, next) {
         const insertInfo = insertNewRegisterModel(
             register_id,
             email,
-            hashedPassword
-            // registrationCode
+            hashedPassword,
+            registrationCode
         );
 
         const userInfo = { user_id: insertInfo.insertId, user };
