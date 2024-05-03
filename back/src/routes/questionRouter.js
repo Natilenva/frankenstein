@@ -7,6 +7,9 @@ import { questionSelectController } from '../controllers/questions/questionSelec
 import questionController from '../controllers/questions/questionController.js';
 import { questionTechSelectFilterController } from '../controllers/questions/questionTechSelectFilterController.js';
 import { getRegisterQuestionsController } from '../controllers/questions/getRegisterQuestionsController.js';
+import deleteQuestionsController from '../controllers/questions/deleteQuestionsController.js';
+
+
 const router = express.Router();
 
 router.post('/newquestion', authUser, newQuestionController);
@@ -18,4 +21,6 @@ router.get('/getQuestion/:id', questionController);
 //* Endpoint listado tipologías de consultas
 router.get('/technologies', questionTechSelectFilterController);
 router.get('/register/:id/questions', getRegisterQuestionsController);
+
+router.delete('/question/:question_id', authUser, deleteQuestionsController);
 export default router;
