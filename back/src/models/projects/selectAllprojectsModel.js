@@ -11,7 +11,7 @@ const selectAllProjectsModel = async () => {
         console.log(result);
         return result;
     } catch (error) {
-        console.error(error);
+        throw generateError('Error select projects BBDD', 500);
     }
 };
 export { selectAllProjectsModel };

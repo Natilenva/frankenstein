@@ -8,10 +8,9 @@ import questionController from '../controllers/questions/questionController.js';
 import { questionTechSelectFilterController } from '../controllers/questions/questionTechSelectFilterController.js';
 import { getRegisterQuestionsController } from '../controllers/questions/getRegisterQuestionsController.js';
 import deleteQuestionsController from '../controllers/questions/deleteQuestionsController.js';
-
-
+import { getAllQuestionsController } from '../controllers/questions/getAllQuestionsController.js';
 const router = express.Router();
-
+router.get('/questions', getAllQuestionsController);
 router.post('/newquestion', authUser, newQuestionController);
 
 router.get('/question/:id', authUser, questionSelectController);
