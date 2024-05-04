@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+//import { useState } from 'react'
+//import reactLogo from './assets/react.svg'
+//import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { Routes, Route } from 'react-router-dom'
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+//* components q siempre se ven
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
+
+import { HomePage } from './pages/HomePage'
+import { RegisterPage } from './pages/RegisterPage'
+import { LoginPage } from './pages/LoginPage'
+import { ProjectPage } from './pages/ProjectPage'
+import { QuestionPage } from './pages/QuestionPage'
+import { NotFoundPage } from './pages/NotFoundPage'
+
+function App() {
+    //const [count, setCount] = useState(0)
+
+    return (
+        <>
+            <Header />
+
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+
+                <Route path="/project/:id" element={<ProjectPage />} /> 
+                <Route path="/question/:id" element={<QuestionPage />} />
+
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+
+            <Footer />
+
+        </>
+    )
 }
 
 export default App

@@ -18,6 +18,7 @@ const createTables = async () => {
                 email varchar(100) UNIQUE NOT NULL,
                 register_password varchar(100) NOT NULL,
                 register_code varchar(36),
+                active BOOLEAN DEFAULT false,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP
             );  
@@ -90,9 +91,7 @@ const createTables = async () => {
                 response_id INT PRIMARY KEY AUTO_INCREMENT,
                 response_text text NOT NULL,
                 register_id INT,
-                profile_id  INT NOT NULL,
                 question_id INT NOT NULL,
-                FOREIGN KEY (profile_id) REFERENCES profile(profile_id),
                 FOREIGN KEY (question_id) REFERENCES questions(question_id),
                 FOREIGN KEY (register_id) REFERENCES register (register_id) 
             );  

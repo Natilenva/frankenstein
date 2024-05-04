@@ -15,6 +15,7 @@ const newExpertSkillController = async (req, res, next) => {
             const errors = zodErrorMap(error.issues);
             return res.status(400).send({ error: errors });
         }
+      
         // validated field
         const { idSkill, expertUserId } = skillDataBody;
 
@@ -23,6 +24,7 @@ const newExpertSkillController = async (req, res, next) => {
 
         // send response
         res.status(201).send({
+
             status: 'ok',
             message: 'insert skill in db',
             data: {

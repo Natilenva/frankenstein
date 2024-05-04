@@ -8,6 +8,7 @@ import { selectExpertSkillController } from '../controllers/expert/selectExpertS
 const router = express.Router();
 
 // TODO si queremos q solo un user Experto pueda crear una skill faltaría controlarlo
+
 //* Endpoint para crear una nueva habilidad/tecnología/Skill asociado a un experto
 router.post('/newexpertskill', authUser, newExpertSkillController);
 

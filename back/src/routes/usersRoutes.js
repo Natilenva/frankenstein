@@ -1,7 +1,6 @@
 import express from 'express';
-
-import { registerNewUser } from '../controllers/users/registerNewUser.js';
-import { loginUser } from '../controllers/users/loginUser.js';
+import { registerNewUserController } from '../controllers/users/registerNewUserController.js';
+import { loginUserController } from '../controllers/users/loginUserController.js';
 import forgotPasswordController from '../controllers/users/forgotPasswordController.js';
 import getResetPasswordController from '../controllers/users/getResetPasswordController.js';
 import updatePasswordController from '../controllers/users/updatePasswordController.js';
@@ -9,11 +8,12 @@ import { profileInsertController } from '../controllers/profile/profileInsertCon
 import authUser from '../middlewares/auth.js';
 import { profileGetController } from '../controllers/profile/profileGetController.js';
 import { updateProfileController } from '../controllers/profile/profileUpdateController.js';
+import { validateUserController } from '../controllers/users/validateUserController.js';
 const router = express.Router();
 
-router.post('/register', registerNewUser);
+router.post('/register', registerNewUserController);
 
-router.post('/login', loginUser);
+router.post('/login', loginUserController);
 
 router.post('/myprofile', authUser, profileInsertController);
 
@@ -28,5 +28,6 @@ router.post('/forgot-password', forgotPasswordController);
 router.get('/reset-password/:id/:token', getResetPasswordController);
 
 router.post('/reset-password/:id/:token', updatePasswordController);
+router.get('/validate/:registrationCode', validateUserController);
 
 export default router;

@@ -1,6 +1,5 @@
 import getConnection from "../../db/getConnection.js";
 
-// insert company 
 const selectDistinctCompanies = async () => {
 
     const connection = await getConnection();
