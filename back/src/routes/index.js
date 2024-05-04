@@ -8,6 +8,7 @@ import skillRoutes from './skillRouter.js';
 import expertUserRoutes from './expertUserRoutes.js';
 import expertRoutes from './expertRoutes.js';
 import profileRoutes from './profileRoutes.js';
+import userAdminRoutes from './userAdminRoutes.js';
 //import { selectCompanyForProfile } from '../controllers/profile/profileController.js';
 import authUser from '../middlewares/auth.js';
 
@@ -36,5 +37,7 @@ router.use(expertUserRoutes);
 router.use(profileRoutes);
 
 router.use(expertRoutes);
+
+router.use(userAdminRoutes);
 
 export default router;

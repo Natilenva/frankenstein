@@ -1,4 +1,4 @@
-import { getProjectsByRegisterIdModel } from '../../models/projects/ getProjectsByRegisterIdModel.js';
+import { getProjectsByRegisterIdModel } from '../../models/projects/getProjectsByRegisterIdModel.js';
 const getRegisterProjectsController = async (req, res, next) => {
     try {
         const { id } = req.params;
