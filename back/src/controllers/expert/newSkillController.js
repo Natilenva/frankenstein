@@ -1,30 +1,30 @@
 import { zodErrorMap } from '../../helpers/zodError.js';
-import insertExpertSkillModel from '../../models/skills/insertExpertSkillModel.js';
-import { skillExpertSchema } from '../../schemas/skillExpertSchema.js';
+import insertSkillModel from '../../models/skills/insertSkillModel.js';
+import { skillSchema } from '../../schemas/skillSchema.js';
 
-const newExpertSkillController = async (req, res, next) => {
+const newSkillController = async (req, res, next) => {
     try {
         // validation schema with zod
         const {
             success,
             data: skillDataBody,
             error,
-        } = skillExpertSchema.safeParse(req.body);
+        } = skillSchema.safeParse(req.body);
 
         if (!success) {
             const errors = zodErrorMap(error.issues);
             return res.status(400).send({ error: errors });
         }
-      
         // validated field
-        const { idSkill, expertUserId } = skillDataBody;
+        const { skill, description } = skillDataBody;
 
+        console.log(skill);
+        console.log(description);
         // insert skill
-        const id = await insertExpertSkillModel(idSkill, expertUserId);
+        const id = await insertSkillModel(skill, description);
 
         // send response
         res.status(201).send({
-
             status: 'ok',
             message: 'insert skill in db',
             data: {
@@ -37,4 +37,4 @@ const newExpertSkillController = async (req, res, next) => {
         next(err);
     }
 };
-export default newExpertSkillController;
+export default newSkillController;

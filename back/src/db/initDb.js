@@ -7,7 +7,7 @@ const createTables = async () => {
         console.log('Borrando tablas...');
 
         await connection.query(
-            'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies, ExpertSkillsV1'
+            'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies, ExpertSkillsV1, SkillsV1, user_admin'
         );
 
         console.log('Creando tablas');
@@ -35,10 +35,14 @@ const createTables = async () => {
                 avatar varchar(255) ,
                 created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
-                register_id int NOT NULL,
+                register_id int NOT NULL UNIQUE,
+                company_id int DEFAULT NULL,
+                validate boolean DEFAULT false,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
+                
             );
         `);
+        //,FOREIGN KEY (company_id) REFERENCES companies(company_id)
 
         await connection.query(`
             CREATE TABLE questions (
@@ -113,13 +117,36 @@ const createTables = async () => {
         `);
 
         await connection.query(`
+        CREATE TABLE SkillsV1 (
+            idSkill INT PRIMARY KEY AUTO_INCREMENT,
+            skill VARCHAR(100) NOT NULL,
+            description VARCHAR(100) NOT NULL
+        );        
+    `);
+        await connection.query(`
             CREATE TABLE ExpertSkillsV1 (
-                ExpertSkillsV1_id INT PRIMARY KEY AUTO_INCREMENT,
-                skill VARCHAR(100),
+                idSkill INT NOT NULL,
                 expertUserID INT NOT NULL,
-                FOREIGN KEY (expertUserID) REFERENCES register(register_id)
+                FOREIGN KEY (expertUserID) REFERENCES register(register_id),
+                FOREIGN KEY (idSkill) REFERENCES SkillsV1(idSkill)
             );        
         `);
+
+        console.log('Creando tablas');
+
+        await connection.query(`
+        CREATE TABLE user_admin (
+            admin_id int AUTO_INCREMENT PRIMARY KEY,
+            email varchar(100) UNIQUE NOT NULL,
+            register_password varchar(100) NOT NULL,
+            register_code varchar(36),
+            admin_name varchar(50) NOT NULL,
+            admin_lastname varchar(50) NOT NULL,
+            admin_username varchar(50),
+            created_at datetime DEFAULT CURRENT_TIMESTAMP,
+            modified_at datetime DEFAULT CURRENT_TIMESTAMP
+        );
+    `);
 
         console.log('Creando tablas');
         process.exit(0);
