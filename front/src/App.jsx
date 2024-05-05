@@ -25,11 +25,11 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/project/:id" element={<ProjectPage />} /> 
 
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
 
-                <Route path="/project/:id" element={<ProjectPage />} /> 
                 <Route path="/question/:id" element={<QuestionPage />} />
 
                 <Route path="*" element={<NotFoundPage />} />
