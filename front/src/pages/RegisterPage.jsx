@@ -24,7 +24,8 @@ export const RegisterPage = () => {
         } */
         //console.log("email: ", email, "pass1: ", pass1, "pass2: ", pass2);
         
-        //! comunicarnos con la ddbb para registrar el usuario
+        
+        //* comunicarnos con la ddbb para registrar el usuario
         try {
             //await registerUserService({ email, password: pass1 }); 
             await registerUserService({ email, register_password: pass1 });              
