@@ -17,7 +17,7 @@ const getProjectById = async (register_id) => {
         }
         return result[0];
     } catch (error) {
-        console.error(error.message);
+        throw generateError('Problem select en BBDD', 500);
     }
 };
 export { getProjectById };

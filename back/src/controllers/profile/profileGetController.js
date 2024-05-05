@@ -12,7 +12,7 @@ const profileGetController = async (req, res, next) => {
         });
         console.log(profileId);
     } catch (error) {
-        console.log(error.message);
+        next(error);
     }
 };
 export { profileGetController };

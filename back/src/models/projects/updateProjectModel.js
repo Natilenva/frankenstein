@@ -5,13 +5,19 @@ const updateProjectModel = async (
     project_description,
     project_photo,
     project_url,
-    userId
+    project_id
 ) => {
     const connection = await getConnection();
 
     const [result] = await connection.query(
-        `UPDATE projects SET project_title = ?, project_description = ?, project_photo = ?, project_url = ? WHERE register_id = ?`,
-        [project_title, project_description, project_photo, project_url, userId]
+        `UPDATE projects SET project_title = ?, project_description = ?, project_photo = ?, project_url = ? WHERE project_id = ?`,
+        [
+            project_title,
+            project_description,
+            project_photo,
+            project_url,
+            project_id,
+        ]
     );
 
     return result.insertId;

@@ -5,11 +5,12 @@ import projectRoutes from './projectRouter.js';
 import questionRoutes from './questionRouter.js';
 import companyRoutes from './companyRouter.js';
 import skillRoutes from './skillRouter.js';
-
+import eventRoutes from './eventsRouter.js';
 const router = express.Router();
 
 router.use(userRoutes);
 router.use(projectRoutes);
+router.use(eventRoutes);
 
 //* Question Routes
 router.use(questionRoutes);
