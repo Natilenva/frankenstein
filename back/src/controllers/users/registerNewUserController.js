@@ -24,27 +24,28 @@ async function registerNewUserController(req, res, next) {
         }
 
         // data from body register
-
         const { register_id, email, register_password } = user;
 
-        // TODO Activación de la cuenta?
+        // Activación de la cuenta
         const registrationCode = crypto.randomUUID();
-
         const subject = 'Activa tu cuenta en Frankenstein';
         const content = `
          <h1>¡Bienvenid@ a tu web Frankenstein</h1>
          <p>Activa tu cuenta haciendo click en el siguiente enlace.</p>
-
-
         <a href="http://localhost:${PORT}/validate/${registrationCode}">Activar cuenta</a>
         `;
+
+        // TODO cambiar el orden las siguientes 2 lineas
+        // enviamos el email para activar cuenta
         await sendEmail(email, subject, content);
 
+        // comprobamos si el email ya existe
         await selectRegisterByEmailModel(email);
 
-        // hash password
+        // ciframos el password
         const saltRounds = 10;
         const hashedPassword = bcrypt.hashSync(register_password, saltRounds);
+
         // insert new user into db
         const insertInfo = insertNewRegisterModel(
             register_id,
@@ -60,8 +61,9 @@ async function registerNewUserController(req, res, next) {
         res.setHeader('Authorization', token);
 
         res.send({
-            httpstatus: '201',
-            code: 'USER_CREATED',
+            /* httpstatus: '201', */
+            status:'ok',
+            /* code: 'USER_CREATED', */
             message: `Usuario creado correctamente`,
         });
     } catch (error) {
