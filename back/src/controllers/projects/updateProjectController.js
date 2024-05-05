@@ -6,9 +6,9 @@ import sharp from 'sharp';
 import url from 'url';
 import path from 'node:path';
 import { nanoid } from 'nanoid';
-const updateProjectController = async (req, res) => {
+const updateProjectController = async (req, res, next) => {
     try {
-        const { register_id } = req.user;
+        const { project_id } = req.params;
         const {
             success,
             data: project,
@@ -39,32 +39,31 @@ const updateProjectController = async (req, res) => {
             project_photo,
             project_url,
         } = project;
-        console.log(project);
+
         const updateProject = await updateProjectModel(
             project_title,
             project_description,
             imageFileName,
             project_url,
-            req.userId
+            project_id
         );
-        console.log(updateProject);
+
         res.status(201).send({
             status: 'ok',
             message: 'update project in db',
             data: {
                 project: {
-                    projectId: updateProject,
                     project_title,
                     project_description,
                     project_photo,
                     project_url,
-                    userId: req.userId,
+                    project_id,
                     createdAt: new Date(),
                 },
             },
         });
     } catch (error) {
-        console.error(error.message);
+        next(error);
     }
 };
 export { updateProjectController };

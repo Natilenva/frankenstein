@@ -1,6 +1,7 @@
 import { generateError } from '../../helpers/generateError.js';
 import { getProjectById } from '../../models/projects/getProjectById.js';
 import { deleteProjectById } from '../../models/projects/deleteProjectById.js';
+
 const deleteProjectController = async (req, res, next) => {
     try {
         const { id } = req.params;

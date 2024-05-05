@@ -66,7 +66,7 @@ async function loginUserController(req, res, next) {
             data: token,
         });
     } catch (error) {
-        generateError('Ha habido un problema al loguearte', 400);
+        next(error);
     }
 }
 

@@ -12,7 +12,7 @@ const getProjectController = async (req, res, next) => {
         });
         console.log(projectId);
     } catch (error) {
-        console.log(error.message);
+        next(error);
     }
 };
 export { getProjectController };

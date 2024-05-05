@@ -6,7 +6,7 @@ import sharp from 'sharp';
 import url from 'url';
 import path from 'node:path';
 import { nanoid } from 'nanoid';
-const updateProfileController = async (req, res) => {
+const updateProfileController = async (req, res, next) => {
     try {
         const { register_id } = req.user;
         const {
@@ -73,7 +73,7 @@ const updateProfileController = async (req, res) => {
             },
         });
     } catch (error) {
-        console.error(error.message);
+        next(error);
     }
 };
 export { updateProfileController };
