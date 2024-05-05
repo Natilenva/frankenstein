@@ -8,7 +8,7 @@ export const RegisterPage = () => {
     //un estado para cada campo
     const [email, setEmail] = useState("");
     const [pass1, setPass1] = useState("");
-    const [pass2, setPass2] = useState("");
+    //const [pass2, setPass2] = useState("");
 
     /* const [error, setError] = useState("cualquier cosa aqui para mostrar"); */
     const [error, setError] = useState("");//para mostrar el error con data de la API
@@ -18,19 +18,20 @@ export const RegisterPage = () => {
         setError("");//para borrar el error anterior, si lo hubiera, cuando envío el form(se hace el submit)
 
         // comprueba q las passwords de los 2 campos coincidan
-        if (pass1 !== pass2) {
+        /* if (pass1 !== pass2) {
             setError("Passwords do not match");
             return;
-          }
-          //! comunicarnos con la ddbb para registrar el usuario
-          try {
-            await registerUserService({ email, password: pass1 });
-            //hook para redirigir al login
-            navigate("/login");           
-          } catch (error) {
-            setError(error.message);
-          }
+        } */
+        //console.log("email: ", email, "pass1: ", pass1, "pass2: ", pass2);
         
+        //! comunicarnos con la ddbb para registrar el usuario
+        try {
+            //await registerUserService({ email, password: pass1 }); 
+            await registerUserService({ email, register_password: pass1 });              
+            navigate("/login"); //hook para redirigir al login       
+        } catch (error) {
+            setError(error.message);
+        }     
     }
 
     return (
@@ -64,17 +65,6 @@ export const RegisterPage = () => {
                 />
                 </fieldset>
 
-                <fieldset>
-                <label htmlFor="pass2">Repeat password</label>
-                <input
-                    type="password"
-                    id="pass2"
-                    name="pass2"
-                    /* value={pass2} */
-                    required
-                    onChange={(e) => setPass2(e.target.value)}
-                />
-                </fieldset>
                 <button>Register</button>
                 {error ? <p>{error}</p> : null} {/* si hay error, mostrarlo */}
             </form>
