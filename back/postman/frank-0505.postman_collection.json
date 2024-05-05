@@ -1,0 +1,877 @@
+{
+	"info": {
+		"_postman_id": "73873cd9-2e88-4062-99e3-ddb445116f77",
+		"name": "frank-0502",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32788703"
+	},
+	"item": [
+		{
+			"name": "questions",
+			"item": [
+				{
+					"name": "/question",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTk4MDc0LCJleHAiOjE3MTcxOTAwNzR9.tAE6tLURJpBI2NA8SNsaTVLhxqBuUOsrgLTwY5qnkDg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question_title\": \"question_title_2\",\n    \"question_description\": \"question_description_1\",\n    \"technology\": \"technology_1\"\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/newquestion"
+					},
+					"response": []
+				},
+				{
+					"name": "/question/:id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"question_title\": \"question_title3 .....\",\n    \"question_description\": \"question_description3 .....\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/question/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/questions",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NzQ5Mzc2LCJleHAiOjE3MTczNDEzNzZ9.qC2wCIE4kjsJf8QSIwbdj9sWuW-ucsBDXgBPxmyyNLw"
+							}
+						],
+						"url": "http://localhost:3000/questions"
+					},
+					"response": []
+				},
+				{
+					"name": "question/:search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/getQuestion/2"
+					},
+					"response": []
+				},
+				{
+					"name": "/register/:register_id/questions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NDc4Mzc4LCJleHAiOjE3MTcwNzAzNzh9.u2vmwrKJEaVRl102SOisIA4U0r4wTEQBNaTRglB7NZ4",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/register/1/questions"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profiles",
+			"item": [
+				{
+					"name": "/myprofile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTE1ODUwLCJleHAiOjE3MTcxMDc4NTB9.UK9Gbk_EcH12wrOHLcn2tOUiWtWqvjPovSRB-FvwgCw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/hacker/Downloads/pexels-evg-kowalievska-1170986.jpg"
+								},
+								{
+									"key": "profile_name",
+									"value": "Valentina",
+									"type": "text"
+								},
+								{
+									"key": "profile_lastname",
+									"value": "Alonso",
+									"type": "text"
+								},
+								{
+									"key": "profile_username",
+									"value": "Valen",
+									"type": "text"
+								},
+								{
+									"key": "birthdate",
+									"value": "1987-11-20",
+									"type": "text"
+								},
+								{
+									"key": "profile_role",
+									"value": "company",
+									"type": "text"
+								},
+								{
+									"key": "company_name",
+									"value": "apple",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/myprofile/"
+					},
+					"response": []
+				},
+				{
+					"name": "/myprofile/:profile_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/profile/2"
+					},
+					"response": []
+				},
+				{
+					"name": "/profileupdate",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NjUyMDAyLCJleHAiOjE3MTcyNDQwMDJ9.20GqQWLK7pvJH83tBguYrLBo1AxlkNFHbW-NicgE-YM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/home/hacker/Downloads/pexels-pixabay-45201.jpg"
+								},
+								{
+									"key": "profile_name",
+									"value": "Valentina",
+									"type": "text"
+								},
+								{
+									"key": "profile_lastname",
+									"value": "Alonso Rodriguez",
+									"type": "text"
+								},
+								{
+									"key": "profile_username",
+									"value": "Valen",
+									"type": "text"
+								},
+								{
+									"key": "birthdate",
+									"value": "1987-11-20",
+									"type": "text"
+								},
+								{
+									"key": "profile_role",
+									"value": "student",
+									"type": "text"
+								},
+								{
+									"key": "company_name",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/profileupdate/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "responses",
+			"item": [
+				{
+					"name": "/response/:questionID",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTk4MDc0LCJleHAiOjE3MTcxOTAwNzR9.tAE6tLURJpBI2NA8SNsaTVLhxqBuUOsrgLTwY5qnkDg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"response_text\": \"res_text1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/response/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "companies",
+			"item": [
+				{
+					"name": "/newcompany(q user no insert same company?)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NTIzMjI3LCJleHAiOjE3MTcxMTUyMjd9.HTwTmS2lYyFcqA6h6Pp9kZrG5Qpb8yfXcU_4PmFoSGI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_name\": \"company_name 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/newcompany"
+					},
+					"response": []
+				},
+				{
+					"name": "/companynames",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/companynames"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "skills",
+			"item": [
+				{
+					"name": "/newexpertskill (user1)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NjA1NTg0LCJleHAiOjE3MTcxOTc1ODR9.w1PPv7sqqXlR3gI_8xZFYQk17IB7Z5tc2mK0oGJBF9o",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"skill\": \"back1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/newexpertskill"
+					},
+					"response": []
+				},
+				{
+					"name": "/newexpertskill (user2)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NTkwODA2LCJleHAiOjE3MTcxODI4MDZ9.GOGisjcXTrooS0zl9yYfGvXVO44mS42NE6-eNa-842s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"skill\": \"back2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/newexpertskill"
+					},
+					"response": []
+				},
+				{
+					"name": "/expertskills",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/expertskills"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "technologies",
+			"item": [
+				{
+					"name": "/technologies",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzEzOTg3NDExLCJleHAiOjE3MTY1Nzk0MTF9.Wu9H94sDQG9iO0r1MkbJAVxFeVzwT8fqGjp88HVK0GI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"company_name\": \"company_name x\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/technologies"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "projects",
+			"item": [
+				{
+					"name": "/newproject",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NzQ5Mzc2LCJleHAiOjE3MTczNDEzNzZ9.qC2wCIE4kjsJf8QSIwbdj9sWuW-ucsBDXgBPxmyyNLw"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "project_title",
+									"value": "Project 3",
+									"type": "text"
+								},
+								{
+									"key": "project_description",
+									"value": "Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin, egestas taciti facilisis tellus felis quam consequat. Vestibulum pretium ullamcorper magna facilisi dapibus eleifend praesent justo, aliquet ultrices nam felis quisque sociosqu aliquam porttitor, molestie etiam gravida malesuada sodales eu placerat. Vitae praesent sollicitudin vehicula phasellus platea nec, vel orci hac nullam vestibulum facilisis lobortis, ",
+									"type": "text"
+								},
+								{
+									"key": "project_photo",
+									"type": "file",
+									"src": "/home/hacker/Downloads/pexels-pixabay-45201.jpg"
+								},
+								{
+									"key": "project_url",
+									"value": "http://www.project3.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/newproject"
+					},
+					"response": []
+				},
+				{
+					"name": "/project/:project_id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/project/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg"
+							}
+						],
+						"url": "http://localhost:3000/projects"
+					},
+					"response": []
+				},
+				{
+					"name": "/project/:project_id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MzM1OTQ2LCJleHAiOjE3MTY5Mjc5NDZ9.DN3Pzrz8ioEByoCj-cpg6rbaG2UUdoX8HJGGO9Te3Os",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": "http://localhost:3000/project/3"
+					},
+					"response": []
+				},
+				{
+					"name": "/projectupdate/:project_id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0NTAxNTI2LCJleHAiOjE3MTcwOTM1MjZ9.WxwsvNkXsaMy4PB79yTKP2QWRx80aATYD5McIAg_94s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "project_title",
+									"value": "React",
+									"type": "text"
+								},
+								{
+									"key": "project_description",
+									"value": "Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin, egestas taciti facilisis tellus felis quam consequat. Vestibulum pretium ullamcorper magna facilisi dapibus eleifend praesent justo, aliquet ultrices nam felis quisque sociosqu aliquam porttitor, molestie etiam gravida malesuada sodales eu placerat. Vitae praesent sollicitudin vehicula phasellus platea nec, vel orci hac nullam vestibulum facilisis lobortis, ",
+									"type": "text"
+								},
+								{
+									"key": "project_photo",
+									"type": "file",
+									"src": "/home/hacker/Downloads/pexels-nicole-michalou-5778899.jpg"
+								},
+								{
+									"key": "project_url",
+									"value": "http://www.react.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/projectupdate/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/register/:register_id/projects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/register/1/projects"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "events",
+			"item": [
+				{
+					"name": "/register/:register_id/events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/register/1/projects"
+					},
+					"response": []
+				},
+				{
+					"name": "/event/:event_id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE0MzM1OTQ2LCJleHAiOjE3MTY5Mjc5NDZ9.DN3Pzrz8ioEByoCj-cpg6rbaG2UUdoX8HJGGO9Te3Os",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": "http://localhost:3000/project/3"
+					},
+					"response": []
+				},
+				{
+					"name": "/eventupdate/:event_id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0ODEzODY2LCJleHAiOjE3MTc0MDU4NjZ9.BVIJszdwdfGC9pfN63FL8auIJ-tw_abISYlYtB5sDEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "event_title",
+									"value": "React",
+									"type": "text"
+								},
+								{
+									"key": "event_description",
+									"value": "Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin, egestas taciti facilisis tellus felis quam consequat. Vestibulum pretium ullamcorper magna facilisi dapibus eleifend praesent justo, aliquet ultrices nam felis quisque sociosqu aliquam porttitor, molestie etiam gravida malesuada sodales eu placerat. Vitae praesent sollicitudin vehicula phasellus platea nec, vel orci hac nullam vestibulum facilisis lobortis, ",
+									"type": "text"
+								},
+								{
+									"key": "event_photo",
+									"type": "file",
+									"src": "/home/hacker/Downloads/boston-public-library-6b2xPLPN6ag-unsplash.jpg"
+								},
+								{
+									"key": "event_url",
+									"value": "http://www.react.com",
+									"type": "text"
+								},
+								{
+									"key": "place",
+									"value": "paraninfo",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/eventupdate/4"
+					},
+					"response": []
+				},
+				{
+					"name": "/event/:event_id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg",
+								"type": "text"
+							}
+						],
+						"url": "http://localhost:3000/event/1"
+					},
+					"response": []
+				},
+				{
+					"name": "/events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg"
+							}
+						],
+						"url": "http://localhost:3000/events"
+					},
+					"response": []
+				},
+				{
+					"name": "/newevent",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NzQ5Mzc2LCJleHAiOjE3MTczNDEzNzZ9.qC2wCIE4kjsJf8QSIwbdj9sWuW-ucsBDXgBPxmyyNLw"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "event_title",
+									"value": "Event 3",
+									"type": "text"
+								},
+								{
+									"key": "event_description",
+									"value": "Lorem ipsum dolor sit amet consectetur adipiscing elit sollicitudin, egestas taciti facilisis tellus felis quam consequat. Vestibulum pretium ullamcorper magna facilisi dapibus eleifend praesent justo, aliquet ultrices nam felis quisque sociosqu aliquam porttitor, molestie etiam gravida malesuada sodales eu placerat. Vitae praesent sollicitudin vehicula phasellus platea nec, vel orci hac nullam vestibulum facilisis lobortis, ",
+									"type": "text"
+								},
+								{
+									"key": "event_photo",
+									"type": "file",
+									"src": "/home/hacker/Downloads/pexels-pixabay-45201.jpg"
+								},
+								{
+									"key": "event_url",
+									"value": "http://www.project3.com",
+									"type": "text"
+								},
+								{
+									"key": "place",
+									"value": "Edificio Miró",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:3000/newevent"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "register",
+			"item": [
+				{
+					"name": "register(user1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Im5hbWUiOiJCZWEiLCJsYXN0bmFtZSI6IlbDoXpxdWV6IiwiYmlydGhkYXRlIjoiMTk4Ny0xMS0yMFQwMDowMDowMC4wMDBaIiwiZW1haWwiOiJiZWFAZ21haWwuY29tIiwidXNlcm5hbWUiOiJiZWEiLCJwYXNzd29yZCI6IjEyMzQifSwiaWF0IjoxNzEzNTM2Njk3LCJleHAiOjE3MTM2MjMwOTd9.bXeCwYvlU2Mk3YWT-byjJJN9A7FA5uabpx-ql0yD42o\"",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"email\":\"valentina@gmail.com\",\n    \"register_password\":\"1234\"\n\n    \n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/register"
+					},
+					"response": []
+				},
+				{
+					"name": "/register(user2)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mon1@mon.com\",\n    \"register_password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/register"
+					},
+					"response": []
+				},
+				{
+					"name": "/validate/:registrationCode",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/validate/14813247-0ea6-4627-9def-8a16f47db46f"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "login(user1)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"valentina@gmail.com\",\n    \"register_password\":\"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/login"
+					},
+					"response": []
+				},
+				{
+					"name": "/login(user2)",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTM4MjQzMTYsImV4cCI6MTcxMzkxMDcxNn0.TL40yQJCXpUupgnK5MoG826YE0uhDmpdClYc2LeL3YI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mon1@mon.com\",\n    \"register_password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/login"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
