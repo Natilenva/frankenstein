@@ -24,7 +24,7 @@ const newProjectController = async (req, res, next) => {
             console.log(req.files);
             const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
             console.log(__dirname);
-            const uploadsDir = path.join(__dirname, '../uploadsProjectPhoto');
+            const uploadsDir = path.join(__dirname, '../../../uploads');
             console.log(uploadsDir);
             await createPathIfNotExists(uploadsDir);
             const image = sharp(req.files.project_photo.data);
