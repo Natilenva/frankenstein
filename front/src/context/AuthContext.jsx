@@ -55,6 +55,3 @@ export const AuthProviderComponent = ({children}) => {
         </AuthContext.Provider> 
     );    
 };
-
-
-

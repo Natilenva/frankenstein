@@ -81,6 +81,44 @@ export const sendProjectService = async ({ data, token }) => {
 };
 
 
+export const deleteProjectService = async ({ id, token }) => {
+    const response = await fetch(
+        `
+    
+    ${import.meta.env.VITE_BASE_URL}/project/${id}`,
+        {
+            method: 'DELETE',
+            headers: {
+                Authorization: token,
+            },
+        }
+    );
+    const json = await response.json();
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+    return json.data;
+};
+
+export const modifyProjectService = async ({ id, token }) => {
+    const response = await fetch(
+        `
+    ${import.meta.env.VITE_BASE_URL}/project/${id}`,
+        {
+            method: 'PUT',
+            headers: {
+                Authorization: token,
+            },
+        }
+    );
+    const json = await response.json();
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+    return json.data;
+};
+
+
 // endpoint /user, Get info user for React Context 
 export const getMyUserDataService = async ({token}) => {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/user`, {
@@ -97,3 +135,4 @@ export const getMyUserDataService = async ({token}) => {
   
     return json.data;
   };
+
