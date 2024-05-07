@@ -37,6 +37,7 @@ const createTables = async () => {
                 modified_at datetime DEFAULT CURRENT_TIMESTAMP,
                 register_id int NOT NULL UNIQUE,
                 company_id int DEFAULT NULL,
+                is_company_validated BOOLEAN DEFAULT false,
                 validate boolean DEFAULT false,
                 FOREIGN KEY (register_id) REFERENCES register(register_id)
                 
