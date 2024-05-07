@@ -13,8 +13,8 @@ export const HomePage = () => {
 
     return (
         <section>
-            {/* {user ? <NewProject addProject={addProject} /> : null} */}
-            <NewProject addProject={addProject} />
+            {user ? <NewProject addProject={addProject} /> : null}
+
             <h1>Latest Projects </h1>
             <ProjectList projects={projects} />
         </section>

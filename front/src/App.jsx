@@ -1,20 +1,20 @@
 //import { useState } from 'react'
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
 
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom';
 
 //* components q siempre se ven
-import { Header } from './components/Header'
-import { Footer } from './components/Footer'
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
-import { HomePage } from './pages/HomePage'
-import { RegisterPage } from './pages/RegisterPage'
-import { LoginPage } from './pages/LoginPage'
-import { ProjectPage } from './pages/ProjectPage'
-import { QuestionPage } from './pages/QuestionPage'
-import { NotFoundPage } from './pages/NotFoundPage'
+import { HomePage } from './pages/HomePage';
+import { RegisterPage } from './pages/RegisterPage';
+import { LoginPage } from './pages/LoginPage';
+import { ProjectPage } from './pages/ProjectPage';
+import { QuestionPage } from './pages/QuestionPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 function App() {
     //const [count, setCount] = useState(0)
@@ -25,7 +25,7 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/project/:id" element={<ProjectPage />} /> 
+                <Route path="/" element={<ProjectPage />} />
 
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
@@ -36,9 +36,8 @@ function App() {
             </Routes>
 
             <Footer />
-
         </>
-    )
+    );
 }
 
-export default App
+export default App;
