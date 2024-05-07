@@ -9,11 +9,18 @@ import authUser from '../middlewares/auth.js';
 import { profileGetController } from '../controllers/profile/profileGetController.js';
 import { updateProfileController } from '../controllers/profile/profileUpdateController.js';
 import { validateUserController } from '../controllers/users/validateUserController.js';
+
+//* get info user for React Context: 
+import { getMeController } from '../controllers/users/getMeController.js';
+
 const router = express.Router();
 
 router.post('/register', registerNewUserController);
 
 router.post('/login', loginUserController);
+
+//* get info user for React Context: 
+router.get('/user', authUser, getMeController);
 
 router.post('/myprofile', authUser, profileInsertController);
 

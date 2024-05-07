@@ -1,53 +1,57 @@
-import { createContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import { createContext, useEffect, useState } from "react";
+import { getMyUserDataService } from "../services";
 
-//contexto global, objeto global de contexto
-export const AuthContext = createContext();
+//* Crear contexto global --------------------------------------------- 
 
-//componente normal de React
-//para envolver nuestra app en el proveedor de contexto
-/* export const AuthProviderComponent = () => {
-    return <p>este es el proveedor de contexto</p>
-} */
+export const AuthContext = createContext(); // objeto del contexto 
 
-//componente de React con children q viene de main.jsx
-/* export const AuthProviderComponent = ({children}) => {
-    return children;
-} */
+export const AuthProviderComponent = ({children}) => {
+    // const [token, setToken] = useState(null);
+    
+    // inicializa token 
+    const [token, setToken] = useState(localStorage.getItem("token"));
 
-//AuthContext.Provider es el proveedor de contexto
-/* export const AuthProviderComponent = ({children}) => {
-    return <AuthContext.Provider> {children} </AuthContext.Provider> ;
-} */
+    // inicializa user
+    const [user, setUser] = useState(null);
+    
 
-/* export const AuthProviderComponent = ({children}) => {
-    const [color, setColor] = useState("green");
-    //toda la lógica aquí se la pasamos al provider como value 
-    //toda la app podría leer este value 
-    return <AuthContext.Provider value={{color}}> {children} </AuthContext.Provider> ;
-} */
-//para acceder a este value en cualquier componente, ej. voy a Header
-// a través de un hook useContext()
-
-export const AuthProviderComponent = ({ children }) => {
-    //const [token, setToken] = useState(null);
-    const [token, setToken] = useState(localStorage.getItem('token'));
-
-    //cada vez q cambie el token, se ejecuta el useEffect
+    // guarda token en localStorage
     useEffect(() => {
         /* setToken(localStorage.getItem("token")); */
-        localStorage.setItem('token', token);
+        localStorage.setItem("token", token);
     }, [token]);
 
-    // TODO Qué info queremos guardar además del token, la info del usuario ?
 
+    // Carga data de user, setear user con su info 
+    useEffect(() => { 
+        const getUserData = async () => {
+
+            try {
+                const data = await getMyUserDataService({token});
+                setUser(data);
+            } catch (error) {
+                logout();
+            }
+            
+        }
+        if (token) getUserData();
+    }, [token]);
+
+    // login 
+    const login = (token) => {
+        setToken(token);
+    };
+
+    // logout
+    const logout = () => {
+        setToken("");
+        setUser(null);
+    };
+
+    //exportamos al Context: token, user, login, logout
     return (
-        <AuthContext.Provider value={{ token, setToken }}>
-            {children}
-        </AuthContext.Provider>
-    );
-};
-
-AuthProviderComponent.propTypes = {
-    children: PropTypes.node,
+        <AuthContext.Provider value={{token, user, login, logout}}> 
+            {children} 
+        </AuthContext.Provider> 
+    );    
 };

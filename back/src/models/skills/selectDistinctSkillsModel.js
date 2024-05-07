@@ -6,7 +6,8 @@ const selectDistinctSkillsModel = async () => {
     const connection = await getConnection();
 
     const [rows] = await connection.query(
-        `SELECT DISTINCT skill FROM ExpertSkillsV1 ORDER BY skill ASC`
+        /* `SELECT DISTINCT skill FROM ExpertSkillsV1 ORDER BY skill ASC` */
+        `SELECT DISTINCT skill FROM SkillsV1 ORDER BY skill ASC`
     );
 
     // if not found
