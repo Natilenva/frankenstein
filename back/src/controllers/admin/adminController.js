@@ -1,5 +1,9 @@
 import bcrypt from 'bcrypt';
 import getConnection from '../../db/getConnection.js';
+import {
+    acceptCompanyProfile,
+    rejectCompanyProfile,
+} from '../../models/profile/getProfileByIdModel.js';
 
 const createAdmin = async (req, res, next) => {
     try {
@@ -42,43 +46,37 @@ const createAdmin = async (req, res, next) => {
     }
 };
 
-const getAdmin = async (req, res, next) => {
+const acceptCompany = async (req, res, next) => {
     try {
-        const skillsDistinct = await selectDistinctSkillsModel();
+        const profile_id = req.params;
+        console.log('acceptCompany: ' + profile_id.id);
+
+        const profileStatus = await acceptCompanyProfile(profile_id.id);
 
         res.status(200).send({
             status: 'ok',
-            message: 'Skills in dt ExpertSkillsV1',
-            skills: skillsDistinct,
+            message: 'Profile aceptado correctamente',
+            skills: profileStatus,
         });
     } catch (err) {
         next(err);
     }
 };
-const updateAdmin = async (req, res, next) => {
+const rejectCompany = async (req, res, next) => {
     try {
-        const skillsDistinct = await selectDistinctSkillsModel();
+        const profile_id = req.params;
+        console.log('rejectCompanyProfile: ' + profile_id.id);
+
+        const profileStatus = await rejectCompanyProfile(profile_id.id);
 
         res.status(200).send({
             status: 'ok',
-            message: 'Skills in dt ExpertSkillsV1',
-            skills: skillsDistinct,
+            message: 'Profile rechazado correctamente',
+            skills: profileStatus,
         });
     } catch (err) {
         next(err);
     }
 };
-const deleteAdmin = async (req, res, next) => {
-    try {
-        const skillsDistinct = await selectDistinctSkillsModel();
 
-        res.status(200).send({
-            status: 'ok',
-            message: 'Skills in dt ExpertSkillsV1',
-            skills: skillsDistinct,
-        });
-    } catch (err) {
-        next(err);
-    }
-};
-export { createAdmin, getAdmin, updateAdmin, deleteAdmin };
+export { createAdmin, acceptCompany, rejectCompany };

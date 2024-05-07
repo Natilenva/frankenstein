@@ -7,8 +7,11 @@ import path from 'node:path';
 import { nanoid } from 'nanoid';
 import { insertProfileByModel } from '../../models/profile/insertProfileByModel.js';
 
-import { getProfileByIdModel } from '../../models/profile/getProfileByIdModel.js';
-
+import {
+    getProfileByIdModel,
+    validateProfileRole,
+} from '../../models/profile/getProfileByIdModel.js';
+import { generateError } from '../../helpers/generateError.js';
 const profileInsertController = async (req, res, next) => {
     const { success, data: profile, error } = profileSchema.safeParse(req.body);
     if (!success) {
@@ -46,7 +49,12 @@ const profileInsertController = async (req, res, next) => {
                 message: 'Ya existe un perfil asociado a este registro',
             });
         }
-
+        console.log('profile_role: ' + profile_role);
+        const msgCompany = await validateProfileRole(
+            profile_role,
+            company_name,
+            req.userId
+        );
         await insertProfileByModel(
             imageFileName,
             profile_name,
@@ -57,10 +65,11 @@ const profileInsertController = async (req, res, next) => {
             company_name,
             req.userId
         );
+
         res.send({
             httpStatus: '201',
             code: 'PROFILE_CREATED',
-            message: 'Perfil creado',
+            message: msgCompany,
         });
     } catch (error) {
         next(error);
