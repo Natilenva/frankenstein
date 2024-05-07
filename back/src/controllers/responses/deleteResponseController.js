@@ -9,9 +9,9 @@ const deleteResponseController = async (req, res, next) => {
         const response = await selectResponseByIdModel(response_id);
         console.log(response);
 
-        // if (response.register_id !== req.user.id) {
-        //     unauthorizedUserError();
-        // }
+        if (response.register_id !== req.user.id) {
+            unauthorizedUserError();
+        }
      
 
          if(response.vote_response_id[true]){ 
