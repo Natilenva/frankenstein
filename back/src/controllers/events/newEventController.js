@@ -13,7 +13,6 @@ const newEventController = async (req, res, next) => {
 
         if (!success) {
             const errors = zodErrorMap(error.issues);
-
             return res.status(400).send({ error: errors });
         }
         let imageFileName;

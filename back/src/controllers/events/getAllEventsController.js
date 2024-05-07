@@ -4,6 +4,7 @@ const getAllEventsController = async (req, res, next) => {
         const events = await selectAllEventsModel();
         res.send({
             status: 'ok',
+            message: 'Estos son todos los eventos',
             data: events,
         });
     } catch (error) {

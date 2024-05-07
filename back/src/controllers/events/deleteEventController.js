@@ -16,6 +16,7 @@ const deleteEventController = async (req, res, next) => {
         res.send({
             status: 'ok',
             message: `El evento con id ${id} fue borrado `,
+            data,
         });
     } catch (error) {
         next(error);

@@ -7,6 +7,7 @@ import { sendEmail } from '../../helpers/sendEmail.js';
 import * as crypto from 'crypto';
 import { selectRegisterByEmailModel } from '../../models/users/selectRegisterByEmailModel.js';
 import { insertNewRegisterModel } from '../../models/users/insertNewRegisterModel.js';
+import { generateError } from '../../helpers/generateError.js';
 
 async function registerNewUserController(req, res, next) {
     try {
@@ -61,9 +62,7 @@ async function registerNewUserController(req, res, next) {
         res.setHeader('Authorization', token);
 
         res.send({
-            /* httpstatus: '201', */
-            status:'ok',
-            /* code: 'USER_CREATED', */
+            status: 'ok',
             message: `Usuario creado correctamente`,
         });
     } catch (error) {

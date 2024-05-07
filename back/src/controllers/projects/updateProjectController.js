@@ -21,16 +21,12 @@ const updateProjectController = async (req, res, next) => {
 
         let imageFileName;
         if (req.files && req.files.project_photo) {
-            console.log(req.files);
             const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-            console.log(__dirname);
             const uploadsDir = path.join(__dirname, '../../../uploads');
-            console.log(uploadsDir);
             await createPathIfNotExists(uploadsDir);
             const image = sharp(req.files.project_photo.data);
             image.resize(500);
             imageFileName = `${nanoid(24)}.jpg`;
-            console.log(imageFileName);
             await image.toFile(path.join(uploadsDir, imageFileName));
         }
         const {
