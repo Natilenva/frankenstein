@@ -66,6 +66,7 @@ export const loginUserService = async ({ email, register_password }) => {
 };
 
 export const sendProjectService = async ({ data, token }) => {
+    console.log('hola');
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/`, {
         method: 'POST',
         body: data,
@@ -73,13 +74,14 @@ export const sendProjectService = async ({ data, token }) => {
             Authorization: token,
         },
     });
+    console.log(response);
     const json = await response.json();
     if (!response.ok) {
         throw new Error(json.message);
     }
+    console.log(response);
     return json.data;
 };
-
 
 export const deleteProjectService = async ({ id, token }) => {
     const response = await fetch(
@@ -118,21 +120,19 @@ export const modifyProjectService = async ({ id, token }) => {
     return json.data;
 };
 
-
-// endpoint /user, Get info user for React Context 
-export const getMyUserDataService = async ({token}) => {
+// endpoint /user, Get info user for React Context
+export const getMyUserDataService = async ({ token }) => {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/user`, {
-      headers: {
-        Authorization: token,
-      },
+        headers: {
+            Authorization: token,
+        },
     });
-  
-    const json = await response.json();
-  
-    if (!response.ok) {
-      throw new Error(json.message);
-    }
-  
-    return json.data;
-  };
 
+    const json = await response.json();
+
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+
+    return json.data;
+};

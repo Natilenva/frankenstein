@@ -38,6 +38,10 @@ export const NewProject = ({ addProject }) => {
                 ></input>
             </fieldset>
             <fieldset>
+                <label htmlFor="url">URL</label>
+                <input type="url" id="url" name="url"></input>
+            </fieldset>
+            <fieldset>
                 <label>Image(optional)</label>
                 <input
                     type="file"
