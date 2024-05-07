@@ -13,7 +13,7 @@ const transporter = createTransport({
 async function sendEmail(destination, subject, content) {
     try {
         await transporter.sendMail({
-            from: '"Frankenstein" <valentinalonsorodriguez@gmail.com>',
+            from: '"frankensteinhack2024@gmail.com>',
             to: destination,
             subject: subject,
             html: content,

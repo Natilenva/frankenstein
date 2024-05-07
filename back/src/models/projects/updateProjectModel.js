@@ -7,7 +7,8 @@ const updateProjectModel = async (
     project_url,
     project_id
 ) => {
-    const connection = await getConnection();
+    let connection;
+    connection = await getConnection();
 
     const [result] = await connection.query(
         `UPDATE projects SET project_title = ?, project_description = ?, project_photo = ?, project_url = ? WHERE project_id = ?`,

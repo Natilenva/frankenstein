@@ -7,6 +7,7 @@ import { sendEmail } from '../../helpers/sendEmail.js';
 import * as crypto from 'crypto';
 import { selectRegisterByEmailModel } from '../../models/users/selectRegisterByEmailModel.js';
 import { insertNewRegisterModel } from '../../models/users/insertNewRegisterModel.js';
+import { generateError } from '../../helpers/generateError.js';
 
 async function registerNewUserController(req, res, next) {
     try {
@@ -30,9 +31,83 @@ async function registerNewUserController(req, res, next) {
         const registrationCode = crypto.randomUUID();
         const subject = 'Activa tu cuenta en Frankenstein';
         const content = `
-         <h1>¡Bienvenid@ a tu web Frankenstein</h1>
+         
+         <!doctype html>
+    <html>
+      <head>
+       
+        <style>
+        p, a, h1, h2, h3, h4, h5, h6 {font-family: 'Roboto', sans-serif !important;}
+        h1{ font-size: 30px !important;}
+        h2{ font-size: 25px !important;}
+        h3{ font-size: 18px !important;}
+        h4{ font-size: 16px !important;}
+        p, a{font-size: 15px !important;}
+         
+        .claseBoton{
+            width: 30%;
+                background-color: #829821;
+                border: 2px solid #829821;
+                color: #000000; 
+                padding: 8px 16px;
+                text-align: center;
+                text-decoration: none;
+                font-weight: bold;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                transition-duration: 0.4s;
+                cursor: pointer;
+        }
+        .claseBoton:hover{
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .imag{
+            width: 20px;
+            height: 20px;
+        }
+        .contA{
+            margin: 0px 5px 0 5px;
+        }
+        .afooter{
+            color: #ffffff !important; 
+            text-decoration: none;
+            font-size: 13px !important;
+        }
+    </style>
+      </head>
+      <body>
+     
+        <div style="padding: 20px 10px 20px 10px;">
+            <!-- Imagen inicial -->
+            <div style="background-color: #000000; padding: 10px 0px 10px 0px; width: 100%; text-align: center;">
+             
+            </div>
+            <!-- Imagen inicial -->
+             <!-- Contenido principal -->
+            <div style="background-color: #ffffff; padding: 20px 0px 5px 0px; width: 100%; text-align: center;">
+        <h1>¡Bienvenid@ a Frankenstein!</h1>
          <p>Activa tu cuenta haciendo click en el siguiente enlace.</p>
-        <a href="http://localhost:${PORT}/validate/${registrationCode}">Activar cuenta</a>
+        <a class="claseBoton" href="http://localhost:${PORT}/validate/${registrationCode}">Activar cuenta</a>
+          <!-- Footer -->
+            <div style="background-color: #282828; color: #ffffff; padding: 5px 0px 0px 0px; width: 100%; text-align: center;">
+ 
+
+           
+                <p style="background-color: black; padding: 10px 0px 10px 0px; font-size: 12px !important;">
+                    © 2024 Frankenstein, todos los derechos reservados.
+                </p>
+            </div>
+            <!-- Footer -->
+
+
+
+        </div>
+    </div>
+
+      </body>
+    </html>
         `;
 
         // TODO cambiar el orden las siguientes 2 lineas
@@ -61,9 +136,7 @@ async function registerNewUserController(req, res, next) {
         res.setHeader('Authorization', token);
 
         res.send({
-            /* httpstatus: '201', */
-            status:'ok',
-            /* code: 'USER_CREATED', */
+            status: 'ok',
             message: `Usuario creado correctamente`,
         });
     } catch (error) {

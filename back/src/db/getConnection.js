@@ -27,7 +27,8 @@ const getConnection = async () => {
         }
         return pool;
     } catch (err) {
-        throw generateError('Conexión fallida', 502);
+        console.error(err);
+        throw generateError(`Conexión fallida ${err.message}`, 502);
     }
 };
 export default getConnection;

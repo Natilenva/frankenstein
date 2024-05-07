@@ -22,16 +22,12 @@ const profileInsertController = async (req, res, next) => {
     try {
         let imageFileName;
         if (req.files && req.files.avatar) {
-            console.log(req.files);
             const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-            console.log(__dirname);
-            const uploadsDir = path.join(__dirname, '../uploadsAvatar');
-            console.log(uploadsDir);
+            const uploadsDir = path.join(__dirname, '../../../uploads');
             await createPathIfNotExists(uploadsDir);
             const image = sharp(req.files.avatar.data);
             image.resize(500);
             imageFileName = `${nanoid(24)}.jpg`;
-            console.log(imageFileName);
             await image.toFile(path.join(uploadsDir, imageFileName));
         }
 
@@ -45,7 +41,7 @@ const profileInsertController = async (req, res, next) => {
         } = profile;
 
         const profileExists = await getProfileByIdModel(req.userId);
-        console.log(profileExists);
+
         if (profileExists) {
             return res.status(400).send({
                 httpStatus: '400',
