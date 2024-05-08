@@ -1,6 +1,7 @@
 import { zodErrorMap } from '../../helpers/zodError.js';
 import { projectSchema } from '../../schemas/projectShema.js';
 import insertProjectModel from '../../models/projects/insertProjectModel.js';
+import selectUserByIdModel from '../../models/users/selectUserById.js';
 import { createPathIfNotExists } from '../../helpers/createpath.js';
 import sharp from 'sharp';
 import url from 'url';
@@ -45,8 +46,14 @@ const newProjectController = async (req, res, next) => {
             imageFileName,
             project_url,
             req.userId
-        );
-
+        ); //Busca el email del usuario desde BBDD
+        let email = '';
+        const users = await selectUserByIdModel(req.userId);
+        console.log('req.userId: ' + req.userId + ', email: ' + users);
+        if (users != null) {
+            console.log('email: ', users.email);
+            email = users.email;
+        }
         res.status(201).send({
             status: 'ok',
             message: 'insert project in db',
@@ -65,8 +72,10 @@ const newProjectController = async (req, res, next) => {
                 project_description,
                 project_photo,
                 project_url,
+                project_photo: imageFileName,
                 userId: req.userId,
-                createdAt: new Date(),
+                email: email,
+                created_at: new Date(),
             },
         });
     } catch (err) {

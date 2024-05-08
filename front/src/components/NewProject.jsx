@@ -3,7 +3,6 @@ import { sendProjectService } from '../services';
 import { AuthContext } from '../context/AuthContext';
 import PropTypes from 'prop-types';
 
-
 export const NewProject = ({ addProject }) => {
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
@@ -19,7 +18,7 @@ export const NewProject = ({ addProject }) => {
 
             const project = await sendProjectService({ data, token });
 
-            console.log('project', project);// ?
+            console.log('project', project); // ?
 
             addProject(project);
             e.target.reset();
@@ -38,7 +37,6 @@ export const NewProject = ({ addProject }) => {
                 <input type="title" id="title" name="title" required></input>
             </fieldset>
 
-            
             <fieldset>
                 <label htmlFor="description">Description</label>
                 <input
@@ -52,7 +50,7 @@ export const NewProject = ({ addProject }) => {
                 <label htmlFor="url">URL</label>
                 <input type="url" id="url" name="url"></input>
             </fieldset>
-            
+
             <fieldset>
                 <label>Image(optional)</label>
                 <input
