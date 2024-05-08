@@ -94,7 +94,8 @@ const createTables = async () => {
                 question_id INT NOT NULL,
                 FOREIGN KEY (question_id) REFERENCES questions(question_id),
                 FOREIGN KEY (register_id) REFERENCES register (register_id) 
-            );  
+            ); 
+            
         `);
 
         await connection.query(`

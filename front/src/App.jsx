@@ -15,6 +15,7 @@ import { LoginPage } from './pages/LoginPage'
 import { ProjectPage } from './pages/ProjectPage'
 import { QuestionPage } from './pages/QuestionPage'
 import { NotFoundPage } from './pages/NotFoundPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage'
 
 function App() {
     //const [count, setCount] = useState(0)
@@ -31,6 +32,8 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
 
                 <Route path="/question/:id" element={<QuestionPage />} />
+
+                <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>
 
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

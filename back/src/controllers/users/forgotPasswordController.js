@@ -29,7 +29,7 @@ const forgotPasswordController = async (req, res, next) => {
     `;
     await sendEmail(email, subject, content);
     res.send({
-        link: link,
+        message: "Revisa la bandeja de entrada de su email",
     });
 };
 
