@@ -13,7 +13,7 @@ export const Header = () => {
     return (
         <header className="bg-white p-8 flex items-center shadow-md">
             <h1 className="font-bold text-white">
-                <img src="./../public/frankenstein.png"></img>
+                <img src="./../frankenstein.png"></img>
                 <Link className="" to="/">
                     Frankenstein
                 </Link>

@@ -3,6 +3,8 @@ import { Project } from './Project';
 
 //recibe una prop, un array de objetos
 export const ProjectList = ({ projects, removeProject, updateProject }) => {
+    console.log('projects', projects);
+    
     return projects.length ? (
         <ul>
             {projects.map((project) => (
