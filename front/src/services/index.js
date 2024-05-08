@@ -1,6 +1,8 @@
 export const getAllProjectsService = async () => {
-    const response = await fetch(`${import.meta.env.VITE_BASE_URL}`);
-    //console.log('response getAllProjectsService: ', response);
+    const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/allProjects`
+    );
+    console.log('response getAllProjectsService: ', response);
 
     const json = await response.json();
 
@@ -78,7 +80,7 @@ export const sendProjectService = async ({ data, token }) => {
     console.log(response);
 
     const json = await response.json();
-    
+
     if (!response.ok) {
         throw new Error(json.message);
     }
