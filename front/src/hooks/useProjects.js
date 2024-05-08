@@ -12,6 +12,7 @@ const useProjects = () => {
                 setLoading(true);
 
                 const data = await getAllProjectsService();
+                //console.log('data', data);
 
                 setProjects(data);
 
@@ -26,7 +27,11 @@ const useProjects = () => {
 
     }, []);
 
-    return { projects, loading, error };
+    const addProject = (project) => {
+        setProjects([project, ...projects]);
+    };
+
+    return { projects, loading, error, addProject };
 };
 
 export default useProjects;

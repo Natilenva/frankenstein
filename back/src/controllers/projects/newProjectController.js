@@ -51,7 +51,7 @@ const newProjectController = async (req, res, next) => {
             status: 'ok',
             message: 'insert project in db',
             data: {
-                project: {
+                /* project: {
                     projectId: id,
                     project_title,
                     project_description,
@@ -59,7 +59,14 @@ const newProjectController = async (req, res, next) => {
                     project_url,
                     userId: req.userId,
                     createdAt: new Date(),
-                },
+                }, */
+                projectId: id,
+                project_title,
+                project_description,
+                project_photo,
+                project_url,
+                userId: req.userId,
+                createdAt: new Date(),
             },
         });
     } catch (err) {
