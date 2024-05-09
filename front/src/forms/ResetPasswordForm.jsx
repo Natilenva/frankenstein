@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { ResetPassword } from '../services/userService';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import {toast} from 'react-hot-toast';
+
 const ResetPasswordForm= ()=>{
     const [password, setPassword]= useState('');
     const [password2, setPassword2]= useState('');
@@ -14,13 +16,14 @@ const ResetPasswordForm= ()=>{
         if(password===password2){
         try {
             await ResetPassword(id, token, password, password2);
+            toast.success('contraseña restablecida')
             navigate('/login');
             
         } catch (err) {
-            throw new Error(err)
+            toast.error(err.message);
         }
         }else{
-        throw new Error('las contraseñas no coinciden')
+        toast.error('las contraseñas no coinciden')
          }
     }
    
