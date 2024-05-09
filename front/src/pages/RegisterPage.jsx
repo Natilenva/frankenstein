@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { registerUserService } from '../services';
 import { useNavigate } from 'react-router-dom'; // hook para redirigir
+import { toast } from 'react-hot-toast';
 
 export const RegisterPage = () => {
     const navigate = useNavigate(); //hook para redirigir
@@ -29,8 +30,10 @@ export const RegisterPage = () => {
             //await registerUserService({ email, password: pass1 });
             await registerUserService({ email, register_password: pass1 });
             navigate('/login'); //hook para redirigir al login
+            toast.success('Activa tu cuenta en tu mail!', { duration: 6000 });
         } catch (error) {
             setError(error.message);
+            toast.error(error.message);
         }
     };
 

@@ -1,18 +1,16 @@
 import { useContext, useState } from 'react';
 import { sendProjectService } from '../services';
 import { AuthContext } from '../context/AuthContext';
-//import PropTypes from 'prop-types';
-/* import { NewProject2 } from './NewProject2'; */
+import PropTypes from 'prop-types';
 
+import { toast } from 'react-hot-toast';
 
 export const NewProject2 = ({ addProject }) => {
-/* export const NewProject2 = () => { */
+    /* export const NewProject2 = () => { */
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
     const [image, setImage] = useState();
     const { token } = useContext(AuthContext);
-
-
 
     const handleForm = async (e) => {
         e.preventDefault();
@@ -21,17 +19,19 @@ export const NewProject2 = ({ addProject }) => {
             setSending(true);
 
             const data = new FormData(e.target);
-                //console.log('e.target', e.target);
+            //console.log('e.target', e.target);
 
             const project = await sendProjectService({ data, token });
-                console.log('project', project);// ! !!!!!!!!!!!!!!!
+            console.log('project', project); // ! !!!!!!!!!!!!!!!
 
             addProject(project);
 
-            e.target.reset(); 
+            e.target.reset();
             setImage(null);
+            toast.success('Agregado proyecto con éxito');
         } catch (error) {
             setError(error.message);
+            toast.error('Ha habido un problema al agregar el proyecto');
         } finally {
             setSending(false);
         }
@@ -47,7 +47,11 @@ export const NewProject2 = ({ addProject }) => {
 
             <fieldset>
                 <label htmlFor="project_description">Description</label>
-                <input type="text" id="project_description" name="project_description" />
+                <input
+                    type="text"
+                    id="project_description"
+                    name="project_description"
+                />
             </fieldset>
 
             <fieldset>
@@ -74,13 +78,13 @@ export const NewProject2 = ({ addProject }) => {
                     </figure>
                 ) : null}
             </fieldset>
-            
+
             <button>Send Project</button>
             {sending ? <p>Sending project</p> : null}
             {error ? <p>{error}</p> : null}
         </form>
     );
 };
-/* NewProject2.propTypes = {
+NewProject2.propTypes = {
     addProject: PropTypes.node,
-}; */
+};

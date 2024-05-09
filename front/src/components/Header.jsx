@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import { Auth } from './Auth';
 
 // test context:
-//import { useContext } from "react"
-//import { AuthContext } from "../context/AuthContext"
+import { useContext } from "react"
+import { AuthContext } from "../context/AuthContext"
 
 export const Header = () => {
     //test context:
     /* const { color } = useContext(AuthContext);
    console.log(color); */
+   const {user, logout}= useContext(AuthContext);
 
     return (
         <header className="bg-black p-4 lg:p-8 flex items-center justify-between shadow-md">
@@ -53,6 +54,7 @@ export const Header = () => {
                 </div>
                 {/* Contenedor de los botones */}
                 <div className="flex space-x-4 mt-2 lg:mt-0">
+                    {!user?(
                     <div className="flex space-x-4">
                         <Link
                             to="/login"
@@ -67,6 +69,17 @@ export const Header = () => {
                             Register
                         </Link>
                     </div>
+                    ):(
+                        <div className="flex space-x-4">
+                            <Link 
+                             to="/login"
+                             className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded">
+                            <button onClick={logout}>
+                            Cerrar sesión
+                            </button>
+                            </Link>
+                        </div>
+                    )}
                 </div>
             </nav>
 
