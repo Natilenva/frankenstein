@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import { getMyUserDataService } from '../services';
 import { toast } from 'react-hot-toast';
+
+import { forgotPassword } from '../services/userService';
 //* Crear contexto global ---------------------------------------------
 
 export const AuthContext = createContext(); // objeto del contexto
@@ -12,7 +14,6 @@ export const AuthProviderComponent = ({ children }) => {
 
 
 
-import { forgotPassword } from '../services/userService';
 
 
 
@@ -33,7 +34,7 @@ import { forgotPassword } from '../services/userService';
         try {
             const message= await forgotPassword(email);
             toast.success(message);
-            navigate('/')
+            
         } catch (err) {
             toast.error(err.message);
         }
