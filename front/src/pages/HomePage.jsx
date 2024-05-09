@@ -21,7 +21,7 @@ export const HomePage = () => {
         <section>
             {user ? <NewProject2 addProject={addProject} /> : null}
             {/* //! si no hay un token previo no exite user */}
-            
+
             {/* {user ? <NewProject2 /> : null} */}
 
             <h1>Latest Projects </h1>
