@@ -6,10 +6,10 @@ import { deleteProjectService } from '../services';
 
 import { toast } from 'react-hot-toast';
 export const Project = ({ project, removeProject }) => {
-    console.log('project', project);
+    //console.log('project', project);
 
     const { user, token } = useContext(AuthContext);
-    console.log(user);
+    //console.log(user);
     const [error, setError] = useState('');
 
     const deleteProject = async (id) => {
@@ -26,7 +26,7 @@ export const Project = ({ project, removeProject }) => {
         }
     };
 
-    console.log('project.phot', project.photo);
+    //console.log('project.photo', project.photo);
 
     return (
         <article>
