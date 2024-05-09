@@ -19,16 +19,16 @@ export const forgotPassword = async (email)=>{
     return json.data;
 };
 
-export const ResetPassword = async ( password, repeatPassword)=>{
+export const ResetPassword = async (id, token, password, password2)=>{
     try{
-    const res= await fetch(`${import.meta.env.VITE_BASE_URL}/reset-password/:id/:token`, {
+    const res= await fetch(`${import.meta.env.VITE_BASE_URL}/reset-password/${id}/${token}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             password,
-            repeatPassword,
+            password2,
         })
     }
     );

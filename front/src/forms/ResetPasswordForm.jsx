@@ -1,16 +1,35 @@
 import PropType from 'prop-types';
 
-import { useContext, useState } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { useState } from 'react';
+import { ResetPassword } from '../services/userService';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ResetPasswordForm= ()=>{
     const [password, setPassword]= useState('');
-    const [repeatPassword, setRepeatPassword]= useState('')
-    const {authRP}= useContext(AuthContext)
-
+    const [password2, setPassword2]= useState('');
+    const {id, token} = useParams();
+    const navigate= useNavigate();    
+ 
+    const updatePassword= async (id, token, password, password2)=>{
+        if(password===password2){
+        try {
+            await ResetPassword(id, token, password, password2);
+            navigate('/login');
+            
+        } catch (err) {
+            throw new Error(err)
+        }
+        }else{
+        throw new Error('las contraseñas no coinciden')
+         }
+    }
+   
+    
     const handleSubmit = (e)=>{
         e.preventDefault();
-        authRP(password, repeatPassword)
+        updatePassword(id, token, password, password2);
+      
+      
     };
 
     return(
@@ -20,16 +39,18 @@ const ResetPasswordForm= ()=>{
                 <input 
                     type="text"
                     id='password'
+                    name='password'
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)}
                     required />
 
-                <label htmlFor="password">Repita la Contraseña</label>
+                <label htmlFor="password2">Repita la Contraseña</label>
                 <input 
                     type="text"
-                    id='rpassword'
-                    value={repeatPassword}
-                    onChange={(e)=>setRepeatPassword(e.target.value)}
+                    id='password2'
+                    name='password2'
+                    value={password2}
+                    onChange={(e)=>setPassword2(e.target.value)}
                     required />
 
                 <button>Enviar</button>
