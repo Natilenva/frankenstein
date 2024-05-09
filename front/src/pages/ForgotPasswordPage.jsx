@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import toast from 'react-hot-toast';
+import {toast} from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 // import ForgotPasswordForm from "../forms/ForgotPasswordForm";
@@ -17,7 +17,7 @@ const ForgotPasswordPage=()=>{
            navigate('/');
 
         } catch (error) {
-            console.error('Ha ocurrido un problema')
+            toast.error('Ha ocurrido un problema')
         }
     };
     return(
