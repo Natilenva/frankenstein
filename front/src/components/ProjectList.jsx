@@ -2,12 +2,14 @@ import PropTypes from 'prop-types';
 import { Project } from './Project';
 
 //recibe una prop, un array de objetos
-export const ProjectList = ({ projects }) => {
+export const ProjectList = ({ projects, removeProject }) => {
+    console.log('projects', projects);
+
     return projects.length ? (
         <ul>
             {projects.map((project) => (
                 <li key={project.project_id}>
-                    <Project project={project} />
+                    <Project project={project} removeProject={removeProject} />
                 </li>
             ))}
         </ul>
@@ -16,5 +18,6 @@ export const ProjectList = ({ projects }) => {
     );
 };
 ProjectList.propTypes = {
-    projects: PropTypes.any,
+    projects: PropTypes.array,
+    removeProject: PropTypes.function,
 };

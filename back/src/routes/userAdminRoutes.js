@@ -3,9 +3,8 @@ import authUser from '../middlewares/auth.js';
 
 import {
     createAdmin,
-    getAdmin,
-    updateAdmin,
-    deleteAdmin,
+    acceptCompany,
+    rejectCompany,
 } from '../controllers/admin/adminController.js';
 
 const router = express.Router();
@@ -15,10 +14,8 @@ const router = express.Router();
 //Creación de administrador
 router.post('/admin', authUser, createAdmin);
 
-router.get('/admin', authUser, getAdmin);
+router.get('/admin/validate/:id', acceptCompany);
 
-router.put('/admin', authUser, updateAdmin);
-
-router.delete('/admin', authUser, deleteAdmin);
+router.get('/admin/reject/:id', rejectCompany);
 
 export default router;

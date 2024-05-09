@@ -2,6 +2,7 @@ import { selectAllProjectsModel } from '../../models/projects/selectAllprojectsM
 const getAllProjectsController = async (req, res, next) => {
     try {
         const projects = await selectAllProjectsModel();
+        //console.log('HOLA', projects);
         res.send({
             status: 'ok',
             data: projects,

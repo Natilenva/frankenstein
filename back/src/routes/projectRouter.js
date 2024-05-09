@@ -9,13 +9,13 @@ import { deleteProjectController } from '../controllers/projects/deleteProjectCo
 import { getRegisterProjectsController } from '../controllers/projects/getRegisterProjectsController.js';
 import { getAllProjectsController } from '../controllers/projects/getAllProjectsController.js';
 const router = express.Router();
-
-router.get('/', getAllProjectsController); //(all projects en Home)
-router.get('/projects', getAllProjectsController);
+//Cambie ruta
+router.get('/allProjects', getAllProjectsController); //(all projects en Home)
+//router.get('/projects', getAllProjectsController);
 
 // router.get('/my', userAuth, getAllMyProjects);
 router.get('/project/:id', getProjectController);
-router.post('/newproject', authUser, newProjectController);
+router.post('/', authUser, newProjectController); // HomePage
 router.put('/projectupdate/:project_id', authUser, updateProjectController);
 router.delete('/project/:id', authUser, deleteProjectController);
 router.get('/register/:id/projects', getRegisterProjectsController);

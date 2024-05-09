@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { sendProjectService } from '../services';
 import { AuthContext } from '../context/AuthContext';
 import PropTypes from 'prop-types';
+
 export const NewProject = ({ addProject }) => {
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
@@ -11,8 +12,14 @@ export const NewProject = ({ addProject }) => {
         e.preventDefault();
         try {
             setSending(true);
+
             const data = new FormData(e.target);
+            console.log('e.target', e.target);
+
             const project = await sendProjectService({ data, token });
+
+            console.log('project', project); // ?
+
             addProject(project);
             e.target.reset();
             setImage(null);
@@ -29,6 +36,7 @@ export const NewProject = ({ addProject }) => {
                 <label htmlFor="title">Title</label>
                 <input type="title" id="title" name="title" required></input>
             </fieldset>
+
             <fieldset>
                 <label htmlFor="description">Description</label>
                 <input
@@ -37,6 +45,12 @@ export const NewProject = ({ addProject }) => {
                     name="description"
                 ></input>
             </fieldset>
+
+            <fieldset>
+                <label htmlFor="url">URL</label>
+                <input type="url" id="url" name="url"></input>
+            </fieldset>
+
             <fieldset>
                 <label>Image(optional)</label>
                 <input
