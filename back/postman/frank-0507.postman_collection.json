@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "65673cb8-6407-4a3b-aebb-09d797290ce1",
+		"_postman_id": "57eb4eaf-4bfc-438d-a5c0-3e0453f126b6",
 		"name": "frank-0507",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "11539769",
-		"_collection_link": "https://grey-shuttle-870223.postman.co/workspace/New-Team-Workspace~d599e7ad-0aad-4bcf-a098-0b53ac85bd32/collection/11539769-65673cb8-6407-4a3b-aebb-09d797290ce1?action=share&source=collection_link&creator=11539769"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32788703"
 	},
 	"item": [
 		{
@@ -33,17 +32,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/newquestion",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"newquestion"
-							]
-						}
+						"url": "http://localhost:3000/newquestion"
 					},
 					"response": []
 				},
@@ -71,18 +60,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/question/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"question",
-								"1"
-							]
-						}
+						"url": "http://localhost:3000/question/1"
 					},
 					"response": []
 				},
@@ -99,17 +77,7 @@
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNzE0NzQ5Mzc2LCJleHAiOjE3MTczNDEzNzZ9.qC2wCIE4kjsJf8QSIwbdj9sWuW-ucsBDXgBPxmyyNLw"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/questions",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"questions"
-							]
-						}
+						"url": "http://localhost:3000/questions"
 					},
 					"response": []
 				},
@@ -124,18 +92,7 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/getQuestion/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"getQuestion",
-								"2"
-							]
-						}
+						"url": "http://localhost:3000/getQuestion/2"
 					},
 					"response": []
 				},
@@ -150,19 +107,7 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/register/1/questions",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"register",
-								"1",
-								"questions"
-							]
-						}
+						"url": "http://localhost:3000/register/1/questions"
 					},
 					"response": []
 				}
@@ -222,18 +167,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:3000/myprofile/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"myprofile",
-								""
-							]
-						}
+						"url": "http://localhost:3000/myprofile/"
 					},
 					"response": []
 				},
@@ -242,18 +176,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/profile/2",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"profile",
-								"2"
-							]
-						}
+						"url": "http://localhost:3000/profile/2"
 					},
 					"response": []
 				},
@@ -308,18 +231,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:3000/profileupdate/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"profileupdate",
-								""
-							]
-						}
+						"url": "http://localhost:3000/profileupdate/"
 					},
 					"response": []
 				}
@@ -351,18 +263,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/response/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"response",
-								"1"
-							]
-						}
+						"url": "http://localhost:3000/response/1"
 					},
 					"response": []
 				}
@@ -394,17 +295,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/newcompany",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"newcompany"
-							]
-						}
+						"url": "http://localhost:3000/newcompany"
 					},
 					"response": []
 				},
@@ -432,17 +323,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/companynames",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"companynames"
-							]
-						}
+						"url": "http://localhost:3000/companynames"
 					},
 					"response": []
 				}
@@ -474,17 +355,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/newexpertskill",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"newexpertskill"
-							]
-						}
+						"url": "http://localhost:3000/newexpertskill"
 					},
 					"response": []
 				},
@@ -511,17 +382,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/newexpertskill",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"newexpertskill"
-							]
-						}
+						"url": "http://localhost:3000/newexpertskill"
 					},
 					"response": []
 				},
@@ -549,17 +410,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/expertskills",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"expertskills"
-							]
-						}
+						"url": "http://localhost:3000/expertskills"
 					},
 					"response": []
 				}
@@ -592,17 +443,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/technologies",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"technologies"
-							]
-						}
+						"url": "http://localhost:3000/technologies"
 					},
 					"response": []
 				}
@@ -649,17 +490,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:3000/newproject",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"newproject"
-							]
-						}
+						"url": "http://localhost:3000/newproject"
 					},
 					"response": []
 				},
@@ -674,18 +505,7 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/project/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"project",
-								"1"
-							]
-						}
+						"url": "http://localhost:3000/project/1"
 					},
 					"response": []
 				},
@@ -699,17 +519,7 @@
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/projects",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"projects"
-							]
-						}
+						"url": "http://localhost:3000/projects"
 					},
 					"response": []
 				},
@@ -728,18 +538,7 @@
 							"mode": "formdata",
 							"formdata": []
 						},
-						"url": {
-							"raw": "http://localhost:3000/project/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"project",
-								"3"
-							]
-						}
+						"url": "http://localhost:3000/project/3"
 					},
 					"response": []
 				},
@@ -779,18 +578,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:3000/projectupdate/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"projectupdate",
-								"1"
-							]
-						}
+						"url": "http://localhost:3000/projectupdate/1"
 					},
 					"response": []
 				},
@@ -805,19 +593,7 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/register/1/projects",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"register",
-								"1",
-								"projects"
-							]
-						}
+						"url": "http://localhost:3000/register/1/projects"
 					},
 					"response": []
 				}
@@ -837,19 +613,7 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/register/1/projects",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"register",
-								"1",
-								"projects"
-							]
-						}
+						"url": "http://localhost:3000/register/1/projects"
 					},
 					"response": []
 				},
@@ -868,18 +632,7 @@
 							"mode": "formdata",
 							"formdata": []
 						},
-						"url": {
-							"raw": "http://localhost:3000/project/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"project",
-								"3"
-							]
-						}
+						"url": "http://localhost:3000/project/3"
 					},
 					"response": []
 				},
@@ -924,18 +677,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:3000/eventupdate/4",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"eventupdate",
-								"4"
-							]
-						}
+						"url": "http://localhost:3000/eventupdate/4"
 					},
 					"response": []
 				},
@@ -950,18 +692,7 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/event/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"event",
-								"1"
-							]
-						}
+						"url": "http://localhost:3000/event/1"
 					},
 					"response": []
 				},
@@ -975,17 +706,7 @@
 								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzE0MDU4ODkwLCJleHAiOjE3MTY2NTA4OTB9.GU_QLuAtnrddUAPWCgtCcps_LfBo7McL5-sLV_IVLGg"
 							}
 						],
-						"url": {
-							"raw": "http://localhost:3000/events",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"events"
-							]
-						}
+						"url": "http://localhost:3000/events"
 					},
 					"response": []
 				},
@@ -1032,17 +753,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:3000/newevent",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"newevent"
-							]
-						}
+						"url": "http://localhost:3000/newevent"
 					},
 					"response": []
 				}
@@ -1071,17 +782,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/register",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"register"
-							]
-						}
+						"url": "http://localhost:3000/register"
 					},
 					"response": []
 				},
@@ -1099,17 +800,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/register",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"register"
-							]
-						}
+						"url": "http://localhost:3000/register"
 					},
 					"response": []
 				},
@@ -1118,18 +809,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/validate/14813247-0ea6-4627-9def-8a16f47db46f",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"validate",
-								"14813247-0ea6-4627-9def-8a16f47db46f"
-							]
-						}
+						"url": "http://localhost:3000/validate/95e76c64-0069-4e23-9342-61a9e2567ad1"
 					},
 					"response": []
 				}
@@ -1159,17 +839,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"login"
-							]
-						}
+						"url": "http://localhost:3000/login"
 					},
 					"response": []
 				},
@@ -1197,17 +867,7 @@
 								}
 							}
 						},
-						"url": {
-							"raw": "http://localhost:3000/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"login"
-							]
-						}
+						"url": "http://localhost:3000/login"
 					},
 					"response": []
 				}
@@ -1226,17 +886,25 @@
 						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzE1MDQwMTgzLCJleHAiOjE3MTc2MzIxODN9.FK9wndcRDE2BxtEeRSwaG2qwFUiSOuSUI3t_nwwAfqM"
 					}
 				],
-				"url": {
-					"raw": "http://localhost:3000/user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"user"
-					]
-				}
+				"url": "http://localhost:3000/user"
+			},
+			"response": []
+		},
+		{
+			"name": "recurso statico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/frankenstein.png"
+			},
+			"response": []
+		},
+		{
+			"name": "Not Found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/frank"
 			},
 			"response": []
 		}
