@@ -22,7 +22,7 @@ export const NewProject2 = ({ addProject }) => {
             //console.log('e.target', e.target);
 
             const project = await sendProjectService({ data, token });
-            console.log('project', project); // ! !!!!!!!!!!!!!!!
+            //console.log('project', project); // ! 
 
             addProject(project);
 
@@ -86,5 +86,5 @@ export const NewProject2 = ({ addProject }) => {
     );
 };
 NewProject2.propTypes = {
-    addProject: PropTypes.node,
+    addProject: PropTypes.func,
 };

@@ -1,4 +1,41 @@
+
+/* 
+getAllProjectsService: 
+con lógica de reintento para manejar situaciones en las que la conexión inicial puede fallar, 
+mecanismo de reintento simple utilizando un bucle try...catch y 
+un temporizador para esperar un período antes de volver a intentarlo
+*/
 export const getAllProjectsService = async () => {
+    const maxRetries = 3; // Número máximo de intentos
+    let retries = 0;
+
+    while (retries < maxRetries) {
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_BASE_URL}/allProjects`
+            );
+            //console.log('response getAllProjectsService: ', response);
+
+            const json = await response.json();
+
+            if (!response.ok) {
+                throw new Error(json.message);
+            }
+
+            return json.data;
+        } catch (error) {
+            console.error('Error fetching projects:', error);
+            retries++;
+            console.log(`Retrying... (${retries}/${maxRetries})`);
+            // Esperar 1 segundo antes de volver a intentarlo
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+    }
+
+    throw new Error('Failed to fetch projects after maximum retries.');
+};
+
+/* export const getAllProjectsService = async () => {
     const response = await fetch(
         `${import.meta.env.VITE_BASE_URL}/allProjects`
     );
@@ -11,7 +48,7 @@ export const getAllProjectsService = async () => {
     }
 
     return json.data;
-};
+}; */
 
 export const getSingleProjectService = async (id) => {
     const response = await fetch(

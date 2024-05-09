@@ -3,7 +3,7 @@ import { Project } from './Project';
 
 //recibe una prop, un array de objetos
 export const ProjectList = ({ projects, removeProject }) => {
-    console.log('projects', projects);
+    //console.log('projects', projects);
 
     return projects.length ? (
         <ul>
@@ -19,5 +19,5 @@ export const ProjectList = ({ projects, removeProject }) => {
 };
 ProjectList.propTypes = {
     projects: PropTypes.array,
-    removeProject: PropTypes.function,
+    removeProject: PropTypes.func,
 };

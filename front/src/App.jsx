@@ -26,7 +26,7 @@ function App() {
 
     return (
         <>
-            <Toaster position="top-right" />
+            <Toaster position="bottom-right" />
             <Header />
 
             <Routes>
