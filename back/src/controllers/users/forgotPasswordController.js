@@ -5,7 +5,7 @@ import { sendEmail } from '../../helpers/sendEmail.js';
 import { transporter } from '../../services/mailer.js';
 
 import selectUserByEmailModel from '../../models/users/selectUserByEmailModel.js';
-const { SECRET, PORT } = process.env;
+const { SECRET, PORTFRONT } = process.env;
 
 const forgotPasswordController = async (req, res, next) => {
     const { email } = req.body;
@@ -25,7 +25,7 @@ const forgotPasswordController = async (req, res, next) => {
     <h1>Hemos recibido su petición de reseteo de contraseña</h1>
     <p>Haga click en el enlace para actualizar su contraseña.</p>
 
-    <a href="http://localhost:${PORT}/reset-password/${user.register_id}/${token}">Activar cuenta</a>
+    <a href="http://localhost:${PORTFRONT}/reset-password/${user.register_id}/${token}">Activar cuenta</a>
     `;
     await sendEmail(email, subject, content);
     res.send({

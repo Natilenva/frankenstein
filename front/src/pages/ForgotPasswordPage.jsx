@@ -13,7 +13,7 @@ const ForgotPasswordPage=()=>{
             toast.success('Email enviado')
            authFP(email)
         } catch (error) {
-            toast.error('Ha ocurrido un problema')
+            console.error('Ha ocurrido un problema')
         }
     };
     return(

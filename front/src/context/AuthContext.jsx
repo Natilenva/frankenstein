@@ -10,7 +10,7 @@ export const AuthContext = createContext();
 
 import toast from 'react-hot-toast';
 
-import { forgotPassword } from '../services/userService';
+import { ResetPassword, forgotPassword } from '../services/userService';
 
 
 
@@ -69,6 +69,20 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const authRP =async (password, repeatPassword)=>{
+        try {
+
+            await ResetPassword(password, repeatPassword);
+        
+            toast.success('Contraseña restablecida')
+            navigate('/')
+            
+        } catch (err) {
+            toast.error(err.message);
+            
+        }
+    }
+
 
     // TODO Qué info queremos guardar además del token, la info del usuario ?
 
@@ -80,6 +94,7 @@ export const AuthProvider = ({ children }) => {
             token,
              setToken,
              authFP,
+             authRP,
              authLoading,
              setAuthLoading
             }}> 
