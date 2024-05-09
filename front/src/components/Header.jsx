@@ -70,7 +70,7 @@ export const Header = () => {
                     ):(
                         <div className="flex space-x-4">
                             <Link 
-                             to="/register"
+                             to="/login"
                              className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded">
                             <button onClick={logout}>
                             Cerrar sesión
