@@ -24,6 +24,8 @@ export const Header = () => {
                 </Link>
             </div>
 
+            <Auth />
+
             {/* Menú y botones en el lado derecho */}
             <nav className="lg:flex lg:items-center lg:space-x-4 flex-wrap justify-end">
                 {/* Contenedor del menú */}

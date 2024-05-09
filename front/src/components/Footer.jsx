@@ -1,7 +1,11 @@
 export const Footer = () => {
     return (
-        <footer>
-            <p> (c) 2024 FRANKESTEIN</p>
+        <footer className="bg-black text-white py-4">
+            <div className="container mx-auto flex justify-center items-center">
+                <div>
+                    <p className="text-sm"> (c) 2024 FRANKESTEIN</p>
+                </div>
+            </div>
         </footer>
-    )
-}
+    );
+};

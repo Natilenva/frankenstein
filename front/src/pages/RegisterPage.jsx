@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { registerUserService } from '../services';
 import { useNavigate } from 'react-router-dom'; // hook para redirigir
 import { toast } from 'react-hot-toast';
+
 export const RegisterPage = () => {
     const navigate = useNavigate(); //hook para redirigir
 
@@ -37,7 +38,7 @@ export const RegisterPage = () => {
     };
 
     return (
-        <section style={{ background: 'red', border: '4px dotted yellow' }}>
+        <section>
             <h1>Register</h1>
             {/* <p>Aquí irá el formulario de registro</p> */}
             {/* <form> */}
