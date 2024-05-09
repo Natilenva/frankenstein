@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import { getMyUserDataService } from '../services';
-
+import { toast } from 'react-hot-toast';
 //* Crear contexto global ---------------------------------------------
 
 export const AuthContext = createContext(); // objeto del contexto
@@ -43,6 +43,7 @@ export const AuthProviderComponent = ({ children }) => {
     const logout = () => {
         setToken('');
         setUser(null);
+        toast.success('Usuario deslogueado');
     };
 
     //exportamos al Context: token, user, login, logout

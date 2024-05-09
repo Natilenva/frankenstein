@@ -8,7 +8,8 @@ import { NewProject2 } from '../components/NewProject2';
 
 export const HomePage = () => {
     //useProjects es un custom hook q gestiona los tweets
-    const { projects, loading, error, addProject } = useProjects();
+    const { projects, loading, error, addProject, removeProject } =
+        useProjects();
     //console.log('projects', projects);
 
     //info del usu cuando se logea
@@ -21,11 +22,11 @@ export const HomePage = () => {
         <section>
             {user ? <NewProject2 addProject={addProject} /> : null}
             {/* //! si no hay un token previo no exite user */}
-            
+
             {/* {user ? <NewProject2 /> : null} */}
 
             <h1>Latest Projects </h1>
-            <ProjectList projects={projects} />
+            <ProjectList projects={projects} removeProject={removeProject} />
         </section>
     );
 };

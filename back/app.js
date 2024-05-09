@@ -6,10 +6,7 @@ import cors from 'cors';
 
 import routes from './src/routes/index.js';
 
-
 const { PORT } = process.env;
-
-
 
 const app = express();
 
@@ -28,7 +25,8 @@ app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 
 app.use('/uploads', express.static('./uploads'));
-
+app.use(express.static('./uploads'));
+app.use(express.static('./public'));
 app.use(routes);
 
 app.use((req, res) => {
