@@ -9,8 +9,11 @@ import { questionTechSelectFilterController } from '../controllers/questions/que
 import { getRegisterQuestionsController } from '../controllers/questions/getRegisterQuestionsController.js';
 import deleteQuestionsController from '../controllers/questions/deleteQuestionsController.js';
 import { getAllQuestionsController } from '../controllers/questions/getAllQuestionsController.js';
+import authUserOptionalController from '../middlewares/authUserOptionalController.js';
 const router = express.Router();
-router.get('/questions', getAllQuestionsController);
+
+router.get('/questions', authUserOptionalController, getAllQuestionsController);
+
 router.post('/newquestion', authUser, newQuestionController);
 
 router.get('/question/:id', authUser, questionSelectController);

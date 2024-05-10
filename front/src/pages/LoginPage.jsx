@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { loginUserService } from '../services';
 import { AuthContext } from '../context/AuthContext';
@@ -66,6 +67,15 @@ export const LoginPage = () => {
                 <button>Login</button>
                 {error ? <p>{error}</p> : null}
             </form>
+            <div className="flex space-x-4">
+                            <Link 
+                             to="/forgot-password"
+                             className=" hover:bg-green-700 text-white px-4 py-1 rounded">
+                            <button >
+                            Recuperar contraseña
+                            </button>
+                            </Link>
+                        </div>
         </section>
     );
 };
