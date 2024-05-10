@@ -17,9 +17,11 @@ import { HomePage } from './pages/HomePage';
 import { RegisterPage } from './pages/RegisterPage';
 import { LoginPage } from './pages/LoginPage';
 // import { ProjectPage } from './pages/ProjectPage';
-import { QuestionPage } from './pages/QuestionPage';
+
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Toaster } from 'react-hot-toast';
+import QuestionsPage from './pages/QuestionsPage';
+import QuestionDetailsPage from './pages/QuestionDetailsPage';
 
 function App() {
     //const [count, setCount] = useState(0)
@@ -39,7 +41,10 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
 
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/question/:id" element={<QuestionPage />} />
+
+                <Route path='/questions' element={<QuestionsPage/>}/>
+                
+                <Route path="/question/:id" element={<QuestionDetailsPage />} />
 
 
                 <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>

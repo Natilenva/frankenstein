@@ -37,7 +37,7 @@ export const Header = () => {
                         Proyectos
                     </Link>
                     <Link
-                        to="/getQuestion/2"
+                        to="/questions"
                         className="text-white hover:text-gray-300"
                     >
                         Preguntas
