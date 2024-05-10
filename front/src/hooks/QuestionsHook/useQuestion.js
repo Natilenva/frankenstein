@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 
-import { selectQuestionByIdService } from '../services/questionService';
+import { selectQuestionByIdService } from '../../services/questionService';
 
 const useQuestion = (question_id) => {
     

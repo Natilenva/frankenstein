@@ -30,7 +30,7 @@ const newQuestionController = async (req, res, next) => {
         // send response
         res.status(201).send({
             status: 'ok',
-            message: 'insert question in db',
+            message: 'Pregunta creada',
             data: {
                 questionId: id,
                 question_title,

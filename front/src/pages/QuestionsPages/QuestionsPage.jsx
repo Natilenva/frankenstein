@@ -1,9 +1,9 @@
-// import { Link } from "react-router-dom";
-import useQuestions from "../hooks/useQuestions";
+import { Link } from "react-router-dom";
+import useQuestions from "../../hooks/QuestionsHook/useQuestions.js";
 
-import Loading from "../components/loading";
-import SearchForm from "../forms/SearchQuestionForm";
-import QuestionListItem from "../components/QuestionListItem";
+import Loading from "../../components/loading";
+import SearchForm from "../../forms/QuestionsForms/SearchQuestionForm";
+import QuestionListItem from "../../components/QuestionsComponents/QuestionListItem";
 
 const QuestionsPage=()=>{
     const{
@@ -20,6 +20,17 @@ const QuestionsPage=()=>{
             <h2>Preguntas</h2>
 
             <SearchForm setSearchParams={setSearchParams} loading={loading}/>
+
+            <div className="lg:flex lg:items-center lg:space-x-4 flex-wrap justify-start">
+                <div className="lg:flex lg:items-center lg:space-x-4 flex-wrap justify-end">
+                        <Link
+                            to="/questions/newquestion"
+                            className="text-black hover:text-red-300 bg-green-500"
+                        >
+                            Hacer una pregunta
+                        </Link>
+                </div>
+            </div>
 
             <ul>
                 {questions.length < 1 && loading ? (

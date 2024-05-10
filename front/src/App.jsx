@@ -20,8 +20,9 @@ import { LoginPage } from './pages/LoginPage';
 
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Toaster } from 'react-hot-toast';
-import QuestionsPage from './pages/QuestionsPage';
-import QuestionDetailsPage from './pages/QuestionDetailsPage';
+import QuestionsPage from './pages/QuestionsPages/QuestionsPage';
+import QuestionDetailsPage from './pages/QuestionsPages/QuestionDetailsPage';
+import NewQuestionPage from './pages/QuestionsPages/NewQuestionPage';
 
 function App() {
     //const [count, setCount] = useState(0)
@@ -45,6 +46,8 @@ function App() {
                 <Route path='/questions' element={<QuestionsPage/>}/>
                 
                 <Route path="/question/:id" element={<QuestionDetailsPage />} />
+
+                <Route path='/questions/newquestion' element={<NewQuestionPage/>}/>
 
 
                 <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>

@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
-import { selectAllQuestionsService } from "../services/questionService";
+import { selectAllQuestionsService } from "../../services/questionService";
 
 
 const useQuestions = () => {

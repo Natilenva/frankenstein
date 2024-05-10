@@ -1,9 +1,9 @@
 
 import { useParams } from "react-router-dom";
-import useQuestion from "../hooks/useQuestion";
+import useQuestion from "../../hooks/QuestionsHook/useQuestion.js";
 
 
-import QuestionDetailsInfo from "../components/QuestionDetailsInfo";
+import QuestionDetailsInfo from "../../components/QuestionsComponents/QuestionDetailsInfo";
 
 const QuestionDetailsPage =()=>{
 
