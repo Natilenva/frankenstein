@@ -6,7 +6,7 @@ import moment from 'moment';
 
 
 // Inicializamos el componente.
-const QuestionDetailsInfo = ({ question_title, question_technology, question_description, createdAt }) => {
+const QuestionDetailsInfo = ({ question_title, question_technology, question_description, created_at }) => {
     return (
         <ul>
             <li>
@@ -21,7 +21,7 @@ const QuestionDetailsInfo = ({ question_title, question_technology, question_des
             
             <li>
                 <strong>Fecha de creación:</strong>
-                {moment(createdAt).format('DD/MM/YYYY [a las] HH:mm')}
+                {moment(created_at).format('DD/MM/YYYY [a las] HH:mm')}
             </li>
         </ul>
     );
@@ -32,7 +32,7 @@ QuestionDetailsInfo.propTypes = {
     question_title: PropType.string.isRequired,
     question_technology: PropType.string.isRequired,
     question_description: PropType.string.isRequired,
-    createdAt: PropType.string.isRequired,
+    created_at: PropType.string.isRequired,
 };
 
 export default QuestionDetailsInfo;
