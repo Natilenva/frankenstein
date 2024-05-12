@@ -3,10 +3,10 @@ import selectQuestionById from "../../models/questions/selectQuestionById.js";
 const questionSelectController = async (req, res, next) => {
 
     try {
-        const questionParamId = req.params.id;
+        const {id} = req.params;
   
         // select question
-        const questionSelected = await selectQuestionById(questionParamId);
+        const questionSelected = await selectQuestionById(id);
 
         // send response
         res.status(200).send({

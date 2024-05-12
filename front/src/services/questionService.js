@@ -13,8 +13,12 @@ export const selectAllQuestionsService= async (searchParams) =>{
     return body.data;
 };
 
-export const selectQuestionByIdService = async (question_id)=>{
-    const res=await fetch(`${VITE_BASE_URL}/question/${question_id}`);
+export const selectQuestionByIdService = async (id, token)=>{
+    const res=await fetch(`${VITE_BASE_URL}/question/${id}`,{
+    headers: {
+        Authorization: token,
+    }}
+    );
 
     const body = await res.json();
 
@@ -22,7 +26,7 @@ export const selectQuestionByIdService = async (question_id)=>{
         throw new Error(body.message);
     }
 
-    return body.data.question;
+    return body.data.questionSelected;
 };
 
 export const insertQuestionService= async({

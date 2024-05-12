@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 // Inicializamos el componente.
 const QuestionListItem = ({ question }) => {
     return (
-        <Link to={`/getQuestion/${question.id}`} >
+        <Link to={`/question/${question.question_id}`} >
             <li>
                 
                 <div>
