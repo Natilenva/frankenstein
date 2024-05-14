@@ -3,10 +3,25 @@ import PropType from 'prop-types';
 
 // Importamos las dependencias.
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+
+import { useContext } from 'react';
+import toast from 'react-hot-toast';
 
 
 // Inicializamos el componente.
 const QuestionDetailsInfo = ({ question_title, question_technology, question_description, created_at }) => {
+    
+    const {token}= useContext(AuthContext);
+
+    const navigete= useNavigate();
+
+    if(!token){
+        navigete('/login')
+        toast.error('Logeate para ver más')
+    }
+    
     return (
         <ul>
             <li>

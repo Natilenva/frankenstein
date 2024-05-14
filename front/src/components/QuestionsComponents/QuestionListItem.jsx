@@ -7,8 +7,11 @@ import moment from 'moment';
 // Importamos los componentes.
 import { Link } from 'react-router-dom';
 
+
+
 // Inicializamos el componente.
 const QuestionListItem = ({ question }) => {
+
     return (
         <Link to={`/question/${question.question_id}`} >
             <li>

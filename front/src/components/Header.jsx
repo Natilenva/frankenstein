@@ -12,7 +12,7 @@ export const Header = () => {
    //const {user, logout}= useContext(AuthContext);
 
     return (
-        <header className="bg-gray-400 p-4 lg:p-8 flex items-center justify-between shadow-md">
+        <header className="bg-black p-4 lg:p-8 flex items-center justify-between shadow-md">
             {/* Logo en el lado izquierdo */}
             <div className="flex items-center">
                 <Link to="/">
