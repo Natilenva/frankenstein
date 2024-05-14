@@ -1,0 +1,58 @@
+
+        <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 leading-[133%]">
+          <div className="text-lg font-medium text-black">
+            Debate con Frankie
+          </div>
+          <div className="flex gap-0.5 self-start py-1 pr-1 pl-2 text-xs text-white whitespace-nowrap bg-lime-600 rounded">
+            <div>Más...</div>
+            <img
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/5ab1a8ead598872309efb5cd3fc71653bc3339dafe2653901ab223cf0d2449a6?"
+              className="shrink-0 my-auto w-3 aspect-square"
+            />
+          </div>
+        </div>
+        <div className="flex gap-2 self-center mt-3.5 w-full max-w-[305px]">
+          <div className="justify-center items-center px-1.5 my-auto w-8 h-8 text-xl leading-8 text-center text-black whitespace-nowrap rounded-2xl bg-black bg-opacity-10 text-ellipsis">
+            ❓
+          </div>
+          <div className="flex flex-col flex-1 px-5">
+            <div className="text-sm leading-5 text-black underline">
+              Adaptación de web a usuarios invidentes
+            </div>
+            <div className="text-xs leading-4 text-black text-opacity-50">
+              Buenas, me preguntan aquí que hay que hacer para adaptar una web a
+              usuarios invidentes...
+            </div>
+          </div>
+        </div>
+        <img
+          loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/f306872d8e016d02c9ad87ee9a7234e7e19052a508967c83df4eeb4f5a074a2f?"
+          className="self-center mt-1.5 w-full border border-solid border-black border-opacity-10 max-w-[305px] stroke-[1px] stroke-black stroke-opacity-10"
+        />
+        <div className="flex gap-5 justify-between py-1.5 pr-10 pl-9 mt-1.5 w-full bg-black">
+          <div className="flex gap-5 justify-between self-start">
+            <img
+              loading="lazy"
+              srcSet="..."
+              className="shrink-0 aspect-[0.58] w-[29px]"
+            />
+            <img
+              loading="lazy"
+              srcSet="..."
+              className="shrink-0 aspect-[0.54] w-[27px]"
+            />
+          </div>
+          <img
+            loading="lazy"
+            srcSet="..."
+            className="shrink-0 aspect-[0.55] w-[29px]"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+

@@ -1,27 +1,44 @@
-import { useParams } from "react-router-dom";
-import { ErrorMessage } from "../components/ErrorMessage";
-import useProject from "../hooks/useProject";
-import { Project } from "../components/Project";
 
-export const ProjectPage = () =>{
+import { useContext } from 'react';
+import { ErrorMessage } from '../components/ErrorMessage';
+//import { NewProject } from '../components/NewProject';
+import { ProjectList } from '../components/ProjectList';
+import useProjects from '../hooks/useProjects';
+import { AuthContext } from '../context/AuthContext';
+import { NewProject2 } from '../components/NewProject2';
 
-  //const params = useParams();
-  //console.log(params);
+export const ProjectPage = () => {
+    //useProjects es un custom hook q gestiona los tweets
+    const { projects, loading, error, addProject, removeProject } =
+        useProjects();
+    //console.log('projects', projects);
 
-  const { id } = useParams();
-  const { project, loading, error} = useProject(id);
 
-  if (loading) return <p>Cargando projects...</p>;
-  if (error) return <ErrorMessage message={error} />;
+    //info del usu cuando se logea
+    const { user } = useContext(AuthContext);
+
+    if (loading) return <p>cargando projects...</p>;
+    if (error) return <ErrorMessage message={error} />;
 
     return (
-      <section>
-          <h1>ProjectPage</h1>
-          {/* <p>aquí iría un project</p>  */}
-          <Project project={project} />
-      </section>
-    )
-  }
-  
-  
-  
+        <main >
+          
+                        <section>
+                    
+                            {user ? <NewProject2 addProject={addProject} /> : null}
+                            {/* //! si no hay un token previo no exite user */}
+
+                            {/* {user ? <NewProject2 /> : null} */}
+
+                            <h1>Latest Projects </h1>
+
+                            <ProjectList projects={projects} removeProject={removeProject} />
+                           
+                            
+                           
+                        
+                        </section>
+   
+        </main>
+    );
+};
