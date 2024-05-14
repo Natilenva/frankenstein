@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { Project } from './Project';
 
-
 //recibe una prop, un array de objetos
 export const ProjectList = ({ projects, removeProject }) => {
-    //console.log('projects', projects);
+    
+
 
     return projects.length ? (
         <main>
@@ -16,18 +16,19 @@ export const ProjectList = ({ projects, removeProject }) => {
            
             <div className="flex gap-0 px-5 mt-2">
             <div className="flex gap-2 py-px">
-                
-                    
-            {projects.map((project) => (
-             
-                <li key={project.project_id} >
-                    <Project project={project} removeProject={removeProject} />
-                </li>
-      
-
-              
-            ))}
                    
+                                {projects.map((project) => (
+                                
+                                    <li key={project.project_id} >
+                                        <Project project={project} removeProject={removeProject} />
+                                    </li>
+                        
+
+                                
+                                ))}
+                      
+
+          
             </div>
              </div>
              </div>

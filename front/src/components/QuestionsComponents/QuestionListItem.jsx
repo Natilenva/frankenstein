@@ -15,7 +15,7 @@ const QuestionListItem = ({ question }) => {
     return (
     <section>
          <div className="flex gap-2 self-center mt-3.5 w-full max-w-[305px]">
-        <div className="justify-center items-center px-1.5 my-auto w-8 h-8 text-xl leading-8 text-center text-white whitespace-nowrap rounded-2xl bg-black bg-opacity-10 text-ellipsis">
+        <div className="justify-center items-center px-1.5 my-auto w-8 h-8 text-xl leading-8 text-center text-white whitespace-nowrap rounded-2xl bg-white bg-opacity-10 text-ellipsis">
             ❓
         </div>
         <div className="flex flex-col flex-1 px-5">
