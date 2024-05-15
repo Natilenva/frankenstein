@@ -7,8 +7,8 @@ import { Routes, Route } from 'react-router-dom';
 
 //* components q siempre se ven
 
-import ForgotPasswordPage from './pages/ForgotPasswordPage'
-import { ResetPasswordPage } from './pages/ResetPasswordPage'
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import { ResetPasswordPage } from './pages/ResetPasswordPage';
 
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
@@ -23,6 +23,9 @@ import { Toaster } from 'react-hot-toast';
 import QuestionsPage from './pages/QuestionsPages/QuestionsPage';
 import QuestionDetailsPage from './pages/QuestionsPages/QuestionDetailsPage';
 import NewQuestionPage from './pages/QuestionsPages/NewQuestionPage';
+import { CuentaPage } from './pages/CuentaPage';
+import { NewProfile } from './components/ProfileComponents/NewProfile';
+import { UpdateProfile } from './pages/UpdateProfile';
 
 function App() {
     //const [count, setCount] = useState(0)
@@ -35,25 +38,32 @@ function App() {
             <Routes>
                 <Route path="/" element={<HomePage />} />
 
+                {/* <Route path="/" element={<ProjectPage />} /> */}{' '}
+                {/* //! ???  */}
+
+
 
                 <Route path="/projects" element={<ProjectPage />} />
-          
+
                 <Route path="/register" element={<RegisterPage />} />
-
                 <Route path="/login" element={<LoginPage />} />
-
-                <Route path='/questions' element={<QuestionsPage/>}/>
-                
+                <Route path="/profile/:id" element={<CuentaPage />} />
+                <Route path="/questions" element={<QuestionsPage />} />
                 <Route path="/question/:id" element={<QuestionDetailsPage />} />
-
-                <Route path='/questions/newquestion' element={<NewQuestionPage/>}/>
-
-
-                <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>
-
-                <Route path="/reset-password/:id/:token" element={<ResetPasswordPage/>}/>
-
-
+                <Route path="/newprofile" element={<NewProfile />} />
+                <Route path="/updateprofile" element={<UpdateProfile />} />
+                <Route
+                    path="/questions/newquestion"
+                    element={<NewQuestionPage />}
+                />
+                <Route
+                    path="/forgot-password"
+                    element={<ForgotPasswordPage />}
+                />
+                <Route
+                    path="/reset-password/:id/:token"
+                    element={<ResetPasswordPage />}
+                />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
 

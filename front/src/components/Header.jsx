@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Auth } from './Auth';
+// import { useProfile } from '../hooks/profilehook/useProfile';
+import { AuthContext } from '../context/AuthContext';
 
-// test context:
-//import { useContext } from "react"
-//import { AuthContext } from "../context/AuthContext"
+import { useContext } from 'react';
 
 export const Header = () => {
-    //test context:
-    /* const { color } = useContext(AuthContext);
-   console.log(color); */
-   //const {user, logout}= useContext(AuthContext);
-
+    const { user } = useContext(AuthContext);
+    // const { profile } = useProfile();
+    console.log(user);
     return (
         <header className="bg-black p-4 lg:p-8 flex items-center justify-between shadow-md">
             {/* Logo en el lado izquierdo */}
@@ -44,6 +42,13 @@ export const Header = () => {
                     </Link>
                     <Link to="/" className="text-white hover:text-gray-300">
                         Crear
+                    </Link>
+
+                    <Link
+                        to={`/profile/${user}`}
+                        className="text-white hover:text-gray-300"
+                    >
+                        Mi Cuenta
                     </Link>
 
                     <input
@@ -90,7 +95,6 @@ export const Header = () => {
             </div>*/}
 
             <Auth />
-
         </header>
     );
 };
