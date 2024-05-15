@@ -9,7 +9,7 @@ export const Auth = () => {
     // Si existe user: 
     return user ? (
         <>
-        <p>Logged in as {user.email} </p> 
+        <p className="text-white">Logged in as {user.email} </p> 
         <div className="flex space-x-4">
             <Link 
                 to="/"

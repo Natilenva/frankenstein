@@ -16,8 +16,14 @@ const QuestionsPage=()=>{
     }= useQuestions();
 
     return(
+       
         <main>
-            <h2>Preguntas</h2>
+        <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 leading-[133%] ">
+        <div className="text-lg font-medium text-black">
+            Pregunta a Papi Frankie
+        </div>
+        </div>
+     
 
             <SearchForm setSearchParams={setSearchParams} loading={loading}/>
 
@@ -25,13 +31,13 @@ const QuestionsPage=()=>{
                 <div className="lg:flex lg:items-center lg:space-x-4 flex-wrap justify-end">
                         <Link
                             to="/questions/newquestion"
-                            className="text-black hover:text-red-300 bg-green-500"
+                            className="flex gap-0.5 self-start py-1 pr-1 pl-2 text-xs text-white bg-lime-600 rounded"
                         >
                             Hacer una pregunta
                         </Link>
                 </div>
             </div>
-
+            <div className="bg-black">
             <ul>
                 {questions.length < 1 && loading ? (
                     <Loading/>
@@ -45,10 +51,12 @@ const QuestionsPage=()=>{
                     })
                 )}
             </ul>
+        
             
             <div >
+          
                 <button
-                   
+                    
                     onClick={() => {
                         // Establecemos el query param con la página previa.
                         setSearchParams(
@@ -60,6 +68,7 @@ const QuestionsPage=()=>{
                     disabled={!prevPage}>
                     ◀️
                 </button>
+               
                 <span>{currentPage}</span>
                 <button
                    
@@ -75,8 +84,9 @@ const QuestionsPage=()=>{
                     ▶️
                 </button>
             </div>
-
+            </div>           
         </main>
+      
     )
 }
 
