@@ -8,7 +8,7 @@ const authUser = (req, res, next) => {
         if (!authorization) {
             throw generateError('Falta cabecera de autorización', 401);
         }
-
+        // Comprobamos que el token sea correcto
         let token;
         try {
             token = jwt.verify(authorization, process.env.SECRET);
@@ -16,6 +16,7 @@ const authUser = (req, res, next) => {
         } catch {
             throw generateError('token no válido', 401);
         }
+        // Metemos la info del token en la request para usarla en el controlador
         req.userId = token.id;
 
         next(); 
