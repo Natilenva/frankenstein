@@ -13,7 +13,7 @@ export const Auth = () => {
         <div className="flex space-x-4">
             <Link 
                 to="/"
-                className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded">
+                className="bg-lime-600 hover:bg-lime-600 text-white px-4 py-1 rounded">
                 {/* <button onClick={logout}>
                 Cerrar sesión
                 </button> */}
@@ -41,13 +41,13 @@ export const Auth = () => {
                 <div className="flex space-x-4">
                     <Link
                         to="/login"
-                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded"
+                        className="bg-lime-600 bg-lime-600 text-white px-4 py-1 rounded"
                     >
                         Login
                     </Link>
                     <Link
                         to="/register"
-                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded"
+                        className="bg-lime-600 bg-lime-600 text-white px-4 py-1 rounded"
                     >
                         Register
                     </Link>
