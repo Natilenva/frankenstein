@@ -1,6 +1,6 @@
 import PropType from 'prop-types';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -8,8 +8,12 @@ import Loading from '../../components/loading';
 
 import {toast} from 'react-hot-toast';
 
-const NewQuestionForm = ({insertQuestionService, token})=>{
+import { insertQuestionService } from '../../services/questionService';
+import { AuthContext } from '../../context/AuthContext';
+
+const NewQuestionForm = ()=>{
     const navigate= useNavigate();
+    const {token}= useContext(AuthContext);
 
     const [question_title, setQuestion_title]= useState('');
     const [question_description, setQuestion_description]= useState('');
@@ -21,20 +25,16 @@ const NewQuestionForm = ({insertQuestionService, token})=>{
 
         try {
             e.preventDefault();
+            const data= new FormData(e.target);
+            await insertQuestionService({data , token})
+
 
         setLoading(true);
-        
 
-        const message= await insertQuestionService({
-            question_title,
-            question_description,
-            technology,
-            token,
-        });
 
-        toast.success(message);
+        toast.success(data);
 
-        navigate('/')
+        navigate('/questions')
             
         } catch (err) {
             toast.error(err.message)
