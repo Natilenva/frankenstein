@@ -26,6 +26,8 @@ import NewQuestionPage from './pages/QuestionsPages/NewQuestionPage';
 import { CuentaPage } from './pages/CuentaPage';
 import { NewProfile } from './components/ProfileComponents/NewProfile';
 import { UpdateProfile } from './pages/UpdateProfile';
+import { Crear } from './pages/Crear';
+import { ProjectsPage } from './pages/ProjectsPage';
 
 function App() {
     //const [count, setCount] = useState(0)
@@ -37,16 +39,15 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
-
-                {/* <Route path="/" element={<ProjectPage />} /> */}{' '}
-                {/* //! ???  */}
-
-
-
-                <Route path="/projects" element={<ProjectPage />} />
-
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
+
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/project/:id" element={<ProjectPage />} />
+                <Route path="/crear" element={<Crear />} />
+                {/* <Route path="/" element={<ProjectPage />} /> */}
+
+
                 <Route path="/profile/:id" element={<CuentaPage />} />
                 <Route path="/questions" element={<QuestionsPage />} />
                 <Route path="/question/:id" element={<QuestionDetailsPage />} />

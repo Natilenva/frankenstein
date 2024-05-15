@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import PropTypes from 'prop-types';
 
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 export const NewProject2 = ({ addProject }) => {
     /* export const NewProject2 = () => { */
@@ -11,6 +12,9 @@ export const NewProject2 = ({ addProject }) => {
     const [sending, setSending] = useState(false);
     const [image, setImage] = useState();
     const { token } = useContext(AuthContext);
+
+    //redireccionar
+    const navigate = useNavigate();
 
     const handleForm = async (e) => {
         e.preventDefault();
@@ -25,6 +29,7 @@ export const NewProject2 = ({ addProject }) => {
             //console.log('project', project); // ! 
 
             addProject(project);
+            navigate('/');
 
             e.target.reset();
             setImage(null);
@@ -38,7 +43,7 @@ export const NewProject2 = ({ addProject }) => {
     };
     return (
         <form onSubmit={handleForm}>
-            <h1>Add new Project</h1>
+            <h1 className="text-2xl font-normal ">Add new Project</h1>
 
             <fieldset>
                 <label htmlFor="project_title">Title</label>
@@ -79,7 +84,7 @@ export const NewProject2 = ({ addProject }) => {
                 ) : null}
             </fieldset>
 
-            <button>Send Project</button>
+            <button className=' bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded'>Send Project</button>
             {sending ? <p>Sending project</p> : null}
             {error ? <p>{error}</p> : null}
         </form>

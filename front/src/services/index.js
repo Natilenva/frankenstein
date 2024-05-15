@@ -55,7 +55,7 @@ export const getSingleProjectService = async (id) => {
         `${import.meta.env.VITE_BASE_URL}/project/${id}`
     );
 
-    console.log('response getSingleProjectService: ', response);
+    //console.log('response getSingleProjectService: ', response);
 
     const json = await response.json();
 
@@ -114,7 +114,7 @@ export const sendProjectService = async ({ data, token }) => {
             Authorization: token,
         },
     });
-    console.log(response);
+    //console.log(response);
 
     const json = await response.json();
 
