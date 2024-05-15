@@ -93,6 +93,7 @@ const createTables = async () => {
                 response_text text NOT NULL,
                 register_id INT,
                 question_id INT NOT NULL,
+                UNIQUE(register_id, response_id),
                 FOREIGN KEY (question_id) REFERENCES questions(question_id),
                 FOREIGN KEY (register_id) REFERENCES register (register_id) 
             ); 

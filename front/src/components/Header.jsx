@@ -31,7 +31,7 @@ export const Header = () => {
                 {/* Contenedor del menú */}
                 <div className="hidden lg:flex lg:items-center lg:space-x-4 flex-wrap justify-end">
                     <Link
-                        to="/allProjects"
+                        to="/projects"
                         className="text-white hover:text-gray-300"
                     >
                         Proyectos

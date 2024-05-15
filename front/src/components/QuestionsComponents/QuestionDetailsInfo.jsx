@@ -23,8 +23,10 @@ const QuestionDetailsInfo = ({ question_title, question_technology, question_des
     }
     
     return (
-        <ul>
-            <li>
+  
+        <ul >
+          
+            <li >
                 <strong>Pregunta:</strong> {question_title}
             </li>
             <li>
@@ -39,6 +41,7 @@ const QuestionDetailsInfo = ({ question_title, question_technology, question_des
                 {moment(created_at).format('DD/MM/YYYY [a las] HH:mm')}
             </li>
         </ul>
+     
     );
 };
 
