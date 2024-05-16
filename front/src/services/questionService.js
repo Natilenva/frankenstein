@@ -30,23 +30,15 @@ export const selectQuestionByIdService = async (id, token)=>{
 };
 
 export const insertQuestionService= async({
-    question_title,
-    question_description,
-    technology, 
-    userId,
+  data, token
 })=>{
-    const formData = new FormData();
 
-    formData.append('question_title', question_title);
-    formData.append('question_description', question_description);
-    formData.append('technology', technology);
-
-    const res=  fetch(`${VITE_BASE_URL}/newquestion`, {
+    const res= await fetch(`${VITE_BASE_URL}/newquestion`, {
         method: 'POST',
         headers: {
-            Authorization: userId,
+            Authorization: token,
         },
-        body: formData,
+        body: data,
     });
 
     const body= await res.json();

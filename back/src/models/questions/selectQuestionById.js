@@ -8,7 +8,25 @@ const selectQuestionById = async (id) => {
       const connection = await getConnection();
 
       // select question
-      const [result] = await connection.query('SELECT * FROM questions q LEFT JOIN responses r ON r.question_id = q.question_id WHERE q.question_id = ?', [id]);
+      const [result] = await connection.query(
+        `SELECT 
+          q.question_id,
+          q.question_title,
+          q.question_description,
+          q.technology,
+          q.created_at,
+          q.modified_at,
+          q.user_id, 
+          r.response_id,
+          r.response_text,
+          v.vote_response_id,
+          v.vote_value    
+        FROM questions q
+        LEFT JOIN responses r ON r.question_id = q.question_id
+        LEFT JOIN votes v ON v.response_id = r.response_id
+        WHERE q.question_id = 1;
+         `,
+         [id]);
 
       // if not found
       if (result.length === 0) {

@@ -40,7 +40,7 @@ export const Header = () => {
                     >
                         Preguntas
                     </Link>
-                    <Link to="/" className="text-white hover:text-gray-300">
+                    <Link to="/crear" className="text-white hover:text-gray-300">
                         Crear
                     </Link>
 

@@ -6,7 +6,7 @@ const selectProjectByModel = async (project_id) => {
 
     connection = await getConnection();
     const [project] = await connection.query(
-        `SELECT project_title, project_description, project_photo, project_url FROM projects WHERE project_id = ?`,
+        `SELECT project_id, project_title, project_description, project_photo, project_url, created_at FROM projects WHERE project_id = ?`,
         [project_id]
     );
 

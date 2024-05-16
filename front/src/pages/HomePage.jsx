@@ -10,7 +10,7 @@ import Loading from "./../components/loading";
 import { Link } from 'react-router-dom';
 
 export const HomePage = () => {
-    //useProjects es un custom hook q gestiona los tweets
+    //useProjects es un custom hook q gestiona los projects
     const { projects, loading, error, removeProject } =
         useProjects();
     //console.log('projects', projects);

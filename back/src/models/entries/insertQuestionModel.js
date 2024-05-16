@@ -6,7 +6,7 @@ const insertQuestionModel = async (question_title, question_description, technol
     const connection = await getConnection();
 
     // insert question in db
-    const [result, fields] = await connection.query(
+    const [result] = await connection.query(
         `INSERT INTO questions (question_title, question_description, technology, user_id) VALUES (?,?,?,?)`,
         [question_title, question_description, technology, userId]
     );

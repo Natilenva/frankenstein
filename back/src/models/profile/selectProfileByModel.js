@@ -6,7 +6,7 @@ const selectProfileByModel = async (profile_id) => {
 
     connection = await getConnection();
     const [profile] = await connection.query(
-        `SELECT register_id, profile_name, profile_lastname, profile_username, birthdate, avatar FROM profile WHERE profile_id = ?`,
+        `SELECT register_id, profile_name, profile_lastname, profile_username, birthdate, profile_role, avatar FROM profile WHERE profile_id = ?`,
         [profile_id]
     );
 
