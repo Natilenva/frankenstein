@@ -10,7 +10,7 @@ export const Header = () => {
     // const { profile } = useProfile();
     console.log(user);
     return (
-        <header className="bg-black p-4 lg:p-8 flex items-center justify-between shadow-md">
+        <header className="bg-black p-4 fixed top-0 w-full lg:p-8 flex items-center justify-between shadow-md">
             {/* Logo en el lado izquierdo */}
             <div className="flex items-center">
                 <Link to="/">
@@ -40,7 +40,10 @@ export const Header = () => {
                     >
                         Preguntas
                     </Link>
-                    <Link to="/crear" className="text-white hover:text-gray-300">
+                    <Link
+                        to="/crear"
+                        className="text-white hover:text-gray-300"
+                    >
                         Crear
                     </Link>
 
@@ -54,7 +57,7 @@ export const Header = () => {
                     <input
                         type="text"
                         placeholder="Buscar"
-                        className="bg-gray-000 text-white px-2 py-1 rounded focus:outline-none focus:bg-gray-900"
+                        className="text-white bg-gray-800 px-2 py-1 rounded focus:outline-none focus:bg-gray-900"
                     />
                 </div>
 
