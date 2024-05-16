@@ -4,7 +4,15 @@ import { loginUserService } from '../services';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+// import { useForm } from 'react-hook-form';
+// import { zodResolver } from '@hookform/resolvers/zod';
+// import { loginSchema } from '../../schemas/loginSchema ';
 export const LoginPage = () => {
+    // const { register, formState } = useForm({
+    //     mode: 'onTouched',
+    //     resolver: zodResolver(loginSchema),
+    // });
+    // const { errors, isValid } = formState;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -58,6 +66,9 @@ export const LoginPage = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         className="w-full border rounded py-2 px-3 mb-2"
                     />
+                    {/* <p className="h-4 text-sm text-rose-500">
+                        {errors.email?.message}
+                    </p> */}
                 </fieldset>
 
                 <fieldset className="mb-4 relative flex">
@@ -80,6 +91,9 @@ export const LoginPage = () => {
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full border rounded py-2 px-3 mb-2"
                     />
+                    {/* <p className="h-4 text-sm text-rose-500">
+                        {errors.password?.message}
+                    </p> */}
                 </fieldset>
 
                 <p className="text-sm text-center mb-4">

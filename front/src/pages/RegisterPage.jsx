@@ -3,9 +3,16 @@ import { registerUserService } from '../services';
 import { useNavigate } from 'react-router-dom'; // hook para redirigir
 import { toast } from 'react-hot-toast';
 
+// import { useForm } from 'react-hook-form';
+// import { zodResolver } from '@hookform/resolvers/zod';
+// import { registerSchema } from '../../schemas/registerSchema';
 export const RegisterPage = () => {
     const navigate = useNavigate(); //hook para redirigir
-
+    // const { register, formState } = useForm({
+    //     mode: 'onTouched',
+    //     resolver: zodResolver(registerSchema),
+    // });
+    // const { errors, isValid } = formState;
     //un estado para cada campo
     const [email, setEmail] = useState('');
     const [pass1, setPass1] = useState('');
@@ -61,7 +68,11 @@ export const RegisterPage = () => {
                         required
                         //un event en cada input para q cuando actualice el campo se actualice el estado
                         onChange={(e) => setEmail(e.target.value)}
+                        // {...register('email')}
                     />
+                    {/* <p className="h-4 text-sm text-rose-500">
+                        {errors.email?.message}
+                    </p> */}
                 </fieldset>
                 <fieldset className="mb-4">
                     <label htmlFor="pass1" className="block mb-1">
@@ -75,7 +86,11 @@ export const RegisterPage = () => {
                         /* value={pass1} */
                         required
                         onChange={(e) => setPass1(e.target.value)}
+                        // {...register('password')}
                     />
+                    {/* <p className="h-4 text-sm text-rose-500">
+                        {errors.password?.message}
+                    </p> */}
                 </fieldset>
                 <p className="text-sm text-center mb-4">
                     Al hacer clic en registrarte certifico que tengo 16 años o

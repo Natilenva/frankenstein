@@ -25,7 +25,7 @@ const updateProfileController = async (req, res, next) => {
             const uploadsDir = path.join(__dirname, '../../../uploads');
             await createPathIfNotExists(uploadsDir);
             const image = sharp(req.files.avatar.data);
-            image.resize(500);
+            image.resize(150);
             imageFileName = `${nanoid(24)}.jpg`;
             await image.toFile(path.join(uploadsDir, imageFileName));
         }
