@@ -4,7 +4,15 @@ import { loginUserService } from '../services';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+// import { useForm } from 'react-hook-form';
+// import { zodResolver } from '@hookform/resolvers/zod';
+// import { loginSchema } from '../../schemas/loginSchema ';
 export const LoginPage = () => {
+    // const { register, formState } = useForm({
+    //     mode: 'onTouched',
+    //     resolver: zodResolver(loginSchema),
+    // });
+    // const { errors, isValid } = formState;
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -49,7 +57,11 @@ export const LoginPage = () => {
                         value={email}
                         required
                         onChange={(e) => setEmail(e.target.value)}
+                        // {...register('email')}
                     />
+                    {/* <p className="h-4 text-sm text-rose-500">
+                        {errors.email?.message}
+                    </p> */}
                 </fieldset>
 
                 <fieldset>
@@ -61,21 +73,29 @@ export const LoginPage = () => {
                         value={password}
                         required
                         onChange={(e) => setPassword(e.target.value)}
+                        // {...register('password')}
                     />
+                    {/* <p className="h-4 text-sm text-rose-500">
+                        {errors.password?.message}
+                    </p> */}
                 </fieldset>
 
-                <button>Login</button>
+                <button
+                    // disabled={!isValid}
+                    className="button disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                    Login
+                </button>
                 {error ? <p>{error}</p> : null}
             </form>
             <div className="flex space-x-4">
-                            <Link 
-                             to="/forgot-password"
-                             className=" hover:bg-green-700 text-white px-4 py-1 rounded">
-                            <button >
-                            Recuperar contraseña
-                            </button>
-                            </Link>
-                        </div>
+                <Link
+                    to="/forgot-password"
+                    className=" hover:bg-green-700 text-white px-4 py-1 rounded"
+                >
+                    <button>Recuperar contraseña</button>
+                </Link>
+            </div>
         </section>
     );
 };

@@ -8,7 +8,7 @@ import { useContext } from 'react';
 export const Header = () => {
     const { user } = useContext(AuthContext);
     // const { profile } = useProfile();
-    console.log(user);
+    // console.log(user.register_id);
     return (
         <header className="bg-black p-4 lg:p-8 flex items-center justify-between shadow-md">
             {/* Logo en el lado izquierdo */}
@@ -44,12 +44,14 @@ export const Header = () => {
                         Crear
                     </Link>
 
-                    <Link
-                        to={`/profile/${user}`}
-                        className="text-white hover:text-gray-300"
-                    >
-                        Mi Cuenta
-                    </Link>
+                    {user && (
+                        <Link
+                            to={`/profile/${user.register_id}`}
+                            className="text-white hover:text-gray-300"
+                        >
+                            Mi Cuenta
+                        </Link>
+                    )}
 
                     <input
                         type="text"

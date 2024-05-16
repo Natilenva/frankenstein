@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { updateProfileService } from '../services/profileServices';
+
 export const UpdateProfile = () => {
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
@@ -68,7 +69,9 @@ export const UpdateProfile = () => {
                         </figure>
                     ) : null}
                 </fieldset>
-                <button>Actualizar perfil</button>
+                <button className="text-white bg-lime-600 rounded p-1 m-4">
+                    Actualizar perfil
+                </button>
                 {sending ? <p>Sending project</p> : null}
                 {error ? <p>{error}</p> : null}
             </form>
