@@ -37,6 +37,7 @@ export const CuentaPage = () => {
                     </h3>
                     {avatar ? (
                         <img
+                            className="m-4"
                             src={`${
                                 import.meta.env.VITE_BASE_URL
                             }/uploads/${avatar}`}
@@ -47,7 +48,12 @@ export const CuentaPage = () => {
                     )}
                 </article>
             )}
-            <Link to={'/updateprofile'}>Actualizar perfil</Link>
+            <Link
+                className="text-white bg-lime-600 rounded p-2 m-4"
+                to={'/updateprofile'}
+            >
+                Modificar perfil
+            </Link>
         </>
     );
 };
