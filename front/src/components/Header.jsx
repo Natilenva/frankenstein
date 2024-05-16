@@ -10,7 +10,7 @@ export const Header = () => {
     // const { profile } = useProfile();
     // console.log(user.register_id);
     return (
-        <header className="bg-black p-4 fixed top-0 w-full lg:p-8 flex items-center justify-between shadow-md">
+        <header className="bg-black p-4 top-0 w-full lg:p-8 flex items-center justify-between shadow-md">
             {/* Logo en el lado izquierdo */}
             <div className="flex items-center">
                 <Link to="/">
@@ -40,12 +40,15 @@ export const Header = () => {
                     >
                         Preguntas
                     </Link>
-                    <Link
-                        to="/crear"
-                        className="text-white hover:text-gray-300"
-                    >
-                        Crear
-                    </Link>
+
+                    {user && (
+                        <Link
+                            to="/crear"
+                            className="text-white hover:text-gray-300"
+                        >
+                            Crear
+                        </Link>
+                    )}
 
                     {user && (
                         <Link

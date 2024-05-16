@@ -26,7 +26,7 @@ import NewQuestionPage from './pages/QuestionsPages/NewQuestionPage';
 import { CuentaPage } from './pages/CuentaPage';
 import { NewProfile } from './components/ProfileComponents/NewProfile';
 import { UpdateProfile } from './pages/UpdateProfile';
-import { Crear } from './pages/Crear';
+import { Crear } from './pages/CrearPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 
 function App() {

@@ -80,7 +80,7 @@ export const Project = ({ project, removeProject }) => {
                 <section>
                     {user && user.register_id === project.register_id ? (
                         <button
-                            className="mt-1 text-xs font-medium leading-6 text-stone-700"
+                        className='bg-orange-500 hover:bg-red-700 text-white px-4 py-1 rounded'
                             onClick={() => {
                                 deleteProject(project.project_id);
                             }}
