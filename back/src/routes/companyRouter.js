@@ -14,6 +14,6 @@ Implementar un middleware de ruta que no deje llegar al controlador si el usuari
 router.post('/newcompany', authUser, isUserCompany , newCompanyController);
 
 //* endpoint GET listado empresas
-router.get('/companynames', authUser, companySelectController);
+router.get('/companynames', authUser, isUserCompany, companySelectController);
 
 export default router;
