@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import useProjects from "../hooks/useProjects";
-import { NewProject2 } from "../components/NewProject2";
+import { NewProject2 } from "../components/NewProject";
 
 export const Crear = () => {
 
@@ -15,10 +15,10 @@ export const Crear = () => {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold ">Crear: </h1> 
+            <h1 className="text-2xl font-bold ">Crear: </h1> 
            
             {/* {user ? <NewProject2 addProject={addProject} /> : null} */} {/* //! si user no existe no puede crear project  */}
-            {user ? <NewProject2 addProject={addProject} /> : <p>Debes estar registrado para crear un project</p>} 
+            {user ? <NewProject2 addProject={addProject} /> : <p>Haz Login para Crear</p>} 
 
         </div>
     );
