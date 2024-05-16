@@ -16,7 +16,7 @@ router.get('/questions', authUserOptionalController, getAllQuestionsController);
 
 router.post('/newquestion', authUser, newQuestionController);
 
-router.get('/question/:id', authUser, questionSelectController);
+router.get('/question/:id', authUserOptionalController, questionSelectController);
 // filtro de búsqueda
 router.get('/getQuestion/:id', questionController);
 
