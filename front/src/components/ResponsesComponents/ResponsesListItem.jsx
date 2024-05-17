@@ -24,6 +24,9 @@ const ResponsesListItem = ({ response }) => {
                              { response.response_text}
                         </p>
                     </div>
+                    <li className="text-xs leading-4 text-white text-opacity-50">
+                <strong >Media de votos:</strong> {!response.votes ? 'Sin votos' : response.votes}
+            </li>
                     <div className="text-xs leading-4 text-white text-opacity-50">
                         <time>
                             {moment(response.created_at).format(
