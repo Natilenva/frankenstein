@@ -43,7 +43,7 @@ const QuestionDetailsPage =()=>{
                 {responses.length < 1 && loading ? (
                     <Loading/>
                 ): responses.length === 0 ?(
-                    <li>No hay respuestas</li>
+                    <li className="text-white">No hay respuestas</li>
                 ):(
                     responses.map((response)=>{
                       
