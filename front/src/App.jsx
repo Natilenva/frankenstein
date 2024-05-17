@@ -47,7 +47,6 @@ function App() {
                 <Route path="/crear" element={<Crear />} />
                 {/* <Route path="/" element={<ProjectPage />} /> */}
 
-
                 <Route path="/profile/:id" element={<CuentaPage />} />
                 <Route path="/questions" element={<QuestionsPage />} />
                 <Route path="/question/:id" element={<QuestionDetailsPage />} />

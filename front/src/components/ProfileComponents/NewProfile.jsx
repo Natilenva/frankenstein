@@ -1,12 +1,13 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { insertProfileService } from '../../services/profileServices';
+import { useNavigate } from 'react-router-dom';
 export const NewProfile = () => {
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
     const [image, setImage] = useState();
-
-    const { token } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { token, user } = useContext(AuthContext);
     const handleForm = async (e) => {
         e.preventDefault();
         try {
@@ -14,6 +15,7 @@ export const NewProfile = () => {
             const data = new FormData(e.target);
             await insertProfileService({ data, token });
             setImage(null);
+            navigate(`/profile/${user.register_id}`);
         } catch (error) {
             setError(error.message);
         } finally {
@@ -47,6 +49,19 @@ export const NewProfile = () => {
                 <fieldset>
                     <label htmlFor="birthdate">Fecha de naciemiento</label>
                     <input type="text" id="birthdate" name="birthdate" />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="profile_role">Rol</label>
+                    <select id="profile_role" name="profile_role">
+                        <option value="Escoge un role">Escoge un rol</option>
+                        <option value="company">Empresa</option>
+                        <option value="expert">Experto</option>
+                        <option value="student">Studiante</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="company">Empresa</label>
+                    <input type="text" id="company" name="company" />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="avatar">Avatar</label>
