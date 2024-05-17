@@ -45,7 +45,7 @@ const QuestionsPage=()=>{
                     <li>No se han encontrado preguntas</li>
                 ):(
                     questions.map((question)=>{
-                        console.log(question);
+                        
                         return <QuestionListItem key={question.question_id} question={question}/>;
                        
                     })

@@ -2,7 +2,7 @@ const {VITE_BASE_URL}= import.meta.env;
 
 export const selectAllQuestionsService= async (searchParams) =>{
     const res=await fetch(`${VITE_BASE_URL}/questions?${searchParams}`);
-    console.log(res);
+
 
     const body = await res.json();
 

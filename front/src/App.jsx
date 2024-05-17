@@ -28,6 +28,7 @@ import { NewProfile } from './components/ProfileComponents/NewProfile';
 import { UpdateProfile } from './pages/UpdateProfile';
 import { Crear } from './pages/Crear';
 import { ProjectsPage } from './pages/ProjectsPage';
+import ResponsesOfQuestion from './components/ResponsesComponents/ResponsesOfQuestion';
 
 function App() {
     //const [count, setCount] = useState(0)
@@ -35,7 +36,7 @@ function App() {
     return (
         <>
             <Toaster position="bottom-right" />
-            <Header />
+            {/* <Header /> */}
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -51,6 +52,9 @@ function App() {
                 <Route path="/profile/:id" element={<CuentaPage />} />
                 <Route path="/questions" element={<QuestionsPage />} />
                 <Route path="/question/:id" element={<QuestionDetailsPage />} />
+
+                <Route path='/responses/:id' element={<ResponsesOfQuestion/>}/>
+                
                 <Route path="/newprofile" element={<NewProfile />} />
                 <Route path="/updateprofile" element={<UpdateProfile />} />
                 <Route
