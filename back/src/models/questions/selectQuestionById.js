@@ -24,7 +24,7 @@ const selectQuestionById = async (id) => {
         FROM questions q
         LEFT JOIN responses r ON r.question_id = q.question_id
         LEFT JOIN votes v ON v.response_id = r.response_id
-        WHERE q.question_id = 1;
+        WHERE q.question_id = ?;
          `,
          [id]);
 

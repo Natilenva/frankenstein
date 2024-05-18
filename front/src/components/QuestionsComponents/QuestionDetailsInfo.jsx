@@ -15,6 +15,7 @@ const QuestionDetailsInfo = ({ question_title, question_technology, question_des
     
     const {token}= useContext(AuthContext);
 
+
     const navigete= useNavigate();
 
     if(!token){
@@ -23,7 +24,7 @@ const QuestionDetailsInfo = ({ question_title, question_technology, question_des
     }
     
     return (
-  
+        <main>
         <ul >
           
             <li >
@@ -42,6 +43,9 @@ const QuestionDetailsInfo = ({ question_title, question_technology, question_des
             </li>
         </ul>
      
+
+        </main>
+     
     );
 };
 
@@ -51,6 +55,7 @@ QuestionDetailsInfo.propTypes = {
     question_technology: PropType.string.isRequired,
     question_description: PropType.string.isRequired,
     created_at: PropType.string.isRequired,
+
 };
 
 export default QuestionDetailsInfo;

@@ -93,6 +93,7 @@ const createTables = async () => {
                 response_text text NOT NULL,
                 register_id INT,
                 question_id INT NOT NULL,
+                created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 UNIQUE(register_id, response_id),
                 FOREIGN KEY (question_id) REFERENCES questions(question_id),
                 FOREIGN KEY (register_id) REFERENCES register (register_id) 
@@ -106,6 +107,7 @@ const createTables = async () => {
                 vote_value tinyint NOT NULL,
                 register_id INT NOT NULL,
                 response_id INT NOT NULL,
+                created_at datetime DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (register_id) REFERENCES register(register_id),
                 FOREIGN KEY (response_id) REFERENCES responses(response_id)
             );

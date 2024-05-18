@@ -4,6 +4,7 @@ import { getMyUserDataService } from '../services';
 import { toast } from 'react-hot-toast';
 
 import { forgotPassword } from '../services/userService';
+
 //* Crear contexto global ---------------------------------------------
 
 export const AuthContext = createContext(); // objeto del contexto

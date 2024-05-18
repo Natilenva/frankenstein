@@ -8,7 +8,7 @@ import path from 'node:path';
 import { nanoid } from 'nanoid';
 const updateProfileController = async (req, res, next) => {
     try {
-        const { register_id } = req.user;
+        // const { register_id } = req.user;
         const {
             success,
             data: profile,

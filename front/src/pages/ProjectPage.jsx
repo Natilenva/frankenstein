@@ -12,7 +12,7 @@ export const ProjectPage = () => {
 
     return (
         <section>
-            <h1>ProjectPage</h1>
+            <h1 className="text-2xl font-bold ">ProjectPage</h1>
             {/* <p>aquí iría un project</p>  */}
             <Project project={project} />
         </section>

@@ -20,9 +20,11 @@ import NewQuestionPage from './pages/QuestionsPages/NewQuestionPage';
 import { CuentaPage } from './pages/CuentaPage';
 import { NewProfile } from './components/ProfileComponents/NewProfile';
 import { UpdateProfile } from './pages/UpdateProfile';
-import { Crear } from './pages/Crear';
+import { Crear } from './pages/CrearPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import HeaderMobile from './components/HeaderMobile';
+import ResponsesOfQuestion from './components/ResponsesComponents/ResponsesOfQuestion';
+import { ValidatePage } from './pages/ValidatePage';
 
 function App() {
     //const [count, setCount] = useState(0)
@@ -37,6 +39,10 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route
+                    path="/validate/:registrationCode"
+                    element={<ValidatePage />}
+                />
 
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/project/:id" element={<ProjectPage />} />
@@ -46,6 +52,12 @@ function App() {
                 <Route path="/profile/:id" element={<CuentaPage />} />
                 <Route path="/questions" element={<QuestionsPage />} />
                 <Route path="/question/:id" element={<QuestionDetailsPage />} />
+
+                <Route
+                    path="/responses/:id"
+                    element={<ResponsesOfQuestion />}
+                />
+
                 <Route path="/newprofile" element={<NewProfile />} />
                 <Route path="/updateprofile" element={<UpdateProfile />} />
                 <Route
