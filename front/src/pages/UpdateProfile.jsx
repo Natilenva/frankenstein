@@ -164,7 +164,7 @@ export const UpdateProfile = () => {
                 <button className="text-white bg-lime-600 rounded p-1 m-4">
                     Actualizar perfil
                 </button>
-                {sending && <p>Sending project</p>}
+                {sending && <p>Sending profile</p>}
                 {error && <p>{error}</p>}
             </form>
         </>

@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-const { SECRET, PORT } = process.env;
+const { SECRET, PORTFRONT } = process.env;
 import { registerSchema } from '../../schemas/registerSchema.js';
 import { zodErrorMap } from '../../helpers/zodError.js';
 import { sendEmail } from '../../helpers/sendEmail.js';
@@ -89,7 +89,7 @@ async function registerNewUserController(req, res, next) {
             <div style="background-color: #ffffff; padding: 20px 0px 5px 0px; width: 100%; text-align: center;">
         <h1>¡Bienvenid@ a Frankenstein!</h1>
          <p>Activa tu cuenta haciendo click en el siguiente enlace.</p>
-        <a class="claseBoton" href="http://localhost:${PORT}/validate/${registrationCode}">Activar cuenta</a>
+        <a class="claseBoton" href="${PORTFRONT}/validate/${registrationCode}">Activar cuenta</a>
           <!-- Footer -->
             <div style="background-color: #282828; color: #ffffff; padding: 5px 0px 0px 0px; width: 100%; text-align: center;">
  

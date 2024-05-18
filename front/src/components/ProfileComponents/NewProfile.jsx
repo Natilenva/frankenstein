@@ -118,3 +118,152 @@ export const NewProfile = () => {
         </>
     );
 };
+// import { useContext, useState } from 'react';
+// import { AuthContext } from '../../context/AuthContext';
+// import { insertProfileService } from '../../services/profileServices';
+// import { useNavigate } from 'react-router-dom';
+// import { profileSchema } from '../../../schemas/profileSchema';
+// import { useForm } from 'react-hook-form';
+// import { zodResolver } from '@hookform/resolvers/zod';
+// import { toast } from 'react-hot-toast';
+
+// export const NewProfile = () => {
+//     const navigate = useNavigate(); //hook para redirigir
+//     const { register, handleSubmit, formState } = useForm({
+//         mode: 'onTouched',
+//         resolver: zodResolver(profileSchema),
+//     });
+
+//     const [error, setError] = useState('');
+//     const [image, setImage] = useState(null);
+
+//     const { errors, isValid } = formState;
+
+//     const { token, user } = useContext(AuthContext);
+
+//     const onSubmit = async (data) => {
+//         try {
+//             const formData = new FormData();
+//             for (const key in data) {
+//                 formData.append(key, data[key]);
+//             }
+//             if (image) {
+//                 formData.append('avatar', image);
+//             }
+
+//             await insertProfileService({ formData, token });
+
+//             navigate(`/profile/${user.register_id}`);
+//             toast.success('Ya tienes tu perfil!');
+//             console.log(formData);
+//         } catch (error) {
+//             setError(error.message);
+//             toast.error(error.response?.data?.error || error.message);
+//         }
+//     };
+
+//     return (
+//         <>
+//             <h1>Formulario Perfil</h1>
+//             <form noValidate onSubmit={handleSubmit(onSubmit)}>
+//                 <fieldset>
+//                     <label htmlFor="profile_name">Nombre</label>
+//                     <input
+//                         type="text"
+//                         id="profile_name"
+//                         name="profile_name"
+//                         {...register('profile_name')}
+//                     />
+//                     <p className="h-4 text-sm text-rose-500">
+//                         {errors.profile_name?.message}
+//                     </p>
+//                 </fieldset>
+//                 <fieldset>
+//                     <label htmlFor="profile_lastname">Apellidos</label>
+//                     <input
+//                         type="text"
+//                         id="profile_lastname"
+//                         name="profile_lastname"
+//                         {...register('profile_lastname')}
+//                     />
+//                     <p className="h-4 text-sm text-rose-500">
+//                         {errors.profile_lastname?.message}
+//                     </p>
+//                 </fieldset>
+//                 <fieldset>
+//                     <label htmlFor="profile_username">Nickname</label>
+//                     <input
+//                         type="text"
+//                         id="profile_username"
+//                         name="profile_username"
+//                         {...register('profile_username')}
+//                     />
+//                     <p className="h-4 text-sm text-rose-500">
+//                         {errors.profile_username?.message}
+//                     </p>
+//                 </fieldset>
+//                 <fieldset>
+//                     <label htmlFor="birthdate">Fecha de nacimiento</label>
+//                     <input
+//                         type="date"
+//                         id="birthdate"
+//                         name="birthdate"
+//                         {...register('birthdate')}
+//                     />
+//                     <p className="h-4 text-sm text-rose-500">
+//                         {errors.birthdate?.message}
+//                     </p>
+//                 </fieldset>
+//                 <fieldset>
+//                     <label htmlFor="profile_role">Rol</label>
+//                     <select
+//                         id="profile_role"
+//                         name="profile_role"
+//                         {...register('profile_role')}
+//                     >
+//                         <option value="">Escoge un rol</option>
+//                         <option value="company">Empresa</option>
+//                         <option value="expert">Experto</option>
+//                         <option value="student">Estudiante</option>
+//                     </select>
+//                     <p className="h-4 text-sm text-rose-500">
+//                         {errors.profile_role?.message}
+//                     </p>
+//                 </fieldset>
+//                 <fieldset>
+//                     <label htmlFor="company">Empresa</label>
+//                     <input
+//                         type="text"
+//                         id="company"
+//                         name="company"
+//                         {...register('company')}
+//                     />
+//                     <p className="h-4 text-sm text-rose-500">
+//                         {errors.company?.message}
+//                     </p>
+//                 </fieldset>
+//                 <fieldset>
+//                     <label htmlFor="avatar">Avatar</label>
+//                     <input
+//                         type="file"
+//                         id="avatar"
+//                         name="avatar"
+//                         accept="image/*"
+//                         onChange={(e) => setImage(e.target.files[0])}
+//                     />
+//                     {image ? (
+//                         <figure>
+//                             <img
+//                                 src={URL.createObjectURL(image)}
+//                                 alt="Preview"
+//                                 style={{ width: '100px' }}
+//                             />
+//                         </figure>
+//                     ) : null}
+//                 </fieldset>
+//                 <button disabled={!isValid}>Actualizar perfil</button>
+//                 {error ? <p className="text-red-500">{error}</p> : null}
+//             </form>
+//         </>
+//     );
+// };
