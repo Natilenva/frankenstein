@@ -14,6 +14,7 @@ export const UpdateProfile = () => {
     const [sending, setSending] = useState(false);
     const [image, setImage] = useState();
     const [profileName, setProfileName] = useState('hola');
+    const [email, setEmail] = useState(`${user.email}`);
     // const [profileLastName, setProfileLastName] = useState(
     //     `${profile.profile_lastname}`
     // );
@@ -41,6 +42,9 @@ export const UpdateProfile = () => {
             setSending(false);
         }
     };
+    const handleChange = (e) => {
+        setProfileName(e.target.value);
+    };
 
     return (
         <>
@@ -53,7 +57,7 @@ export const UpdateProfile = () => {
                         id="profile_name"
                         name="profile_name"
                         value={profileName}
-                        onChange={(e) => setProfileName(e.target.value)}
+                        onChange={handleChange}
                     />
                 </fieldset>
                 <fieldset>
@@ -86,7 +90,7 @@ export const UpdateProfile = () => {
                         // onChange={(e) => setBirthdate(e.target.value)}
                     />
                 </fieldset>
-                {/* <fieldset>
+                <fieldset>
                     <label htmlFor="profile_role">Rol</label>
                     <select id="profile_role" name="profile_role">
                         <option value="Escoge un role">Escoge un rol</option>
@@ -98,7 +102,7 @@ export const UpdateProfile = () => {
                 <fieldset>
                     <label htmlFor="company">Empresa</label>
                     <input type="text" id="company" name="company" />
-                </fieldset> */}
+                </fieldset>
                 <fieldset>
                     <label htmlFor="avatar">Avatar</label>
                     <input
@@ -127,10 +131,9 @@ export const UpdateProfile = () => {
                         id="email"
                         name="email"
                         className="w-full border rounded-md px-3 py-2"
-                        /* value={email} */
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
-                        //un event en cada input para q cuando actualice el campo se actualice el estado
-                        // onChange={(e) => setEmail(e.target.value)}
                     />
                     {/* {validationErrors.email && (
                         <p className="h-4 text-sm text-rose-500">

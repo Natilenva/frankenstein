@@ -37,7 +37,11 @@ export const CuentaPage = () => {
                         alt={profile_username}
                     />
                 ) : (
-                    <p>no photo</p>
+                    <img
+                        className="m-4 w-40"
+                        src="/avatar.png"
+                        alt="no-photo"
+                    />
                 )}
             </article>
             <Link
