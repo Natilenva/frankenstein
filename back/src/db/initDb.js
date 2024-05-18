@@ -115,43 +115,27 @@ const createTables = async () => {
         await connection.query(`
         CREATE TABLE companies(
             company_id INT PRIMARY KEY AUTO_INCREMENT,
-            company_name varchar(100),
+            company_name varchar(100) UNIQUE,
             register_id  INT NOT NULL,
             FOREIGN KEY (register_id) REFERENCES register(register_id)
         )
         `);
 
         await connection.query(`
-        CREATE TABLE SkillsV1 (
+        CREATE TABLE Skills (
             idSkill INT PRIMARY KEY AUTO_INCREMENT,
-            skill VARCHAR(100) NOT NULL,
+            skill VARCHAR(100) UNIQUE NOT NULL,
             description VARCHAR(100) NOT NULL
         );        
     `);
         await connection.query(`
-            CREATE TABLE ExpertSkillsV1 (
+            CREATE TABLE ExpertSkills (
                 idSkill INT NOT NULL,
                 expertUserID INT NOT NULL,
                 FOREIGN KEY (expertUserID) REFERENCES register(register_id),
                 FOREIGN KEY (idSkill) REFERENCES SkillsV1(idSkill)
             );        
         `);
-
-        console.log('Creando tablas');
-
-        await connection.query(`
-        CREATE TABLE user_admin (
-            admin_id int AUTO_INCREMENT PRIMARY KEY,
-            email varchar(100) UNIQUE NOT NULL,
-            register_password varchar(100) NOT NULL,
-            register_code varchar(36),
-            admin_name varchar(50) NOT NULL,
-            admin_lastname varchar(50) NOT NULL,
-            admin_username varchar(50),
-            created_at datetime DEFAULT CURRENT_TIMESTAMP,
-            modified_at datetime DEFAULT CURRENT_TIMESTAMP
-        );
-    `);
 
         console.log('Creando tablas');
         process.exit(0);
