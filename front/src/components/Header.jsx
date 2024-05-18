@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Auth } from './Auth';
 // import { useProfile } from '../hooks/profilehook/useProfile';
+import HeaderMobile from './HeaderMobile';
 import { AuthContext } from '../context/AuthContext';
-
 import { useContext } from 'react';
 
 export const Header = () => {
@@ -21,39 +21,40 @@ export const Header = () => {
                     />
                 </Link>
             </div>
-
             {/* <Auth /> */}
-
             {/* Menú y botones en el lado derecho */}
             <div className="lg:flex lg:items-center lg:space-x-4 flex-wrap justify-start">
                 {/* Contenedor del menú */}
                 <div className="hidden lg:flex lg:items-center lg:space-x-4 flex-wrap justify-end">
                     <Link
                         to="/projects"
-                        className="text-white hover:text-gray-300"
+                        className="text-white hover:text-[#829821]"
                     >
                         Proyectos
                     </Link>
                     <Link
                         to="/questions"
-                        className="text-white hover:text-gray-300"
+                        className="text-white hover:text-[#829821]"
                     >
                         Preguntas
                     </Link>
 
+
                     {user && (
-                        <Link
-                            to="/crear"
-                            className="text-white hover:text-gray-300"
-                        >
-                            Crear
-                        </Link>
+                        
+                    <Link
+                        to="/crear"
+                        className="text-white hover:text-[#829821]"
+                    >
+                        Crear
+                    </Link>
                     )}
+
 
                     {user && (
                         <Link
                             to={`/profile/${user.register_id}`}
-                            className="text-white hover:text-gray-300"
+                            className="text-white hover:text-[#829821]"
                         >
                             Mi Cuenta
                         </Link>
@@ -65,44 +66,9 @@ export const Header = () => {
                         className="text-white bg-gray-800 px-2 py-1 rounded focus:outline-none focus:bg-gray-900"
                     />
                 </div>
-
-                {/* Contenedor de los botones */}
-                {/* <div className="flex space-x-4 mt-2 lg:mt-0">
-                    {!user?(
-                    <div className="flex space-x-4">
-                        <Link
-                            to="/login"
-                            className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded"
-                        >
-                            Login
-                        </Link>
-                        <Link
-                            to="/register"
-                            className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded"
-                        >
-                            Register
-                        </Link>
-                    </div>
-                    ):(
-                        <div className="flex space-x-4">
-                            <Link 
-                             to="/login"
-                             className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded">
-                            <button onClick={logout}>
-                            Cerrar sesión
-                            </button>
-                            </Link>
-                        </div>
-                    )}
-                </div> */}
             </div>
-
-            {/* Menú hamburguesa para dispositivos móviles 
-            <div className="lg:hidden mt-2">
-                <button className="text-white hover:text-gray-300">☰</button>
-            </div>*/}
-
             <Auth />
+            <HeaderMobile />
         </header>
     );
 };
