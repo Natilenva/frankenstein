@@ -104,11 +104,33 @@ export const loginUserService = async ({ email, register_password }) => {
     return json.data; //devuelve el token
 };
 
-// ! ----------------------------------------------------------------
+// * ----------------------------------------------------------------
 export const sendProjectService = async ({ data, token }) => {
     //console.log('hola');
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}`, {
         method: 'POST',
+        body: data, //* form-data
+        headers: {
+            Authorization: token,
+        },
+    });
+    //console.log(response);
+
+    const json = await response.json();
+
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+    //console.log(response);
+    return json.data;
+};
+
+
+// * ------------------------------------------------------------------------------------
+export const updateProjectService = async ({ data, token, id }) => {
+    //console.log('hola');
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/projectupdate/${id}`, {
+        method: 'PUT',
         body: data, //* form-data
         headers: {
             Authorization: token,

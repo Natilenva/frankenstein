@@ -6,6 +6,7 @@ import sharp from 'sharp';
 import url from 'url';
 import path from 'node:path';
 import { nanoid } from 'nanoid';
+import selectUserByIdModel from '../../models/users/selectUserById.js';
 const updateProjectController = async (req, res, next) => {
     try {
         const { project_id } = req.params;
@@ -43,19 +44,33 @@ const updateProjectController = async (req, res, next) => {
             project_url,
             project_id
         );
+        //console.log('updateProject:', updateProject);
+        //console.log('project:', project);
+        //console.log('imageFileName:', imageFileName);
+        //console.log('req.userId:', req.userId);
+
+        //Busca el email del usuario desde BBDD
+        let email = '';
+        const users = await selectUserByIdModel(req.userId);
+        if (users != null) {
+            //console.log('email: ', users.email);
+            email = users.email;
+        }
 
         res.status(201).send({
             status: 'ok',
             message: 'update project in db',
             data: {
-                project: {
-                    project_title,
-                    project_description,
-                    project_photo,
-                    project_url,
-                    project_id,
-                    createdAt: new Date(),
-                },
+                project_title,
+                project_description,
+                project_photo,
+                project_url,
+                project_id,
+                createdAt: new Date(),
+                project_photo: imageFileName,
+                userId: req.userId,
+                register_id: req.userId,
+                email: email,
             },
         });
     } catch (error) {

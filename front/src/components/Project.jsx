@@ -54,17 +54,7 @@ export const Project = ({ project, removeProject }) => {
                         {project.project_description}
                     </p>
 
-                    {/* // TODO el campo modified_at no lo tenemos */}
-                    {/* <p>{project.modified_at}</p> */}
-
-                    {/* // TODO el campo created_at tendríamos q convertirlo a fecha */}
-                    {/* <p>{project.created_at}</p> */}
-
-                    {/* // TODO no tenemos al autor del proyecto */}
-
                     <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
-                        {/* <p>{project.email}</p> */}
-                        {/* By {project.userId} on{' '} */}
                         By
                         <Link to={`/user/${project.email}`}>
                             {' '}

@@ -15,7 +15,7 @@ router.get('/allProjects', getAllProjectsController); //(all projects en Home)
 
 // router.get('/my', userAuth, getAllMyProjects);
 router.get('/project/:id', getProjectController);
-router.post('/', authUser, newProjectController); // HomePage
+router.post('/newproject', authUser, newProjectController); // HomePage
 router.put('/projectupdate/:project_id', authUser, updateProjectController);
 router.delete('/project/:id', authUser, deleteProjectController);
 router.get('/register/:id/projects', getRegisterProjectsController);
