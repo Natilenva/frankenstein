@@ -2,20 +2,18 @@ import { useState } from 'react';
 import { registerUserService } from '../services';
 import { useNavigate } from 'react-router-dom'; // hook para redirigir
 import { toast } from 'react-hot-toast';
-
-import { registerSchema } from '../../schemas/registerSchema';
+import { registerSchema } from '../../../back/src/schemas/registerSchema';
 export const RegisterPage = () => {
     const navigate = useNavigate(); //hook para redirigir
 
     //un estado para cada campo
     const [email, setEmail] = useState('');
     const [pass1, setPass1] = useState('');
-    const [validationErrors, setValidationErrors] = useState({});
     //const [pass2, setPass2] = useState("");
 
     /* const [error, setError] = useState("cualquier cosa aqui para mostrar"); */
     const [error, setError] = useState(''); //para mostrar el error con data de la API
-
+    const [validationErrors, setValidationErrors] = useState({});
     const handleForm = async (e) => {
         e.preventDefault();
         setValidationErrors({});
@@ -30,16 +28,18 @@ export const RegisterPage = () => {
 
         //* comunicarnos con la ddbb para registrar el usuario
         try {
-            const validationResult = registerSchema.safeParse({ email, pass1 });
-            if (!validationResult.success) {
+            const validationResultRegister = registerSchema.safeParse({
+                email,
+                pass1,
+            });
+            if (!validationResultRegister.success) {
                 const errors = {};
-                validationResult.error.issues.forEach((err) => {
+                validationResultRegister.error.issues.forEach((err) => {
                     errors[err.path[0]] = err.message;
                 });
                 setValidationErrors(errors);
-                return;
+                //     return;
             }
-            //await registerUserService({ email, password: pass1 });
             await registerUserService({ email, register_password: pass1 });
             navigate('/login'); //hook para redirigir al login
             toast.success('Activa tu cuenta en tu mail!', { duration: 6000 });
@@ -57,8 +57,7 @@ export const RegisterPage = () => {
             <h2 className="text-lg font-semibold mb-4">
                 Regístrate con tu correo electrónico
             </h2>
-            {/* <p>Aquí irá el formulario de registro</p> */}
-            {/* <form> */}
+
             <form noValidate onSubmit={handleForm} className="w-full max-w-sm">
                 <fieldset className="mb-4">
                     <label htmlFor="email" className="block mb-1">
@@ -93,9 +92,9 @@ export const RegisterPage = () => {
                         required
                         onChange={(e) => setPass1(e.target.value)}
                     />
-                    {validationErrors.email && (
+                    {validationErrors.register_password && (
                         <p className="h-4 text-sm text-rose-500">
-                            {validationErrors.email}
+                            {validationErrors.register_password}
                         </p>
                     )}
                 </fieldset>

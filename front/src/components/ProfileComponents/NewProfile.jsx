@@ -2,17 +2,35 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { insertProfileService } from '../../services/profileServices';
 import { useNavigate } from 'react-router-dom';
+import { profileSchema } from '../../../schemas/profileSchema';
+
 export const NewProfile = () => {
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
     const [image, setImage] = useState();
+    const [validationErrors, setValidationErrors] = useState({});
+    const [profileName, setProfileName] = useState('');
     const navigate = useNavigate();
     const { token, user } = useContext(AuthContext);
+
     const handleForm = async (e) => {
         e.preventDefault();
+        setValidationErrors({});
+        setError('');
+
         try {
+            const validationResult = profileSchema.safeParse({ profileName });
+            if (!validationResult.success) {
+                const errors = {};
+                validationResult.error.issues.forEach((err) => {
+                    errors[err.path[0]] = err.message;
+                });
+                setValidationErrors(errors);
+                // return;
+            }
             setSending(true);
             const data = new FormData(e.target);
+
             await insertProfileService({ data, token });
             setImage(null);
             navigate(`/profile/${user.register_id}`);
@@ -25,10 +43,21 @@ export const NewProfile = () => {
     return (
         <>
             <h1>formulario Perfil</h1>
-            <form onSubmit={handleForm}>
+            <form noValidate onSubmit={handleForm}>
                 <fieldset>
                     <label htmlFor="profile_name">Nombre</label>
-                    <input type="text" id="profile_name" name="profile_name" />
+                    <input
+                        type="text"
+                        id="profile_name"
+                        name="profile_name"
+                        value={profileName}
+                        onChange={(e) => setProfileName(e.target.value)}
+                    />
+                    {validationErrors.profile_name && (
+                        <p className="h-4 text-sm text-rose-500">
+                            {validationErrors.email}
+                        </p>
+                    )}
                 </fieldset>
                 <fieldset>
                     <label htmlFor="profile_lastname">Apellidos</label>
