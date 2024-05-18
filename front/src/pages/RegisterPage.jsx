@@ -92,16 +92,16 @@ export const RegisterPage = () => {
                         {errors.password?.message}
                     </p> */}
                 </fieldset>
-                <p className="text-sm text-center mb-4">
-                    Al hacer clic en registrarte certifico que tengo 16 años o
+                <p className="text-xs text-center mb-4">
+                    Al hacer clic en registrarme certifico que tengo 16 años o
                     más y acepto las condiciones de uso, la política de
                     privacidad y la política de cookies.
                 </p>
                 <button
                     type="submit"
-                    className="w-full bg-lime-600 text-white px-4 py-2 rounded-md"
+                    className="w-full bg-[#829821] text-white px-4 py-2 rounded-md"
                 >
-                    Registrarte
+                    Registrarme
                 </button>
                 {error ? (
                     <p className="text-red-500 text-sm mt-2">{error}</p>

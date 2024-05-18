@@ -45,8 +45,8 @@ export const LoginPage = () => {
     };
     // -------------------------------------------------------------------------------
     return (
-        <section className="flex flex-col justify-center items-center h-screen">
-            <h1 className="text-2xl font-bold text-center mb-10">
+        <section className="flex flex-col justify-center items-center h-screen px-4 sm:px-0">
+            <h1 className="text-2xl font-bold text-center mb-8">
                 Conecta, aprende y muestra tus habilidades
             </h1>
             <h2 className="text-lg font-semibold mb-4">
@@ -71,17 +71,19 @@ export const LoginPage = () => {
                     </p> */}
                 </fieldset>
 
-                <fieldset className="mb-4 relative flex">
-                    <label htmlFor="pass" className="block mb-1 flex-1">
-                        Contraseña
-                    </label>
+                <fieldset className="mb-4 flex flex-col">
+                    <div className="flex justify-between items-center mb-1">
+                        <label htmlFor="pass" className="block mb-1">
+                            Contraseña
+                        </label>
 
-                    <Link
-                        to="/forgot-password"
-                        className="text-sm text-lime-600 hover:underline mt-1 ml-auto"
-                    >
-                        Recuperar contraseña
-                    </Link>
+                        <Link
+                            to="/forgot-password"
+                            className="text-sm text-[#829821] hover:underline ml-2"
+                        >
+                            Recuperar contraseña
+                        </Link>
+                    </div>
                     <input
                         type="password"
                         name="password"
@@ -89,11 +91,11 @@ export const LoginPage = () => {
                         value={password}
                         required
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full border rounded py-2 px-3 mb-2"
+                        className="w-full border rounded py-2 px-3"
                     />
                     {/* <p className="h-4 text-sm text-rose-500">
-                        {errors.password?.message}
-                    </p> */}
+        {errors.password?.message}
+    </p> */}
                 </fieldset>
 
                 <p className="text-sm text-center mb-4">
@@ -101,7 +103,7 @@ export const LoginPage = () => {
                     acepto las condiciones de uso, la política de privacidad y
                     la política de cookies.
                 </p>
-                <button className="w-full bg-lime-600 text-white font-bold py-2 px-4 rounded mb-4">
+                <button className="w-full bg-[#829821] text-white font-bold py-2 px-4 rounded mb-4">
                     Entrar
                 </button>
                 {error ? <p className="text-red-500 text-sm">{error}</p> : null}
