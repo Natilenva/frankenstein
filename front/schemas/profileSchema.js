@@ -1,25 +1,19 @@
 import { z } from 'zod';
 const profileSchema = z.object({
     profile_name: z
-        .string({
-            invalid_type_error: 'Tiene que ser un string',
-            required_error: 'Campo requerido',
-        })
+        .string()
+        .min(1, { message: 'Campo obligatorio' })
         .min(3, 'Mínimo 3 caracteres')
         .max(15, 'Máximo 15 caracteres'),
     profile_lastname: z
-        .string({
-            invalid_type_error: 'Tiene que ser un string',
-            required_error: 'Campo requerido',
-        })
+        .string()
+        .min(1, { message: 'Campo obligatorio' })
         .min(3, 'Mínimo 3 caracteres')
         .max(30, 'Máximo 30 caracteres'),
     profile_username: z.optional(
         z
-            .string({
-                invalid_type_error: 'Tiene que ser un string',
-                required_error: 'Campo requerido',
-            })
+            .string()
+            .min(1, { message: 'Campo obligatorio' })
             .min(3, 'Mínimo 3 caracteres')
             .max(15, 'Máximo 15 caracteres')
     ),
