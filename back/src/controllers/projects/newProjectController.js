@@ -51,7 +51,7 @@ const newProjectController = async (req, res, next) => {
         const users = await selectUserByIdModel(req.userId);
         console.log('req.userId: ' + req.userId + ', email: ' + users);
         if (users != null) {
-            console.log('email: ', users.email);
+            //console.log('email: ', users.email);
             email = users.email;
         }
         res.status(201).send({

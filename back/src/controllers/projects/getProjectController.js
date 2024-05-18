@@ -8,7 +8,7 @@ const getProjectController = async (req, res, next) => {
 
         // Get project by id
         const projectById = await selectProjectByModel(project_id.id);
-        console.log('projectById: ', projectById);
+        //console.log('projectById: ', projectById);
 
         // Get email of project owner
         const user = await selectUserForContextById(projectById.register_id);

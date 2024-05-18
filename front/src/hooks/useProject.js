@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { getSingleProjectService } from "../services";
 
 const useProject = (id) => {
-    const [project, setProject] = useState([]);
+    //const [project, setProject] = useState([]);
+    const [project, setProject] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
@@ -27,7 +28,11 @@ const useProject = (id) => {
 
     }, [id]);
 
-    return { project, loading, error };
+    const updateProject = (project) => {
+        setProject(project);
+    };
+
+    return { project, loading, error, updateProject };
 };
 
 export default useProject;
