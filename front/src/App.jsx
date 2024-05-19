@@ -22,7 +22,7 @@ import { NewProfile } from './components/ProfileComponents/NewProfile';
 import { UpdateProfile } from './pages/UpdateProfile';
 import { Crear } from './pages/CrearPage';
 import { ProjectsPage } from './pages/ProjectsPage';
-import HeaderMobile from './components/HeaderMobile';
+//import HeaderMobile from './components/HeaderMobile';
 import ResponsesOfQuestion from './components/ResponsesComponents/ResponsesOfQuestion';
 import { ValidatePage } from './pages/ValidatePage';
 
@@ -33,7 +33,7 @@ function App() {
         <>
             <Toaster position="bottom-right" />
             <Header />
-            <HeaderMobile />
+            {/* <HeaderMobile /> */}
 
             <Routes>
                 <Route path="/" element={<HomePage />} />

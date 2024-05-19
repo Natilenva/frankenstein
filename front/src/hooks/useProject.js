@@ -7,6 +7,8 @@ const useProject = (id) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
+    const [projects, setProjects] = useState([]);
+
     useEffect(() => {
         const loadProject = async () => {
             try {
@@ -32,7 +34,13 @@ const useProject = (id) => {
         setProject(project);
     };
 
-    return { project, loading, error, updateProject };
+    const removeProject = (id) => {
+        setProjects(
+            projects.filter((project) => project.id !== id)
+        );
+    };
+
+    return { project, loading, error, updateProject, removeProject };
 };
 
 export default useProject;
