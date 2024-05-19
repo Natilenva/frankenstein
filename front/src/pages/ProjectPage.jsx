@@ -10,7 +10,7 @@ import { UpdateProject } from '../components/UpdateProject';
 
 export const ProjectPage = () => {
     const { id } = useParams();
-    const { project, loading, error, updateProject} = useProject(id);
+    const { project, loading, error, updateProject, removeProject} = useProject(id);
 
     const { user } = useContext(AuthContext);
 
@@ -22,7 +22,7 @@ export const ProjectPage = () => {
             <h1 className="text-2xl font-bold ">ProjectPage</h1>
             {user && user.register_id === project.register_id ? (
                 //<p> formulario update project </p>
-                <UpdateProject updateProject={updateProject} />
+                <UpdateProject updateProject={updateProject} removeProject={removeProject}/>
 
             ) : (  
                 <Project project={project} /> 

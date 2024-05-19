@@ -107,7 +107,7 @@ export const loginUserService = async ({ email, register_password }) => {
 // * ----------------------------------------------------------------
 export const sendProjectService = async ({ data, token }) => {
     //console.log('hola');
-    const response = await fetch(`${import.meta.env.VITE_BASE_URL}`, {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/newproject`, {
         method: 'POST',
         body: data, //* form-data
         headers: {

@@ -69,14 +69,25 @@ export const Project = ({ project, removeProject }) => {
 
                 <section>
                     {user && user.register_id === project.register_id ? (
+                        <>
+                        {/* // Delete project en HomePage ---------------------------------- */}
                         <button
-                        className='bg-orange-500 hover:bg-red-700 text-white px-4 py-1 rounded'
+                        className='bg-[#829821] hover:bg-[#829821] text-white px-4 py-1 rounded'
                             onClick={() => {
                                 deleteProject(project.project_id);
                             }}
                         >
                             Eliminar proyecto
                         </button>
+
+
+                        {/* // Editar project en ProjectPage ---------------------------------- */}
+                        <Link to={`/project/${project.project_id}`} className="text-black hover:text-[#829821]">
+                            Editar
+                        </Link>
+
+                        </>
+                        
                     ) : null}
                     {error ? <p>{error}</p> : null}
                 </section>

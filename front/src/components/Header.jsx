@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Auth } from './Auth';
 // import { useProfile } from '../hooks/profilehook/useProfile';
-import HeaderMobile from './HeaderMobile';
+//import HeaderMobile from './HeaderMobile';
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
+import HamburgerMenuNoCssTw from './HamburgerMenuNoCssTw';
 
 export const Header = () => {
     const { user } = useContext(AuthContext);
@@ -67,8 +68,22 @@ export const Header = () => {
                     />
                 </div>
             </div>
-            <Auth />
-            <HeaderMobile />
+            
+            <div className='invisible sm:visible'>
+                <Auth />
+            </div>
+            
+            {/* <HeaderMobile /> */}
+
+            <div className="sm:hidden">
+                <HamburgerMenuNoCssTw  />
+                {/* <main style={{ padding: '20px' }}>
+                    <h1 style={{ color: '#333' }}>Welcome to My Website</h1>
+                    <p style={{ color: '#666' }}>Click the hamburger menu to navigate.</p>
+                </main> */}
+            </div>
+
+            
         </header>
     );
 };

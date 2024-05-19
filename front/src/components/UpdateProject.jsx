@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { updateProjectService } from '../services';
+import { deleteProjectService, updateProjectService } from '../services';
 import { AuthContext } from '../context/AuthContext';
 import PropTypes from 'prop-types';
 
@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import useProject from "../hooks/useProject";
 
-export const UpdateProject = ({ updateProject }) => {
+export const UpdateProject = ({ updateProject, removeProject }) => {
 
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
@@ -25,6 +25,25 @@ export const UpdateProject = ({ updateProject }) => {
 
     //redireccionar
     const navigate = useNavigate();
+
+
+
+    const deleteProject = async (id) => {
+        try {
+            await deleteProjectService({ id, token });
+            if (removeProject) {
+                removeProject(id);
+            }
+
+            toast.success('Has eliminado el proyecto con éxito!');
+        } catch (error) {
+            setError(error.message);
+            toast.error(error.messge);
+        }
+    };
+
+
+
 
     const handleForm = async (e) => {
         e.preventDefault();
@@ -118,10 +137,30 @@ export const UpdateProject = ({ updateProject }) => {
 
             <button className=' bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded'>Update Project</button>
             {sending ? <p>Sending project</p> : null}
+
+
+
+
+
+
+            <button
+                        className='bg-orange-500 hover:bg-red-700 text-white px-4 py-1 rounded'
+                            onClick={() => {
+                                deleteProject(project.project_id);
+                            }}
+                        >
+                            Eliminar proyecto
+                        </button>
+
+
+
+
+
             {error ? <p>{error}</p> : null}
         </form>
     );
 };
 UpdateProject.propTypes = {
     updateProject: PropTypes.func,
+    removeProject: PropTypes.func,
 };
