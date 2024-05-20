@@ -1,6 +1,6 @@
 import { useProfile } from '../hooks/profilehook/useProfile';
 
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { UpdateProfile } from '../components/ProfileComponents/UpdateProfile';
 
 export const CuentaPage = () => {
@@ -15,6 +15,13 @@ export const CuentaPage = () => {
             <h1>Mi cuenta</h1>
             <h1>Mi perfil</h1>
             <UpdateProfile updateProfile={updateProfile} />
+            <Link
+                to={'/updatepassword'}
+                // disabled={!isValid}
+                className="text-white bg-lime-600 rounded p-1 m-4 flex"
+            >
+                Cambiar contraseña
+            </Link>
         </>
     );
 };
