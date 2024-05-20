@@ -25,7 +25,16 @@ const useResponses = (question_id) => {
         fetchResponses();
     },[question_id]);
 
-    return{responses, loading};
+    const addResponseVote= (votesAvg)=>{
+        setResponses({
+            ...responses,
+            votes: votesAvg,
+            
+        });
+      
+    };
+
+    return{responses, loading, addResponseVote};
 
 
 

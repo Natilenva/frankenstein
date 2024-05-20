@@ -23,7 +23,7 @@ const selectResponseByIdModel = async (response_id='') => {
 
     responses[0].vote_response_id= Boolean(responses[0].vote_response_id);
     
-    console.log(responses[0]);
+  
 
     return responses[0];
 

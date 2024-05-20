@@ -103,7 +103,7 @@ const createTables = async () => {
 
         await connection.query(`
             CREATE TABLE votes (
-                vote_response_id INT PRIMARY KEY  AUTO_INCREMENT,
+                vote_response_id INT PRIMARY KEY AUTO_INCREMENT,
                 vote_value tinyint NOT NULL,
                 register_id INT NOT NULL,
                 response_id INT NOT NULL,

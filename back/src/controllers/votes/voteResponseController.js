@@ -15,7 +15,7 @@ const voteResponseController = async (req, res, next) => {
 
         const responses = await selectResponseByIdModel(response_id);
 
-        if (responses.register_id === req.user.id) {
+        if (responses.register_id === req.userid) {
             cannotVoteOwnEntryError();
         }
 
@@ -31,8 +31,8 @@ const voteResponseController = async (req, res, next) => {
 
         const votesAvg = await insertVotesModel(
             vote_value,
-            responses,
-            req.user.id
+            responses.response_id,
+            req.userId
         );
 
         res.status(201).send({
