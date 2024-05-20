@@ -25,13 +25,13 @@ export const HomePage = () => {
     if (error) return <ErrorMessage message={error} />;
 
     return (
-        <main >
+        <main className='flex-grow'>
           
         <section>
 
         <ProjectList projects={projects} removeProject={removeProject} />
         
-        <div className="flex flex-col justify-center mx-auto w-full max-w-[480px]">
+        {/* <div className="flex flex-col justify-center mx-auto w-full max-w-[480px]">
             <div className="flex flex-col w-full">
                 <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 whitespace-nowrap leading-[133%]">
                     <div className="flex gap-0.5 self-start py-1 pr-1 pl-2 text-xs text-white bg-lime-600 rounded">
@@ -39,7 +39,7 @@ export const HomePage = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */}
         
         
         </section>
