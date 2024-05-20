@@ -19,7 +19,7 @@ import QuestionDetailsPage from './pages/QuestionsPages/QuestionDetailsPage';
 import NewQuestionPage from './pages/QuestionsPages/NewQuestionPage';
 import { CuentaPage } from './pages/CuentaPage';
 import { NewProfile } from './components/ProfileComponents/NewProfile';
-import { UpdateProfile } from './pages/UpdateProfile';
+// import { UpdateProfile } from './pages/UpdateProfile';
 import { Crear } from './pages/CrearPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import HeaderMobile from './components/HeaderMobile';
@@ -59,7 +59,7 @@ function App() {
                 />
 
                 <Route path="/newprofile" element={<NewProfile />} />
-                <Route path="/updateprofile" element={<UpdateProfile />} />
+                {/* <Route path="/updateprofile" element={<UpdateProfile />} /> */}
                 <Route
                     path="/questions/newquestion"
                     element={<NewQuestionPage />}

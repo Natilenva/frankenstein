@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { getProfileService } from '../../services/profileServices';
 
 export const useProfile = (id) => {
-    const [profile, setProfile] = useState(null);
+    const [profile, setProfile] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     useEffect(() => {
@@ -19,5 +19,8 @@ export const useProfile = (id) => {
         };
         loadProfile();
     }, [id]);
-    return { profile, loading, error };
+    const updateProfile = (profile) => {
+        setProfile(profile);
+    };
+    return { profile, loading, error, updateProfile };
 };
