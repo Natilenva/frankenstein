@@ -38,6 +38,7 @@ const updateProfileController = async (req, res, next) => {
             profile_role,
             company_name,
         } = profile;
+
         console.log(profile);
         const updateProfile = await updateProfileModel(
             profile_name,
@@ -63,6 +64,7 @@ const updateProfileController = async (req, res, next) => {
                     avatar,
                     profile_role,
                     company_name,
+
                     userId: req.userId,
                     createdAt: new Date(),
                 },

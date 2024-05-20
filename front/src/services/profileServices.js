@@ -9,10 +9,10 @@ export const getProfileService = async (id) => {
     return json.data;
 };
 
-export const insertProfileService = async ({ data, token }) => {
+export const insertProfileService = async ({ formData, token }) => {
     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/myprofile`, {
         method: 'POST',
-        body: data,
+        body: formData,
         headers: {
             Authorization: token,
         },
