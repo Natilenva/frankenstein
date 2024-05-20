@@ -9,7 +9,7 @@ const selectAllResponsesOfQuestionIdModel = async (question_id) => {
             r.response_text,
             r.register_id,
             r.question_id,
-            v.vote_response_id,
+        
             AVG(IFNULL(v.vote_value, 0)) AS votes,
             r.created_at
 
@@ -25,10 +25,10 @@ const selectAllResponsesOfQuestionIdModel = async (question_id) => {
     for(const response of responses){
         response.votes = Number(response.votes);  
     }
-    if (responses.length === 0) {
-        throw generateError(`Question con id: ${question_id} no encontrada`, 404);
-    }
-    console.log(responses);
+    // if (responses.length === 0) {
+    //     throw generateError(`Question con id: ${question_id} no encontrada`, 404);
+    // }
+ 
   
    return responses;
 
