@@ -7,7 +7,9 @@ import { profileSchema } from '../../../schemas/profileSchema';
 export const NewProfile = () => {
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
+
     const [image, setImage] = useState();
+
     const [validationErrors, setValidationErrors] = useState({});
     const [profileName, setProfileName] = useState('');
     const navigate = useNavigate();
@@ -79,7 +81,7 @@ export const NewProfile = () => {
                     <label htmlFor="birthdate">Fecha de naciemiento</label>
                     <input type="text" id="birthdate" name="birthdate" />
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor="profile_role">Rol</label>
                     <select id="profile_role" name="profile_role">
                         <option value="Escoge un role">Escoge un rol</option>
@@ -91,7 +93,9 @@ export const NewProfile = () => {
                 <fieldset>
                     <label htmlFor="company">Empresa</label>
                     <input type="text" id="company" name="company" />
-                </fieldset>
+                </fieldset> */}
+                {/* <img src={'avatar.png'} alt="avatar" /> */}
+
                 <fieldset>
                     <label htmlFor="avatar">Avatar</label>
                     <input
@@ -101,6 +105,7 @@ export const NewProfile = () => {
                         accept="image/*"
                         onChange={(e) => setImage(e.target.files[0])}
                     />
+
                     {image ? (
                         <figure>
                             <img
