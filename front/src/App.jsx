@@ -25,7 +25,7 @@ import { ProjectsPage } from './pages/ProjectsPage';
 //import HeaderMobile from './components/HeaderMobile';
 import ResponsesOfQuestion from './components/ResponsesComponents/ResponsesOfQuestion';
 import { ValidatePage } from './pages/ValidatePage';
-import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
+// import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
 import { UpdatePassword } from './pages/UpdatePassword';
 
 function App() {
