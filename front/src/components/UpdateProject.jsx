@@ -62,7 +62,7 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
 
             e.target.reset();
             setImage(null);
-            toast.success('Agregado proyecto con éxito');
+            toast.success('Actualizado proyecto con éxito');
         } catch (error) {
             setError(error.message);
             toast.error('Ha habido un problema al agregar el proyecto');
@@ -138,23 +138,14 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
             <button className=' bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded'>Update Project</button>
             {sending ? <p>Sending project</p> : null}
 
-
-
-
-
-
             <button
-                        className='bg-orange-500 hover:bg-red-700 text-white px-4 py-1 rounded'
-                            onClick={() => {
-                                deleteProject(project.project_id);
-                            }}
-                        >
-                            Eliminar proyecto
-                        </button>
-
-
-
-
+                className='bg-orange-500 hover:bg-red-700 text-white px-4 py-1 rounded'
+                    onClick={() => {
+                        deleteProject(project.project_id);
+                    }}
+                >
+                    Eliminar proyecto
+            </button>
 
             {error ? <p>{error}</p> : null}
         </form>
