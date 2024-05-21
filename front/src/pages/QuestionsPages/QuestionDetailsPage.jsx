@@ -5,7 +5,7 @@ import Loading from "../../components/loading.jsx";
 
 import ResponsesListItem from "../../components/ResponsesComponents/ResponsesListItem.jsx";
 import useResponses from "../../hooks/ResponsesHook/useResponses.js";
-
+import NewResponseForm from "../../forms/ResponseForm/NewResponseForm.jsx";
 
 import QuestionDetailsInfo from "../../components/QuestionsComponents/QuestionDetailsInfo";
 import { useContext } from "react";
@@ -16,6 +16,7 @@ const QuestionDetailsPage =()=>{
 
 
   const {token}= useContext(AuthContext);
+
 
   const {id}= useParams();
 
@@ -36,9 +37,13 @@ const QuestionDetailsPage =()=>{
             question_technology={question.technology}
             question_description={question.question_description}
             created_at={question.created_at}
-            response_text={question.response_text}
           
           />
+
+          <NewResponseForm
+          
+          />
+
              <ul className="bg-black">
                 {responses.length < 1 && loading ? (
                     <Loading/>

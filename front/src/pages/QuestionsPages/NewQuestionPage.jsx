@@ -12,7 +12,7 @@ import {insertQuestionService} from "../../services/questionService.js"
 
 const NewQuestionPage=()=>{
     
-    const {user, token}= useContext(AuthContext);
+    const { token}= useContext(AuthContext);
     console.log(token);
 
     if(!token){
