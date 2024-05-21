@@ -26,7 +26,7 @@ export const Project = ({ project, removeProject }) => {
         }
     };
 
-    //console.log('project.photo', project.photo);
+    //const provocarError = provocarErrorBoundary;
 
     return (
         <article>
