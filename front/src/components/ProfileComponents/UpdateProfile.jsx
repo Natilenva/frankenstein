@@ -4,13 +4,13 @@ import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-hot-toast';
 import { updateProfileService } from '../../services/profileServices';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useProfile } from '../../hooks/profilehook/useProfile';
+// import { useProfile } from '../../hooks/profilehook/useProfile';
 import PropTypes from 'prop-types';
 import { updateProfileSchema } from '../../../schemas/updateProfileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-export const UpdateProfile = ({ updateProfile }) => {
+export const UpdateProfile = ({ updateProfile, profile }) => {
     const { token, user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
@@ -18,7 +18,7 @@ export const UpdateProfile = ({ updateProfile }) => {
     const [image, setImage] = useState();
 
     const { id } = useParams();
-    const { profile } = useProfile(id);
+
     const {
         register,
         handleSubmit,
@@ -34,9 +34,9 @@ export const UpdateProfile = ({ updateProfile }) => {
             setValue('profile_lastname', profile.profile_lastname);
             setValue('profile_username', profile.profile_username);
             setValue('birthdate', profile.birthdate);
-            setValue('email', user.email);
+            // setValue('email', user.email);
         }
-    }, [profile, user, setValue]);
+    }, [profile, setValue]);
     console.log(user);
     const handleForm = async (data) => {
         setError('');
@@ -50,9 +50,14 @@ export const UpdateProfile = ({ updateProfile }) => {
             if (image) {
                 formData.append('avatar', image);
             }
-
-            await updateProfileService({ data: formData, token, id });
-            updateProfile(updateProfile);
+            console.log(profile);
+            const { profile: updatedProfile } = await updateProfileService({
+                data: formData,
+                token,
+                id,
+            });
+            console.log(updatedProfile);
+            updateProfile(updatedProfile);
             setImage(null);
             navigate(`/profile/${id}`);
             toast.success('Perfil actualizado con éxito');
@@ -166,7 +171,6 @@ export const UpdateProfile = ({ updateProfile }) => {
                         accept="image/*"
                         // defaultValue={profile.avatar}
                         onChange={(e) => setImage(e.target.files[0])}
-                        // {...register('avatar')}
                     />
                     {image ? (
                         <figure>
@@ -190,7 +194,7 @@ export const UpdateProfile = ({ updateProfile }) => {
                         {errors.avatar?.message}
                     </p>
                 </fieldset>
-                <fieldset className="mb-4">
+                {/* <fieldset className="mb-4">
                     <label htmlFor="email" className="block mb-1">
                         Correo electrónico
                     </label>
@@ -206,7 +210,7 @@ export const UpdateProfile = ({ updateProfile }) => {
                     <p className="h-4 text-sm text-rose-500">
                         {errors.email?.message}
                     </p>
-                </fieldset>
+                </fieldset> */}
                 {/* <fieldset className="mb-4">
                     <label htmlFor="pass1" className="block mb-1">
                         Contraseña Nueva
@@ -242,4 +246,5 @@ export const UpdateProfile = ({ updateProfile }) => {
 };
 UpdateProfile.propTypes = {
     updateProfile: PropTypes.func,
+    profile: PropTypes.object,
 };
