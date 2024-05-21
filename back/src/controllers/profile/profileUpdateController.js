@@ -20,6 +20,7 @@ const updateProfileController = async (req, res, next) => {
         }
 
         let imageFileName;
+        console.log(req.files);
         if (req.files && req.files.avatar) {
             const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
             const uploadsDir = path.join(__dirname, '../../../uploads');
@@ -34,13 +35,13 @@ const updateProfileController = async (req, res, next) => {
             profile_lastname,
             profile_username,
             birthdate,
-            avatar,
+
             profile_role,
             company_name,
         } = profile;
 
         console.log(profile);
-        const updateProfile = await updateProfileModel(
+        await updateProfileModel(
             profile_name,
             profile_lastname,
             profile_username,
@@ -50,23 +51,20 @@ const updateProfileController = async (req, res, next) => {
             company_name,
             req.userId
         );
-        console.log(updateProfile);
+
         res.status(201).send({
             status: 'ok',
             message: 'update profile in db',
             data: {
                 profile: {
-                    profileId: updateProfile,
                     profile_name,
                     profile_lastname,
                     birthdate,
                     profile_username,
-                    avatar,
+                    avatar: imageFileName,
                     profile_role,
-                    company_name,
 
-                    userId: req.userId,
-                    createdAt: new Date(),
+                    register_id: req.userId,
                 },
             },
         });

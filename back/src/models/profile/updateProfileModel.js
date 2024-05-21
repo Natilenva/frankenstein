@@ -8,9 +8,18 @@ const updateProfileModel = async (
     avatar,
     profile_role,
     company_name,
-    email,
     userId
 ) => {
+    console.log({
+        profile_name,
+        profile_lastname,
+        profile_username,
+        birthdate,
+        avatar,
+        profile_role,
+        company_name,
+        userId,
+    });
     const connection = await getConnection();
 
     const [result] = await connection.query(
@@ -31,11 +40,11 @@ const updateProfileModel = async (
         [company_name, userId]
     );
 
-    await connection.query(
-        `
-    UPDATE register SET email = ? WHERE register_id =? `,
-        [email, userId]
-    );
+    // await connection.query(
+    //     `
+    // UPDATE register SET email = ? WHERE register_id =? `,
+    //     [email, userId]
+    // );
 
     console.log(result);
     return result.insertId;
