@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Project } from './Project';
+import ErrorBoundary from './ErrorBoundaryWithClass';
 
 //recibe una prop, un array de objetos
 export const ProjectList = ({ projects, removeProject }) => {
@@ -15,7 +16,9 @@ export const ProjectList = ({ projects, removeProject }) => {
                                 {projects.map((project) => (
                                 
                                     <li key={project.project_id} >
-                                        <Project project={project} removeProject={removeProject} />
+                                        <ErrorBoundary fallback={<p>Something went wrong in Project.jsx</p>}>
+                                            <Project project={project} removeProject={removeProject} />
+                                        </ErrorBoundary>
                                     </li>                               
                                 ))}
             </div>
