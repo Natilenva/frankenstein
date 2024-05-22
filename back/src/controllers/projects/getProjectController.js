@@ -10,22 +10,30 @@ const getProjectController = async (req, res, next) => {
         const projectById = await selectProjectByModel(project_id.id);
         //console.log('projectById: ', projectById);
 
+        // desestructurar projectById
+        const { 
+            project_title, project_description, project_photo, project_url, created_at, register_id 
+        } = projectById;
+        
+
         // Get email of project owner
         const user = await selectUserForContextById(projectById.register_id);
-        const email = user.email; 
+
+        const {email, usernameOfRegister} = user;
 
         res.send({
             status: 'ok',
             message: 'select project by id',
             data: {
-                project_id: projectById.project_id,
-                project_title: projectById.project_title,
-                project_description: projectById.project_description,
-                project_photo: projectById.project_photo,
-                project_url: projectById.project_url,
-                created_at: projectById.created_at,
-                register_id: projectById.register_id,
+                project_id: project_id,
+                project_title: project_title,
+                project_description: project_description,
+                project_photo: project_photo,
+                project_url: project_url,
+                created_at: created_at,
+                register_id: register_id,
                 email,
+                usernameOfRegister,
               }
         });
         

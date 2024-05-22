@@ -6,7 +6,7 @@ const selectUserForContextById = async (id) => {
     const connection = await getConnection();
 
     const [result] = await connection.query(
-        `SELECT register_id, email, created_at FROM register  WHERE register_id = ?`,
+        `SELECT register_id, email, LEFT(email, LOCATE('@', email) - 1) AS usernameOfRegister, created_at FROM register  WHERE register_id = ?`,
         [id]
     );
 
