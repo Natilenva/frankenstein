@@ -23,9 +23,7 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
     //console.log('project.title: ', project.project_title);
     //console.log('project && project.title: ', project && project.title);
 
-    //redireccionar
     const navigate = useNavigate();
-
 
 
     const deleteProject = async (id) => {
@@ -41,8 +39,6 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
             toast.error(error.messge);
         }
     };
-
-
 
 
     const handleForm = async (e) => {
@@ -116,7 +112,7 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
             </fieldset>
 
             <fieldset>
-                <label>Image(optional)</label>
+                <h6>Image(optional)</h6>
                 <input
                     type="file"
                     id="project_photo"

@@ -1,19 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Auth } from './Auth';
-// import { useProfile } from '../hooks/profilehook/useProfile';
-//import HeaderMobile from './HeaderMobile';
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
-import HamburgerMenuNoCssTw from './HamburgerMenuNoCssTw';
+import HeaderMobile from './HeaderMobile';
 
 export const Header = () => {
     const { user } = useContext(AuthContext);
-    // const { profile } = useProfile();
-    // console.log(user.register_id);
+
     return (
-        <header className="bg-black p-4 top-0 w-full lg:p-8 flex items-center justify-between shadow-md">
+        <header className="bg-black p-4 top-0 flex items-center justify-between shadow-md">
             {/* Logo en el lado izquierdo */}
-            <div className="flex items-center">
+            <div className=" items-center">
                 <Link to="/">
                     <img
                         src="./../frankenstein.png"
@@ -51,7 +48,6 @@ export const Header = () => {
                     </Link>
                     )}
 
-
                     {user && (
                         <Link
                             to={`/profile/${user.register_id}`}
@@ -72,18 +68,11 @@ export const Header = () => {
             <div className='invisible sm:visible'>
                 <Auth />
             </div>
-            
-            {/* <HeaderMobile /> */}
 
             <div className="sm:hidden">
-                <HamburgerMenuNoCssTw  />
-                {/* <main style={{ padding: '20px' }}>
-                    <h1 style={{ color: '#333' }}>Welcome to My Website</h1>
-                    <p style={{ color: '#666' }}>Click the hamburger menu to navigate.</p>
-                </main> */}
+                <HeaderMobile />
             </div>
-
-            
+           
         </header>
     );
 };
