@@ -11,8 +11,8 @@ export const ProjectsPage = () => {
     if (error) return <ErrorMessage message={error} />;
 
     return (
-        <section>
-            <h1 className="text-3xl font-bold ">Latest Projects </h1>
+        <section className=" m-auto flex flex-col min-h-screen">
+            {/* <h1 className="text-3xl font-bold ">Latest Projects </h1> */}
             <ProjectList projects={projects} removeProject={removeProject} />
         </section>
     );

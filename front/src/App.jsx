@@ -3,7 +3,6 @@
 //import viteLogo from '/vite.svg'
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-//* components q siempre se ven
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import { Header } from './components/Header';
@@ -19,23 +18,18 @@ import QuestionDetailsPage from './pages/QuestionsPages/QuestionDetailsPage';
 import NewQuestionPage from './pages/QuestionsPages/NewQuestionPage';
 import { CuentaPage } from './pages/CuentaPage';
 import { NewProfile } from './components/ProfileComponents/NewProfile';
-// import { UpdateProfile } from './pages/UpdateProfile';
 import { Crear } from './pages/CrearPage';
 import { ProjectsPage } from './pages/ProjectsPage';
-//import HeaderMobile from './components/HeaderMobile';
 import ResponsesOfQuestion from './components/ResponsesComponents/ResponsesOfQuestion';
 import { ValidatePage } from './pages/ValidatePage';
-// import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
 import { UpdatePassword } from './pages/UpdatePassword';
 
 function App() {
-    //const [count, setCount] = useState(0)
 
     return (
         <>
             <Toaster position="bottom-right" />
             <Header />
-            {/* <HeaderMobile /> */}
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
