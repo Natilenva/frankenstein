@@ -7,7 +7,7 @@ const getProfileByIdModel = async (register_id) => {
     try {
         connection = await getConnection();
         const [result] = await connection.query(
-            `SELECT * FROM profile  WHERE register_id = ?`,
+            `SELECT * FROM profile INNER JOIN companies WHERE register_id = ?`,
             [register_id]
         );
         console.log(result);

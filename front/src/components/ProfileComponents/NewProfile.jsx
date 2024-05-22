@@ -93,25 +93,34 @@ export const NewProfile = () => {
                 <p className="h-4 text-sm text-rose-500">
                     {errors.birthdate?.message}
                 </p>
-                {/* <fieldset>
+                <fieldset>
                     <label htmlFor="profile_role">Rol</label>
-                    <select id="profile_role" name="profile_role" {...register('profile_role)}>
+                    <select
+                        id="profile_role"
+                        name="profile_role"
+                        {...register('profile_role')}
+                    >
                         <option value="Escoge un role">Escoge un rol</option>
                         <option value="company">Empresa</option>
                         <option value="expert">Experto</option>
                         <option value="student">Studiante</option>
                     </select>
                 </fieldset>
-                   <p className="h-4 text-sm text-rose-500">
-                        {errors.profile_role?.message}
-                    </p>
+                <p className="h-4 text-sm text-rose-500">
+                    {errors.profile_role?.message}
+                </p>
                 <fieldset>
                     <label htmlFor="company">Empresa</label>
-                    <input type="text" id="company" name="company" {...register('company')} />
-                </fieldset> */}
-                {/* <p className="h-4 text-sm text-rose-500">
+                    <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        {...register('company')}
+                    />
+                </fieldset>
+                <p className="h-4 text-sm text-rose-500">
                     {errors.company?.message}
-                </p> */}
+                </p>
                 {/* <img src={'avatar.png'} alt="avatar" /> */}
 
                 <fieldset>

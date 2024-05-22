@@ -9,7 +9,7 @@ const selectRegisterCodeModel = async (registrationCode) => {
     `,
         [registrationCode]
     );
-    console.log(user[0]);
+    // console.log(user[0]);
     if (!user[0]) {
         throw new Error('<h1>El usuario no existe o ya ha sido validado </h1>');
     }

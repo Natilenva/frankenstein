@@ -63,6 +63,7 @@ const updateProfileController = async (req, res, next) => {
                     profile_username,
                     avatar: imageFileName,
                     profile_role,
+                    company_name,
 
                     register_id: req.userId,
                 },
