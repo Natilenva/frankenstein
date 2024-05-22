@@ -34,7 +34,8 @@ export const Auth = () => {
 
     return user ? (
         <>
-            <p className="text-white">Logged in as {user.email} </p>
+            {/* <p className="text-white">Logged in as {user.email} </p> */}
+            <p className="text-white">{user.usernameOfRegister} </p>
             <div className="flex space-x-4">
                 <Link
                     to="/"

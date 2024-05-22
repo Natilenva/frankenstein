@@ -56,9 +56,9 @@ export const Project = ({ project, removeProject }) => {
 
                     <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
                         By
-                        <Link to={`/user/${project.email}`}>
+                        <Link to={`/user/${project.usernameOfRegister}`}>
                             {' '}
-                            {project.email}{' '}
+                            {project.usernameOfRegister}{' '}
                         </Link>{' '}
                         on{' '}
                         <Link to={`/project/${project.project_id}`}>
