@@ -34,6 +34,8 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
             setValue('profile_lastname', profile.profile_lastname);
             setValue('profile_username', profile.profile_username);
             setValue('birthdate', profile.birthdate);
+            setValue('profile_role', profile.profile_role);
+            setValue('company_name', profile.company_name);
             // setValue('email', user.email);
         }
     }, [profile, setValue]);
@@ -63,7 +65,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
             toast.success('Perfil actualizado con éxito');
         } catch (error) {
             setError(error.message);
-            //  toast.error('Ha habido un problema al actualizar el perfil');
+            toast.error('Ha habido un problema al actualizar el perfil');
         } finally {
             setSending(false);
         }
@@ -132,13 +134,13 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                 <p className="h-4 text-sm text-rose-500">
                     {errors.birthdate?.message}
                 </p>
-                {/* <fieldset>
+                <fieldset>
                     <label htmlFor="profile_role">Rol</label>
                     <select
                         id="profile_role"
                         name="profile_role"
-                        defaultValue={profile.profile_role}
-                        {...register('profile_role)}
+                        // defaultValue={profile.profile_role}
+                        {...register('profile_role')}
                     >
                         <option value="Escoge un role">Escoge un rol</option>
                         <option value="company">Empresa</option>
@@ -146,22 +148,22 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                         <option value="student">Studiante</option>
                     </select>
                 </fieldset>
-                  <p className="h-4 text-sm text-rose-500">
-                        {errors.profile_role?.message}
-                    </p>
+                <p className="h-4 text-sm text-rose-500">
+                    {errors.profile_role?.message}
+                </p>
                 <fieldset>
                     <label htmlFor="company">Empresa</label>
                     <input
                         type="text"
                         id="company"
                         name="company"
-                        defaultValue={profile.company}
+                        // defaultValue={profile.company}
                         {...register('company')}
                     />
-                </fieldset> */}
-                {/* <p className="h-4 text-sm text-rose-500">
+                </fieldset>
+                <p className="h-4 text-sm text-rose-500">
                     {errors.company?.message}
-                </p> */}
+                </p>
                 <fieldset>
                     <label htmlFor="avatar">Avatar</label>
                     <input
