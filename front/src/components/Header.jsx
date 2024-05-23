@@ -8,7 +8,7 @@ export const Header = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <header className="bg-black p-4 top-0 flex items-center justify-between shadow-md">
+        <header className="bg-black p-4 top-0 flex items-center justify-between shadow-md sticky">
             {/* Logo en el lado izquierdo */}
             <div className=" items-center">
                 <Link to="/">
