@@ -96,6 +96,8 @@ export const NewProfile = () => {
                         type="text"
                         id="birthdate"
                         name="birthdate"
+                        // min="1924-01-01"
+                        // max="2021-01-01"
                         {...register('birthdate')}
                     />
                 </fieldset>
