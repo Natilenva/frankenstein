@@ -18,7 +18,7 @@ export const ProjectPage = () => {
     if (error) return <ErrorMessage message={error} />;
 
     return (
-        <section>
+        <section className=" m-auto flex flex-col min-h-screen">
             <h1 className="text-2xl font-bold ">ProjectPage</h1>
             {user && user.register_id === project.register_id ? (
                 //<p> formulario update project </p>

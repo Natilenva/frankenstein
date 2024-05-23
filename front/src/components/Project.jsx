@@ -30,8 +30,8 @@ export const Project = ({ project, removeProject }) => {
 
     return (
         <article>
-            <div className="flex flex-col flex-1 rounded-md border border-solid border-black border-opacity-10">
-                <div className="flex justify-center items-center bg-black bg-opacity-10 h-[162px] w-[162px]">
+
+                <div >
                     {project.project_photo ? (
                         <img
                             loading="lazy"
@@ -56,9 +56,9 @@ export const Project = ({ project, removeProject }) => {
 
                     <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
                         By
-                        <Link to={`/user/${project.email}`}>
+                        <Link to={`/user/${project.usernameOfRegister}`}>
                             {' '}
-                            {project.email}{' '}
+                            {project.usernameOfRegister}{' '}
                         </Link>{' '}
                         on{' '}
                         <Link to={`/project/${project.project_id}`}>
@@ -91,7 +91,7 @@ export const Project = ({ project, removeProject }) => {
                     ) : null}
                     {error ? <p>{error}</p> : null}
                 </section>
-            </div>
+
         </article>
     );
 };

@@ -21,7 +21,7 @@ const HeaderMobile = () => {
                 ☰
             </button>
             {isOpen && (
-                <div className="bg-red-700 absolute top-16 right-0 w-full">
+                <div className="bg-neutral-800 absolute top-16 right-0 w-full">
                     <div className="flex flex-col items-center justify-center py-4">
                         {user ? (
                             <Link
