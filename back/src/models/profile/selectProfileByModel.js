@@ -9,6 +9,10 @@ const selectProfileByModel = async (register_id) => {
         `SELECT register_id, profile_name, profile_lastname, profile_username, birthdate, profile_role, avatar FROM profile WHERE register_id = ?`,
         [register_id]
     );
+    await connection.query(
+        `SELECT company_name, register_id FROM companies WHERE register_id = ?`,
+        [register_id]
+    );
 
     if (profile.length < 1) {
         notFoundError('perfil');

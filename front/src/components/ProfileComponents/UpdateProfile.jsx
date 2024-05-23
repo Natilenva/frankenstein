@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-hot-toast';
 import { updateProfileService } from '../../services/profileServices';
 import { useNavigate, useParams } from 'react-router-dom';
-// import { useProfile } from '../../hooks/profilehook/useProfile';
+
 import PropTypes from 'prop-types';
 import { updateProfileSchema } from '../../../schemas/updateProfileSchema';
 import { useForm } from 'react-hook-form';
@@ -16,7 +16,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
     const [image, setImage] = useState();
-
+    const [isCompany, setIsCompany] = useState(false);
     const { id } = useParams();
 
     const {
@@ -36,7 +36,6 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
             setValue('birthdate', profile.birthdate);
             setValue('profile_role', profile.profile_role);
             setValue('company_name', profile.company_name);
-            // setValue('email', user.email);
         }
     }, [profile, setValue]);
     console.log(user);
@@ -70,7 +69,10 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
             setSending(false);
         }
     };
-
+    const handleRoleChange = (event) => {
+        const selectedRole = event.target.value;
+        setIsCompany(selectedRole === 'company');
+    };
     return (
         <>
             <form onSubmit={handleSubmit(handleForm)}>
@@ -80,10 +82,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                         type="text"
                         id="profile_name"
                         name="profile_name"
-                        // defaultValue={profile.profile_name}
                         {...register('profile_name')}
-                        // value={profileName}
-                        // onChange={handleChange}
                     />
                 </fieldset>
                 <p className="h-4 text-sm text-rose-500">
@@ -95,10 +94,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                         type="text"
                         id="profile_lastname"
                         name="profile_lastname"
-                        // defaultValue={profile.profile_lastname}
                         {...register('profile_lastname')}
-                        // value={profileLastName}
-                        // onChange={(e) => setProfileLastName(e.target.value)}
                     />
                     <p className="h-4 text-sm text-rose-500">
                         {errors.profile_lastname?.message}
@@ -110,10 +106,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                         type="text"
                         id="profile_username"
                         name="profile_username"
-                        // defaultValue={profile.profile_username}
                         {...register('profile_username')}
-                        // value={profileUsername}
-                        // onChange={(e) => setProfileUsername(e.target.value)}
                     />
                     <p className="h-4 text-sm text-rose-500">
                         {errors.profile_username?.message}
@@ -125,10 +118,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                         type="text"
                         id="birthdate"
                         name="birthdate"
-                        // defaultValue={profile.birthdate}
                         {...register('birthdate')}
-                        // value={birthdate}
-                        // onChange={(e) => setBirthdate(e.target.value)}
                     />
                 </fieldset>
                 <p className="h-4 text-sm text-rose-500">
@@ -139,30 +129,30 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                     <select
                         id="profile_role"
                         name="profile_role"
-                        // defaultValue={profile.profile_role}
                         {...register('profile_role')}
+                        onChange={handleRoleChange}
                     >
                         <option value="Escoge un role">Escoge un rol</option>
                         <option value="company">Empresa</option>
                         <option value="expert">Experto</option>
-                        <option value="student">Studiante</option>
+                        <option value="student">Estudiante</option>
                     </select>
                 </fieldset>
                 <p className="h-4 text-sm text-rose-500">
                     {errors.profile_role?.message}
                 </p>
                 <fieldset>
-                    <label htmlFor="company">Empresa</label>
+                    <label htmlFor="company_name">Empresa</label>
                     <input
                         type="text"
-                        id="company"
-                        name="company"
-                        // defaultValue={profile.company}
-                        {...register('company')}
+                        id="company_name"
+                        name="company_name"
+                        {...register('company_name')}
+                        disabled={!isCompany}
                     />
                 </fieldset>
                 <p className="h-4 text-sm text-rose-500">
-                    {errors.company?.message}
+                    {errors.company_name?.message}
                 </p>
                 <fieldset>
                     <label htmlFor="avatar">Avatar</label>
@@ -171,7 +161,6 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                         id="avatar"
                         name="avatar"
                         accept="image/*"
-                        // defaultValue={profile.avatar}
                         onChange={(e) => setImage(e.target.files[0])}
                     />
                     {image ? (

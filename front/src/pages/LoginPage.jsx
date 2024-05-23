@@ -7,13 +7,13 @@ import { toast } from 'react-hot-toast';
 import { loginSchema } from '../../schemas/loginSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+
 export const LoginPage = () => {
     const { register, handleSubmit, formState } = useForm({
         mode: 'onTouched',
         resolver: zodResolver(loginSchema),
     });
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
+
     const [error, setError] = useState('');
     const { errors, isValid } = formState;
     //cargar contexto
@@ -33,7 +33,6 @@ export const LoginPage = () => {
             });
             //console.log(data);// devuelve el token
             login(responseData); // click Login, ejecuto fn login (del Contexo) pasándole el token
-
             navigate('/');
 
             toast.success('Usuario logueado!');

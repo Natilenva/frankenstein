@@ -6,11 +6,12 @@ import { profileSchema } from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 export const NewProfile = () => {
-    const { token, user } = useContext(AuthContext);
+    const { token, user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [image, setImage] = useState(null);
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
+    const [isCompany, setIsCompany] = useState(false);
     const {
         register,
         handleSubmit,
@@ -32,7 +33,11 @@ export const NewProfile = () => {
             if (image) {
                 formData.append('avatar', image);
             }
-            await insertProfileService({ formData, token });
+            const { profile_id } = await insertProfileService({
+                formData,
+                token,
+            });
+            setUser({ ...user, profile_id });
             //  setImage(null);
             navigate(`/profile/${user.register_id}`);
         } catch (error) {
@@ -40,6 +45,10 @@ export const NewProfile = () => {
         } finally {
             setSending(false);
         }
+    };
+    const handleRoleChange = (event) => {
+        const selectedRole = event.target.value;
+        setIsCompany(selectedRole === 'company');
     };
     return (
         <>
@@ -99,23 +108,25 @@ export const NewProfile = () => {
                         id="profile_role"
                         name="profile_role"
                         {...register('profile_role')}
+                        onChange={handleRoleChange}
                     >
                         <option value="Escoge un role">Escoge un rol</option>
                         <option value="company">Empresa</option>
                         <option value="expert">Experto</option>
-                        <option value="student">Studiante</option>
+                        <option value="student">Estudiante</option>
                     </select>
                 </fieldset>
                 <p className="h-4 text-sm text-rose-500">
                     {errors.profile_role?.message}
                 </p>
                 <fieldset>
-                    <label htmlFor="company">Empresa</label>
+                    <label htmlFor="company_name">Empresa</label>
                     <input
                         type="text"
-                        id="company"
-                        name="company"
-                        {...register('company')}
+                        id="company_name"
+                        name="company_name"
+                        {...register('company_name')}
+                        disabled={!isCompany}
                     />
                 </fieldset>
                 <p className="h-4 text-sm text-rose-500">
@@ -143,7 +154,12 @@ export const NewProfile = () => {
                         </figure>
                     ) : null}
                 </fieldset>
-                <button disabled={!isValid}>Actualizar perfil</button>
+                <button
+                    className="text-white bg-lime-600 rounded p-1 m-4"
+                    disabled={!isValid}
+                >
+                    Actualizar perfil
+                </button>
                 {sending ? <p>Sending profile</p> : null}
                 {error && <p className="text-red-500">{error}</p>}
             </form>
