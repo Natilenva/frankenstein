@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { updateProfileSchema } from '../../../schemas/updateProfileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { format } from 'date-fns';
 
 export const UpdateProfile = ({ updateProfile, profile }) => {
     const { token, user } = useContext(AuthContext);
@@ -33,7 +34,10 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
             setValue('profile_name', profile.profile_name);
             setValue('profile_lastname', profile.profile_lastname);
             setValue('profile_username', profile.profile_username);
-            setValue('birthdate', profile.birthdate);
+            setValue(
+                'birthdate',
+                format(new Date(profile.birthdate), 'dd-MM-yyyy')
+            );
             setValue('profile_role', profile.profile_role);
             setValue('company_name', profile.company_name);
         }
@@ -43,6 +47,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
         setError('');
         try {
             setSending(true);
+            data.birthdate = format(new Date(data.birthdate), 'yyyy-MM-dd');
             const formData = new FormData();
             for (const key in data) {
                 formData.append(key, data[key]);

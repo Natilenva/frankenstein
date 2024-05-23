@@ -28,7 +28,6 @@ import { RejectCompanyPage } from './pages/RejectCompanyPage';
 // import { useContext, useEffect } from 'react';
 // import { AuthContext } from './context/AuthContext';
 function App() {
-    //const [count, setCount] = useState(0)
     // const { token, user } = useContext(AuthContext);
     // const navigate = useNavigate();
     // console.log('Antes de useEffect', user);

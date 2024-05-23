@@ -5,33 +5,44 @@ import PropTypes from 'prop-types';
 
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { projectSchema } from '../../schemas/projectShema';
 export const NewProject2 = ({ addProject }) => {
-
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
     const [image, setImage] = useState();
     const { token } = useContext(AuthContext);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        mode: 'onTouched',
+        resolver: zodResolver(projectSchema),
+    });
 
     //redireccionar
     const navigate = useNavigate();
 
-    const handleForm = async (e) => {
-        e.preventDefault();
-
+    const handleForm = async (data) => {
         try {
             setSending(true);
 
-            const data = new FormData(e.target);
-            //console.log('e.target', e.target);
+            const formData = new FormData();
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
+            if (image) {
+                formData.append('project_photo', image);
+            }
 
-            const project = await sendProjectService({ data, token });
-            //console.log('project', project); // ! 
+            const project = await sendProjectService({ data: formData, token });
+            //console.log('project', project); // !
 
             addProject(project);
             navigate('/');
 
-            e.target.reset();
             setImage(null);
             toast.success('Agregado proyecto con éxito');
         } catch (error) {
@@ -42,12 +53,20 @@ export const NewProject2 = ({ addProject }) => {
         }
     };
     return (
-        <form onSubmit={handleForm}>
+        <form onSubmit={handleSubmit(handleForm)}>
             <h1 className="text-2xl font-normal ">Add new Project</h1>
 
             <fieldset>
                 <label htmlFor="project_title">Title</label>
-                <input type="text" id="project_title" name="project_title" />
+                <input
+                    type="text"
+                    id="project_title"
+                    name="project_title"
+                    {...register('project_title')}
+                />
+                <p className="h-4 text-sm text-rose-500">
+                    {errors.project_title?.message}
+                </p>
             </fieldset>
 
             <fieldset>
@@ -56,12 +75,24 @@ export const NewProject2 = ({ addProject }) => {
                     type="text"
                     id="project_description"
                     name="project_description"
+                    {...register('project_description')}
                 />
+                <p className="h-4 text-sm text-rose-500">
+                    {errors.project_description?.message}
+                </p>
             </fieldset>
 
             <fieldset>
                 <label htmlFor="project_url">URL</label>
-                <input type="url" id="project_url" name="project_url" />
+                <input
+                    type="url"
+                    id="project_url"
+                    name="project_url"
+                    {...register('project_url')}
+                />
+                <p className="h-4 text-sm text-rose-500">
+                    {errors.project_url?.message}
+                </p>
             </fieldset>
 
             <fieldset>
@@ -84,7 +115,9 @@ export const NewProject2 = ({ addProject }) => {
                 ) : null}
             </fieldset>
 
-            <button className=' bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded'>Send Project</button>
+            <button className=" bg-blue-500 hover:bg-blue-700 text-white px-4 py-1 rounded">
+                Send Project
+            </button>
             {sending ? <p>Sending project</p> : null}
             {error ? <p>{error}</p> : null}
         </form>

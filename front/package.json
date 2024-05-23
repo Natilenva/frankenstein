@@ -24,6 +24,8 @@
 
         "@hookform/resolvers": "^3.4.0",
 
+        "date-fns": "^3.6.0",
+
         "install": "^0.13.0",
 
         "moment": "^2.30.1",

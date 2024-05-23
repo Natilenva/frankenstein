@@ -30,7 +30,7 @@ const createTables = async () => {
                     profile_name varchar(50) NOT NULL,
                     profile_lastname varchar(50) NOT NULL,
                     profile_username varchar(50),
-                    birthdate DATETIME,
+                    birthdate DATE,
                     profile_role enum('expert','company', 'student') ,
                     avatar varchar(255) ,
                     created_at datetime DEFAULT CURRENT_TIMESTAMP,
