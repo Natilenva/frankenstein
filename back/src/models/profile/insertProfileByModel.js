@@ -30,7 +30,7 @@ const insertProfileByModel = async (
             ]
         );
 
-        if (company_name) {
+        if (company_name && company_name.trim() !== '') {
             await connection.query(
                 `INSERT INTO companies (company_name,
                 register_id)

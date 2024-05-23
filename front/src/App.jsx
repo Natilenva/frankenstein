@@ -1,9 +1,6 @@
-//import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
-//import viteLogo from '/vite.svg'
 import './App.css';
 
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 //* components q siempre se ven
 
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
@@ -28,21 +25,19 @@ import { ValidatePage } from './pages/ValidatePage';
 import { UpdatePassword } from './pages/UpdatePassword';
 import { ValidateCompanyPage } from './pages/ValidateCompanyPage';
 import { RejectCompanyPage } from './pages/RejectCompanyPage';
-import { useContext, useEffect } from 'react';
-import { AuthContext } from './context/AuthContext';
+// import { useContext, useEffect } from 'react';
+// import { AuthContext } from './context/AuthContext';
 function App() {
-
     //const [count, setCount] = useState(0)
-    const { token, user } = useContext(AuthContext);
-    const navigate = useNavigate();
-    console.log('Antes de useEffect', user);
-    useEffect(() => {
-        console.log({ token, user });
-        if (token && user && !user.profile_id) {
-            navigate('/newprofile');
-        }
-    }, [token, user, navigate]);
-
+    // const { token, user } = useContext(AuthContext);
+    // const navigate = useNavigate();
+    // console.log('Antes de useEffect', user);
+    // useEffect(() => {
+    //     console.log({ token, user });
+    //     if (token && user && !user.profile_id) {
+    //         navigate('/newprofile');
+    //     }
+    // }, [token, user, navigate]);
 
     return (
         <>
