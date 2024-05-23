@@ -7,11 +7,10 @@ import path from 'node:path';
 import { nanoid } from 'nanoid';
 import { insertProfileByModel } from '../../models/profile/insertProfileByModel.js';
 
-import {
-    getProfileByIdModel,
-    validateProfileRole,
-} from '../../models/profile/getProfileByIdModel.js';
-import { generateError } from '../../helpers/generateError.js';
+import { getProfileByIdModel } from '../../models/profile/getProfileByIdModel.js';
+import { validateProfileRole } from '../../models/profile/insertProfileByModel.js';
+// import newCompanyController from '../company/newCompanyController.js';
+// import { generateError } from '../../helpers/generateError.js';
 const profileInsertController = async (req, res, next) => {
     const { success, data: profile, error } = profileSchema.safeParse(req.body);
     if (!success) {
@@ -55,7 +54,7 @@ const profileInsertController = async (req, res, next) => {
             company_name,
             req.userId
         );
-        await insertProfileByModel(
+        const profile_id = await insertProfileByModel(
             imageFileName,
             profile_name,
             profile_lastname,
@@ -69,7 +68,12 @@ const profileInsertController = async (req, res, next) => {
         res.send({
             httpStatus: '201',
             code: 'PROFILE_CREATED',
-            message: msgCompany,
+
+            data: {
+                profile_id,
+            },
+
+            // message: msgCompany,
         });
     } catch (error) {
         next(error);

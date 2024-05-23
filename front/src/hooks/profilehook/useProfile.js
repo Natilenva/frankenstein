@@ -22,5 +22,5 @@ export const useProfile = (id) => {
     const updateProfile = (profile) => {
         setProfile(profile);
     };
-    return { profile, loading, error, updateProfile };
+    return { profile, loading, error, updateProfile, getProfileService };
 };

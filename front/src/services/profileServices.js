@@ -21,6 +21,7 @@ export const insertProfileService = async ({ formData, token }) => {
     if (!response.ok) {
         throw new Error(json.message);
     }
+    console.log({ json });
     return json.data;
 };
 export const updateProfileService = async ({ data, token }) => {

@@ -3,15 +3,13 @@ import responsesRoutes from './responsesRoutes.js';
 import userRoutes from './usersRoutes.js';
 import projectRoutes from './projectRouter.js';
 import questionRoutes from './questionRouter.js';
-import companyRoutes from './companyRouter.js';
+// import companyRoutes from './companyRouter.js';
 import skillRoutes from './skillRouter.js';
-
-
 
 import expertUserRoutes from './expertUserRoutes.js';
 import expertRoutes from './expertRoutes.js';
-import profileRoutes from './profileRoutes.js';
-import userAdminRoutes from './userAdminRoutes.js';
+// import profileRoutes from './profileRoutes.js';
+// import userAdminRoutes from './userAdminRoutes.js';
 //import { selectCompanyForProfile } from '../controllers/profile/profileController.js';
 import authUser from '../middlewares/auth.js';
 import eventRoutes from './eventsRouter.js';
@@ -26,7 +24,7 @@ router.use(eventRoutes);
 router.use(questionRoutes);
 
 //* Company Routes
-router.use(companyRoutes);
+// router.use(companyRoutes);
 
 //* Expert Skills Routes
 router.use(skillRoutes);
@@ -39,10 +37,10 @@ router.use(responsesRoutes);
 router.use(expertUserRoutes);
 
 // Endpoint para que el experto seleccione la empresa
-router.use(profileRoutes);
+// router.use(profileRoutes);
 
 router.use(expertRoutes);
 
-router.use(userAdminRoutes);
+// router.use(userAdminRoutes);
 
 export default router;

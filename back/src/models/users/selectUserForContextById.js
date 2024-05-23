@@ -13,7 +13,12 @@ const selectUserForContextById = async (id) => {
     if (result.length === 0) {
         throw generateError('No hay ningún usuario con esa id', 404);
     }
-
+    const [[profileResult]] = await connection.query(
+        `SELECT profile_id FROM profile  WHERE register_id = ?`,
+        [result[0].register_id]
+    );
+    result[0].profile_id = profileResult?.profile_id;
+    console.log('resultado', result[0]);
     return result[0];
 };
 export { selectUserForContextById };

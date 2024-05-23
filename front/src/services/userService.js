@@ -58,3 +58,23 @@ export const validateRegisterService = async (registrationCode) => {
     }
     return json.data;
 };
+export const validateCompanyService = async (id) => {
+    const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/admin/validate/${id}`
+    );
+    const json = await response.json();
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+    return json.data;
+};
+export const rejectCompanyService = async (id) => {
+    const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/admin/reject/${id}`
+    );
+    const json = await response.json();
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+    return json.data;
+};

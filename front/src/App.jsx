@@ -2,7 +2,10 @@
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+
+import { Routes, Route, useNavigate } from 'react-router-dom';
+//* components q siempre se ven
+
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import { Header } from './components/Header';
@@ -23,8 +26,23 @@ import { ProjectsPage } from './pages/ProjectsPage';
 import ResponsesOfQuestion from './components/ResponsesComponents/ResponsesOfQuestion';
 import { ValidatePage } from './pages/ValidatePage';
 import { UpdatePassword } from './pages/UpdatePassword';
-
+import { ValidateCompanyPage } from './pages/ValidateCompanyPage';
+import { RejectCompanyPage } from './pages/RejectCompanyPage';
+import { useContext, useEffect } from 'react';
+import { AuthContext } from './context/AuthContext';
 function App() {
+
+    //const [count, setCount] = useState(0)
+    const { token, user } = useContext(AuthContext);
+    const navigate = useNavigate();
+    console.log('Antes de useEffect', user);
+    useEffect(() => {
+        console.log({ token, user });
+        if (token && user && !user.profile_id) {
+            navigate('/newprofile');
+        }
+    }, [token, user, navigate]);
+
 
     return (
         <>
@@ -39,7 +57,14 @@ function App() {
                     path="/validate/:registrationCode"
                     element={<ValidatePage />}
                 />
-
+                <Route
+                    path="/admin/validate/:id"
+                    element={<ValidateCompanyPage />}
+                />
+                <Route
+                    path="/admin/reject/:id"
+                    element={<RejectCompanyPage />}
+                />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/project/:id" element={<ProjectPage />} />
                 <Route path="/crear" element={<Crear />} />
