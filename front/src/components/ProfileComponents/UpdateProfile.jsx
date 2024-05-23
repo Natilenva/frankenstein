@@ -36,7 +36,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
             setValue('profile_username', profile.profile_username);
             setValue(
                 'birthdate',
-                format(new Date(profile.birthdate), 'dd-MM-yyyy')
+                format(new Date(profile.birthdate), 'yyyy-mm-dd')
             );
             setValue('profile_role', profile.profile_role);
             setValue('company_name', profile.company_name);
