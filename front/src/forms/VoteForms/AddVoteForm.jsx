@@ -32,7 +32,7 @@ const AddVoteForm = ({
     return (
         <div>
             <Stars votesAvg={votesAvg} handleAddVote={handleAddVote} />
-            <span>{votes} estrellas</span>
+            
         </div>
     );
 };

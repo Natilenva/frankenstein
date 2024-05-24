@@ -10,7 +10,10 @@ const Stars = ({ votesAvg, handleAddVote }) => {
             <img src={starPath} key={i} onClick={() => handleAddVote(i)} />
         );
     }
-    return <div className="flex h-5 w-5">{stars}</div>;
+    return (<div>
+        <div className="flex h-5 w-5">{stars}</div>
+        <span>{votesAvg} estrellas</span>
+        </div>)
 };
 
 Stars.propTypes = {
