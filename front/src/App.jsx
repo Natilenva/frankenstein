@@ -26,6 +26,7 @@ import { UpdatePassword } from './pages/UpdatePassword';
 import { ValidateCompanyPage } from './pages/ValidateCompanyPage';
 import { RejectCompanyPage } from './pages/RejectCompanyPage';
 import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
+import { ProjectsUser } from './pages/ProjectsUsers';
 
 // import { UpdateProfilePage } from './pages/UpdateProfilePage';
 // import { useContext, useEffect } from 'react';
@@ -64,6 +65,7 @@ function App() {
                 />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/project/:id" element={<ProjectPage />} />
+                <Route path="/projects/:id" element={<ProjectsUser />} />
                 <Route path="/crear" element={<Crear />} />
                 {/* <Route path="/" element={<ProjectPage />} /> */}
 
