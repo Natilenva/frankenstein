@@ -30,49 +30,48 @@ export const Project = ({ project, removeProject }) => {
 
     return (
         <article>
-
-                <div >
-                    {project.project_photo ? (
-                        <img
-                            loading="lazy"
-                            src={`${import.meta.env.VITE_BASE_URL}/uploads/${
-                                project.project_photo
-                            }`}
-                            alt={project.project_title}
-                            className="aspect-[0.96] w-[158px]"
-                        />
-                    ) : (
-                        <p>no photo</p>
-                    )}
-                </div>
-                <div className="flex flex-col p-2">
-                    <div className="text-sm font-semibold leading-4 text-lime-600">
-                        <h3>{project.project_title}</h3>
-                    </div>
-
-                    <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
-                        {project.project_description}
-                    </p>
-
-                    <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
-                        By
-                        <Link to={`/user/${project.usernameOfRegister}`}>
-                            {' '}
-                            {project.usernameOfRegister}{' '}
-                        </Link>{' '}
-                        on{' '}
-                        <Link to={`/project/${project.project_id}`}>
-                            {new Date(project.created_at).toLocaleString()}
-                        </Link>
-                    </p>
+            <div>
+                {project.project_photo ? (
+                    <img
+                        loading="lazy"
+                        src={`${import.meta.env.VITE_BASE_URL}/uploads/${
+                            project.project_photo
+                        }`}
+                        alt={project.project_title}
+                        className="aspect-[0.96] w-[158px]"
+                    />
+                ) : (
+                    <p>no photo</p>
+                )}
+            </div>
+            <div className="flex flex-col p-2">
+                <div className="text-sm font-semibold leading-4 text-lime-600">
+                    <h3>{project.project_title}</h3>
                 </div>
 
-                <section>
-                    {user && user.register_id === project.register_id ? (
-                        <>
+                <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
+                    {project.project_description}
+                </p>
+
+                <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
+                    By
+                    <Link to={`/user/${project.usernameOfRegister}`}>
+                        {' '}
+                        {project.usernameOfRegister}{' '}
+                    </Link>{' '}
+                    on{' '}
+                    <Link to={`/project/${project.project_id}`}>
+                        {new Date(project.created_at).toLocaleString()}
+                    </Link>
+                </p>
+            </div>
+
+            <section>
+                {user && user.register_id === project.register_id ? (
+                    <>
                         {/* // Delete project en HomePage ---------------------------------- */}
                         <button
-                        className='bg-[#829821] hover:bg-[#829821] text-white px-4 py-1 rounded'
+                            className="bg-[#829821] hover:bg-[#829821] text-white px-4 py-1 rounded"
                             onClick={() => {
                                 deleteProject(project.project_id);
                             }}
@@ -80,18 +79,17 @@ export const Project = ({ project, removeProject }) => {
                             Eliminar proyecto
                         </button>
 
-
                         {/* // Editar project en ProjectPage ---------------------------------- */}
-                        <Link to={`/project/${project.project_id}`} className="text-black hover:text-[#829821]">
+                        <Link
+                            to={`/project/${project.project_id}`}
+                            className="text-black hover:text-[#829821]"
+                        >
                             Editar
                         </Link>
-
-                        </>
-                        
-                    ) : null}
-                    {error ? <p>{error}</p> : null}
-                </section>
-
+                    </>
+                ) : null}
+                {error ? <p>{error}</p> : null}
+            </section>
         </article>
     );
 };

@@ -34,11 +34,14 @@ const updateProfileModel = async (
             userId,
         ]
     );
-    await connection.query(
-        `
-    UPDATE companies SET company_name = ? WHERE register_id =? `,
-        [company_name, userId]
-    );
+    if (profile_role === 'company')
+        await connection.query(
+            `INSERT INTO companies (company_name,
+                register_id)
+                VALUES (?,?)
+            `,
+            [company_name, userId]
+        );
 
     // await connection.query(
     //     `
