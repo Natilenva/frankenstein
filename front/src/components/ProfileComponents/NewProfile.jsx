@@ -93,11 +93,11 @@ export const NewProfile = () => {
                 <fieldset>
                     <label htmlFor="birthdate">Fecha de naciemiento</label>
                     <input
-                        type="text"
+                        type="date"
                         id="birthdate"
                         name="birthdate"
-                        // min="1924-01-01"
-                        // max="2021-01-01"
+                        min="1924-01-01"
+                        max="2021-01-01"
                         {...register('birthdate')}
                     />
                     {/* <p className="h-4 text-sm text-rose-500">

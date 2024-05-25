@@ -48,7 +48,10 @@ export const ProjectProfile = ({ projectProfile }) => {
                 </div>
                 <div className="flex flex-col p-2">
                     <div className="text-sm font-semibold leading-4 text-lime-600">
-                        <h3>{projectProfile.project_title}</h3>
+                        <Link to={`/project/${projectProfile.project_id}`}>
+                            {' '}
+                            <h3>{projectProfile.project_title}</h3>
+                        </Link>{' '}
                     </div>
 
                     <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
@@ -56,17 +59,15 @@ export const ProjectProfile = ({ projectProfile }) => {
                     </p>
 
                     <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
-                        By
-                        <Link to={`/user/${projectProfile.usernameOfRegister}`}>
+                        By{' '}
+                        {/* <Link
+                            to={`/projects/${projectProfile.profile_username}`}
+                        >
                             {' '}
-                            {projectProfile.usernameOfRegister}{' '}
-                        </Link>{' '}
-                        on{' '}
-                        <Link to={`/project/${projectProfile.project_id}`}>
-                            {new Date(
-                                projectProfile.created_at
-                            ).toLocaleString()}
-                        </Link>
+                            {projectProfile.profile_username}{' '}
+                        </Link>{' '} */}
+                        {projectProfile.profile_username} on{' '}
+                        {new Date(projectProfile.created_at).toLocaleString()}
                     </p>
                 </div>
 

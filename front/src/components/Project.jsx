@@ -46,7 +46,10 @@ export const Project = ({ project, removeProject }) => {
             </div>
             <div className="flex flex-col p-2">
                 <div className="text-sm font-semibold leading-4 text-lime-600">
-                    <h3>{project.project_title}</h3>
+                    <Link to={`/project/${project.project_id}`}>
+                        {' '}
+                        <h3>{project.project_title}</h3>
+                    </Link>{' '}
                 </div>
 
                 <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
@@ -55,14 +58,11 @@ export const Project = ({ project, removeProject }) => {
 
                 <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
                     By
-                    <Link to={`/user/${project.usernameOfRegister}`}>
+                    <Link to={`/profile/${project.usernameOfRegister}`}>
                         {' '}
                         {project.usernameOfRegister}{' '}
                     </Link>{' '}
-                    on{' '}
-                    <Link to={`/project/${project.project_id}`}>
-                        {new Date(project.created_at).toLocaleString()}
-                    </Link>
+                    on {new Date(project.created_at).toLocaleString()}
                 </p>
             </div>
 
