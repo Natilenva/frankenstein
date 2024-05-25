@@ -43,7 +43,6 @@ export const updateProfileService = async ({ data, token }) => {
 };
 
 export const getProjectsByProfileService = async (id) => {
-    console.log('id usuario proyecto', id);
     const response = await fetch(
         `${import.meta.env.VITE_BASE_URL}/projects/${id}`
     );
