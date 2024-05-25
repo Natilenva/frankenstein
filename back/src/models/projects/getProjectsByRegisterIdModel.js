@@ -6,7 +6,7 @@ const getProjectsByRegisterIdModel = async (id) => {
 
     const [result] = await connetion.query(
         `
-    SELECT projects.*, register.email , profile.profile_username FROM projects LEFT JOIN register ON projects.register_id = register.register_id LEFT JOIN profile ON projects.register_id = profile.register_id WHERE projects.register_id = ?
+    SELECT projects.*, register.email , profile.profile_username, profile.profile_id FROM projects LEFT JOIN register ON projects.register_id = register.register_id LEFT JOIN profile ON projects.register_id = profile.register_id WHERE projects.register_id = ?
     `,
         [id]
     );
