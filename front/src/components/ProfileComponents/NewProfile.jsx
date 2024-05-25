@@ -93,17 +93,18 @@ export const NewProfile = () => {
                 <fieldset>
                     <label htmlFor="birthdate">Fecha de naciemiento</label>
                     <input
-                        type="date"
+                        type="text"
                         id="birthdate"
                         name="birthdate"
-                        min="1924-01-01"
-                        max="2021-01-01"
+                        // min="1924-01-01"
+                        // max="2021-01-01"
                         {...register('birthdate')}
                     />
+                    {/* <p className="h-4 text-sm text-rose-500">
+                        {errors.birthdate?.message}
+                    </p> */}
                 </fieldset>
-                <p className="h-4 text-sm text-rose-500">
-                    {errors.birthdate?.message}
-                </p>
+
                 <fieldset>
                     <label htmlFor="profile_role">Rol</label>
                     <select
@@ -117,10 +118,11 @@ export const NewProfile = () => {
                         <option value="expert">Experto</option>
                         <option value="student">Estudiante</option>
                     </select>
+                    <p className="h-4 text-sm text-rose-500">
+                        {errors.profile_role?.message}
+                    </p>
                 </fieldset>
-                <p className="h-4 text-sm text-rose-500">
-                    {errors.profile_role?.message}
-                </p>
+
                 <fieldset>
                     <label htmlFor="company_name">Empresa</label>
                     <input

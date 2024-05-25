@@ -3,15 +3,16 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-hot-toast';
 import { updateProfileService } from '../../services/profileServices';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { updateProfileSchema } from '../../../schemas/updateProfileSchema';
+import { profileSchema } from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { format } from 'date-fns';
 
-export const UpdateProfile = ({ updateProfile, profile }) => {
+export const UpdateProfile = () => {
+    const location = useLocation();
+    const { profile, updateProfile } = location.state;
     const { token, user } = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState('');
@@ -27,17 +28,14 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
         formState: { errors },
     } = useForm({
         mode: 'onTouched',
-        resolver: zodResolver(updateProfileSchema),
+        resolver: zodResolver(profileSchema),
     });
     useEffect(() => {
         if (profile) {
             setValue('profile_name', profile.profile_name);
             setValue('profile_lastname', profile.profile_lastname);
             setValue('profile_username', profile.profile_username);
-            setValue(
-                'birthdate',
-                format(new Date(profile.birthdate), 'yyyy-mm-dd')
-            );
+            setValue('birthdate', profile.birthdate);
             setValue('profile_role', profile.profile_role);
             setValue('company_name', profile.company_name);
         }
@@ -47,7 +45,6 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
         setError('');
         try {
             setSending(true);
-            data.birthdate = format(new Date(data.birthdate), 'yyyy-MM-dd');
             const formData = new FormData();
             for (const key in data) {
                 formData.append(key, data[key]);
@@ -65,10 +62,10 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
             console.log(updatedProfile);
             updateProfile(updatedProfile);
             setImage(null);
-            navigate(`/profile/${id}`);
+            navigate(`/profile/${user.register_id}`);
             toast.success('Perfil actualizado con éxito');
         } catch (error) {
-            setError(error.message);
+            //setError(error.message);
             toast.error('Ha habido un problema al actualizar el perfil');
         } finally {
             setSending(false);
@@ -78,6 +75,11 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
         const selectedRole = event.target.value;
         setIsCompany(selectedRole === 'company');
     };
+    // const handleProfile = () => {
+    //     navigate(`/profile/${user.register_id}`, {
+    //         state: { updateProfile },
+    //     });
+    // };
     return (
         <>
             <form onSubmit={handleSubmit(handleForm)}>
@@ -228,6 +230,7 @@ export const UpdateProfile = ({ updateProfile, profile }) => {
                 </fieldset>{' '}
                 */}
                 <button
+                    // onClick={handleProfile}
                     // disabled={!isValid}
                     className="text-white bg-lime-600 rounded p-1 m-4"
                 >

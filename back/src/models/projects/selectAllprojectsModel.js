@@ -15,8 +15,8 @@ const selectAllProjectsModel = async () => {
         LEFT JOIN register ON projects.register_id = register.register_id 
         ORDER BY projects.created_at DESC
         `);
-        //console.log('selectAllProjectsModel, result: ', result);
-        
+        // console.log('selectAllProjectsModel, result: ', result);
+
         return result;
     } catch (error) {
         throw generateError('Error select projects BBDD', 500);

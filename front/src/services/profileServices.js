@@ -41,3 +41,15 @@ export const updateProfileService = async ({ data, token }) => {
     }
     return json.data;
 };
+
+export const getProjectsByProfileService = async (id) => {
+    console.log('id usuario proyecto', id);
+    const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/projects/${id}`
+    );
+    const json = await response.json();
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+    return json.data;
+};
