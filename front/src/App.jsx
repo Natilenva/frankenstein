@@ -25,6 +25,7 @@ import { ValidatePage } from './pages/ValidatePage';
 import { UpdatePassword } from './pages/UpdatePassword';
 import { ValidateCompanyPage } from './pages/ValidateCompanyPage';
 import { RejectCompanyPage } from './pages/RejectCompanyPage';
+
 // import { useContext, useEffect } from 'react';
 // import { AuthContext } from './context/AuthContext';
 function App() {
@@ -88,6 +89,7 @@ function App() {
                     path="/reset-password/:id/:token"
                     element={<ResetPasswordPage />}
                 />
+             
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
 

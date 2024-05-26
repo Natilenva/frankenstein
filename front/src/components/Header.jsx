@@ -3,6 +3,8 @@ import { Auth } from './Auth';
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import HeaderMobile from './HeaderMobile';
+import { SearchBar } from './SearchComponents/SearchBar';
+
 
 export const Header = () => {
     const { user } = useContext(AuthContext);
@@ -57,11 +59,12 @@ export const Header = () => {
                         </Link>
                     )}
 
-                    <input
-                        type="text"
-                        placeholder="Buscar"
-                        className="text-white bg-gray-800 px-2 py-1 rounded focus:outline-none focus:bg-gray-900"
-                    />
+                    <div>
+                        <div >
+                            <SearchBar/>
+                           
+                        </div>
+                    </div>
                 </div>
             </div>
             

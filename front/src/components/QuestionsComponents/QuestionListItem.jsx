@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 const QuestionListItem = ({ question }) => {
 
     return (
-    <section>
+    <section className='bg-black'>
          <div className="flex gap-2 self-center mt-3.5 w-full max-w-[305px]">
         <div className="justify-center items-center px-1.5 my-auto w-8 h-8 text-xl leading-8 text-center text-white whitespace-nowrap rounded-2xl bg-white bg-opacity-10 text-ellipsis">
             ❓
@@ -24,7 +24,7 @@ const QuestionListItem = ({ question }) => {
                 
                 <div>
                     <div>
-                        <h3 className="text-sm leading-5 text-white underline">{question.question_title}</h3>
+                        <h3 className="text-sm leading-5 underline">{question.question_title}</h3>
 
                         <p className="text-xs leading-4 text-white text-opacity-50">
                             <strong>Tecnologia:</strong> {question.technology}
