@@ -133,9 +133,12 @@ export const NewProfile = () => {
                         disabled={!isCompany}
                     />
                 </fieldset>
-                <p className="h-4 text-sm text-rose-500">
-                    {errors.company?.message}
-                </p>
+                {isCompany && (
+                    <p className="h-4 text-sm text-rose-500">
+                        Nuestro administrador validará su empresa
+                    </p>
+                )}
+                <p>{errors.company?.message}</p>
                 {/* <img src={'avatar.png'} alt="avatar" /> */}
 
                 <fieldset>
