@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 const QuestionListItem = ({ question }) => {
 
     return (
-      </div>
+   
 
         <section className="flex gap-2" >
 
