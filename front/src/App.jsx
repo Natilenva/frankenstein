@@ -1,8 +1,5 @@
 import './App.css';
-
 import { Routes, Route } from 'react-router-dom';
-//* components q siempre se ven
-
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import { Header } from './components/Header';
@@ -26,23 +23,15 @@ import { UpdatePassword } from './pages/UpdatePassword';
 import { ValidateCompanyPage } from './pages/ValidateCompanyPage';
 import { RejectCompanyPage } from './pages/RejectCompanyPage';
 
-// import { useContext, useEffect } from 'react';
-// import { AuthContext } from './context/AuthContext';
-function App() {
-    // const { token, user } = useContext(AuthContext);
-    // const navigate = useNavigate();
-    // console.log('Antes de useEffect', user);
-    // useEffect(() => {
-    //     console.log({ token, user });
-    //     if (token && user && !user.profile_id) {
-    //         navigate('/newprofile');
-    //     }
-    // }, [token, user, navigate]);
+import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
+import { ProjectsUser } from './pages/ProjectsUsers';
 
+function App() {
     return (
         <>
             <Toaster position="bottom-right" />
             <Header />
+
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -62,10 +51,11 @@ function App() {
                 />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/project/:id" element={<ProjectPage />} />
+                <Route path="/projects/:id" element={<ProjectsUser />} />
                 <Route path="/crear" element={<Crear />} />
-                {/* <Route path="/" element={<ProjectPage />} /> */}
 
                 <Route path="/profile/:id" element={<CuentaPage />} />
+                <Route path="/profileupdate" element={<UpdateProfile />} />
                 <Route path="/questions" element={<QuestionsPage />} />
                 <Route path="/question/:id" element={<QuestionDetailsPage />} />
 

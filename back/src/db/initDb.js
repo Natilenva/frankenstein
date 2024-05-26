@@ -9,7 +9,7 @@ const createTables = async () => {
         await connection.query(
             'DROP TABLE IF EXISTS register, profile, questions, events, projects, responses, votes, companies, Skills, ExpertSkills'
         );
-
+        await connection.query('USE frankenstein');
         console.log('Creando tablas');
 
         await connection.query(`
