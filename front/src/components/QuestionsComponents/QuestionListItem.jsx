@@ -13,6 +13,8 @@ import { Link } from 'react-router-dom';
 const QuestionListItem = ({ question }) => {
 
     return (
+   
+
         <section className="flex gap-2" >
 
             <div className="flex gap-2">❓</div>
@@ -35,6 +37,7 @@ const QuestionListItem = ({ question }) => {
                             'DD/MM/YYYY [a las] HH:mm'
                         )}
                     </time>
+
 
                 </div>
 
