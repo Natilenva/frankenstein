@@ -67,7 +67,6 @@ function App() {
                 <Route path="/project/:id" element={<ProjectPage />} />
                 <Route path="/projects/:id" element={<ProjectsUser />} />
                 <Route path="/crear" element={<Crear />} />
-                {/* <Route path="/" element={<ProjectPage />} /> */}
 
                 <Route path="/profile/:id" element={<CuentaPage />} />
                 <Route path="/profileupdate" element={<UpdateProfile />} />
