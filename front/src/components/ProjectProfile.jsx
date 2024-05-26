@@ -29,7 +29,7 @@ export const ProjectProfile = ({ projectProfile }) => {
 
     return (
         <>
-            <h1>Mis Proyectos</h1>
+            <h1>Proyectos de {`${projectProfile.profile_username}`}</h1>
 
             <article>
                 <div>
@@ -60,13 +60,11 @@ export const ProjectProfile = ({ projectProfile }) => {
 
                     <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
                         By{' '}
-                        {/* <Link
-                            to={`/projects/${projectProfile.profile_username}`}
-                        >
+                        <Link to={`/projects/${projectProfile.profile_id}`}>
                             {' '}
                             {projectProfile.profile_username}{' '}
-                        </Link>{' '} */}
-                        {projectProfile.profile_username} on{' '}
+                        </Link>{' '}
+                        on{' '}
                         {new Date(projectProfile.created_at).toLocaleString()}
                     </p>
                 </div>

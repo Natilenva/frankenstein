@@ -23,36 +23,64 @@ import { UpdatePassword } from './pages/UpdatePassword';
 import { ValidateCompanyPage } from './pages/ValidateCompanyPage';
 import { RejectCompanyPage } from './pages/RejectCompanyPage';
 import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
+import { ProjectsUser } from './pages/ProjectsUsers';
 
 function App() {
     return (
         <>
             <Toaster position="bottom-right" />
             <Header />
-            <div className="pb-16"> {/* Añadido margen inferior para el footer */}
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/validate/:registrationCode" element={<ValidatePage />} />
-                    <Route path="/admin/validate/:id" element={<ValidateCompanyPage />} />
-                    <Route path="/admin/reject/:id" element={<RejectCompanyPage />} />
-                    <Route path="/projects" element={<ProjectsPage />} />
-                    <Route path="/project/:id" element={<ProjectPage />} />
-                    <Route path="/crear" element={<Crear />} />
-                    <Route path="/profile/:id" element={<CuentaPage />} />
-                    <Route path="/profileupdate" element={<UpdateProfile />} />
-                    <Route path="/questions" element={<QuestionsPage />} />
-                    <Route path="/question/:id" element={<QuestionDetailsPage />} />
-                    <Route path="/responses/:id" element={<ResponsesOfQuestion />} />
-                    <Route path="/newprofile" element={<NewProfile />} />
-                    <Route path="/updatepassword" element={<UpdatePassword />} />
-                    <Route path="/questions/newquestion" element={<NewQuestionPage />} />
-                    <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                    <Route path="/reset-password/:id/:token" element={<ResetPasswordPage />} />
-                    <Route path="*" element={<NotFoundPage />} />
-                </Routes>
-            </div>
+
+
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route
+                    path="/validate/:registrationCode"
+                    element={<ValidatePage />}
+                />
+                <Route
+                    path="/admin/validate/:id"
+                    element={<ValidateCompanyPage />}
+                />
+                <Route
+                    path="/admin/reject/:id"
+                    element={<RejectCompanyPage />}
+                />
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/project/:id" element={<ProjectPage />} />
+                <Route path="/projects/:id" element={<ProjectsUser />} />
+                <Route path="/crear" element={<Crear />} />
+
+                <Route path="/profile/:id" element={<CuentaPage />} />
+                <Route path="/profileupdate" element={<UpdateProfile />} />
+                <Route path="/questions" element={<QuestionsPage />} />
+                <Route path="/question/:id" element={<QuestionDetailsPage />} />
+
+                <Route
+                    path="/responses/:id"
+                    element={<ResponsesOfQuestion />}
+                />
+
+                <Route path="/newprofile" element={<NewProfile />} />
+                <Route path="/updatepassword" element={<UpdatePassword />} />
+
+                <Route
+                    path="/questions/newquestion"
+                    element={<NewQuestionPage />}
+                />
+                <Route
+                    path="/forgot-password"
+                    element={<ForgotPasswordPage />}
+                />
+                <Route
+                    path="/reset-password/:id/:token"
+                    element={<ResetPasswordPage />}
+                />
+                <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+
             <Footer />
         </>
     );

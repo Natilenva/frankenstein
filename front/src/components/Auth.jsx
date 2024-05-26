@@ -7,9 +7,7 @@ export const Auth = () => {
     const { user, logout } = useContext(AuthContext);
 
     return user ? (
-        <>
-            {/* <p className="text-white">Logged in as {user.email} </p> */}
-            {/* <p className="text-white">{user.usernameOfRegister} </p> */}
+
             <div >
                 <Link
                     to="/"
@@ -18,7 +16,7 @@ export const Auth = () => {
                     <button onClick={() => logout()}>Salir</button>
                 </Link>
             </div>
-        </>
+
     ) : (
         <div className="flex space-x-4">
             <Link

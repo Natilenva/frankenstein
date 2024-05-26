@@ -7,7 +7,7 @@ import { ProjectProfile } from './ProjectProfile';
 export const ProjectListProfile = ({ projectsProfile }) => {
     return projectsProfile.length ? (
         <main>
-            <h1>ProjectsProfile Page</h1>
+            <h1>Mis proyectos</h1>
             <ul className="flex">
                 {projectsProfile.map((projectProfile) => (
                     <li key={projectProfile.project_id}>

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { profileSchema } from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AiOutlineEdit } from 'react-icons/ai';
 export const NewProfile = () => {
     const { token, user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -51,122 +52,172 @@ export const NewProfile = () => {
         setIsCompany(selectedRole === 'company');
     };
     return (
-        <>
-            <h1>formulario Perfil</h1>
-            <form noValidate onSubmit={handleSubmit(onSubmit)}>
-                <fieldset>
-                    <label htmlFor="profile_name">Nombre</label>
+        <div className="flex flex-col items-center px-4 py-8 sm:px-6 lg:px-8 bg-white max-w-lg mx-auto mt-8 ">
+            <div className="flex flex-col items-center mb-6">
+                <div className="relative h-48 w-48 rounded-full bg-zinc-300">
+                    <img
+                        src={`${import.meta.env.VITE_BASE_URL}/uploads/${
+                            user.avatar
+                        }`}
+                        /* alt="Avatar" */
+                        className="rounded-full object-cover h-full w-full"
+                    />
+                    <label
+                        htmlFor="avatar"
+                        className="absolute bottom-0 right-0 flex items-center justify-center w-8 h-8  cursor-pointer"
+                    >
+                        <AiOutlineEdit className="text-frankgreen" />
+                        <input
+                            type="file"
+                            id="avatar"
+                            name="avatar"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => setImage(e.target.files[0])}
+                        />
+                    </label>
+                </div>
+                <div className="mt-4 text-lg font-semibold">
+                    {user.profile_username}
+                </div>
+            </div>
+
+            <form
+                noValidate
+                onSubmit={handleSubmit(onSubmit)}
+                className="w-full space-y-6"
+            >
+                <div className="w-full">
+                    <label
+                        htmlFor="profile_name"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Nombre:
+                    </label>
                     <input
                         type="text"
                         id="profile_name"
                         name="profile_name"
+                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-frankgreen sm:text-sm"
                         {...register('profile_name')}
                     />
-                    <p className="h-4 text-sm text-rose-500">
+                    <p className="text-red-500 text-sm">
                         {errors.profile_name?.message}
                     </p>
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="profile_lastname">Apellidos</label>
+                </div>
+
+                <div className="w-full">
+                    <label
+                        htmlFor="profile_lastname"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Apellidos:
+                    </label>
                     <input
                         type="text"
                         id="profile_lastname"
                         name="profile_lastname"
+                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-frankgreen sm:text-sm"
                         {...register('profile_lastname')}
                     />
-                    <p className="h-4 text-sm text-rose-500">
+                    <p className="text-red-500 text-sm">
                         {errors.profile_lastname?.message}
                     </p>
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="profile_username">Nickname</label>
+                </div>
+
+                <div className="w-full">
+                    <label
+                        htmlFor="profile_username"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Nickname:
+                    </label>
                     <input
                         type="text"
                         id="profile_username"
                         name="profile_username"
+                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-frankgreen sm:text-sm"
                         {...register('profile_username')}
                     />
-                    <p className="h-4 text-sm text-rose-500">
+                    <p className="text-red-500 text-sm">
                         {errors.profile_username?.message}
                     </p>
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="birthdate">Fecha de naciemiento</label>
+                </div>
+
+                <div className="w-full">
+                    <label
+                        htmlFor="birthdate"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Fecha de nacimiento:
+                    </label>
                     <input
                         type="date"
                         id="birthdate"
                         name="birthdate"
                         min="1924-01-01"
                         max="2021-01-01"
+                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-frankgreen sm:text-sm"
                         {...register('birthdate')}
                     />
-                    {/* <p className="h-4 text-sm text-rose-500">
-                        {errors.birthdate?.message}
-                    </p> */}
-                </fieldset>
+                </div>
 
-                <fieldset>
-                    <label htmlFor="profile_role">Rol</label>
+                <div className="w-full">
+                    <label
+                        htmlFor="profile_role"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Tipo de Usuario:
+                    </label>
                     <select
                         id="profile_role"
                         name="profile_role"
+                        className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-frankgreen sm:text-sm"
                         {...register('profile_role')}
                         onChange={handleRoleChange}
                     >
-                        <option value="Escoge un role">Escoge un rol</option>
                         <option value="company">Empresa</option>
                         <option value="expert">Experto</option>
                         <option value="student">Estudiante</option>
                     </select>
-                    <p className="h-4 text-sm text-rose-500">
+                    <p className="text-red-500 text-sm">
                         {errors.profile_role?.message}
                     </p>
-                </fieldset>
 
-                <fieldset>
-                    <label htmlFor="company_name">Empresa</label>
-                    <input
-                        type="text"
-                        id="company_name"
-                        name="company_name"
-                        {...register('company_name')}
-                        disabled={!isCompany}
-                    />
-                </fieldset>
-                <p className="h-4 text-sm text-rose-500">
-                    {errors.company?.message}
-                </p>
-                {/* <img src={'avatar.png'} alt="avatar" /> */}
+                </div>
 
-                <fieldset>
-                    <label htmlFor="avatar">Avatar</label>
-                    <input
-                        type="file"
-                        id="avatar"
-                        name="avatar"
-                        accept="image/*"
-                        onChange={(e) => setImage(e.target.files[0])}
-                    />
+                {isCompany && (
+                    <div className="w-full">
+                        <label
+                            htmlFor="company_name"
+                            className="block text-sm font-medium text-black"
+                        >
+                            Empresa:
+                        </label>
+                        <input
+                            type="text"
+                            id="company_name"
+                            name="company_name"
+                            className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-frankgreen sm:text-sm"
+                            {...register('company_name')}
+                        />
+                        <p className="text-red-500 text-sm">
+                            {errors.company_name?.message}
+                        </p>
+                    </div>
+                )}
 
-                    {image ? (
-                        <figure>
-                            <img
-                                src={URL.createObjectURL(image)}
-                                alt="Preview"
-                                style={{ width: '100px' }}
-                            />
-                        </figure>
-                    ) : null}
-                </fieldset>
                 <button
-                    className="text-white bg-lime-600 rounded p-1 m-4"
-                    disabled={!isValid}
+                    type="submit"
+                    className="w-full px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50"
+                    disabled={!isValid || sending}
                 >
-                    Actualizar perfil
+                    {sending ? 'Enviando...' : 'Actualizar perfil'}
                 </button>
-                {sending ? <p>Sending profile</p> : null}
-                {error && <p className="text-red-500">{error}</p>}
+                {error && (
+                    <p className="text-red-500 text-center mt-4">{error}</p>
+                )}
             </form>
-        </>
+        </div>
     );
 };
