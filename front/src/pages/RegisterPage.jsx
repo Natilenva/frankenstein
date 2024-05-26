@@ -49,6 +49,7 @@ export const RegisterPage = () => {
                     alt="Imagen de Franki"
                 />
 
+
                 <form
                     noValidate
                     onSubmit={handleSubmit(onSubmit)}
@@ -103,6 +104,7 @@ export const RegisterPage = () => {
                         o más y acepto las condiciones de uso, la política de
                         privacidad y la política de cookies.
                     </p>
+
                     <button
                         disabled={!isValid}
                         type="submit"
@@ -125,5 +127,6 @@ export const RegisterPage = () => {
                 </div>
             </section>
         </>
+
     );
 };

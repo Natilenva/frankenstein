@@ -183,6 +183,7 @@ export const NewProfile = () => {
                     <p className="text-red-500 text-sm">
                         {errors.profile_role?.message}
                     </p>
+
                 </div>
 
                 {isCompany && (
