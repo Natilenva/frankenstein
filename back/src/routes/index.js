@@ -13,13 +13,14 @@ import expertRoutes from './expertRoutes.js';
 //import { selectCompanyForProfile } from '../controllers/profile/profileController.js';
 import authUser from '../middlewares/auth.js';
 import eventRoutes from './eventsRouter.js';
+import searchRoutes from './searchBarRoutes.js'
 
 const router = express.Router();
 
 router.use(userRoutes);
 router.use(projectRoutes);
 router.use(eventRoutes);
-
+router.use(searchRoutes);
 //* Question Routes
 router.use(questionRoutes);
 
