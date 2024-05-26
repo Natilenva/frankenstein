@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import HeaderMobile from './HeaderMobile';
 
-import frankFavicon32 from '/favicon-32x32.png'
+import frankFavicon32 from '/favicon-32x32.png';
 
 export const Header = () => {
     const { user } = useContext(AuthContext);
@@ -21,7 +21,6 @@ export const Header = () => {
                     /> */}
                     <img src={frankFavicon32} alt="logo" />
                 </Link>
-                
             </div>
 
             {/* //^ Menú y botones en el lado derecho ? ----------------------------------------- */}
@@ -29,8 +28,7 @@ export const Header = () => {
             <div>
                 {/* //^ Contenedor del menú ? */}
                 {/* <div className="hidden lg:flex lg:items-center lg:space-x-4 flex-wrap justify-end"> */}
-                <div className='flex items-center space-x-4'>
-
+                <div className="flex items-center space-x-4">
                     <Link
                         to="/projects"
                         className="text-white hover:text-[#829821]"
@@ -45,13 +43,13 @@ export const Header = () => {
                         Preguntas
                     </Link>
 
-                    {user && (                     
-                    <Link
-                        to="/crear"
-                        className="text-white hover:text-[#829821]"
-                    >
-                        Crear
-                    </Link>
+                    {user && (
+                        <Link
+                            to="/crear"
+                            className="text-white hover:text-[#829821]"
+                        >
+                            Crear
+                        </Link>
                     )}
 
                     {user && (
@@ -68,18 +66,16 @@ export const Header = () => {
                         placeholder="Buscar"
                         className="text-white bg-gray-800 px-2 py-1 rounded focus:outline-none focus:bg-gray-900"
                     />
-
                 </div>
             </div>
-            
-            <div className='invisible sm:visible'>
+
+            <div className="invisible sm:visible">
                 <Auth />
             </div>
 
             <div className="sm:hidden">
                 <HeaderMobile />
             </div>
-           
         </header>
     );
 };

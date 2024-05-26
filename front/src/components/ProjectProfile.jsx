@@ -1,29 +1,29 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import { useContext } from 'react';
-// import { deleteProjectService } from '../services';
+import { useContext, useState } from 'react';
+import { deleteProjectService } from '../services';
 
-// import { toast } from 'react-hot-toast';
-export const ProjectProfile = ({ projectProfile }) => {
-    const { user } = useContext(AuthContext);
+import { toast } from 'react-hot-toast';
+export const ProjectProfile = ({ projectProfile, removeProjectProfile }) => {
+    const { user, token } = useContext(AuthContext);
     console.log(projectProfile);
     console.log(user);
-    // const [error, setError] = useState('');
+    const [error, setError] = useState('');
 
-    // const deleteProject = async (id) => {
-    //     try {
-    //         await deleteProjectService({ id, token });
-    //         if (removeProjectProfile) {
-    //             removeProjectProfile(id);
-    //         }
+    const deleteProjectProfile = async (id) => {
+        try {
+            await deleteProjectService({ id, token });
+            if (removeProjectProfile) {
+                removeProjectProfile(id);
+            }
 
-    //         toast.success('Has eliminado el proyecto con éxito!');
-    //     } catch (error) {
-    //         setError(error.message);
-    //         toast.error(error.messge);
-    //     }
-    // };
+            toast.success('Has eliminado el proyecto con éxito!');
+        } catch (error) {
+            setError(error.message);
+            toast.error(error.messge);
+        }
+    };
 
     //const provocarError = provocarErrorBoundary;
 
@@ -60,7 +60,9 @@ export const ProjectProfile = ({ projectProfile }) => {
 
                     <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
                         By{' '}
-                        <Link to={`/projects/${projectProfile.profile_id}`}>
+                        <Link
+                            to={`/profilepublic/${projectProfile.register_id}`}
+                        >
                             {' '}
                             {projectProfile.profile_username}{' '}
                         </Link>{' '}
@@ -69,35 +71,35 @@ export const ProjectProfile = ({ projectProfile }) => {
                     </p>
                 </div>
 
-                {/* <section>
-                {user && user.register_id === projectProfile.register_id ? (
-                    <> */}
-                {/* // Delete project en HomePage ---------------------------------- */}
-                {/* <button
-                            className="bg-[#829821] hover:bg-[#829821] text-white px-4 py-1 rounded"
-                            onClick={() => {
-                                deleteProject(projectProfile.project_id);
-                            }}
-                        >
-                            Eliminar proyecto
-                        </button> */}
+                <section>
+                    {user && user.register_id === projectProfile.register_id ? (
+                        <>
+                            <button
+                                className="bg-[#829821] hover:bg-[#829821] text-white px-4 py-1 rounded"
+                                onClick={() => {
+                                    deleteProjectProfile(
+                                        projectProfile.project_id
+                                    );
+                                }}
+                            >
+                                Eliminar proyecto
+                            </button>
 
-                {/* // Editar project en ProjectPage ---------------------------------- */}
-                {/* <Link
-                            to={`/project/${projectProfile.project_id}`}
-                            className="text-black hover:text-[#829821]"
-                        >
-                            Editar
-                        </Link>
-                    </>
-                ) : null}
-                {error ? <p>{error}</p> : null}
-            </section> */}
+                            <Link
+                                to={`/project/${projectProfile.project_id}`}
+                                className="text-black hover:text-[#829821]"
+                            >
+                                Editar
+                            </Link>
+                        </>
+                    ) : null}
+                    {error ? <p>{error}</p> : null}
+                </section>
             </article>
         </>
     );
 };
 ProjectProfile.propTypes = {
     projectProfile: PropTypes.any,
-    //removeProjectProfile: PropTypes.any,
+    removeProjectProfile: PropTypes.any,
 };

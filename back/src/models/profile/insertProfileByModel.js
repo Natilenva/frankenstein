@@ -8,7 +8,6 @@ const insertProfileByModel = async (
     profile_username,
     birthdate,
     profile_role,
-
     company_name,
     userId
 ) => {
@@ -29,7 +28,7 @@ const insertProfileByModel = async (
                 userId,
             ]
         );
-        if (profile_role === 'company')
+        if (profile_role === 'company') {
             await connection.query(
                 `INSERT INTO companies (company_name,
                 register_id)
@@ -37,6 +36,7 @@ const insertProfileByModel = async (
             `,
                 [company_name, userId]
             );
+        }
 
         console.log(result);
         return result.insertId;

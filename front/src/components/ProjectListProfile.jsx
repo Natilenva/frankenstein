@@ -4,7 +4,10 @@ import ErrorBoundary from './ErrorBoundaryWithClass';
 import { ProjectProfile } from './ProjectProfile';
 
 //recibe una prop, un array de objetos
-export const ProjectListProfile = ({ projectsProfile }) => {
+export const ProjectListProfile = ({
+    projectsProfile,
+    removeProjectProfile,
+}) => {
     return projectsProfile.length ? (
         <main>
             <h1>Mis proyectos</h1>
@@ -18,7 +21,7 @@ export const ProjectListProfile = ({ projectsProfile }) => {
                         >
                             <ProjectProfile
                                 projectProfile={projectProfile}
-                                // removeProjectProfile={removeProjectProfile}
+                                removeProjectProfile={removeProjectProfile}
                             />
                         </ErrorBoundary>
                     </li>
@@ -31,5 +34,5 @@ export const ProjectListProfile = ({ projectsProfile }) => {
 };
 ProjectListProfile.propTypes = {
     projectsProfile: PropTypes.array,
-    // removeProjectProfile: PropTypes.func,
+    removeProjectProfile: PropTypes.func,
 };

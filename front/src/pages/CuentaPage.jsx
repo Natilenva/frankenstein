@@ -16,7 +16,9 @@ export const CuentaPage = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const { loading, error, profile } = useProfile(user.register_id);
-    const { projectsProfile } = useProjectsByprofile(user.register_id);
+    const { projectsProfile, removeProjectProfile } = useProjectsByprofile(
+        user.register_id
+    );
     const { questionsProfile } = useQuestionsProfile(id);
 
     if (loading) return <p>cargando perfil...</p>;
@@ -26,7 +28,10 @@ export const CuentaPage = () => {
             <h1>Mi cuenta</h1>
 
             <Profile profile={profile} />
-            <ProjectListProfile projectsProfile={projectsProfile} />
+            <ProjectListProfile
+                projectsProfile={projectsProfile}
+                removeProjectProfile={removeProjectProfile}
+            />
             <QuestionsListProfile questionsProfile={questionsProfile} />
         </>
     );
