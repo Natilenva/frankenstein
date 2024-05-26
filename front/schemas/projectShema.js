@@ -19,6 +19,8 @@ const projectSchema = z.object({
     //     'Solo se aceptan los formatos jpeg, jpg, png'
     // ),
 
-    project_url: z.string().url(),
+    project_url: z
+        .string()
+        .url({ message: 'Url no válida. Ej.http//:www.frankensrein.com' }),
 });
 export { projectSchema };
