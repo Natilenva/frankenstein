@@ -32,7 +32,8 @@ export const RegisterPage = () => {
     };
 
     return (
-        <section className="flex flex-col items-center justify-center h-screen">
+        <main className='flex-grow'>
+        <section className="flex flex-col items-center justify-center ">
             <h1 className="text-2xl font-bold text-center mb-4">
                 Conecta, aprende y muestra tus habilidades
             </h1>
@@ -94,5 +95,6 @@ export const RegisterPage = () => {
                 {/* si hay error, mostrarlo */}
             </form>
         </section>
+        </main>
     );
 };

@@ -43,7 +43,7 @@ export const LoginPage = () => {
     };
     // -------------------------------------------------------------------------------
     return (
-        <section className="flex flex-col justify-center items-center h-screen px-4 sm:px-0">
+        <section className="flex flex-col flex-grow items-center p-8">
             <h1 className="text-2xl font-bold text-center mb-8">
                 Conecta, aprende y muestra tus habilidades
             </h1>
