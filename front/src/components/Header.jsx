@@ -3,6 +3,8 @@ import { Auth } from './Auth';
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import HeaderMobile from './HeaderMobile';
+import { SearchBar } from './SearchComponents/SearchBar';
+
 
 import frankFavicon32 from '/favicon-32x32.png'
 
@@ -60,11 +62,13 @@ export const Header = () => {
                         </Link>
                     )}
 
-                    <input
-                        type="text"
-                        placeholder="Buscar"
-                        className="text-black bg-white px-2 py-1 rounded focus:inline focus:bg-black focus:text-white"
-                    />
+
+                    <div>
+                        <div >
+                            <SearchBar/>
+                           
+                        </div>
+                    </div>
 
                 </div>
             </div>

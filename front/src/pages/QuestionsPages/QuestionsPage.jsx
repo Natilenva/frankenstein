@@ -5,6 +5,8 @@ import Loading from "../../components/loading";
 import SearchForm from "../../forms/QuestionsForms/SearchQuestionForm";
 import QuestionListItem from "../../components/QuestionsComponents/QuestionListItem";
 
+
+
 const QuestionsPage=()=>{
     const{
         questions,
@@ -18,6 +20,7 @@ const QuestionsPage=()=>{
     return(
        
         <main>
+           
         <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 leading-[133%] ">
         <div className="text-lg font-medium text-black">
             Pregunta a Papi Frankie

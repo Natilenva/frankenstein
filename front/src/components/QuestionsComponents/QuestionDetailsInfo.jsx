@@ -27,7 +27,7 @@ const QuestionDetailsInfo = ({ question_title, question_technology, question_des
         <main>
         <ul >
           
-            <li >
+            <li className="text-sm leading-5 text-red-800 underline">
                 <strong>Pregunta:</strong> {question_title}
             </li>
             <li>

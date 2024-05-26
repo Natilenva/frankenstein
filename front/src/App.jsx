@@ -22,6 +22,7 @@ import { ValidatePage } from './pages/ValidatePage';
 import { UpdatePassword } from './pages/UpdatePassword';
 import { ValidateCompanyPage } from './pages/ValidateCompanyPage';
 import { RejectCompanyPage } from './pages/RejectCompanyPage';
+
 import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
 import { ProjectsUser } from './pages/ProjectsUsers';
 
@@ -78,6 +79,7 @@ function App() {
                     path="/reset-password/:id/:token"
                     element={<ResetPasswordPage />}
                 />
+             
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
 
