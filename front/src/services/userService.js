@@ -70,7 +70,10 @@ export const validateCompanyService = async (id) => {
 };
 export const rejectCompanyService = async (id) => {
     const response = await fetch(
-        `${import.meta.env.VITE_BASE_URL}/admin/reject/${id}`
+        `${import.meta.env.VITE_BASE_URL}/admin/reject/${id}`,
+        {
+            method: 'DELETE',
+        }
     );
     const json = await response.json();
     if (!response.ok) {

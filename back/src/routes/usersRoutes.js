@@ -12,6 +12,7 @@ import { validateUserController } from '../controllers/users/validateUserControl
 import { updateValidateCompanyController } from '../controllers/profile/updateValidateCompanyController.js';
 //* get info user for React Context:
 import { getMeController } from '../controllers/users/getMeController.js';
+import { deleteRejectProfileCompanyController } from '../controllers/profile/deleteRejectProfileCompanyController.js';
 
 const router = express.Router();
 
@@ -37,5 +38,5 @@ router.get('/reset-password/:id/:token', getResetPasswordController);
 router.post('/reset-password/:id/:token', updatePasswordController);
 router.get('/validate/:registrationCode', validateUserController);
 router.get('/admin/validate/:id', updateValidateCompanyController);
-
+router.delete('/admin/reject/:id', deleteRejectProfileCompanyController);
 export default router;

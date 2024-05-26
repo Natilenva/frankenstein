@@ -6,7 +6,7 @@ import HeaderMobile from './HeaderMobile';
 import { SearchBar } from './SearchComponents/SearchBar';
 
 
-import frankFavicon32 from '/favicon-32x32.png'
+import frankFavicon32 from '/favicon-32x32.png';
 
 export const Header = () => {
     const { user } = useContext(AuthContext);
@@ -22,11 +22,11 @@ export const Header = () => {
                     /> */}
                     <img src={frankFavicon32} alt="logo" />
                 </Link>
-                
             </div>
 
             <div className="hidden lg:flex lg:items-center lg:space-x-4">
                 <div className="flex items-center space-x-4">
+
 
                     <Link
                         to="/projects"
@@ -61,6 +61,13 @@ export const Header = () => {
                             Cuenta
                         </Link>
                     )}
+
+
+                    <input
+                        type="text"
+                        placeholder="Buscar"
+                        className="text-white bg-gray-800 px-2 py-1 rounded focus:outline-none focus:bg-gray-900"
+                    />
 
 
                     <div>

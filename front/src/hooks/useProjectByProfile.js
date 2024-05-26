@@ -28,13 +28,13 @@ export const useProjectsByprofile = (id) => {
     // const addProject = (project) => {
     //     setProjects([project, ...projects]);
     // };
-    // const removeProjectProfile = (project_id) => {
-    //     setProjectsProfile(
-    //         projectsProfile.filter(
-    //             (projectProfile) => projectProfile.project_id !== project_id
-    //         )
-    //     );
-    // };
+    const removeProjectProfile = (project_id) => {
+        setProjectsProfile(
+            projectsProfile.filter(
+                (projectProfile) => projectProfile.project_id !== project_id
+            )
+        );
+    };
 
-    return { projectsProfile, loading, error };
+    return { projectsProfile, loading, error, removeProjectProfile };
 };

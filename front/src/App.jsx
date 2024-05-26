@@ -24,7 +24,7 @@ import { ValidateCompanyPage } from './pages/ValidateCompanyPage';
 import { RejectCompanyPage } from './pages/RejectCompanyPage';
 
 import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
-import { ProjectsUser } from './pages/ProjectsUsers';
+import { ProfilePublic } from './pages/ProfilePublic';
 
 function App() {
     return (
@@ -51,7 +51,7 @@ function App() {
                 />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/project/:id" element={<ProjectPage />} />
-                <Route path="/projects/:id" element={<ProjectsUser />} />
+                <Route path="/profilepublic/:id" element={<ProfilePublic />} />
                 <Route path="/crear" element={<Crear />} />
 
                 <Route path="/profile/:id" element={<CuentaPage />} />

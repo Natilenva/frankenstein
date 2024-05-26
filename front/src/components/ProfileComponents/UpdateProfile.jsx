@@ -18,7 +18,7 @@ export const UpdateProfile = () => {
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
     const [image, setImage] = useState();
-    const [isCompany, setIsCompany] = useState(false);
+    // const [isCompany, setIsCompany] = useState(false);
     const { id } = useParams();
 
     const {
@@ -75,10 +75,10 @@ export const UpdateProfile = () => {
             setSending(false);
         }
     };
-    const handleRoleChange = (event) => {
-        const selectedRole = event.target.value;
-        setIsCompany(selectedRole === 'company');
-    };
+    // const handleRoleChange = (event) => {
+    //     const selectedRole = event.target.value;
+    //     setIsCompany(selectedRole === 'company');
+    // };
     // const handleProfile = () => {
     //     navigate(`/profile/${user.register_id}`, {
     //         state: { updateProfile },
@@ -137,7 +137,17 @@ export const UpdateProfile = () => {
                 </p>
                 <fieldset>
                     <label htmlFor="profile_role">Rol</label>
-                    <select
+                    <input
+                        type="text"
+                        id="profile_role"
+                        name="profile_role"
+                        value={profile.profile_role}
+                    />
+                    <p className="h-4 text-sm text-gray-500">
+                        * Si quieres cambiar tu rol ponte en contacto con el
+                        administrador.
+                    </p>
+                    {/* <select
                         id="profile_role"
                         name="profile_role"
                         {...register('profile_role')}
@@ -147,21 +157,25 @@ export const UpdateProfile = () => {
                         <option value="company">Empresa</option>
                         <option value="expert">Experto</option>
                         <option value="student">Estudiante</option>
-                    </select>
+                    </select> */}
                 </fieldset>
                 <p className="h-4 text-sm text-rose-500">
                     {errors.profile_role?.message}
                 </p>
-                <fieldset>
-                    <label htmlFor="company_name">Empresa</label>
-                    <input
-                        type="text"
-                        id="company_name"
-                        name="company_name"
-                        {...register('company_name')}
-                        disabled={!isCompany}
-                    />
-                </fieldset>
+                {profile.company_name && (
+                    <fieldset>
+                        <label htmlFor="company_name">Empresa</label>
+                        <input
+                            type="text"
+                            id="company_name"
+                            name="company_name"
+                            // value={profile.company_name}
+                            {...register('company_name')}
+                            // disabled={!isCompany}
+                        />
+                    </fieldset>
+                )}
+
                 <p className="h-4 text-sm text-rose-500">
                     {errors.company_name?.message}
                 </p>
