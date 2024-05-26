@@ -6,18 +6,18 @@ import ErrorBoundary from './ErrorBoundaryWithClass';
 export const ProjectList = ({ projects, removeProject }) => {
     
     return projects.length ? (
-        <main >  
-            <h1>Projects Page</h1>   
-            <ul className='flex'>             
-                {projects.map((project) => (              
-                    <li key={project.project_id} >
-                        <ErrorBoundary fallback={<p>Something went wrong in Project.jsx</p>}>
-                            <Project project={project} removeProject={removeProject} />
-                        </ErrorBoundary>
-                    </li>                               
-                ))}
-            </ul>    
-       </main>
+    <main> 
+        <ul>                      
+            {projects.map((project) => (
+            
+                <li key={project.project_id} >
+                    <ErrorBoundary fallback={<p>Something went wrong in Project.jsx</p>}>
+                        <Project project={project} removeProject={removeProject} />
+                    </ErrorBoundary>
+                </li>                               
+            ))}
+        </ul>         
+   </main>
     ) : (
         <p>There are no projects yet ... </p>
     );

@@ -15,6 +15,8 @@ export const Profile = ({ profile, updateProfile }) => {
         avatar,
         profile_role,
         register_id,
+        company_name,
+        is_company_validated,
     } = profile;
     return (
         <>
@@ -35,6 +37,12 @@ export const Profile = ({ profile, updateProfile }) => {
                 <h3>{profile_username}</h3>
                 <h3>{new Date(birthdate).toLocaleDateString('es-ES')}</h3>
                 <h3>{profile_role}</h3>
+                <h3>{company_name}</h3>
+                <h3 className="h-4 text-sm text-rose-500">
+                    {!is_company_validated &&
+                        profile_role === 'company' &&
+                        'Su empresa aún no está validada'}
+                </h3>
             </article>
             <section>
                 {user && user.register_id === register_id ? (

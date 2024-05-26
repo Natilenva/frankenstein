@@ -50,6 +50,7 @@ export const LoginPage = () => {
     };
     // -------------------------------------------------------------------------------
     return (
+
         <main className="flex-grow">
             <div className="flex flex-col items-center justify-center m-auto md:px-6 lg:px-8">
                 <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-black font-semibold mb-4">
@@ -69,6 +70,7 @@ export const LoginPage = () => {
                     <fieldset className="mb-4">
                         <label htmlFor="email" className="block mb-1">
                             Correo electrónico
+
                         </label>
                         <input
                             type="email"
