@@ -19,7 +19,7 @@ export const Header = () => {
                         className="h-8 sm:h-10 lg:h-12 mr-2"
                         alt="Logo"
                     />
-                    {/* <img src={frankFavicon32} alt="logo" /> */}
+
                 </Link>
             </div>
 

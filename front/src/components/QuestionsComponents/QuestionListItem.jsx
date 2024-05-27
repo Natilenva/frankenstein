@@ -33,7 +33,7 @@ const QuestionListItem = ({ question }) => {
                     </p>
 
                     <time className="text-xs leading-4  text-opacity-50">
-                        {moment(question.createdAt).format(
+                        {moment(question.created_at).format(
                             'DD/MM/YYYY [a las] HH:mm'
                         )}
                     </time>

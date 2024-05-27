@@ -51,20 +51,25 @@ export const NewProfile = () => {
     const handleRoleChange = (event) => {
         const selectedRole = event.target.value;
         setIsCompany(selectedRole === 'company');
+
+        if (!user) {
+            return <div>Cargando...</div>;
+        }
     };
     return (
         <div className="flex flex-col items-center px-4 py-8 sm:px-6 lg:px-8 bg-white max-w-lg mx-auto mt-8 ">
             <div className="flex flex-col items-center mb-6">
                 <div className="relative h-48 w-48 rounded-full bg-zinc-300">
                     {user && user.avatar ? (
-                    <img
-                        src={`${import.meta.env.VITE_BASE_URL}/uploads/${
-                            user.avatar
-                        }`}
-                        /* alt="Avatar" */
-                        className="rounded-full object-cover h-full w-full"
-                    />): (
-                        <p>no avatar</p>
+                        <img
+                            src={`${import.meta.env.VITE_BASE_URL}/uploads/${
+                                user.avatar
+                            }`}
+                            /* alt="Avatar" */
+                            className="rounded-full object-cover h-full w-full"
+                        />
+                    ) : (
+                        <p></p>
                     )}
                     <label
                         htmlFor="avatar"
