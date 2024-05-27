@@ -81,10 +81,10 @@ export const SearchBar = () => {
 
     return (
         <div className="search">
-            <div className="bg-white max-w-full rounded-[4px] h-1 py-4 flex items-center m-1 shadow-[#ddd]">
+            <div className="bg-white px-2 max-w-full rounded h-1 py-4 flex items-center m-1">
                 <FaSearch className="m-2 text-[#829821]" />
                 <input
-                    className="bg-transparent text-lg w-full ml-2"
+                    className="m-2"
                     placeholder="Escribe para buscar..."
                     value={input}
                     onChange={(e) => handleChange(e.target.value)}
