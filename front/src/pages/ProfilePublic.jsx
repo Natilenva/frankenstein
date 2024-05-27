@@ -27,7 +27,8 @@ export const ProfilePublic = () => {
                     alt={profile.profile_name}
                     className="aspect-[0.96] w-[158px]"
                 />
-            ) : null}
+            ) : (
+            <img src="\avatar.png" alt="Avatar default" />)}
             <h1>Nickname: {profile.profile_username}</h1>
             <h1>Rol: {profile.profile_role}</h1>
             <ProjectListProfile projectsProfile={projectsProfile} />

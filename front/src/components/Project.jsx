@@ -1,3 +1,5 @@
+
+
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
@@ -29,7 +31,7 @@ export const Project = ({ project, removeProject }) => {
         <article>
             {/* //^ Imagen del proyecto ------------------------------ */}
             <div>
-                {project.project_photo ? (
+                {project.project_photo>0 ? (
                     <img
                         loading="lazy"
                         src={`${import.meta.env.VITE_BASE_URL}/uploads/${
@@ -39,7 +41,7 @@ export const Project = ({ project, removeProject }) => {
                         className="aspect-[0.96] w-[158px]"
                     />
                 ) : (
-                    <p>no photo</p>
+                    <img src="/apple-touch-icon.png" alt="Logo de frankenstein" />
                 )}
             </div>
 
@@ -102,3 +104,4 @@ Project.propTypes = {
     removeProject: PropTypes.any,
     updateProject: PropTypes.any,
 };
+

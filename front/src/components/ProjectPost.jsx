@@ -26,13 +26,14 @@ export const ProjectPost = ({ project}) => {
     //const provocarError = provocarErrorBoundary;
 
     return (
-        <article className="md:flex bg-white">
+        <article >
 
             {/* //^ Imagen del proyecto ------------------------------ */}
-            <div className='md:shrink-0'>
+            <div className='md:shrink-0 '>
                 {project.project_photo ? (
+                  
                     <img
-                        className="h-48 w-full object-cover md:h-full md:w-48" 
+                          className="h-48 w-full object-cover md:h-full md:w-48"  
                         src={`${import.meta.env.VITE_BASE_URL}/uploads/${
                             project.project_photo
                         }`}
@@ -40,8 +41,11 @@ export const ProjectPost = ({ project}) => {
                         alt={project.project_title}
                     >
                     </img>
+                   
                 ) : (
-                    <p>no photo</p>
+             
+                    <img  className="h-48 w-full object-cover md:h-full md:w-48" src="/apple-touch-icon.png" alt="Logo de frankenstein" />
+                    
                 )}
             </div>
             
@@ -103,3 +107,19 @@ ProjectPost.propTypes = {
     removeProject: PropTypes.any,
     updateProject: PropTypes.any,
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
