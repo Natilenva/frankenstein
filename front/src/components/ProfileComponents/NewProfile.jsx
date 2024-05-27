@@ -55,13 +55,16 @@ export const NewProfile = () => {
         <div className="flex flex-col items-center px-4 py-8 sm:px-6 lg:px-8 bg-white max-w-lg mx-auto mt-8 ">
             <div className="flex flex-col items-center mb-6">
                 <div className="relative h-48 w-48 rounded-full bg-zinc-300">
+                    {user && user.avatar ? (
                     <img
                         src={`${import.meta.env.VITE_BASE_URL}/uploads/${
                             user.avatar
                         }`}
                         /* alt="Avatar" */
                         className="rounded-full object-cover h-full w-full"
-                    />
+                    />): (
+                        <p>no avatar</p>
+                    )}
                     <label
                         htmlFor="avatar"
                         className="absolute bottom-0 right-0 flex items-center justify-center w-8 h-8  cursor-pointer"
