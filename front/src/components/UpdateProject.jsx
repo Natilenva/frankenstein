@@ -24,7 +24,7 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
         register,
         handleSubmit,
         setValue,
-        formState: { errors, isValid },
+        formState: { errors },
     } = useForm({
         mode: 'onTouched',
         resolver: zodResolver(projectSchema),
@@ -34,7 +34,6 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
             setValue('project_title', project.project_title);
             setValue('project_description', project.project_description);
             setValue('project_url', project.project_url);
-            setValue('project_photo', project.project_photo);
         }
     }, [project, setValue]);
     const navigate = useNavigate();
@@ -61,8 +60,11 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
             for (const key in data) {
                 formData.append(key, data[key]);
             }
+            if (image) {
+                formData.append('project_photo', image);
+            }
 
-            const updatedProject = await updateProjectService({
+            const { project: updatedProject } = await updateProjectService({
                 data: formData,
                 token,
                 id,
@@ -188,14 +190,14 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
                     <div className=" flex space-x-4 mt-4 place-content-around">
                         <button
                             className="w-[50%] px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4"
-                            disabled={!isValid || sending}
+                            // disabled={!isValid || sending}
                         >
                             {sending ? 'Enviando...' : 'Modificar proyecto'}
                         </button>
 
                         <button
                             className=" w-[50%] px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4 text-center m-auto "
-                            disabled={!isValid || sending}
+                            // disabled={!isValid || sending}
                             onClick={() => {
                                 deleteProject(project.project_id);
                             }}
