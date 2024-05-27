@@ -70,9 +70,7 @@ export const NewProject2 = ({ addProject }) => {
                             <label
                                 htmlFor="avatar"
                                 className="absolute bottom-0 right-0 flex items-center justify-center w-8 h-8  cursor-pointer"
-                            >
-                                Imagen
-                            </label>
+                            ></label>
                             <input
                                 className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
                                 type="file"
