@@ -40,4 +40,4 @@ const profileSchema = z
         }
     );
 
-export { profileSchema };
+export default profileSchema;

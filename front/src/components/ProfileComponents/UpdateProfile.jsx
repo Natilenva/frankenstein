@@ -6,7 +6,7 @@ import { updateProfileService } from '../../services/profileServices';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
-import { profileSchema } from '../../../schemas/profileSchema';
+import profileSchema from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 

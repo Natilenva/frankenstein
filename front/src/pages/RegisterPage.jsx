@@ -31,8 +31,8 @@ export const RegisterPage = () => {
             toast.success('Activa tu cuenta en tu mail!', { duration: 6000 });
         } catch (error) {
             toast.error(error.response?.data?.error || error.message);
-            setError(errorMessage); // Establece el mensaje de error en el estado
-            toast.error(errorMessage); // Muestra el mensaje de error en una notificación
+            // setError(errorMessage); // Establece el mensaje de error en el estado
+            // toast.error(errorMessage); // Muestra el mensaje de error en una notificación
         }
     };
 
@@ -48,7 +48,6 @@ export const RegisterPage = () => {
                     className="self-center mt-8 mb-10 w-20 sm:w-24 lg:w-32"
                     alt="Imagen de Franki"
                 />
-
 
                 <form
                     noValidate
@@ -127,6 +126,5 @@ export const RegisterPage = () => {
                 </div>
             </section>
         </>
-
     );
 };
