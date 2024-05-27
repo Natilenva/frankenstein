@@ -4,7 +4,7 @@ import { FaHome, FaUserAlt, FaProjectDiagram, FaQuestion, FaPlus } from 'react-i
 
 export const Footer = () => {
     return (
-        <footer className="bg-black p-4 botton-0 flex items-center justify-between shadow-md sticky">
+        <footer className="bg-black p-4 bottom-0 flex items-center justify-between shadow-md sticky z-50">
             
             <Link to="/" className="flex flex-col items-center text-white">
                 <FaHome size={20} />

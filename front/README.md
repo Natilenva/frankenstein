@@ -25,6 +25,30 @@ npm run dev
 
 7.Acceder a la Aplicación: Abre tu navegador web y accede a la aplicación en la dirección http://localhost:3000.
 
+A continuación, se detalla el listado de rutas de la aplicación y su correspondiente componente:
+
+/: Página de inicio (HomePage)
+/register: Página de registro (RegisterPage)
+/login: Página de inicio de sesión (LoginPage)
+/validate/:registrationCode: Página de validación de registro (ValidatePage)
+/admin/validate/:id: Página de validación de empresa (ValidateCompanyPage)
+/admin/reject/:id: Página de rechazo de empresa (RejectCompanyPage)
+/projects: Página de lista de proyectos (ProjectsPage)
+/project/:id: Página de detalle de proyecto (ProjectPage)
+/projects/:id: Página de proyectos de usuario (ProjectsUser)
+/crear: Página para crear (CrearPage)
+/profile/:id: Página de perfil del usuario (CuentaPage)
+/profileupdate: Página de actualización de perfil (UpdateProfile)
+/questions: Página de preguntas (QuestionsPage)
+/question/:id: Página de detalles de pregunta (QuestionDetailsPage)
+/responses/:id: Página de respuestas de una pregunta (ResponsesOfQuestion)
+/newprofile: Página para crear un nuevo perfil (NewProfile)
+/updatepassword: Página de actualización de contraseña (UpdatePassword)
+/questions/newquestion: Página para crear una nueva pregunta (NewQuestionPage)
+/forgot-password: Página de recuperación de contraseña (ForgotPasswordPage)
+/reset-password/:id/:token: Página de restablecimiento de contraseña (ResetPasswordPage)
+*: Página no encontrada (NotFoundPage)
+
 Funcionalidades Implementadas
 -Creación de proyecto de React con Vite y estructura inicial de carpetas: El proyecto se ha creado utilizando React con Vite como herramienta de construcción, y se ha establecido una estructura inicial de carpetas para organizar el código.
 

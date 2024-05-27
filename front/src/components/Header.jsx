@@ -13,12 +13,12 @@ export const Header = () => {
         <header className="bg-black p-4 top-0 flex items-center justify-between shadow-md sticky z-50">
             <div className="flex items-center">
                 <Link to="/">
-                    {/* <img
+                     <img
                         src="./../frankenstein.png"
                         className="h-8 sm:h-10 lg:h-12 mr-2"
                         alt="Logo"
-                    /> */}
-                    <img src={frankFavicon32} alt="logo" />
+                    /> 
+                    {/* <img src={frankFavicon32} alt="logo" /> */}
                 </Link>
                 
             </div>
