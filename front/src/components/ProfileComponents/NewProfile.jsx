@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { insertProfileService } from '../../services/profileServices';
 import { useNavigate } from 'react-router-dom';
-import { profileSchema } from '../../../schemas/profileSchema';
+import profileSchema from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AiOutlineEdit } from 'react-icons/ai';
@@ -183,7 +183,6 @@ export const NewProfile = () => {
                     <p className="text-red-500 text-sm">
                         {errors.profile_role?.message}
                     </p>
-
                 </div>
 
                 {isCompany && (
