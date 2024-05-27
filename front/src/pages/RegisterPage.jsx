@@ -31,8 +31,8 @@ export const RegisterPage = () => {
             toast.success('Activa tu cuenta en tu mail!', { duration: 6000 });
         } catch (error) {
             toast.error(error.response?.data?.error || error.message);
-            setError(errorMessage); // Establece el mensaje de error en el estado
-            toast.error(errorMessage); // Muestra el mensaje de error en una notificación
+            // setError(errorMessage); // Establece el mensaje de error en el estado
+            // toast.error(errorMessage); // Muestra el mensaje de error en una notificación
         }
     };
 

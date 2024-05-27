@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { validateRegisterService } from '../services/userService';
 import { toast } from 'react-hot-toast';
-import { FaRegCheckCircle } from 'react-icons/fa';
+// import { FaRegCheckCircle } from 'react-icons/fa';
 
 export const ValidatePage = () => {
     const { registrationCode } = useParams();
