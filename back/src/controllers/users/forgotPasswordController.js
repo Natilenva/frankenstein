@@ -25,8 +25,9 @@ const forgotPasswordController = async (req, res, next) => {
     <h1>Hemos recibido su petición de reseteo de contraseña</h1>
     <p>Haga click en el enlace para actualizar su contraseña.</p>
 
-    <a href="http://localhost:${PORTFRONT}/reset-password/${user.register_id}/${token}">Activar cuenta</a>
+    <a href="${PORTFRONT}/reset-password/${user.register_id}/${token}">Activar cuenta</a>
     `;
+    console.log(content);
     await sendEmail(email, subject, content);
     res.send({
         message: "Revisa la bandeja de entrada de su email",
