@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "@ant-design/react-slick";
 
 import { ProjectPost } from '../components/ProjectPost.jsx';
+import { QuestionCard } from '../components/QuestionsComponents/QuestionCard.jsx';
 
 export const HomePage = () => {
 
@@ -47,8 +48,7 @@ export const HomePage = () => {
             </Slider>
 
             {/* //! QUESTIONS ok?------------------------------------------------------------------------- */}
-            <section className="flex flex-1 place-content-around items-center ">           
-
+            {/* <section className="flex flex-1 place-content-around items-center ">           
                 {questions.length < 1 && loading ? (
                     <Loading/>
                 ): questions.length === 0 ?(
@@ -58,7 +58,25 @@ export const HomePage = () => {
                         return <QuestionListItem key={question.question_id} question={question}/>;                               
                     })
                 )}
+            </section> */}
 
+            {/* //! Card QuestionCard -----------------------------------------------------------------------------------  */}
+            {/* <section className='flex flex-col flex-1 border-dotted border-4 border-yellow-500'> */}
+            <section className=' 
+                '>{/* border-dotted border-2 border-green-500 */}
+                <ul className='flex'> {/* //^mio */}
+                    {questions.map((question) => {
+                        return (
+                            <li
+                                key={question.question_id} 
+                                className="p-1 max-w-sm mx-auto rounded-xl shadow-lg flex items-center space-x-4 bg-neutral-950
+                                "/* border-dotted border-2 border-red-500 */
+                            >
+                                <QuestionCard question={question}/>                   
+                            </li>
+                        );
+                    })}
+                </ul>
             </section>
 
         </main>
