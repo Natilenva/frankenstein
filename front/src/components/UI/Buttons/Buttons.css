@@ -1,0 +1,3 @@
+.btn-principal {
+    @apply bg-frankgreen hover:bg-[#a1bc28] text-white px-4 py-1 rounded;
+}

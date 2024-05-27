@@ -3,30 +3,29 @@ import { Auth } from './Auth';
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import HeaderMobile from './HeaderMobile';
-import { SearchBar } from './SearchComponents/SearchBar';
+import { SearchBar } from './UI/SearchBar';
 
 
-import frankFavicon32 from '/favicon-32x32.png';
+/* import frankFavicon32 from '/favicon-32x32.png'; */
 
 export const Header = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <header className="bg-black p-4 top-0 flex items-center justify-between shadow-md sticky z-50">
+        <header className="bg-black p-4 top-0 lg:p-8 w-full flex items-center justify-between shadow-md sticky z-50">
             <div className="flex items-center">
                 <Link to="/">
-                    {/* <img
+                    <img
                         src="./../frankenstein.png"
                         className="h-8 sm:h-10 lg:h-12 mr-2"
                         alt="Logo"
-                    /> */}
-                    <img src={frankFavicon32} alt="logo" />
+                    />
+                    {/* <img src={frankFavicon32} alt="logo" /> */}
                 </Link>
             </div>
 
             <div className="hidden lg:flex lg:items-center lg:space-x-4">
                 <div className="flex items-center space-x-4">
-
 
                     <Link
                         to="/projects"
@@ -42,7 +41,6 @@ export const Header = () => {
                         Preguntas
                     </Link>
 
-
                     {user && (
                         <Link
                             to="/crear"
@@ -50,7 +48,6 @@ export const Header = () => {
                         >
                             Crear
                         </Link>
-
                     )}
 
                     {user && (
@@ -62,6 +59,11 @@ export const Header = () => {
                         </Link>
                     )}
 
+                    {/* <input
+                        type="text"
+                        placeholder="Buscar"
+                        className="text-black bg-white px-2 py-1 rounded focus:inline focus:bg-black focus:text-white"
+                    /> */}
 
                     <input
                         type="text"
@@ -71,12 +73,10 @@ export const Header = () => {
 
 
                     <div>
-                        <div >
-                            <SearchBar/>
-                           
+                        <div>
+                            <SearchBar />
                         </div>
                     </div>
-
                 </div>
             </div>
 

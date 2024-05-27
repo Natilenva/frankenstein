@@ -6,6 +6,7 @@ import { profileSchema } from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AiOutlineEdit } from 'react-icons/ai';
+import Buttons from '../UI/Buttons/Buttons';
 export const NewProfile = () => {
     const { token, user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -51,17 +52,27 @@ export const NewProfile = () => {
         const selectedRole = event.target.value;
         setIsCompany(selectedRole === 'company');
     };
+
+    if (!user) {
+        return <p>Loading...</p>;
+    }
     return (
         <div className="flex flex-col items-center px-4 py-8 sm:px-6 lg:px-8 bg-white max-w-lg mx-auto mt-8 ">
             <div className="flex flex-col items-center mb-6">
                 <div className="relative h-48 w-48 rounded-full bg-zinc-300">
-                    <img
-                        src={`${import.meta.env.VITE_BASE_URL}/uploads/${
-                            user.avatar
-                        }`}
-                        /* alt="Avatar" */
-                        className="rounded-full object-cover h-full w-full"
-                    />
+                    {user && user.avatar ? (
+                        <img
+                            src={`${import.meta.env.VITE_BASE_URL}/uploads/${
+                                user.avatar
+                            }`}
+                            /* alt="Avatar" */
+                            className="rounded-full object-cover h-full w-full"
+                        />
+                    ) : (
+                        <div className="rounded-full object-cover h-full w-full bg-gray-200 flex items-center justify-center">
+                            <span>No Avatar</span>
+                        </div>
+                    )}
                     <label
                         htmlFor="avatar"
                         className="absolute bottom-0 right-0 flex items-center justify-center w-8 h-8  cursor-pointer"
@@ -183,7 +194,6 @@ export const NewProfile = () => {
                     <p className="text-red-500 text-sm">
                         {errors.profile_role?.message}
                     </p>
-
                 </div>
 
                 {isCompany && (
@@ -206,14 +216,16 @@ export const NewProfile = () => {
                         </p>
                     </div>
                 )}
-
-                <button
+                <Buttons type="submit" className="btn-principal">
+                    Actualizar perfil
+                </Buttons>
+                {/* <button
                     type="submit"
                     className="w-full px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50"
                     disabled={!isValid || sending}
                 >
                     {sending ? 'Enviando...' : 'Actualizar perfil'}
-                </button>
+                </button> */}
                 {error && (
                     <p className="text-red-500 text-center mt-4">{error}</p>
                 )}

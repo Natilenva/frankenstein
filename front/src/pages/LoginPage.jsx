@@ -12,6 +12,7 @@ import {
     AiOutlineEye,
     AiOutlineEyeInvisible,
 } from 'react-icons/ai';
+import Buttons from '../components/UI/Buttons/Buttons';
 
 export const LoginPage = () => {
     const { register, handleSubmit, formState } = useForm({
@@ -124,6 +125,7 @@ export const LoginPage = () => {
                         más y acepto las condiciones de uso, la política de
                         privacidad y la política de cookies.
                     </p>
+                    {/* <Buttons text="Entrar" /> */}
                     <button
                         disabled={!isValid}
                         type="submit"
