@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import HeaderMobile from './HeaderMobile';
 import { SearchBar } from './UI/SearchBar';
 
+
 /* import frankFavicon32 from '/favicon-32x32.png'; */
 
 export const Header = () => {
@@ -25,6 +26,7 @@ export const Header = () => {
 
             <div className="hidden lg:flex lg:items-center lg:space-x-4">
                 <div className="flex items-center space-x-4">
+
                     <Link
                         to="/projects"
                         className="text-white hover:text-[#829821]"
@@ -62,6 +64,13 @@ export const Header = () => {
                         placeholder="Buscar"
                         className="text-black bg-white px-2 py-1 rounded focus:inline focus:bg-black focus:text-white"
                     /> */}
+
+                    <input
+                        type="text"
+                        placeholder="Buscar"
+                        className="text-white bg-gray-800 px-2 py-1 rounded focus:outline-none focus:bg-gray-900"
+                    />
+
 
                     <div>
                         <div>
