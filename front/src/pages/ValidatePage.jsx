@@ -41,7 +41,7 @@ export const ValidatePage = () => {
                 </p>
 
                 <Link
-                    className="w-40 bg-frankgreen text-white font-bold text-center py-2 px-4 rounded mb-4 hover:bg-[#a1bc28] transition-colors"
+                    className="w-40 bg-frankgreen text-white font-bold text-center py-2 px-4 rounded mb-4 hover:bg-[#1B5E20] transition-colors"
                     to="/"
                 >
                     Comencemos
@@ -50,7 +50,7 @@ export const ValidatePage = () => {
                     Soporte:{' '}
                     <a
                         href="mailto:frankensteinhack2024@gmail.com"
-                        className="text-frankgreen underline"
+                        className="text-blue-600 underline"
                     >
                         frankensteinhack2024@gmail.com
                     </a>

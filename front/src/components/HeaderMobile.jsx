@@ -4,7 +4,7 @@ import { Auth } from './Auth';
 import { AuthContext } from '../context/AuthContext';
 import { useContext } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
-import { SearchBar } from './UI/SearchBar';
+import { SearchBar } from './SearchComponents/SearchBar';
 
 const HeaderMobile = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +26,8 @@ const HeaderMobile = () => {
             {isOpen && (
                 <div className="bg-black absolute top-16 right-0 w-full">
                     <div className="flex flex-col items-center justify-center py-4">
-                        <SearchBar />
+
+                        <SearchBar/>
 
                         {user && (
                             <Link

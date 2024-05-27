@@ -18,7 +18,7 @@ const NewQuestionPage = () => {
 
     return (
         <main>
-            <h2>Nueva pregunta</h2>
+           
             <NewQuestionForm
                 insertQuestionService={insertQuestionService}
                 token={token}

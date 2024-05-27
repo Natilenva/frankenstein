@@ -52,26 +52,19 @@ export const NewProfile = () => {
         const selectedRole = event.target.value;
         setIsCompany(selectedRole === 'company');
     };
-
-    if (!user) {
-        return <p>Loading...</p>;
-    }
     return (
         <div className="flex flex-col items-center px-4 py-8 sm:px-6 lg:px-8 bg-white max-w-lg mx-auto mt-8 ">
             <div className="flex flex-col items-center mb-6">
                 <div className="relative h-48 w-48 rounded-full bg-zinc-300">
                     {user && user.avatar ? (
-                        <img
-                            src={`${import.meta.env.VITE_BASE_URL}/uploads/${
-                                user.avatar
-                            }`}
-                            /* alt="Avatar" */
-                            className="rounded-full object-cover h-full w-full"
-                        />
-                    ) : (
-                        <div className="rounded-full object-cover h-full w-full bg-gray-200 flex items-center justify-center">
-                            <span>No Avatar</span>
-                        </div>
+                    <img
+                        src={`${import.meta.env.VITE_BASE_URL}/uploads/${
+                            user.avatar
+                        }`}
+                        /* alt="Avatar" */
+                        className="rounded-full object-cover h-full w-full"
+                    />): (
+                        <p>no avatar</p>
                     )}
                     <label
                         htmlFor="avatar"
@@ -194,6 +187,7 @@ export const NewProfile = () => {
                     <p className="text-red-500 text-sm">
                         {errors.profile_role?.message}
                     </p>
+
                 </div>
 
                 {isCompany && (

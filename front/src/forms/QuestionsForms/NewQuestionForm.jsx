@@ -40,43 +40,74 @@ const NewQuestionForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="question_title">Titulo:</label>
-            <input
-                type="text"
-                name="question_title"
-                id="question_title"
-                value={question_title}
-                onChange={(e) => setQuestion_title(e.target.value)}
-                required
-            />
+        <main className="flex-grow">
+            <div className="flex flex-col items-center justify-center m-auto md:px-6 lg:px-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-black font-semibold m-8">
+                    Nueva pregunta
+                </h1>
+                <form
+                    onSubmit={handleSubmit}
+                    className="w-full max-w-xs md:max-w-sm lg:max-w-md"
+                >
+                    <label htmlFor="question_title" className="block mb-4">
+                        Titulo:
+                    </label>
+                    <input
+                        className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
+                        type="text"
+                        name="question_title"
+                        id="question_title"
+                        value={question_title}
+                        onChange={(e) => setQuestion_title(e.target.value)}
+                        required
+                    />
+                    <div className='mb-4'>
+                    <label htmlFor="technology" className="block mb-1">
+                        Tecnologia:
+                    </label>
+                    <input
+                        className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
+                        type="text"
+                        name="technology"
+                        id="technology"
+                        value={technology}
+                        onChange={(e) => setTechnology(e.target.value)}
+                        required
+                    />
+                    </div>
+                    <div className='mb-4'>
+                    <label
+                        htmlFor="question_description"
+                        className="block mb-4"
+                    >
+                        Descripcion:
+                    </label>
+                    <input
+                        className="w-full px-3 py-20 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
+                        type="text"
+                        name="question_description"
+                        id="question_description"
+                        value={question_description}
+                        onChange={(e) =>
+                            setQuestion_description(e.target.value)
+                        }
+                        required
+                    />
+                    </div>
 
-            <label htmlFor="technology">Tecnologia:</label>
-            <input
-                type="text"
-                name="technology"
-                id="technology"
-                value={technology}
-                onChange={(e) => setTechnology(e.target.value)}
-                required
-            />
-
-            <label htmlFor="question_description">Descripcion:</label>
-            <input
-                type="text"
-                name="question_description"
-                id="question_description"
-                value={question_description}
-                onChange={(e) => setQuestion_description(e.target.value)}
-                required
-            />
-
-            {loading ? (
-                <Loading />
-            ) : (
-                <button disabled={loading}>Postear pregunta</button>
-            )}
-        </form>
+                    {loading ? (
+                        <Loading />
+                    ) : (
+                        <button
+                            className="w-full px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4"
+                            disabled={loading}
+                        >
+                            Postear pregunta
+                        </button>
+                    )}
+                </form>
+            </div>
+        </main>
     );
 };
 

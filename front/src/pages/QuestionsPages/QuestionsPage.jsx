@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import useQuestions from "../../hooks/QuestionsHook/useQuestions.js";
-
+import { useState } from "react";
 import Loading from "../../components/loading";
 import SearchForm from "../../forms/QuestionsForms/SearchQuestionForm";
 import QuestionListItem from "../../components/QuestionsComponents/QuestionListItem";
+import { FaSearch } from "react-icons/fa";
 
 
 
@@ -17,29 +18,37 @@ const QuestionsPage=()=>{
         loading,
     }= useQuestions();
 
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
+
     return(
        
         <main>
            
         <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 leading-[133%] ">
-        <div className="text-lg font-medium text-black">
-            Pregunta a Papi Frankie
+       
         </div>
-        </div>
+        <button
+                onClick={toggleMenu}
+                className="text-gray-700 hover:text-frankgreen p-2"
+            >
+                {<FaSearch className=" text-3xl hover:text-frankgreen" />}
+            </button>
      
 
-            <SearchForm setSearchParams={setSearchParams} loading={loading}/>
-
-            <div className="lg:flex lg:items-center lg:space-x-4 flex-wrap justify-start">
-                <div className="lg:flex lg:items-center lg:space-x-4 flex-wrap justify-end">
+            {isOpen && (<SearchForm setSearchParams={setSearchParams} loading={loading}/>)
+}
+            <div className=" p-4">
                         <Link
                             to="/questions/newquestion"
-                            className="flex gap-0.5 self-start py-1 pr-1 pl-2 text-xs text-white bg-lime-600 rounded"
+                            className="w-full px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4"
                         >
                             Hacer una pregunta
                         </Link>
-                </div>
-            </div>
+                        </div>
+          
             <div className="bg-black">
             <ul>
                 {questions.length < 1 && loading ? (
@@ -87,7 +96,9 @@ const QuestionsPage=()=>{
                     ▶️
                 </button>
             </div>
-            </div>           
+            </div>    
+           
+              
         </main>
       
     )
