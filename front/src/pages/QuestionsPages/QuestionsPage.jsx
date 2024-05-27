@@ -53,7 +53,7 @@ const QuestionsPage=()=>{
             </ul>
         
             
-            <div >
+            <div   className="flex justify-between text-[#829821]"  >
           
                 <button
                     
@@ -71,6 +71,7 @@ const QuestionsPage=()=>{
                
                 <span>{currentPage}</span>
                 <button
+                  
                    
                     onClick={() => {
                         // Establecemos el query param con la página previa.
