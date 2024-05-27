@@ -10,7 +10,7 @@ export const ResetPasswordPage = ()=>{
 
     return(
         <main>
-            <h1>Cambio de contraseña </h1>
+           
              <ResetPasswordForm
                 authRP={authRP}
              />
