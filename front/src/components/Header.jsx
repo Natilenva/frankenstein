@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import HeaderMobile from './HeaderMobile';
 import { SearchBar } from './UI/SearchBar';
 
-import frankFavicon32 from '/favicon-32x32.png';
+// import frankFavicon32 from '/favicon-32x32.png';
 
 export const Header = () => {
     const { user } = useContext(AuthContext);
@@ -14,12 +14,12 @@ export const Header = () => {
         <header className="bg-black p-4 top-0 flex items-center justify-between shadow-md sticky z-50">
             <div className="flex items-center">
                 <Link to="/">
-                    {/* <img
+                    <img
                         src="./../frankenstein.png"
                         className="h-8 sm:h-10 lg:h-12 mr-2"
                         alt="Logo"
-                    /> */}
-                    <img src={frankFavicon32} alt="logo" />
+                    />
+                    {/* <img src={frankFavicon32} alt="logo" /> */}
                 </Link>
             </div>
 

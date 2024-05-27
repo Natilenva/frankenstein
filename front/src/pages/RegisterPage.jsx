@@ -44,7 +44,7 @@ export const RegisterPage = () => {
                 </h1>
                 <img
                     loading="Imagen"
-                    src="../../public/franki-icono.png"
+                    src="/franki-icono.png"
                     className="self-center mt-8 mb-10 w-20 sm:w-24 lg:w-32"
                     alt="Imagen de Franki"
                 />
