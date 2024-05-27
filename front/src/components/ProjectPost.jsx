@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useContext, useState } from 'react';
 //import { toast } from 'react-hot-toast';
-export const ProjectPost = ({ project}) => {
+export const    ProjectPost = ({ project}) => {
 
     const { user } = useContext(AuthContext);
     const [error] = useState('');
@@ -26,7 +26,7 @@ export const ProjectPost = ({ project}) => {
     //const provocarError = provocarErrorBoundary;
 
     return (
-        <article >
+        <article className="md:flex bg-white" >
 
             {/* //^ Imagen del proyecto ------------------------------ */}
             <div className='md:shrink-0 '>

@@ -30,7 +30,7 @@ export const Project = ({ project, removeProject }) => {
     return (
         <article>
             {/* //^ Imagen del proyecto ------------------------------ */}
-            <div>
+            <div className='md:shrink-0 '>
                 {project.project_photo>0 ? (
                     <img
                         loading="lazy"
@@ -38,7 +38,7 @@ export const Project = ({ project, removeProject }) => {
                             project.project_photo
                         }`}
                         alt={project.project_title}
-                        className="aspect-[0.96] w-[158px]"
+                        className="h-48 w-full object-cover md:h-full md:w-48" 
                     />
                 ) : (
                     <img src="/apple-touch-icon.png" alt="Logo de frankenstein" />
@@ -46,21 +46,21 @@ export const Project = ({ project, removeProject }) => {
             </div>
 
             {/* //! CARD? del proyecto ---------------------------------------- */}
-            <div className="flex flex-col p-2">
+            <div className="p-8 pb-4">
                 {/* //^ Title del proyecto ------------------------------------ */}
-                <div className="text-sm font-semibold leading-4 text-lime-600">
+                <div className="block mt-1 leading-tight text-lg font-bold text-black hover:underline">
                     <Link to={`/project/${project.project_id}`}>
                         <h3>{project.project_title}</h3>
                     </Link>
                 </div>
 
                 {/* //^ Description del proyecto ------------------------------ */}
-                <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
+                <p className="mt-2 text-sm font-medium text-neutral-900 ">
                     {project.project_description}
                 </p>
 
                 {/* //^ Creador y fecha del proyecto --------------------------- */}
-                <p className="mt-1 text-xs font-medium leading-6 text-stone-700">
+                <p className="mt-1 text-xs font-normal  text-neutral-700">
                     By
                     <Link to={`/profilepublic/${project.register_id}`}>
                         {' '}

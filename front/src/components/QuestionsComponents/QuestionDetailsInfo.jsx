@@ -24,21 +24,21 @@ const QuestionDetailsInfo = ({ question_title, question_technology, question_des
     }
     
     return (
-        <main>
-        <ul >
+        <main  className="m-1 p-1  mx-auto rounded-xl shadow-lg   bg-neutral-950">
+        <ul className="pt-4 pb-4">
           
-            <li className="text-sm leading-5 text-red-800 underline">
-                <strong>Pregunta:</strong> {question_title}
+            <li className=" text-lg font-bold leading-tight text-white">
+                Pregunta: {question_title}
             </li>
-            <li>
-                <strong>Tecnologia:</strong> {question_technology}
+            <li  className="text-xs font-normal text-neutral-500">
+                Tecnologia: {question_technology}
             </li>
-            <li>
+            <li className="text-sm font-medium mt-2 text-neutral-200">
                {question_description}
             </li>
             
-            <li>
-                <strong>Fecha de creación:</strong>
+            <li className="text-xs text-neutral-500">
+                Fecha de creación:
                 {moment(created_at).format('DD/MM/YYYY [a las] HH:mm')}
             </li>
         </ul>

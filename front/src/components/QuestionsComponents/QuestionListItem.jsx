@@ -15,24 +15,27 @@ const QuestionListItem = ({ question }) => {
     return (
    
 
-        <section className="flex gap-2" >
+        <section className="flex pt-4 pb-4" >
 
-            <div className="flex gap-2">❓</div>
+            <div className="shrink-0 ">❓</div>
 
             <Link to={`/question/${question.question_id}`} >
 
                 <div className='text-white'>
-                    <h3 className="text-sm leading-5 underline">{question.question_title}</h3>
+                    <h3 className=" text-lg font-bold leading-tight text-white">{question.question_title}</h3>
 
-                    <p className="text-xs leading-4  text-opacity-50">
-                        <strong>Tecnologia:</strong> {question.technology}
-                    </p>
-
-                    <p className="text-xs leading-4  text-opacity-50">
+                    <p className="text-sm font-medium mt-2">
                             { question.question_description}
                     </p>
 
-                    <time className="text-xs leading-4  text-opacity-50">
+
+
+                    <p className="text-xs font-normal text-neutral-500">
+                        Tecnologia: {question.technology}
+                    </p>
+
+                 
+                    <time className="text-xs text-neutral-500">
                         {moment(question.created_at).format(
                             'DD/MM/YYYY [a las] HH:mm'
                         )}

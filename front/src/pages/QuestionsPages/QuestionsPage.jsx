@@ -24,7 +24,7 @@ const QuestionsPage=()=>{
 
     return(
        
-        <main>
+        <main >
            
         <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 leading-[133%] ">
        

@@ -29,7 +29,7 @@ const QuestionDetailsPage =()=>{
     <main >
       {question && (
         <>
-          <h2>{question.question_title}</h2>
+          
 
           <QuestionDetailsInfo
             question_title={question.question_title}

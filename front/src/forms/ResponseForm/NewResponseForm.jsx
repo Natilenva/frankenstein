@@ -40,12 +40,14 @@ const NewResponseForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex-grow">
+            <div className="flex  md:px-6 lg:px-8 space-x-4 place-content-around" >
             {profile.profile_role !== 'student' ||
             user.register_id === question.user_id ? (
-                <fieldset>
+                <fieldset className='p-1'>
                     <label htmlFor="response_text"></label>
                     <input
+                         className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
                         type="text"
                         name="response_text"
                         id="response_text"
@@ -58,7 +60,14 @@ const NewResponseForm = () => {
                     {loading ? (
                         <Loading />
                     ) : (
-                        <button disabled={loading}>Responder</button>
+                        <button  className="
+                        px-1 
+                        bg-frankgreen
+                        hover:bg-lime-500 
+                        rounded-md
+                        text-white
+                        font-myFontFamily
+                        "disabled={loading}>Responder</button>
                     )}
                 </fieldset>
             ) : (
@@ -66,6 +75,7 @@ const NewResponseForm = () => {
                     No tienes permiso para responder preguntas.
                 </p>
             )}
+            </div>
         </form>
     );
 };

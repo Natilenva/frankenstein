@@ -106,7 +106,7 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
                                 className="aspect-[0.96] w-[158px]"
                             />
                         ) : (
-                            <p>no photo</p>
+                            <img  className="h-48 w-full object-cover md:h-full md:w-48" src="/apple-touch-icon.png" alt="Logo de frankenstein" />
                         )}
                     </div>
                     {/* FIN Imagen del proyecto -------------------------------- */}
