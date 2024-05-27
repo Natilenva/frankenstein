@@ -69,7 +69,7 @@ export const SearchBar = () => {
             <div className="bg-white max-w-full rounded-[10px] h-1 py-4 flex items-center m-1 shadow-[#ddd]">
             <FaSearch className="m-1 text-[#829821]"/>
             <input 
-                className="bg-transparent text-lg w-full ml-2"
+                className="bg-transparent text-lg w-full ml-2   "
                 placeholder="Escribe para buscar..." 
                 value={input} 
                 onChange={(e) => handleChange(e.target.value)} 

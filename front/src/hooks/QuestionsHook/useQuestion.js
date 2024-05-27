@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 import { selectQuestionByIdService } from '../../services/questionService';
 
-const useQuestion = (question_id, token) => {
+const useQuestion = (question_id) => {
     
     const [question, setQuestion] = useState(null);
 
@@ -17,7 +17,7 @@ const useQuestion = (question_id, token) => {
         const fetchQuestion = async () => {
             try {
                 
-                const question = await selectQuestionByIdService(question_id, token);
+                const question = await selectQuestionByIdService(question_id);
                
 
               
@@ -29,7 +29,7 @@ const useQuestion = (question_id, token) => {
 
        
         fetchQuestion();
-    }, [question_id, token]);
+    }, [question_id]);
 
     
 

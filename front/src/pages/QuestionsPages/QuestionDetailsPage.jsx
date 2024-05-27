@@ -8,14 +8,13 @@ import useResponses from "../../hooks/ResponsesHook/useResponses.js";
 import NewResponseForm from "../../forms/ResponseForm/NewResponseForm.jsx";
 
 import QuestionDetailsInfo from "../../components/QuestionsComponents/QuestionDetailsInfo";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext.jsx";
+
 
 
 const QuestionDetailsPage =()=>{
 
 
-  const {token}= useContext(AuthContext);
+
 
 
   const {id}= useParams();
@@ -23,7 +22,7 @@ const QuestionDetailsPage =()=>{
 
   const{responses, loading}=useResponses(id);
 
-  const {question}= useQuestion(id, token);
+  const {question}= useQuestion(id);
 
   return(
     
