@@ -116,11 +116,12 @@ export const NewProject2 = ({ addProject }) => {
                             >
                                 Descripción
                             </label>
-                            <input
-                                className="w-full px-3 py-20 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
+                            <textarea
+                                className="w-full px-3 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
                                 type="text"
                                 id="project_description"
                                 name="project_description"
+                                rows="4"
                                 {...register('project_description')}
                             />
                             <p className="h-4 text-sm text-rose-500">
