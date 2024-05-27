@@ -56,30 +56,29 @@ export const    ProjectPost = ({ project}) => {
                     Lorem, ipsum.
                 </div> */}
 
-                {/* //^ Title del proyecto ------------------------------------ */}
-                <a href="#" className="block mt-1 leading-tight text-lg font-bold text-black hover:underline">
-                    <h3>{project.project_title}</h3>
-                </a>
-                
-                
-                {/* //^ Description del proyecto ------------------------------ */}
-                <p className="mt-2 text-sm font-medium text-neutral-900 "  >
-                    {project.project_description}
-                </p>
-                {/* //*+ */}
+                <Link to={`/project/${project.project_id}`}>
+                    {/* //^ Title del proyecto ------------------------------------ */}
+                    <a href="#" className="block mt-1 leading-tight text-lg font-bold text-black hover:underline">
+                        <h3>{project.project_title}</h3>
+                    </a>
+                    
+                    
+                    {/* //^ Description del proyecto ------------------------------ */}
+                    <p className="mt-2 text-sm font-medium text-neutral-900 "  >
+                        {project.project_description}
+                    </p>
+                </Link>
 
 
                 {/* //^ Creador y fecha del proyecto --------------------------- */}
                 <p className="mt-1 text-xs font-normal  text-neutral-700">
                     Autor
-                    <Link to={`/user/${project.register_id}`}>
+                    <Link to={`/profile/${project.register_id}`}>
                         {' '}
                         {project.usernameOfRegister}{' '}
                     </Link>{' '}
                     el{' '}
-                    <Link to={`/project/${project.project_id}`}>
-                        {new Date(project.created_at).toLocaleDateString()}
-                    </Link>
+                    {new Date(project.created_at).toLocaleDateString()}
                 </p>
 
 
