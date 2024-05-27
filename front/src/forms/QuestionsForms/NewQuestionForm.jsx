@@ -61,38 +61,39 @@ const NewQuestionForm = () => {
                         onChange={(e) => setQuestion_title(e.target.value)}
                         required
                     />
-                    <div className='mb-4'>
-                    <label htmlFor="technology" className="block mb-1">
-                        Tecnologia:
-                    </label>
-                    <input
-                        className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
-                        type="text"
-                        name="technology"
-                        id="technology"
-                        value={technology}
-                        onChange={(e) => setTechnology(e.target.value)}
-                        required
-                    />
+                    <div className="mb-4">
+                        <label htmlFor="technology" className="block mb-1">
+                            Tecnologia:
+                        </label>
+                        <input
+                            className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
+                            type="text"
+                            name="technology"
+                            id="technology"
+                            value={technology}
+                            onChange={(e) => setTechnology(e.target.value)}
+                            required
+                        />
                     </div>
-                    <div className='mb-4'>
-                    <label
-                        htmlFor="question_description"
-                        className="block mb-4"
-                    >
-                        Descripcion:
-                    </label>
-                    <input
-                        className="w-full px-3 py-20 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
-                        type="text"
-                        name="question_description"
-                        id="question_description"
-                        value={question_description}
-                        onChange={(e) =>
-                            setQuestion_description(e.target.value)
-                        }
-                        required
-                    />
+                    <div className="mb-4">
+                        <label
+                            htmlFor="question_description"
+                            className="block mb-4"
+                        >
+                            Descripcion:
+                        </label>
+                        <textarea
+                            className="w-full px-3  bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
+                            type="text"
+                            name="question_description"
+                            id="question_description"
+                            rows="4"
+                            value={question_description}
+                            onChange={(e) =>
+                                setQuestion_description(e.target.value)
+                            }
+                            required
+                        />
                     </div>
 
                     {loading ? (

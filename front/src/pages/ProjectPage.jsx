@@ -1,6 +1,6 @@
 import { ErrorMessage } from '../components/ErrorMessage';
 import { useParams } from 'react-router-dom';
-import useProject from "../hooks/useProject";
+import useProject from '../hooks/useProject';
 import { Project } from '../components/Project';
 
 import { useContext } from 'react';
@@ -10,7 +10,8 @@ import { UpdateProject } from '../components/UpdateProject';
 
 export const ProjectPage = () => {
     const { id } = useParams();
-    const { project, loading, error, updateProject, removeProject} = useProject(id);
+    const { project, loading, error, updateProject, removeProject } =
+        useProject(id);
 
     const { user } = useContext(AuthContext);
 
@@ -19,14 +20,15 @@ export const ProjectPage = () => {
 
     return (
         <section className=" m-auto flex flex-col min-h-screen">
-            <h1 className="text-2xl font-bold ">ProjectPage</h1>
             {user && user.register_id === project.register_id ? (
                 //<p> formulario update project </p>
-                <UpdateProject updateProject={updateProject} removeProject={removeProject}/>
-
-            ) : (  
-                <Project project={project} /> 
+                <UpdateProject
+                    updateProject={updateProject}
+                    removeProject={removeProject}
+                />
+            ) : (
+                <Project project={project} />
             )}
         </section>
-      )
+    );
 };
