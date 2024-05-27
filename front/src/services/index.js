@@ -1,4 +1,3 @@
-
 /* 
 getAllProjectsService: 
 con lógica de reintento para manejar situaciones en las que la conexión inicial puede fallar, 
@@ -28,7 +27,7 @@ export const getAllProjectsService = async () => {
             retries++;
             console.log(`Retrying... (${retries}/${maxRetries})`);
             // Esperar 1 segundo antes de volver a intentarlo
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await new Promise((resolve) => setTimeout(resolve, 1000));
         }
     }
 
@@ -85,6 +84,10 @@ export const registerUserService = async ({ email, register_password }) => {
     if (!response.ok) {
         throw new Error(json.message);
     }
+    console.log(json.token);
+    if (json.token) {
+        localStorage.setItem('authToken', json.token);
+    }
     return json.data;
 };
 
@@ -107,13 +110,16 @@ export const loginUserService = async ({ email, register_password }) => {
 // * ----------------------------------------------------------------
 export const sendProjectService = async ({ data, token }) => {
     //console.log('hola');
-    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/newproject`, {
-        method: 'POST',
-        body: data, //* form-data
-        headers: {
-            Authorization: token,
-        },
-    });
+    const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/newproject`,
+        {
+            method: 'POST',
+            body: data, //* form-data
+            headers: {
+                Authorization: token,
+            },
+        }
+    );
     //console.log(response);
 
     const json = await response.json();
@@ -125,17 +131,19 @@ export const sendProjectService = async ({ data, token }) => {
     return json.data;
 };
 
-
 // * ------------------------------------------------------------------------------------
 export const updateProjectService = async ({ data, token, id }) => {
     //console.log('hola');
-    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/projectupdate/${id}`, {
-        method: 'PUT',
-        body: data, //* form-data
-        headers: {
-            Authorization: token,
-        },
-    });
+    const response = await fetch(
+        `${import.meta.env.VITE_BASE_URL}/projectupdate/${id}`,
+        {
+            method: 'PUT',
+            body: data, //* form-data
+            headers: {
+                Authorization: token,
+            },
+        }
+    );
     //console.log(response);
 
     const json = await response.json();

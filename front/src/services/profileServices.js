@@ -52,3 +52,19 @@ export const getProjectsByProfileService = async (id) => {
     }
     return json.data;
 };
+
+export const insertRoleUsernameCompanyService = async ({ formData, token }) => {
+    const response = await fetch(`${import.meta.env.VITE_BASE_URL}/role`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            Authorization: token,
+        },
+    });
+    const json = await response.json();
+    if (!response.ok) {
+        throw new Error(json.message);
+    }
+
+    return json.data;
+};

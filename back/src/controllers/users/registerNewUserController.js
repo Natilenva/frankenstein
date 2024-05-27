@@ -134,7 +134,7 @@ async function registerNewUserController(req, res, next) {
         // generate token
         const token = jwt.sign(userInfo, SECRET, { expiresIn: '1day' });
         res.setHeader('Authorization', token);
-
+        console.log(token);
         res.send({
             status: 'ok',
             message: `Usuario creado correctamente`,

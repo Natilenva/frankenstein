@@ -39,4 +39,5 @@ router.post('/reset-password/:id/:token', updatePasswordController);
 router.get('/validate/:registrationCode', validateUserController);
 router.get('/admin/validate/:id', updateValidateCompanyController);
 router.delete('/admin/reject/:id', deleteRejectProfileCompanyController);
+
 export default router;
