@@ -6,6 +6,7 @@ import { profileSchema } from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AiOutlineEdit } from 'react-icons/ai';
+//import Buttons from '../UI/Buttons/Buttons';
 export const NewProfile = () => {
     const { token, user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -209,7 +210,9 @@ export const NewProfile = () => {
                         </p>
                     </div>
                 )}
-
+                {/*  <Buttons type="submit" className="btn-principal">
+                    Actualizar perfil
+                </Buttons> */}
                 <button
                     type="submit"
                     className="w-full px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50"

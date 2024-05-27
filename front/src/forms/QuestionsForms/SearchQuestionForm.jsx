@@ -25,10 +25,16 @@ const SearchForm = ({ setSearchParams, loading }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className='search-form'>
+        <main className="flex-grow">
+              <div className="flex flex-col items-center justify-center m-auto md:px-6 lg:px-8">
+              <div className="text-2xl sm:text-3xl md:text-2xl lg:text-3xl text-center text-black font-semibold m-8">
+            Pregunta a Papi Frankie
+        </div>
+        <form onSubmit={handleSubmit}   className="w-full max-w-xs md:max-w-sm lg:max-w-md">
             <div>
-                <label htmlFor='question_title'>Titulo:</label>
+                <label htmlFor='question_title' className="block mb-4">Titulo:</label>
                 <input
+                  className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
                     type='text'
                     id='question_title'
                     value={question_title}
@@ -36,9 +42,10 @@ const SearchForm = ({ setSearchParams, loading }) => {
                 />
             </div>
 
-            <div>
-                <label htmlFor='technology'>Tecnologia:</label>
+            <div className='mb-4'>
+                <label htmlFor='technology' className="block mb-1">Tecnologia:</label>
                 <input
+                  className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
                     type='text'
                     id='technology'
                     value={technology}
@@ -46,8 +53,10 @@ const SearchForm = ({ setSearchParams, loading }) => {
                 />
             </div>
 
-            <button disabled={loading}>Buscar</button>
+            <button  className="w-full px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4" disabled={loading}>Buscar</button>
         </form>
+        </div>
+        </main>
     );
 };
 
