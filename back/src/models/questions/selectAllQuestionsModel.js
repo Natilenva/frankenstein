@@ -2,7 +2,7 @@ import getConnection from '../../db/getConnection.js';
 import { generateError } from '../../helpers/generateError.js';
 
 const selectAllQuestionsModel = async (
-    author='',
+    question_title='',
     technology='',
     keyword='',
     user_id,
@@ -22,13 +22,13 @@ const selectAllQuestionsModel = async (
                 questions.created_at
             FROM questions 
             INNER JOIN register ON questions.user_id = register.register_id  
-            WHERE register.email LIKE ? AND technology LIKE ? AND questions.question_description LIKE ?
+            WHERE questions.question_title LIKE ? AND technology LIKE ? AND questions.question_description LIKE ?
             ORDER BY questions.created_at DESC
             LIMIT ? OFFSET ?
         `,
         [
             user_id,
-            `%${author}%`,
+            `%${question_title}%`,
             `%${technology}%`,
             `%${keyword}%`,
             limit,

@@ -5,7 +5,7 @@ import selectTotalNumberOfQuestionModel from '../../models/questions/selectTotal
 const getAllQuestionsController = async (req, res, next) => {
     try {
 
-        let {author, technology, keyword, page = 1} = req.query;
+        let {question_title, technology, keyword, page = 1} = req.query;
 
         page= Number(page);
 
@@ -18,7 +18,7 @@ const getAllQuestionsController = async (req, res, next) => {
         const totalPages = Math.ceil(totalQuestions /limit);
 
         const questions = await selectAllQuestionsModel(
-            author,
+            question_title,
             technology,
             keyword,
             req.user?.id,
