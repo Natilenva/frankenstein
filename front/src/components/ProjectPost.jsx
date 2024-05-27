@@ -2,12 +2,11 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useContext, useState } from 'react';
-//import { deleteProjectService } from '../services';
 //import { toast } from 'react-hot-toast';
-export const ProjectPost = ({ project, removeProject }) => {
+export const ProjectPost = ({ project}) => {
 
-    const { user, token } = useContext(AuthContext);
-    const [error, setError] = useState('');
+    const { user } = useContext(AuthContext);
+    const [error] = useState('');
 
     /* const deleteProject = async (id) => {
         try {
@@ -27,7 +26,7 @@ export const ProjectPost = ({ project, removeProject }) => {
     //const provocarError = provocarErrorBoundary;
 
     return (
-        <article className="md:flex bg-neutral-950">
+        <article className="md:flex bg-white">
 
             {/* //^ Imagen del proyecto ------------------------------ */}
             <div className='md:shrink-0'>
@@ -54,28 +53,28 @@ export const ProjectPost = ({ project, removeProject }) => {
                 </div> */}
 
                 {/* //^ Title del proyecto ------------------------------------ */}
-                <a href="#" className="block mt-1 text-lg leading-tight font-medium text-white hover:underline">
+                <a href="#" className="block mt-1 leading-tight text-lg font-bold text-black hover:underline">
                     <h3>{project.project_title}</h3>
                 </a>
                 
                 
                 {/* //^ Description del proyecto ------------------------------ */}
-                <p className="mt-2 text-neutral-200 font-myFontFamily"  >
+                <p className="mt-2 text-sm font-medium text-neutral-900 "  >
                     {project.project_description}
                 </p>
                 {/* //*+ */}
 
 
                 {/* //^ Creador y fecha del proyecto --------------------------- */}
-                <p className="mt-1 text-xs font-medium  text-neutral-500">
-                    By
+                <p className="mt-1 text-xs font-normal  text-neutral-700">
+                    Autor
                     <Link to={`/user/${project.register_id}`}>
                         {' '}
                         {project.usernameOfRegister}{' '}
                     </Link>{' '}
-                    on{' '}
+                    el{' '}
                     <Link to={`/project/${project.project_id}`}>
-                        {new Date(project.created_at).toLocaleString()}
+                        {new Date(project.created_at).toLocaleDateString()}
                     </Link>
                 </p>
 
@@ -85,7 +84,7 @@ export const ProjectPost = ({ project, removeProject }) => {
 
                 {user && user.register_id === project.register_id ? (
                     <Link to={`/project/${project.project_id}`} 
-                    className="mt-1 text-xs font-medium  text-neutral-700">
+                    className="mt-1 text-xs font-medium  text-neutral-500">
                         Editar
                     </Link>
                 ) : 
