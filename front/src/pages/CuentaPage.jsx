@@ -21,8 +21,8 @@ export const CuentaPage = () => {
     ); */
     /* const { questionsProfile } = useQuestionsProfile(id); */
 
-    /* if (loading) return <p>cargando perfil...</p>;
-    if (error) return navigate('/newprofile'); */
+    if (loading) return <p>cargando perfil...</p>;
+    if (error) return navigate('/newprofile');
     return (
         <>
             {/* <p>{user.register_id}</p> */}
