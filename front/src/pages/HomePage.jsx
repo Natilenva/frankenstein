@@ -2,48 +2,47 @@ import { ErrorMessage } from '../components/ErrorMessage';
 //import { ProjectList } from '../components/ProjectList';
 import useProjects from '../hooks/useProjects';
 import useQuestions from '../hooks/QuestionsHook/useQuestions.js';
-import QuestionListItem from "./../components/QuestionsComponents/QuestionListItem";
-import Loading from "./../components/loading";
+import QuestionListItem from './../components/QuestionsComponents/QuestionListItem';
+import Loading from './../components/loading';
 //import { Link } from 'react-router-dom';
-
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "@ant-design/react-slick";
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from '@ant-design/react-slick';
 import { ProjectPost } from '../components/ProjectPost.jsx';
 import { QuestionCard } from '../components/QuestionsComponents/QuestionCard.jsx';
 
 export const HomePage = () => {
-
     const { projects, loading, error, removeProject } = useProjects();
-    const{questions,}= useQuestions();
+    const { questions } = useQuestions();
 
     if (loading) return <p>cargando projects...</p>;
     if (error) return <ErrorMessage message={error} />;
 
-
-    {/* Slider config test ok */}
+    {
+        /* Slider config test ok */
+    }
     const settings = {
         infinite: true,
         speed: 500,
         slidesToShow: 2,
         slidesToScroll: 1,
-      };
-
+    };
 
     return (
-        <main className='flex-grow flex flex-col bg-neutral-950'> 
-            
+        <main className="flex-grow flex flex-col bg-neutral-950">
             <Slider {...settings}>
                 {projects.map((project) => {
                     return (
-                        <li key={project.project_id} 
+                        <li
+                            key={project.project_id}
                             className=" list-none max-w-md mx-auto  shadow-md overflow-hidden md:max-w-2xl"
-                        >                           
-                            <ProjectPost project={project} removeProject={removeProject} />                          
+                        >
+                            <ProjectPost
+                                project={project}
+                                removeProject={removeProject}
+                            />
                         </li>
                     );
-                                                
                 })}
             </Slider>
 
@@ -62,23 +61,27 @@ export const HomePage = () => {
 
             {/* //! Card QuestionCard -----------------------------------------------------------------------------------  */}
             {/* <section className='flex flex-col flex-1 border-dotted border-4 border-yellow-500'> */}
-            <section className=' 
-                '>{/* border-dotted border-2 border-green-500 */}
-                <ul className='flex'> {/* //^mio */}
+            <section
+                className=" 
+                "
+            >
+                {/* border-dotted border-2 border-green-500 */}
+                <ul className="flex">
+                    {' '}
+                    {/* //^mio */}
                     {questions.map((question) => {
                         return (
                             <li
-                                key={question.question_id} 
+                                key={question.question_id}
                                 className="p-1 max-w-sm mx-auto rounded-xl shadow-lg flex items-center space-x-4 bg-neutral-950
-                                "/* border-dotted border-2 border-red-500 */
+                                " /* border-dotted border-2 border-red-500 */
                             >
-                                <QuestionCard question={question}/>                   
+                                <QuestionCard question={question} />
                             </li>
                         );
                     })}
                 </ul>
             </section>
-
         </main>
     );
 };

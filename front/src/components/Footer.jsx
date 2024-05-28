@@ -48,8 +48,3 @@ export const Footer = () => {
         </main>
     );
 };
-
-{
-    /* <footer className="bg-black text-white fixed bottom-0 w-full flex justify-around py-2 z-50
-        border-dotted border-2 border-red-500 "></footer> */
-}
