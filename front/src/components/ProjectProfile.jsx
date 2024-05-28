@@ -29,8 +29,6 @@ export const ProjectProfile = ({ projectProfile, removeProjectProfile }) => {
 
     return (
         <>
-            <h1>Proyectos de {`${projectProfile.profile_username}`}</h1>
-
             <article>
                 <div>
                     {projectProfile.project_photo ? (

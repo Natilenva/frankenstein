@@ -26,7 +26,10 @@ export const CuentaPage = () => {
     return (
         <>
             <Profile profile={profile} />
-            <ProjectListProfile projectsProfile={projectsProfile} />
+            <ProjectListProfile
+                projectsProfile={projectsProfile}
+                removeProjectProfile={removeProjectProfile}
+            />
             <QuestionsListProfile questionsProfile={questionsProfile} />
         </>
     );
