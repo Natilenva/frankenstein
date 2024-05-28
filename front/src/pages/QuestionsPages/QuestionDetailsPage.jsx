@@ -43,7 +43,7 @@ const QuestionDetailsPage =()=>{
           
           />
 
-             <ul className="bg-black">
+             <ul >
                 {responses.length < 1 && loading ? (
                     <Loading/>
                 ): responses.length === 0 ?(
