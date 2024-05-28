@@ -1,27 +1,26 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 
-import { AuthContext } from '../../context/AuthContext';
+// import { AuthContext } from '../../context/AuthContext';
 
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 
 import NewQuestionForm from '../../forms/QuestionsForms/NewQuestionForm';
 
-import { insertQuestionService } from '../../services/questionService.js';
+// import { insertQuestionService } from '../../services/questionService.js';
 
 const NewQuestionPage = () => {
-    const { token } = useContext(AuthContext);
-    console.log(token);
+    // const { token } = useContext(AuthContext);
+    // console.log(token);
 
-    if (!token) {
-        return <Navigate to="/login" />;
-    }
+    // if (!token) {
+    //     return <Navigate to="/login" />;
+    // }
 
     return (
         <main>
-           
             <NewQuestionForm
-                insertQuestionService={insertQuestionService}
-                token={token}
+            // insertQuestionService={insertQuestionService}
+            // token={token}
             />
         </main>
     );

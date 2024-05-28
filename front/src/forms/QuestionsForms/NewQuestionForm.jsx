@@ -10,30 +10,48 @@ import { toast } from 'react-hot-toast';
 
 import { insertQuestionService } from '../../services/questionService';
 import { AuthContext } from '../../context/AuthContext';
-
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { questionSchema } from '../../../schemas/questionSchema';
 const NewQuestionForm = () => {
     const navigate = useNavigate();
     const { token } = useContext(AuthContext);
 
-    const [question_title, setQuestion_title] = useState('');
-    const [question_description, setQuestion_description] = useState('');
-    const [technology, setTechnology] = useState('');
+    // const [question_title, setQuestion_title] = useState('');
+    // const [question_description, setQuestion_description] = useState('');
+    // const [technology, setTechnology] = useState('');
 
     const [loading, setLoading] = useState(false);
-
-    const handleSubmit = async (e) => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        mode: 'onTouched',
+        resolver: zodResolver(questionSchema),
+    });
+    const onSubmit = async (data) => {
         try {
-            e.preventDefault();
-            const data = new FormData(e.target);
-            await insertQuestionService({ data, token });
+            //  setSending(true);
+            const formData = new FormData();
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
 
+            const question = await insertQuestionService({
+                data: formData,
+                token,
+            });
+            console.log(question);
             setLoading(true);
 
-            toast.success(data);
+            // toast.success(data);
+            toast.success('Pregunta creada exitosamente');
 
             navigate('/questions');
         } catch (err) {
-            toast.error(err.message);
+            console.log(err);
+            toast.error('Ha habido un problema al agregar la pregunta');
         } finally {
             setLoading(false);
         }
@@ -46,7 +64,8 @@ const NewQuestionForm = () => {
                     Nueva pregunta
                 </h1>
                 <form
-                    onSubmit={handleSubmit}
+                    noValidate
+                    onSubmit={handleSubmit(onSubmit)}
                     className="w-full max-w-xs md:max-w-sm lg:max-w-md"
                 >
                     <label htmlFor="question_title" className="block mb-4">
@@ -57,10 +76,14 @@ const NewQuestionForm = () => {
                         type="text"
                         name="question_title"
                         id="question_title"
-                        value={question_title}
-                        onChange={(e) => setQuestion_title(e.target.value)}
-                        required
+                        // value={question_title}
+                        // onChange={(e) => setQuestion_title(e.target.value)}
+                        // required
+                        {...register('question_title')}
                     />
+                    <p className="h-4 text-sm text-rose-500">
+                        {errors.question_title?.message}
+                    </p>
                     <div className="mb-4">
                         <label htmlFor="technology" className="block mb-1">
                             Tecnologia:
@@ -70,10 +93,14 @@ const NewQuestionForm = () => {
                             type="text"
                             name="technology"
                             id="technology"
-                            value={technology}
-                            onChange={(e) => setTechnology(e.target.value)}
-                            required
+                            // value={technology}
+                            // onChange={(e) => setTechnology(e.target.value)}
+                            // required
+                            {...register('technology')}
                         />
+                        <p className="h-4 text-sm text-rose-500">
+                            {errors.tecnology?.message}
+                        </p>
                     </div>
                     <div className="mb-4">
                         <label
@@ -88,12 +115,16 @@ const NewQuestionForm = () => {
                             name="question_description"
                             id="question_description"
                             rows="4"
-                            value={question_description}
-                            onChange={(e) =>
-                                setQuestion_description(e.target.value)
-                            }
-                            required
+                            // value={question_description}
+                            // onChange={(e) =>
+                            //     setQuestion_description(e.target.value)
+                            // }
+                            // required
+                            {...register('question_description')}
                         />
+                        <p className="h-4 text-sm text-rose-500">
+                            {errors.question_description?.message}
+                        </p>
                     </div>
 
                     {loading ? (
