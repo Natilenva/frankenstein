@@ -56,8 +56,8 @@ export const NewProject2 = ({ addProject }) => {
     };
     return (
         <main className="flex-grow">
-            <div className="flex flex-col items-center justify-center m-auto md:px-6 lg:px-8">
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-black font-semibold m-8">
+            <div className="flex flex-col items-center justify-center m-40 md:px-6 lg:px-8">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-black font-semibold mb-4">
                     Añade tu proyecto
                 </div>
                 <form
@@ -109,7 +109,7 @@ export const NewProject2 = ({ addProject }) => {
                             </p>
                         </fieldset>
 
-                        <fieldset className="mb-4">
+                        <fieldset className="mb-2">
                             <label
                                 htmlFor="project_description"
                                 className="block mb-1"

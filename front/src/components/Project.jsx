@@ -1,11 +1,8 @@
-
-
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useContext, useState } from 'react';
 import { deleteProjectService } from '../services';
-
 import { toast } from 'react-hot-toast';
 export const Project = ({ project, removeProject }) => {
     const { user, token } = useContext(AuthContext);
@@ -31,17 +28,20 @@ export const Project = ({ project, removeProject }) => {
         <article>
             {/* //^ Imagen del proyecto ------------------------------ */}
             <div className='md:shrink-0 '>
-                {project.project_photo>0 ? (
+                {project.project_photo ? (
                     <img
-                        loading="lazy"
+                        loading="image"
                         src={`${import.meta.env.VITE_BASE_URL}/uploads/${
                             project.project_photo
                         }`}
                         alt={project.project_title}
-                        className="h-48 w-full object-cover md:h-full md:w-48" 
+                        className="h-48 w-full object-cover md:h-full md:w-48"
                     />
                 ) : (
-                    <img src="/apple-touch-icon.png" alt="Logo de frankenstein" />
+                    <img
+                        src="/apple-touch-icon.png"
+                        alt="Logo de frankenstein"
+                    />
                 )}
             </div>
 
@@ -104,4 +104,3 @@ Project.propTypes = {
     removeProject: PropTypes.any,
     updateProject: PropTypes.any,
 };
-

@@ -32,7 +32,7 @@ const NewResponseForm = () => {
                 token,
                 question.question_id
             );
-            navigate(`/question/${id}`);
+            console.log(token);
         } catch (err) {
             toast.error(err.message);
         } finally {
