@@ -7,6 +7,6 @@ const responseSchema = z.object({
             required_error: 'Campo requerido',
         })
         .min(3, 'Mínimo 3 caracteres')
-        .max(200, 'Máximo 200 caracteres'),
+        .max(100000000, 'Máximo 200 caracteres'),
 });
 export { responseSchema };

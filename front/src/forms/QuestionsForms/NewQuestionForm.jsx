@@ -58,7 +58,7 @@ const NewQuestionForm = () => {
     };
 
     return (
-        <main className="flex-grow">
+        <main className="flex-grow mb-11">
             <div className="flex flex-col items-center justify-center m-auto md:px-6 lg:px-8">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-black font-semibold m-8">
                     Nueva pregunta
@@ -131,7 +131,7 @@ const NewQuestionForm = () => {
                         <Loading />
                     ) : (
                         <button
-                            className="w-full px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4"
+                            className="w-full px-4 py-3 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4"
                             disabled={loading}
                         >
                             Postear pregunta
