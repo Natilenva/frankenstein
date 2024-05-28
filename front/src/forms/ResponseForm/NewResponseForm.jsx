@@ -1,3 +1,4 @@
+
     import Loading from '../../components/loading';
     import toast from 'react-hot-toast';
     import { insertResponseService } from '../../services/responsesService';
@@ -64,5 +65,6 @@
             </form>
         );
     };
+
 
     export default NewResponseForm;
