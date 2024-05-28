@@ -38,7 +38,39 @@ const QuestionsPage=()=>{
                         </div>
           
             <div className="bg-black">
-            <ul>
+            <div   className="flex justify-between text-[#829821]"  >
+          
+          <button
+              
+              onClick={() => {
+                  // Establecemos el query param con la página previa.
+                  setSearchParams(
+                      new URLSearchParams({
+                          page: prevPage,
+                      })
+                  );
+              }}
+              disabled={!prevPage}>
+              ◀️
+          </button>
+         
+          <span>{currentPage}</span>
+          <button
+            
+             
+              onClick={() => {
+                  // Establecemos el query param con la página previa.
+                  setSearchParams(
+                      new URLSearchParams({
+                          page: nextPage,
+                      })
+                  );
+              }}
+              disabled={!nextPage}>
+              ▶️
+          </button>
+      </div>
+            <ul className=" mb-20">
                 {questions.length < 1 && loading ? (
                     <Loading/>
                 ): questions.length === 0 ?(
@@ -53,38 +85,7 @@ const QuestionsPage=()=>{
             </ul>
         
             
-            <div   className="flex justify-between text-[#829821]"  >
-          
-                <button
-                    
-                    onClick={() => {
-                        // Establecemos el query param con la página previa.
-                        setSearchParams(
-                            new URLSearchParams({
-                                page: prevPage,
-                            })
-                        );
-                    }}
-                    disabled={!prevPage}>
-                    ◀️
-                </button>
-               
-                <span>{currentPage}</span>
-                <button
-                  
-                   
-                    onClick={() => {
-                        // Establecemos el query param con la página previa.
-                        setSearchParams(
-                            new URLSearchParams({
-                                page: nextPage,
-                            })
-                        );
-                    }}
-                    disabled={!nextPage}>
-                    ▶️
-                </button>
-            </div>
+           
             </div>    
            
               

@@ -59,9 +59,9 @@ const SearchForm = ({ setSearchParams, loading }) => {
                         </button>
                         <Link
                             to="/questions/newquestion"
-                            className="w-[48%] px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-[#829821] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50"
+                            className="flex justify-center w-[48%] px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-[#829821] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50"
                         >
-                            Preguntarme
+                            Preguntar
                         </Link>
                     </div>
                 </form>
