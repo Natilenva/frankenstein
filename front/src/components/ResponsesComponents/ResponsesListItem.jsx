@@ -15,6 +15,7 @@ import useResponses from '../../hooks/ResponsesHook/useResponses';
 const ResponsesListItem = ({ response }) => {
     const {user, token}= useContext(AuthContext)
     const {addResponseVote}= useResponses(response.response_id)
+    console.log(user);
 
 
 

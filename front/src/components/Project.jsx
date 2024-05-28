@@ -31,7 +31,7 @@ export const Project = ({ project, removeProject }) => {
         <article>
             {/* //^ Imagen del proyecto ------------------------------ */}
             <div className='md:shrink-0 '>
-                {project.project_photo>0 ? (
+                {project.project_photo ? (
                     <img
                         loading="lazy"
                         src={`${import.meta.env.VITE_BASE_URL}/uploads/${
