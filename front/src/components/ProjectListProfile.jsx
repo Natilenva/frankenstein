@@ -12,7 +12,10 @@ export const ProjectListProfile = ({
         <main>
             <ul className="flex">
                 {projectsProfile.map((projectProfile) => (
-                    <li key={projectProfile.project_id}>
+                    <li
+                        key={projectProfile.project_id}
+                        className=" list-none max-w-md mx-auto  shadow-md overflow-hidden md:max-w-2xl"
+                    >
                         <ErrorBoundary
                             fallback={
                                 <p>Something went wrong in Project.jsx</p>

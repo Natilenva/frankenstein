@@ -1,5 +1,7 @@
 import PropType from 'prop-types';
+
 import { Link } from 'react-router-dom';
+
 import { useState } from 'react';
 
 const SearchForm = ({ setSearchParams, loading }) => {
@@ -19,49 +21,52 @@ const SearchForm = ({ setSearchParams, loading }) => {
 
     return (
         <main className="flex-grow">
-            <div className="flex flex-col items-center justify-center mx-auto px-4 py-8 max-w-screen-md">
-                <div className="text-3xl text-center text-black font-semibold mb-8">
-                    Pregunta a Frankenstein
+            <div className="flex flex-col items-center justify-center m-auto md:px-6 lg:px-8">
+                <div className="text-2xl sm:text-3xl md:text-2xl lg:text-3xl text-center text-black font-semibold m-8">
+                    Pregunta a Papi Frankie
                 </div>
-                <form onSubmit={handleSubmit} className="w-full">
-                    <div className="mb-6">
-                        <label htmlFor="question_title" className="block mb-1 text-sm font-medium text-black">
-                            Título:
+                <form
+                    onSubmit={handleSubmit}
+                    className="w-full max-w-xs md:max-w-sm lg:max-w-md"
+                >
+                    <div>
+                        <label htmlFor="question_title" className="block mb-4">
+                            Titulo:
                         </label>
                         <input
-                            className="w-full px-4 py-2 bg-white rounded-md border border-solid border-gray-300 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                            className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
                             type="text"
                             id="question_title"
                             value={question_title}
                             onChange={(e) => setQuestion_title(e.target.value)}
-                            placeholder="Ingrese el título de la pregunta"
                         />
                     </div>
-                    <div className="mb-6">
-                        <label htmlFor="technology" className="block mb-1 text-sm font-medium text-black">
-                            Tecnología:
+
+                    <div className="mb-4">
+                        <label htmlFor="technology" className="block mb-1">
+                            Tecnologia:
                         </label>
                         <input
-                            className="w-full px-4 py-2 bg-white rounded-md border border-solid border-gray-300 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                            className="w-full px-3 py-2 bg-white rounded-md border border-solid border-zinc-200 text-neutral-700"
                             type="text"
                             id="technology"
                             value={technology}
                             onChange={(e) => setTechnology(e.target.value)}
-                            placeholder="Ingrese la tecnología relacionada"
                         />
                     </div>
-                    <div className="flex justify-between">
+                    <div className=" flex space-x-4 place-content-around">
                         <button
-                            className="w-[48%] px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-[#829821] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50"
+                            className=" w-[50%]  px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4 m-auto"
                             disabled={loading}
                         >
                             Buscar
                         </button>
+
                         <Link
                             to="/questions/newquestion"
-                            className="w-[48%] px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-[#829821] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50"
+                            className=" w-[50%] px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mb-4 text-center m-auto " 
                         >
-                            Preguntarme
+                            Preguntame
                         </Link>
                     </div>
                 </form>
