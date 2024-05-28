@@ -25,13 +25,8 @@ export const CuentaPage = () => {
     if (error) return navigate('/newprofile');
     return (
         <>
-            <h1>Mi cuenta</h1>
-
             <Profile profile={profile} />
-            <ProjectListProfile
-                projectsProfile={projectsProfile}
-                removeProjectProfile={removeProjectProfile}
-            />
+            <ProjectListProfile projectsProfile={projectsProfile} />
             <QuestionsListProfile questionsProfile={questionsProfile} />
         </>
     );

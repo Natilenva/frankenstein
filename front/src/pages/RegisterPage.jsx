@@ -37,15 +37,15 @@ export const RegisterPage = () => {
     };
 
     return (
-        <>
-            <section className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-black font-semibold mb-4">
+        <main className="flex-grow">
+            <div className="flex flex-col items-center justify-center m-auto md:px-6 lg:px-8">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-black font-semibold mb-4">
                     Conecta, aprende y muestra tus habilidades
-                </h1>
+                </div>
                 <img
                     loading="Imagen"
-                    src="/franki-icono.png"
-                    className="self-center mt-8 mb-10 w-20 sm:w-24 lg:w-32"
+                    src="../../public/franki-icono.png"
+                    className="self-center mt-8 mb-10 w-20 md:w-24 lg:w-32"
                     alt="Imagen de Franki"
                 />
 
@@ -124,7 +124,7 @@ export const RegisterPage = () => {
                         Inicia sesión
                     </span>
                 </div>
-            </section>
-        </>
+            </div>
+        </main>
     );
 };

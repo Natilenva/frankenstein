@@ -4,11 +4,11 @@ import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-hot-toast';
 import { updateProfileService } from '../../services/profileServices';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 import profileSchema from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { AiOutlineEdit } from 'react-icons/ai';
 
 export const UpdateProfile = () => {
     const location = useLocation();
@@ -86,181 +86,194 @@ export const UpdateProfile = () => {
     // };
     return (
         <>
-            <form onSubmit={handleSubmit(handleForm)}>
-                <fieldset>
-                    <label htmlFor="profile_name">Nombre</label>
-                    <input
-                        type="text"
-                        id="profile_name"
-                        name="profile_name"
-                        {...register('profile_name')}
-                    />
-                </fieldset>
-                <p className="h-4 text-sm text-rose-500">
-                    {errors.profile_name?.message}
-                </p>
-                <fieldset>
-                    <label htmlFor="profile_lastname">Apellidos</label>
-                    <input
-                        type="text"
-                        id="profile_lastname"
-                        name="profile_lastname"
-                        {...register('profile_lastname')}
-                    />
-                    <p className="h-4 text-sm text-rose-500">
-                        {errors.profile_lastname?.message}
-                    </p>
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="profile_username">Nickname</label>
-                    <input
-                        type="text"
-                        id="profile_username"
-                        name="profile_username"
-                        {...register('profile_username')}
-                    />
-                    <p className="h-4 text-sm text-rose-500">
-                        {errors.profile_username?.message}
-                    </p>
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="birthdate">Fecha de nacimiento</label>
-                    <input
-                        type="text"
-                        id="birthdate"
-                        name="birthdate"
-                        {...register('birthdate')}
-                    />
-                </fieldset>
-                <p className="h-4 text-sm text-rose-500">
-                    {errors.birthdate?.message}
-                </p>
-                <fieldset>
-                    <label htmlFor="profile_role">Rol</label>
-                    <input
-                        type="text"
-                        id="profile_role"
-                        name="profile_role"
-                        value={profile.profile_role}
-                    />
-                    <p className="h-4 text-sm text-gray-500">
-                        * Si quieres cambiar tu rol ponte en contacto con el
-                        administrador.
-                    </p>
-                    {/* <select
-                        id="profile_role"
-                        name="profile_role"
-                        {...register('profile_role')}
-                        onChange={handleRoleChange}
-                    >
-                        <option value="Escoge un role">Escoge un rol</option>
-                        <option value="company">Empresa</option>
-                        <option value="expert">Experto</option>
-                        <option value="student">Estudiante</option>
-                    </select> */}
-                </fieldset>
-                <p className="h-4 text-sm text-rose-500">
-                    {errors.profile_role?.message}
-                </p>
-                {profile.company_name && (
-                    <fieldset>
-                        <label htmlFor="company_name">Empresa</label>
+            <main className="flex-grow">
+                <form
+                    onSubmit={handleSubmit(handleForm)}
+                    className="space-y-2 max-w-lg mx-auto p-6 bg-white "
+                >
+                    <div className="flex flex-col items-center mb-4">
+                        {image ? (
+                            <figure className="mb-2 relative">
+                                <img
+                                    src={URL.createObjectURL(image)}
+                                    alt="Preview"
+                                    className="w-48 h-48 object-cover "
+                                />
+                                <label
+                                    htmlFor="avatar"
+                                    className="absolute bottom-0 right-0 flex items-center justify-center bg-frankgreen cursor-pointer"
+                                >
+                                    <AiOutlineEdit />
+                                </label>
+                            </figure>
+                        ) : (
+                            <label
+                                htmlFor="avatar"
+                                className="relative cursor-pointer"
+                            >
+                                <img
+                                    loading="image"
+                                    src={`${
+                                        import.meta.env.VITE_BASE_URL
+                                    }/uploads/${profile.avatar}`}
+                                    alt={profile.avatar}
+                                    className="w-40 h-40 object-cover rounded-full"
+                                />
+                                <div className="absolute bottom-0 right-0 flex items-center justify-center w-25 h-25 cursor-pointer">
+                                    <AiOutlineEdit className="text-frankgreen" />
+                                </div>
+                            </label>
+                        )}
+                        <input
+                            type="file"
+                            id="avatar"
+                            name="avatar"
+                            accept="image/*"
+                            onChange={(e) => setImage(e.target.files[0])}
+                            className="hidden"
+                        />
+                        <p className="h-4 text-sm text-rose-500">
+                            {errors.avatar?.message}
+                        </p>
+                    </div>
+                    <fieldset className="flex flex-col">
+                        <label
+                            htmlFor="profile_name"
+                            className="text-sm font-medium text-gray-700"
+                        >
+                            Nombre
+                        </label>
                         <input
                             type="text"
-                            id="company_name"
-                            name="company_name"
-                            // value={profile.company_name}
-                            {...register('company_name')}
-                            // disabled={!isCompany}
+                            id="profile_name"
+                            name="profile_name"
+                            {...register('profile_name')}
+                            className="p-2 border border-gray-300 rounded-md shadow-sm focus:frankgreen"
                         />
-                    </fieldset>
-                )}
-
-                <p className="h-4 text-sm text-rose-500">
-                    {errors.company_name?.message}
-                </p>
-                <fieldset>
-                    <label htmlFor="avatar">Avatar</label>
-                    <input
-                        type="file"
-                        id="avatar"
-                        name="avatar"
-                        accept="image/*"
-                        onChange={(e) => setImage(e.target.files[0])}
-                    />
-                    {image ? (
-                        <figure>
-                            <img
-                                src={URL.createObjectURL(image)}
-                                alt="Preview"
-                                style={{ width: '100px' }}
-                            />
-                        </figure>
-                    ) : null}
-                    <div>
-                        <img
-                            loading="lazy"
-                            src={`${import.meta.env.VITE_BASE_URL}/uploads/${
-                                profile.avatar
-                            }`}
-                            alt={profile.avatar}
-                        />
-                    </div>
-                    <p className="h-4 text-sm text-rose-500">
-                        {errors.avatar?.message}
-                    </p>
-                </fieldset>
-                {/* <fieldset className="mb-4">
-                    <label htmlFor="email" className="block mb-1">
-                        Correo electrónico
-                    </label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="w-full border rounded-md px-3 py-2"
-                        {...register('email')}
-                        // onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                    <p className="h-4 text-sm text-rose-500">
-                        {errors.email?.message}
-                    </p>
-                </fieldset> */}
-                {/* <fieldset className="mb-4">
-                    <label htmlFor="pass1" className="block mb-1">
-                        Contraseña Nueva
-                    </label>
-                    <input
-                        type="password"
-                        id="pass1"
-                        name="pass1"
-                        className="w-full border rounded-md px-3 py-2"
-                        value={pass1}
-                        required
-                        // onChange={(e) => setPass1(e.target.value)}
-                    />
-                    {validationErrors.email && (
                         <p className="h-4 text-sm text-rose-500">
-                            {validationErrors.email}
+                            {errors.profile_name?.message}
+                        </p>
+                    </fieldset>
+
+                    <fieldset className="flex flex-col">
+                        <label
+                            htmlFor="profile_lastname"
+                            className="text-sm font-medium text-gray-700"
+                        >
+                            Apellidos
+                        </label>
+                        <input
+                            type="text"
+                            id="profile_lastname"
+                            name="profile_lastname"
+                            {...register('profile_lastname')}
+                            className="p-2 border border-gray-300 rounded-md shadow-sm focus:frankgreen"
+                        />
+                        <p className="h-4 text-sm text-rose-500">
+                            {errors.profile_lastname?.message}
+                        </p>
+                    </fieldset>
+
+                    <fieldset className="flex flex-col">
+                        <label
+                            htmlFor="profile_username"
+                            className="text-sm font-medium text-gray-700"
+                        >
+                            Nickname
+                        </label>
+                        <input
+                            type="text"
+                            id="profile_username"
+                            name="profile_username"
+                            {...register('profile_username')}
+                            className="p-2 border border-gray-300 rounded-md shadow-sm"
+                        />
+                        <p className="h-4 text-sm text-rose-500">
+                            {errors.profile_username?.message}
+                        </p>
+                    </fieldset>
+
+                    <fieldset className="flex flex-col">
+                        <label
+                            htmlFor="birthdate"
+                            className="text-sm font-medium text-gray-700"
+                        >
+                            Fecha de nacimiento
+                        </label>
+                        <input
+                            type="date"
+                            id="birthdate"
+                            name="birthdate"
+                            {...register('birthdate')}
+                            className="p-2 border border-gray-300 rounded-md shadow-sm focus:frankgreen"
+                        />
+                        <p className="h-4 text-sm text-rose-500">
+                            {errors.birthdate?.message}
+                        </p>
+                    </fieldset>
+
+                    <fieldset className="flex flex-col">
+                        <label
+                            htmlFor="profile_role"
+                            className="text-sm font-medium text-gray-700"
+                        >
+                            Rol
+                        </label>
+                        <input
+                            type="text"
+                            id="profile_role"
+                            name="profile_role"
+                            value={profile.profile_role}
+                            readOnly
+                            className="p-2 border border-gray-300 rounded-md shadow-sm bg-gray-100"
+                        />
+                        <p className="text-xs text-gray-500 mb-2">
+                            * Si quieres cambiar tu rol ponte en contacto con el
+                            administrador.
+                        </p>
+                    </fieldset>
+
+                    {profile.company_name && (
+                        <fieldset className="flex flex-col">
+                            <label
+                                htmlFor="company_name"
+                                className="text-sm font-medium text-gray-700"
+                            >
+                                Empresa
+                            </label>
+                            <input
+                                type="date"
+                                id="company_name"
+                                name="company_name"
+                                {...register('company_name')}
+                                className="p-2 border border-gray-300 rounded-md shadow-sm focus:frankgreen"
+                            />
+                            <p className="h-4 text-sm text-rose-500">
+                                {errors.company_name?.message}
+                            </p>
+                        </fieldset>
+                    )}
+                    <button
+                        type="submit"
+                        className="text-white bg-frankgreen rounded p-2 w-full mt-10"
+                    >
+                        Actualizar perfil
+                    </button>
+
+                    {sending && (
+                        <p className="text-center text-gray-500 mt-4">
+                            Enviando perfil...
                         </p>
                     )}
-                </fieldset>{' '}
-                */}
-                <button
-                    // onClick={handleProfile}
-                    // disabled={!isValid}
-                    className="text-white bg-lime-600 rounded p-1 m-4"
-                >
-                    Actualizar perfil
-                </button>
-
-                {sending && <p>Sending profile</p>}
-                {error && <p>{error}</p>}
-            </form>
+                    {error && (
+                        <p className="text-center text-red-500 mt-4">{error}</p>
+                    )}
+                </form>
+            </main>
         </>
     );
 };
+
 UpdateProfile.propTypes = {
     updateProfile: PropTypes.func,
     profile: PropTypes.object,
