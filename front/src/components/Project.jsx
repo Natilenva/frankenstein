@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { useContext, useState } from 'react';
 import { deleteProjectService } from '../services';
 import { toast } from 'react-hot-toast';
+
 export const Project = ({ project, removeProject }) => {
     const { user, token } = useContext(AuthContext);
     const [error, setError] = useState('');
@@ -15,69 +16,56 @@ export const Project = ({ project, removeProject }) => {
                 removeProject(id);
             }
 
-            toast.success('Has eliminado el proyecto con éxito!');
+            toast.success('¡Has eliminado el proyecto con éxito!');
         } catch (error) {
             setError(error.message);
-            toast.error(error.messge);
+            toast.error(error.message);
         }
     };
 
-    //const provocarError = provocarErrorBoundary;
-
     return (
-        <article>
-            {/* //^ Imagen del proyecto ------------------------------ */}
-            <div className='md:shrink-0 '>
+        <article className="flex flex-col md:flex-row items-start p-4 bg-white rounded-lg shadow-md">
+            {/* Imagen del proyecto */}
+            <div className="md:w-48 md:h-48 overflow-hidden md:mr-4">
                 {project.project_photo ? (
                     <img
-                        loading="image"
-                        src={`${import.meta.env.VITE_BASE_URL}/uploads/${
-                            project.project_photo
-                        }`}
+                        loading="lazy"
+                        src={`${import.meta.env.VITE_BASE_URL}/uploads/${project.project_photo}`}
                         alt={project.project_title}
-                        className="h-48 w-full object-cover md:h-full md:w-48"
+                        className="w-full h-full object-cover"
                     />
                 ) : (
-                    <img
-                        src="/apple-touch-icon.png"
-                        alt="Logo de frankenstein"
-                    />
+                    <img src="/apple-touch-icon.png" alt="Logo de Frankenstein" />
                 )}
             </div>
 
-            {/* //! CARD? del proyecto ---------------------------------------- */}
-            <div className="p-8 pb-4">
-                {/* //^ Title del proyecto ------------------------------------ */}
-                <div className="block mt-1 leading-tight text-lg font-bold text-black hover:underline">
-                    <Link to={`/project/${project.project_id}`}>
-                        <h3>{project.project_title}</h3>
-                    </Link>
+            {/* CARD del proyecto */}
+            <div className="flex-1">
+                {/* Título del proyecto */}
+                <div className="mt-1 leading-tight text-lg font-bold text-black hover:underline">
+                    <Link to={`/project/${project.project_id}`}>{project.project_title}</Link>
                 </div>
 
-                {/* //^ Description del proyecto ------------------------------ */}
-                <p className="mt-2 text-sm font-medium text-neutral-900 ">
-                    {project.project_description}
-                </p>
+                {/* Descripción del proyecto */}
+                <p className="mt-2 text-sm font-medium text-neutral-900">{project.project_description}</p>
 
-                {/* //^ Creador y fecha del proyecto --------------------------- */}
-                <p className="mt-1 text-xs font-normal  text-neutral-700">
-                    By
+                {/* Creador y fecha del proyecto */}
+                <p className="mt-1 text-xs font-normal text-neutral-700">
+                    Por{' '}
                     <Link to={`/profilepublic/${project.register_id}`}>
-                        {' '}
-                        {project.usernameOfRegister}{' '}
+                        {project.usernameOfRegister}
                     </Link>{' '}
-                    on
-                    {new Date(project.created_at).toLocaleString()}
+                    el {new Date(project.created_at).toLocaleString()}
                 </p>
             </div>
 
-            {/* //^ Botón de editar y borrar el proyecto ------------------ */}
-            <section>
-                {user && user.register_id === project.register_id ? (
+            {/* Botones de editar y borrar el proyecto */}
+            <div className="flex flex-col md:flex-row md:items-center md:mt-0 md:ml-auto">
+                {user && user.register_id === project.register_id && (
                     <>
-                        {/* // Delete project en HomePage ---------------------------------- */}
+                        {/* Botón de eliminar proyecto */}
                         <button
-                            className="bg-frankgreen hover:bg-[#829821] font-myFontFamily text-white px-4 py-1 rounded"
+                            className="bg-frankgreen hover:bg-[#829821] text-white font-myFontFamily px-4 py-1 rounded mt-4 md:mt-0 md:mr-2"
                             onClick={() => {
                                 deleteProject(project.project_id);
                             }}
@@ -85,22 +73,24 @@ export const Project = ({ project, removeProject }) => {
                             Eliminar proyecto
                         </button>
 
-                        {/* // Editar project en ProjectPage ---------------------------------- */}
+                        {/* Enlace de editar proyecto */}
                         <Link
                             to={`/project/${project.project_id}`}
-                            className="text-black hover:text-[#829821]"
+                            className="text-black hover:text-[#829821] mt-2 md:mt-0 md:mr-2"
                         >
                             Editar
                         </Link>
                     </>
-                ) : null}
-                {error ? <p>{error}</p> : null}
-            </section>
+                )}
+                {error && <p className="text-red-500 mt-2 md:mt-0">{error}</p>}
+            </div>
         </article>
     );
 };
+
 Project.propTypes = {
-    project: PropTypes.any,
-    removeProject: PropTypes.any,
-    updateProject: PropTypes.any,
+    project: PropTypes.object.isRequired,
+    removeProject: PropTypes.func,
 };
+
+export default Project;
