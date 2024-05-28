@@ -7,7 +7,7 @@ const questionSchema = z.object({
             required_error: 'Campo requerido',
         })
         .min(3, 'Mínimo 3 caracteres')
-        .max(30, 'Máximo 200 caracteres'),
+        .max(200, 'Máximo 200 caracteres'),
 
     question_description: z
         .string({
@@ -15,7 +15,7 @@ const questionSchema = z.object({
             required_error: 'Campo requerido',
         })
         .min(3, 'Mínimo 3 caracteres')
-        .max(30, 'Máximo 200 caracteres'),
+        .max(200, 'Máximo 200 caracteres'),
 
     technology: z
         .string({
@@ -23,6 +23,6 @@ const questionSchema = z.object({
             //required_error: 'Campo requerido',
         })
         .min(0, 'Mínimo 0 caracteres')
-        .max(100, 'Máximo 100 caracteres'),
+        .max(200, 'Máximo 200 caracteres'),
 });
 export { questionSchema };

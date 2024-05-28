@@ -31,15 +31,18 @@ export const selectQuestionByIdService = async (id, token) => {
 export const insertQuestionService = async ({ data, token }) => {
     const res = await fetch(`${VITE_BASE_URL}/newquestion`, {
         method: 'POST',
+        body: data,
         headers: {
             Authorization: token,
         },
-        body: data,
     });
 
     const body = await res.json();
-
-    return body.message;
+    if (!res.ok) {
+        throw new Error(body.message);
+    }
+    console.log({ body });
+    return body.data;
 };
 export const getQuestionsByProfileService = async (id) => {
     const response = await fetch(

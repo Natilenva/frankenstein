@@ -18,7 +18,7 @@ const newQuestionController = async (req, res, next) => {
         // validated fields
         const { question_title, question_description, technology } =
             questionDataBody;
-
+        console.log(questionDataBody);
         // insert question
         const id = await insertQuestionModel(
             question_title,
