@@ -12,7 +12,7 @@ export const Crear = () => {
     const { addProject } = useProjects();
 
     return (
-        <div>
+        <div className='flex-grow'>
             {/* {user ? <NewProject2 addProject={addProject} /> : null} */}{' '}
             {/* //! si user no existe no puede crear project  */}
             {user ? (

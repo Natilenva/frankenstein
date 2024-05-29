@@ -10,8 +10,8 @@ import {
 
 export const Footer = () => {
     return (
-        <main className="sticky">
-            <footer className=" bg-black p-4 botton-0 flex items-center justify-between shadow-md ">
+
+            <footer className="sticky bg-black p-4 botton-0 flex items-center justify-between shadow-md ">
                 <Link to="/" className="flex flex-col items-center text-white">
                     <FaHome size={20} />
                     <span className="text-xs">Inicio</span>
@@ -45,6 +45,6 @@ export const Footer = () => {
                     <span className="text-xs">Perfil</span>
                 </Link>
             </footer>
-        </main>
+
     );
 };

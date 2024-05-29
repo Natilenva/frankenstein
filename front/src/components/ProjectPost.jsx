@@ -73,9 +73,9 @@ export const ProjectPost = ({ project, updateProject }) => {
                 </Link>
 
                 {/* //^ Creador y fecha del proyecto --------------------------- */}
-                <p className="mt-1 !text-xs !font-normal  text-neutral-700">
+                <p className="mt-1 !text-xs !font-normal  text-neutral-700 ">
                     Autor
-                    <Link to={`/profilepublic/${project.register_id}`}>
+                    <Link to={`/profilepublic/${project.register_id}`} className='hover:text-frankgreen'>
                         {' '}
                         {project.usernameOfRegister}{' '}
                     </Link>{' '}
@@ -86,9 +86,10 @@ export const ProjectPost = ({ project, updateProject }) => {
                 {console.log(project.project_id)}
                 {user && user.register_id === project.register_id ? (
                     <Link
-                        to={`/updateproject/${idProject}`}
-                        // state={{ project, updateProject }}
-                        className="mt-1 !text-xs text-neutral-500"
+
+                        to={`/updateproject/${project.project_id}`}
+                        className="mt-1 !text-xs text-neutral-500 hover:text-frankgreen"
+
                     >
                         Editar
                     </Link>

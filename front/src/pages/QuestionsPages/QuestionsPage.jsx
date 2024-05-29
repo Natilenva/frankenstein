@@ -23,6 +23,23 @@ const QuestionsPage = () => {
 
             <div className=" p-4"></div>
 
+
+    return(
+       
+        <main className="flex-grow">
+           
+        <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 leading-[133%] ">
+       
+        </div>
+     
+
+           <SearchForm setSearchParams={setSearchParams} loading={loading}/>
+
+            <div className=" p-4">
+                   
+                        </div>
+          
+
             <div className="bg-black">
                 <div className="flex justify-between text-[#829821]">
                     <button
