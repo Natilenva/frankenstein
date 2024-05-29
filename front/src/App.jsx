@@ -25,6 +25,7 @@ import { RejectCompanyPage } from './pages/RejectCompanyPage';
 
 import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
 import { ProfilePublic } from './pages/ProfilePublic';
+import { NewProfilePage } from './pages/NewProfilePage';
 
 function App() {
     return (
@@ -64,7 +65,8 @@ function App() {
                     element={<ResponsesOfQuestion />}
                 />
 
-                <Route path="/newprofile" element={<NewProfile />} />
+                {/* <Route path="/newprofile" element={<NewProfile />} /> */}
+                <Route path="/newprofile" element={<NewProfilePage />} />
                 <Route path="/updatepassword" element={<UpdatePassword />} />
 
                 <Route

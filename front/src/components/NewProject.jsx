@@ -55,8 +55,8 @@ export const NewProject2 = ({ addProject }) => {
         }
     };
     return (
-        <main className="flex-grow">
-            <div className="flex flex-col items-center justify-center m-40 md:px-6 lg:px-8">
+        <main>
+            <div className="flex flex-col items-center justify-center m-5 md:px-6 lg:px-8">
                 <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center text-black font-semibold mb-4">
                     Añade tu proyecto
                 </div>

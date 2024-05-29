@@ -57,10 +57,12 @@ export const NewProfile = () => {
         }
     };
     return (
-        <main className="flex-grow">
-            <div className="flex flex-col items-center justify-center m-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div >
+
+            <div className="flex flex-col items-center justify-center m-auto px-4 py-8 ">{/* sm:px-6 lg:px-8 */}
+                {/* Foto ------------------------------------------------------*/}
                 <div className="flex flex-col items-center mb-6">
-                    <div className="relative h-48 w-48 rounded-full bg-zinc-300">
+                    <div className="relative h-20 w-20 rounded-full bg-zinc-300">
                         {user && user.avatar ? (
                             <img
                                 src={`${
@@ -91,6 +93,8 @@ export const NewProfile = () => {
                         {user.profile_username}
                     </div>
                 </div>
+
+                {/* Form ------------------------------------------------------*/}
 
                 <form
                     noValidate
@@ -231,6 +235,7 @@ export const NewProfile = () => {
                     )}
                 </form>
             </div>
-        </main>
+
+        </div>
     );
 };
