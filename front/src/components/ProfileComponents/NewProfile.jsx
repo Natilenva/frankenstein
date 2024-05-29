@@ -186,6 +186,7 @@ export const NewProfile = () => {
                             {...register('profile_role')}
                             onChange={handleRoleChange}
                         >
+                            <option value=""></option>
                             <option value="company">Empresa</option>
                             <option value="expert">Experto</option>
                             <option value="student">Estudiante</option>

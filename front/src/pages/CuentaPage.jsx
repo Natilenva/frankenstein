@@ -15,7 +15,8 @@ export const CuentaPage = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
     const { projects, loading, error, removeProject } = useProjects();
-    const { /* loading, error, */ profile } = useProfile(user.register_id);
+
+    const { /* loading, error, */ profile } = useProfile(id);
     /* const { projectsProfile, removeProjectProfile } = useProjectsByprofile(
         user.register_id
     ); */
