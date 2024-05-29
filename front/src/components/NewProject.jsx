@@ -43,7 +43,7 @@ export const NewProject2 = ({ addProject }) => {
             //console.log('project', project); // !
 
             addProject(project);
-            navigate('/');
+            navigate(`/project/${project.project_id}`);
 
             setImage(null);
             toast.success('Agregado proyecto con éxito');

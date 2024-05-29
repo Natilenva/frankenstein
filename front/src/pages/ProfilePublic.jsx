@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { useProjectsByprofile } from '../hooks/useProjectByProfile';
+// import { useProjectsByprofile } from '../hooks/useProjectByProfile';
 import { ProjectListProfile } from '../components/ProjectListProfile';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { QuestionsListProfile } from '../components/QuestionsComponents/QuestionsListProfile';
 import { useQuestionsProfile } from '../hooks/QuestionsHook/useQuestionsProfile';
 import { useProfile } from '../hooks/profilehook/useProfile';
 import useProjects from '../hooks/useProjects';
-import { ProjectList } from '../components/ProjectList';
+// import { ProjectList } from '../components/ProjectList';
 // import { useContext } from 'react';
 // import { AuthContext } from '../context/AuthContext';
 
@@ -45,7 +45,7 @@ export const ProfilePublic = () => {
                     <h1 className="text-md text-gray-500 text-center">
                         Rol: {profile.profile_role}
                     </h1>
-                    <ProjectList projects={projects} />
+                    <ProjectListProfile projects={projects} />
                     <QuestionsListProfile questionsProfile={questionsProfile} />
                 </div>
             </article>

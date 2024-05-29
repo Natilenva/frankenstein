@@ -20,7 +20,7 @@ export const ProjectPage = () => {
     if (error) return <ErrorMessage message={error} />;
 
     return (
-        <section className=" m-auto flex flex-col min-h-screen">
+        <section className="flex-grow md:h-full">
             {/* {user && user.register_id === project.register_id ? (
                 //<p> formulario update project </p>
                 <UpdateProject
@@ -54,20 +54,20 @@ export const ProjectPage = () => {
 
                 {/* Información del proyecto ----------------------------------------------------------*/}
                 <div className="p-8 pb-4">
-                    <Link to={`/project/${project.project_id}`}>
-                        {/* //^ Title del proyecto ------------------------------------ */}
-                        <h1 className="block mt-1 leading-tight !text-lg !font-bold text-black hover:underline">
-                            {project.project_title}
-                        </h1>
+                    {/*    <Link to={`/project/${project.project_id}`}> */}
+                    {/* //^ Title del proyecto ------------------------------------ */}
+                    <h1 className="block mt-1 leading-tight !text-lg !font-bold text-black">
+                        {project.project_title}
+                    </h1>
 
-                        {/* //^ Description del proyecto ------------------------------ */}
-                        <p className="mt-1 !text-sm !font-medium text-neutral-900">
-                            {project.project_description}{' '}
-                            {/* Limitar a 100 caracteres */}
-                            {/* NO USAR el truncateTextPalabras pq puede hacer q la Card se estire o acorte*/}
-                            {/* {truncateTextPalabras(project.project_description, 20)} {/* Limitar a 20 palabras */}
-                        </p>
-                    </Link>
+                    {/* //^ Description del proyecto ------------------------------ */}
+                    <p className="mt-1 !text-sm !font-medium text-neutral-900">
+                        {project.project_description}{' '}
+                        {/* Limitar a 100 caracteres */}
+                        {/* NO USAR el truncateTextPalabras pq puede hacer q la Card se estire o acorte*/}
+                        {/* {truncateTextPalabras(project.project_description, 20)} {/* Limitar a 20 palabras */}
+                    </p>
+                    {/*    </Link> */}
 
                     {/* //^ Creador y fecha del proyecto --------------------------- */}
                     <p className="mt-1 !text-xs !font-normal  text-neutral-700">
