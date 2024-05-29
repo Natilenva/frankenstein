@@ -76,7 +76,7 @@ export const Header = () => {
             </div>
 
             <div className="sm:hidden">
-                <HeaderMobile />
+                {/* <HeaderMobile /> */}
             </div>
         </header>
     );
