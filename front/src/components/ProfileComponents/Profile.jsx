@@ -2,11 +2,12 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const Profile = ({ profile, updateProfile }) => {
     const { user } = useContext(AuthContext);
     // const [error, setError] = useState('');
-
+    const navigate = useNavigate();
     const {
         profile_name,
         profile_lastname,
@@ -20,7 +21,9 @@ export const Profile = ({ profile, updateProfile }) => {
         projects = [], // Agregado para manejar los proyectos del perfil
         questions = [], // Agregado para manejar las preguntas del perfil
     } = profile;
-    const formatDate = (date) => new Date(date).toLocaleDateString('es-ES'); // Función para formatear la fecha
+    //    const formatDate = (date) => new Date(date).toLocaleDateString('es-ES'); // Función para formatear la fecha
+    //const formatDate = new Date(); //.toLocaleDateString('es-ES'); // Función para formatear la fecha
+    if (profile.profile_name == null) return navigate('/newprofile');
     return (
         <div className="flex flex-grow flex-col max-w-[395px] mx-auto">
             <div className="flex flex-col items-center self-center px-3 pt-2 pb-5 w-full text-lg font-medium leading-6 text-center text-black whitespace-nowrap max-w-[363px]">

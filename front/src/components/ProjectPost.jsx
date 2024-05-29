@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useContext, useState } from 'react';
 //import { toast } from 'react-hot-toast';
-export const    ProjectPost = ({ project}) => {
-
+export const ProjectPost = ({ project }) => {
     const { user } = useContext(AuthContext);
     const [error] = useState('');
 
@@ -18,7 +17,7 @@ export const    ProjectPost = ({ project}) => {
         }
         return text;
     }; */
-
+    
     // Función para limitar el número de caracteres y añadir puntos suspensivos
     const truncateTextCaracteres = (text, limit) => {
         if (text.length > limit) {
@@ -71,8 +70,7 @@ export const    ProjectPost = ({ project}) => {
                         {' '}
                         {project.usernameOfRegister}{' '}
                     </Link>{' '}
-                    el{' '}
-                    {new Date(project.created_at).toLocaleDateString()}
+                    el {new Date(project.created_at).toLocaleDateString()}
                 </p>
 
             {/* //^ Botón de editar y borrar el proyecto? ------------------ */}
@@ -84,12 +82,12 @@ export const    ProjectPost = ({ project}) => {
                 ) : (
                     <Link to={`/project/${project.project_id}`} 
                         className="invisible mt-1 !text-xs text-stone-500">
+
                         Editar
                     </Link>
                 )}
                 {error ? <p>{error}</p> : null}
             </div>
-
         </article>
     );
 };
@@ -98,19 +96,3 @@ ProjectPost.propTypes = {
     removeProject: PropTypes.any,
     updateProject: PropTypes.any,
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
