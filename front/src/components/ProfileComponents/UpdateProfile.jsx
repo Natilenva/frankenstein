@@ -9,6 +9,7 @@ import profileSchema from '../../../schemas/profileSchema';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AiOutlineEdit } from 'react-icons/ai';
+import { format } from 'date-fns';
 
 export const UpdateProfile = () => {
     const location = useLocation();
@@ -35,9 +36,13 @@ export const UpdateProfile = () => {
             setValue('profile_name', profile.profile_name);
             setValue('profile_lastname', profile.profile_lastname);
             setValue('profile_username', profile.profile_username);
+            // setValue(
+            //     'birthdate',
+            //     new Date(profile.birthdate).toLocaleDateString()
+            // );
             setValue(
                 'birthdate',
-                new Date(profile.birthdate).toLocaleDateString()
+                format(new Date(profile.birthdate), 'yyyy-MM-dd')
             );
             setValue('profile_role', profile.profile_role);
             setValue('company_name', profile.company_name);
@@ -242,7 +247,7 @@ export const UpdateProfile = () => {
                                 Empresa
                             </label>
                             <input
-                                type="date"
+                                type="text"
                                 id="company_name"
                                 name="company_name"
                                 {...register('company_name')}

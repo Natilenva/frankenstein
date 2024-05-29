@@ -1,43 +1,38 @@
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { selectAllResponsesByQuestionIdService } from "../../services/responsesService";
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { selectAllResponsesByQuestionIdService } from '../../services/responsesService';
 
-const useResponses = (question_id) => {
+const useResponses = (question_id, idResponse) => {
+    const [responses, setResponses] = useState([]);
 
-    const[responses, setResponses]= useState([]);
- 
-    const [loading, setLoading]= useState(false);
+    const [loading, setLoading] = useState(false);
 
-    useEffect(()=>{
-        const fetchResponses= async()=>{
+    useEffect(() => {
+        const fetchResponses = async () => {
             try {
                 setLoading(true);
-                const responses= await selectAllResponsesByQuestionIdService(question_id)
-                
+                const responses = await selectAllResponsesByQuestionIdService(
+                    question_id
+                );
+
                 setResponses(responses);
-                
             } catch (err) {
                 toast.error(err.message);
-            }finally{
+            } finally {
                 setLoading(false);
             }
-        } 
+        };
         fetchResponses();
-    },[question_id]);
+    }, [question_id, idResponse]);
 
-    const addResponseVote= (votesAvg)=>{
+    const addResponseVote = (votesAvg) => {
         setResponses({
             ...responses,
             votes: votesAvg,
-            
         });
-      
     };
 
-    return{responses, loading, addResponseVote};
-
-
-
-}
+    return { responses, loading, addResponseVote };
+};
 
 export default useResponses;
