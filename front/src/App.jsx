@@ -25,13 +25,14 @@ import { RejectCompanyPage } from './pages/RejectCompanyPage';
 
 import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
 import { ProfilePublic } from './pages/ProfilePublic';
+import { UpdateProject } from './components/UpdateProject';
+import { ProjectUpdatePage } from './pages/ProjectUpdatePage';
 
 function App() {
     return (
         <>
             <Toaster position="bottom-right" />
             <Header />
-
 
             <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -51,6 +52,10 @@ function App() {
                 />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/project/:id" element={<ProjectPage />} />
+                <Route
+                    path="/updateproject/:id"
+                    element={<ProjectUpdatePage />}
+                />
                 <Route path="/profilepublic/:id" element={<ProfilePublic />} />
                 <Route path="/crear" element={<Crear />} />
 
@@ -79,7 +84,7 @@ function App() {
                     path="/reset-password/:id/:token"
                     element={<ResetPasswordPage />}
                 />
-             
+
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
 
