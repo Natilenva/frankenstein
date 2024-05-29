@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-list, .slick-slide, .slick-slide >div  {
+  display: flex !important;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.slick-track{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+
+}
+
+ .slick-slide{
+  height: auto !important;
+ }
+
+
 /* :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;

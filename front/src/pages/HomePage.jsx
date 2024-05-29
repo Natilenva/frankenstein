@@ -1,10 +1,6 @@
 import { ErrorMessage } from '../components/ErrorMessage';
-//import { ProjectList } from '../components/ProjectList';
 import useProjects from '../hooks/useProjects';
 import useQuestions from '../hooks/QuestionsHook/useQuestions.js';
-import QuestionListItem from './../components/QuestionsComponents/QuestionListItem';
-import Loading from './../components/loading';
-//import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from '@ant-design/react-slick';
@@ -18,9 +14,7 @@ export const HomePage = () => {
     if (loading) return <p>cargando projects...</p>;
     if (error) return <ErrorMessage message={error} />;
 
-    {
-        /* Slider config test ok */
-    }
+    {/* Slider config test ok */}
     const settings = {
         infinite: true,
         speed: 500,
@@ -30,51 +24,29 @@ export const HomePage = () => {
 
     return (
         <main className="flex-grow flex flex-col bg-neutral-950">
-            <Slider {...settings}>
+            <Slider {...settings}  className='flex flex-col flex-grow'>
                 {projects.map((project) => {
                     return (
                         <li
                             key={project.project_id}
-                            className=" list-none max-w-md mx-auto  shadow-md overflow-hidden md:max-w-2xl"
+                            className="flex-grow !flex flex-col list-none max-w-md mx-auto shadow-md overflow-hidden md:max-w-2xl"
                         >
-                            <ProjectPost
-                                project={project}
-                                removeProject={removeProject}
+                            <ProjectPost project={project} removeProject={removeProject}
                             />
                         </li>
                     );
                 })}
             </Slider>
 
-            {/* //! QUESTIONS ok?------------------------------------------------------------------------- */}
-            {/* <section className="flex flex-1 place-content-around items-center ">           
-                {questions.length < 1 && loading ? (
-                    <Loading/>
-                ): questions.length === 0 ?(
-                    <li>No se han encontrado preguntas</li>
-                ):(                            
-                    questions.map((question)=>{                               
-                        return <QuestionListItem key={question.question_id} question={question}/>;                               
-                    })
-                )}
-            </section> */}
-
             {/* //! Card QuestionCard -----------------------------------------------------------------------------------  */}
-            {/* <section className='flex flex-col flex-1 border-dotted border-4 border-yellow-500'> */}
-            <section
-                className=" 
-                "
-            >
-                {/* border-dotted border-2 border-green-500 */}
-                <ul className="flex">
-                    {' '}
-                    {/* //^mio */}
-                    {questions.map((question) => {
+            <section className="w-full">
+                <ul className="flex flex-wrap justify-evenly">
+                    {questions.slice(0, 2).map((question) => {
                         return (
                             <li
                                 key={question.question_id}
-                                className="p-1 max-w-sm mx-auto rounded-xl shadow-lg flex items-center space-x-4 bg-neutral-950
-                                " /* border-dotted border-2 border-red-500 */
+                                className="flex-grow  px-8 py-4 bg-neutral-950" 
+                                style={{ flexBasis: '30%' }}
                             >
                                 <QuestionCard question={question} />
                             </li>
@@ -82,6 +54,7 @@ export const HomePage = () => {
                     })}
                 </ul>
             </section>
+
         </main>
     );
 };
