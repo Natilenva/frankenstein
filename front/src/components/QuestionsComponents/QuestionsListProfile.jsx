@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { QuestionProfile } from './QuestionProfile';
+// import { QuestionProfile } from './QuestionProfile';
 import { QuestionCard } from './QuestionCard';
 
 //recibe una prop, un array de objetos

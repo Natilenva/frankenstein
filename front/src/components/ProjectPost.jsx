@@ -6,7 +6,7 @@ import { useContext, useState } from 'react';
 export const ProjectPost = ({ project, updateProject }) => {
     const { user } = useContext(AuthContext);
     const [error] = useState('');
-    const idProject = project.project_id;
+
     {
         /* NO USAR truncateTextPalabras pq puede hacer q la Card se vea más corta o más larga en comparación a otras Card */
     }
@@ -75,7 +75,10 @@ export const ProjectPost = ({ project, updateProject }) => {
                 {/* //^ Creador y fecha del proyecto --------------------------- */}
                 <p className="mt-1 !text-xs !font-normal  text-neutral-700 ">
                     Autor
-                    <Link to={`/profilepublic/${project.register_id}`} className='hover:text-frankgreen'>
+                    <Link
+                        to={`/profilepublic/${project.register_id}`}
+                        className="hover:text-frankgreen"
+                    >
                         {' '}
                         {project.usernameOfRegister}{' '}
                     </Link>{' '}
@@ -86,16 +89,14 @@ export const ProjectPost = ({ project, updateProject }) => {
                 {console.log(project.project_id)}
                 {user && user.register_id === project.register_id ? (
                     <Link
-
                         to={`/updateproject/${project.project_id}`}
                         className="mt-1 !text-xs text-neutral-500 hover:text-frankgreen"
-
                     >
                         Editar
                     </Link>
                 ) : (
                     <Link
-                        to={`/updateproject/${idProject}`}
+                        to={`/updateproject/${project.project_id}}`}
                         // state={{ project, updateProject }}
                         className="invisible mt-1 !text-xs text-stone-500"
                     >

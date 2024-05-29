@@ -2,7 +2,7 @@ import useQuestions from '../../hooks/QuestionsHook/useQuestions.js';
 
 import Loading from '../../components/loading';
 import SearchForm from '../../forms/QuestionsForms/SearchQuestionForm';
-import QuestionListItem from '../../components/QuestionsComponents/QuestionListItem';
+// import QuestionListItem from '../../components/QuestionsComponents/QuestionListItem';
 import { QuestionCard } from '../../components/QuestionsComponents/QuestionCard.jsx';
 
 const QuestionsPage = () => {
@@ -16,29 +16,12 @@ const QuestionsPage = () => {
     } = useQuestions();
 
     return (
-        <main>
+        <main className="flex-grow">
             <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 leading-[133%] "></div>
 
             <SearchForm setSearchParams={setSearchParams} loading={loading} />
 
             <div className=" p-4"></div>
-
-
-    return(
-       
-        <main className="flex-grow">
-           
-        <div className="flex gap-3 self-center px-3 pt-3.5 mt-2 leading-[133%] ">
-       
-        </div>
-     
-
-           <SearchForm setSearchParams={setSearchParams} loading={loading}/>
-
-            <div className=" p-4">
-                   
-                        </div>
-          
 
             <div className="bg-black">
                 <div className="flex justify-between text-[#829821]">

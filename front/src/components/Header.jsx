@@ -19,7 +19,6 @@ export const Header = () => {
                         className="h-8 sm:h-10 lg:h-12 mr-2"
                         alt="Logo"
                     />
-
                 </Link>
             </div>
 
@@ -76,7 +75,7 @@ export const Header = () => {
             </div>
 
             <div className="sm:hidden">
-                {/* <HeaderMobile /> */}
+                <HeaderMobile />
             </div>
         </header>
     );
