@@ -21,19 +21,33 @@ const updateProfileModel = async (
         userId,
     });
     const connection = await getConnection();
+    if (!avatar) {
+        const [result] = await connection.query(
+            `UPDATE profile SET profile_name = ?, profile_lastname = ?, profile_username = ?, birthdate = ?, profile_role = ? WHERE register_id = ?`,
+            [
+                profile_name,
+                profile_lastname,
+                profile_username,
+                birthdate,
+                profile_role,
+                userId,
+            ]
+        );
+    } else {
+        const [result] = await connection.query(
+            `UPDATE profile SET profile_name = ?, profile_lastname = ?, profile_username = ?, birthdate = ?, avatar= ?, profile_role = ? WHERE register_id = ?`,
+            [
+                profile_name,
+                profile_lastname,
+                profile_username,
+                birthdate,
+                avatar,
+                profile_role,
+                userId,
+            ]
+        );
+    }
 
-    const [result] = await connection.query(
-        `UPDATE profile SET profile_name = ?, profile_lastname = ?, profile_username = ?, birthdate = ?, avatar= ?, profile_role = ? WHERE register_id = ?`,
-        [
-            profile_name,
-            profile_lastname,
-            profile_username,
-            birthdate,
-            avatar,
-            profile_role,
-            userId,
-        ]
-    );
     if (profile_role === 'company')
         await connection.query(
             `INSERT INTO companies (company_name,

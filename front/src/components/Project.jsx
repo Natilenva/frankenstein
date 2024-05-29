@@ -27,7 +27,7 @@ export const Project = ({ project, removeProject }) => {
     return (
         <article>
             {/* //^ Imagen del proyecto ------------------------------ */}
-            <div className='md:shrink-0 '>
+            <div className="md:shrink-0 ">
                 {project.project_photo ? (
                     <img
                         loading="image"
@@ -87,7 +87,7 @@ export const Project = ({ project, removeProject }) => {
 
                         {/* // Editar project en ProjectPage ---------------------------------- */}
                         <Link
-                            to={`/project/${project.project_id}`}
+                            to={`/updateproject/${project.project_id}`}
                             className="text-black hover:text-[#829821]"
                         >
                             Editar

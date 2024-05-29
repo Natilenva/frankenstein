@@ -1,25 +1,28 @@
 import PropTypes from 'prop-types';
 
 import { QuestionProfile } from './QuestionProfile';
+import { QuestionCard } from './QuestionCard';
 
 //recibe una prop, un array de objetos
 export const QuestionsListProfile = ({ questionsProfile }) => {
     return questionsProfile.length ? (
-        <main>
-            <h1>Mis consultas</h1>
-            <ul className="flex">
+        <section className="w-full">
+            <ul className="flex flex-col flex-wrap justify-evenly">
                 {questionsProfile.map((questionProfile) => (
-                    <li key={questionProfile.question_id}>
-                        <QuestionProfile questionProfile={questionProfile} />
+                    <li
+                        key={questionProfile.question_id}
+                        className="flex-grow  px-8 py-4 bg-neutral-950"
+                        style={{ flexBasis: '30%' }}
+                    >
+                        <QuestionCard question={questionProfile} />
                     </li>
                 ))}
             </ul>
-        </main>
+        </section>
     ) : (
         <p>There are no questions yet ... </p>
     );
 };
 QuestionsListProfile.propTypes = {
     questionsProfile: PropTypes.array,
-    // removeProjectProfile: PropTypes.func,
 };

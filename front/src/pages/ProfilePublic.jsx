@@ -5,20 +5,24 @@ import { ErrorMessage } from '../components/ErrorMessage';
 import { QuestionsListProfile } from '../components/QuestionsComponents/QuestionsListProfile';
 import { useQuestionsProfile } from '../hooks/QuestionsHook/useQuestionsProfile';
 import { useProfile } from '../hooks/profilehook/useProfile';
+import useProjects from '../hooks/useProjects';
+import { ProjectList } from '../components/ProjectList';
 // import { useContext } from 'react';
 // import { AuthContext } from '../context/AuthContext';
 
 export const ProfilePublic = () => {
     const { id } = useParams();
     // const { user } = useContext(AuthContext);
-    const { projectsProfile, loading, error } = useProjectsByprofile(id);
+    // const { projectsProfile, loading, error } = useProjectsByprofile(id);
+    const { projects, loading, error } = useProjects();
     const { profile } = useProfile(id);
     const { questionsProfile } = useQuestionsProfile(id);
     if (loading) return <p>cargando perfil...</p>;
     if (error) return <ErrorMessage message={error} />;
     return (
-        <div className="flex flex-grow flex-col max-w-[395px] mx-auto">
-            <div className="flex flex-col items-center self-center px-3 pt-2 pb-5 w-full text-lg font-medium leading-6 text-center text-black whitespace-nowrap max-w-[363px]"></div>
+        // <div className="flex flex-grow flex-col max-w-[395px] mx-auto">
+        //     <div className="flex flex-col items-center self-center px-3 pt-2 pb-5 w-full text-lg font-medium leading-6 text-center text-black whitespace-nowrap max-w-[363px]"></div>
+        <section className=" m-auto flex flex-col min-h-screen">
             <h1 className="text-3xl font-bold mb-4 text-center">
                 Perfil de {profile.profile_username}
             </h1>
@@ -41,10 +45,11 @@ export const ProfilePublic = () => {
                     <h1 className="text-md text-gray-500 text-center">
                         Rol: {profile.profile_role}
                     </h1>
-                    <ProjectListProfile projectsProfile={projectsProfile} />
+                    <ProjectList projects={projects} />
                     <QuestionsListProfile questionsProfile={questionsProfile} />
                 </div>
             </article>
-        </div>
+        </section>
+        //</div>
     );
 };

@@ -14,6 +14,7 @@ const insertProfileByModel = async (
     let connection;
     try {
         connection = await getConnection();
+
         const [result] = await connection.query(
             `
             INSERT INTO profile (avatar, profile_name, profile_lastname, profile_username, birthdate, profile_role, register_id) VALUES (?, ?, ?, ?, ?, ?, ?)
