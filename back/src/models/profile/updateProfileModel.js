@@ -21,8 +21,9 @@ const updateProfileModel = async (
         userId,
     });
     const connection = await getConnection();
+    let result;
     if (!avatar) {
-        const [result] = await connection.query(
+        [result] = await connection.query(
             `UPDATE profile SET profile_name = ?, profile_lastname = ?, profile_username = ?, birthdate = ?, profile_role = ? WHERE register_id = ?`,
             [
                 profile_name,
@@ -34,7 +35,7 @@ const updateProfileModel = async (
             ]
         );
     } else {
-        const [result] = await connection.query(
+        [result] = await connection.query(
             `UPDATE profile SET profile_name = ?, profile_lastname = ?, profile_username = ?, birthdate = ?, avatar= ?, profile_role = ? WHERE register_id = ?`,
             [
                 profile_name,

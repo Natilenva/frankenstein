@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Profile = ({ profile, updateProfile }) => {
     const { user } = useContext(AuthContext);
@@ -18,8 +18,8 @@ export const Profile = ({ profile, updateProfile }) => {
         register_id,
         company_name,
         is_company_validated,
-        projects = [], // Agregado para manejar los proyectos del perfil
-        questions = [], // Agregado para manejar las preguntas del perfil
+        //  projects = [], // Agregado para manejar los proyectos del perfil
+        //  questions = [], // Agregado para manejar las preguntas del perfil
     } = profile;
     //    const formatDate = (date) => new Date(date).toLocaleDateString('es-ES'); // Función para formatear la fecha
     //const formatDate = new Date(); //.toLocaleDateString('es-ES'); // Función para formatear la fecha
@@ -38,7 +38,7 @@ export const Profile = ({ profile, updateProfile }) => {
                                 import.meta.env.VITE_BASE_URL
                             }/uploads/${avatar}`}
                             alt={profile_name}
-                            className="rounded-full w-[189px] h-[189px] object-cover"
+                            className="rounded-full w-40 h-40 object-cover"
                         />
                     ) : (
                         <div className="shrink-0 rounded-full bg-zinc-300 h-[189px] w-[189px]">

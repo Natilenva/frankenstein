@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { insertProfileService } from '../../services/profileServices';
 import { useNavigate } from 'react-router-dom';
@@ -7,10 +7,12 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AiOutlineEdit } from 'react-icons/ai';
 //import Buttons from '../UI/Buttons/Buttons';
+
 export const NewProfile = () => {
     const { token, user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const [image, setImage] = useState(null);
+    const [preview, setPreview] = useState(null);
     const [error, setError] = useState('');
     const [sending, setSending] = useState(false);
     const [isCompany, setIsCompany] = useState(false);
@@ -22,6 +24,18 @@ export const NewProfile = () => {
         mode: 'onTouched',
         resolver: zodResolver(profileSchema),
     });
+
+    useEffect(() => {
+        if (image) {
+            const objectUrl = URL.createObjectURL(image);
+            setPreview(objectUrl);
+
+            // Limpia el objeto URL cuando el componente se desmonta o la imagen cambia
+            return () => URL.revokeObjectURL(objectUrl);
+        } else {
+            setPreview(null);
+        }
+    }, [image]);
 
     const onSubmit = async (data) => {
         setError('');
@@ -40,7 +54,6 @@ export const NewProfile = () => {
                 token,
             });
             setUser({ ...user, profile_id });
-            //  setImage(null);
             navigate(`/profile/${user.register_id}`);
         } catch (error) {
             setError(error.message);
@@ -48,22 +61,31 @@ export const NewProfile = () => {
             setSending(false);
         }
     };
+
     const handleRoleChange = (event) => {
         const selectedRole = event.target.value;
         setIsCompany(selectedRole === 'company');
+    };
 
-        if (!user) {
-            return <div>Cargando...</div>;
+    const handleImageChange = (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+            setImage(e.target.files[0]);
         }
     };
-    return (
-        <div >
 
-            <div className="flex flex-col items-center justify-center m-auto px-4 py-8 ">{/* sm:px-6 lg:px-8 */}
+    return (
+        <div>
+            <div className="flex flex-col items-center justify-center m-auto px-4 py-8">
                 {/* Foto ------------------------------------------------------*/}
                 <div className="flex flex-col items-center mb-6">
-                    <div className="relative h-20 w-20 rounded-full bg-zinc-300">
-                        {user && user.avatar ? (
+                    <div className="relative h-40 w-40 rounded-full bg-zinc-300">
+                        {preview ? (
+                            <img
+                                src={preview}
+                                alt="Avatar Preview"
+                                className="rounded-full object-cover h-full w-full"
+                            />
+                        ) : user && user.avatar ? (
                             <img
                                 src={`${
                                     import.meta.env.VITE_BASE_URL
@@ -85,7 +107,7 @@ export const NewProfile = () => {
                                 name="avatar"
                                 accept="image/*"
                                 className="hidden"
-                                onChange={(e) => setImage(e.target.files[0])}
+                                onChange={handleImageChange}
                             />
                         </label>
                     </div>
@@ -99,7 +121,7 @@ export const NewProfile = () => {
                 <form
                     noValidate
                     onSubmit={handleSubmit(onSubmit)}
-                    className="w-full  max-w-md space-y-4"
+                    className="w-full max-w-md space-y-4"
                 >
                     <fieldset className="w-full">
                         <label
@@ -220,9 +242,6 @@ export const NewProfile = () => {
                             </p>
                         </div>
                     )}
-                    {/*  <Buttons type="submit" className="btn-principal">
-                    Actualizar perfil
-                </Buttons> */}
                     <button
                         type="submit"
                         className="w-full mx-auto px-4 py-2 text-sm font-medium text-white bg-frankgreen border border-transparent rounded-md shadow-sm hover:bg-frankgreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-frankgreen disabled:opacity-50 mt-6"
@@ -235,7 +254,6 @@ export const NewProfile = () => {
                     )}
                 </form>
             </div>
-
         </div>
     );
 };

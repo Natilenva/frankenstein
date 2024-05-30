@@ -36,10 +36,6 @@ export const UpdateProfile = () => {
             setValue('profile_name', profile.profile_name);
             setValue('profile_lastname', profile.profile_lastname);
             setValue('profile_username', profile.profile_username);
-            // setValue(
-            //     'birthdate',
-            //     new Date(profile.birthdate).toLocaleDateString()
-            // );
             setValue(
                 'birthdate',
                 format(new Date(profile.birthdate), 'yyyy-MM-dd')
@@ -70,11 +66,11 @@ export const UpdateProfile = () => {
             console.log(updatedProfile);
             updateProfile(updatedProfile);
             setImage(null);
-
+            // navigate(`/profile/${user.register_id}`);
             toast.success('Perfil actualizado con éxito');
         } catch (error) {
             navigate(`/profile/${user.register_id}`);
-            //setError(error.message);
+            // setError(error.message);
             // toast.error('Ha habido un problema al actualizar el perfil');
         } finally {
             setSending(false);

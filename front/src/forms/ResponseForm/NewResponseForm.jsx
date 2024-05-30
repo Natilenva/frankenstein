@@ -1,14 +1,14 @@
 import Loading from '../../components/loading';
+import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
 import { insertResponseService } from '../../services/responsesService';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useQuestion from '../../hooks/QuestionsHook/useQuestion';
 import { useProfile } from '../../hooks/profilehook/useProfile';
 
 const NewResponseForm = ({ setIdResponse }) => {
-    const navigate = useNavigate();
     const [response_text, setResponse_text] = useState('');
     const [loading, setLoading] = useState(false);
     const { id } = useParams();
@@ -81,6 +81,9 @@ const NewResponseForm = ({ setIdResponse }) => {
             </form>
         )
     );
+};
+NewResponseForm.propTypes = {
+    setIdResponse: PropTypes.any,
 };
 
 export default NewResponseForm;

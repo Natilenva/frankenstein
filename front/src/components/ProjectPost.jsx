@@ -86,7 +86,7 @@ export const ProjectPost = ({ project, updateProject }) => {
                 </p>
 
                 {/* //^ Botón de editar y borrar el proyecto? ------------------ */}
-                {console.log(project.project_id)}
+
                 {user && user.register_id === project.register_id ? (
                     <Link
                         to={`/updateproject/${project.project_id}`}

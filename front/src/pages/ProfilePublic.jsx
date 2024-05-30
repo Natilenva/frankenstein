@@ -6,17 +6,21 @@ import { QuestionsListProfile } from '../components/QuestionsComponents/Question
 import { useQuestionsProfile } from '../hooks/QuestionsHook/useQuestionsProfile';
 import { useProfile } from '../hooks/profilehook/useProfile';
 import useProjects from '../hooks/useProjects';
+import { QuestionCard } from '../components/QuestionsComponents/QuestionCard';
+
+import useQuestions from '../hooks/QuestionsHook/useQuestions';
 // import { ProjectList } from '../components/ProjectList';
-// import { useContext } from 'react';
-// import { AuthContext } from '../context/AuthContext';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 export const ProfilePublic = () => {
     const { id } = useParams();
-    // const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     // const { projectsProfile, loading, error } = useProjectsByprofile(id);
     const { projects, loading, error } = useProjects();
     const { profile } = useProfile(id);
     const { questionsProfile } = useQuestionsProfile(id);
+    const { questions } = useQuestions();
     if (loading) return <p>cargando perfil...</p>;
     if (error) return <ErrorMessage message={error} />;
     return (
@@ -47,6 +51,23 @@ export const ProfilePublic = () => {
                     </h1>
                     <ProjectListProfile projects={projects} />
                     <QuestionsListProfile questionsProfile={questionsProfile} />
+                    {/* <div>
+                        {questions
+                            .filter(
+                                (question) =>
+                                    question.register_id === user.register_id
+                            )
+                            .map((question) => {
+                                return (
+                                    <li
+                                        key={question.question_id}
+                                        className=" list-none max-w-md mx-auto py-12 shadow-md overflow-hidden md:max-w-2xl"
+                                    >
+                                        <QuestionCard question={question} />
+                                    </li>
+                                );
+                            })}
+                    </div> */}
                 </div>
             </article>
         </section>

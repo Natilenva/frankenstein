@@ -14,7 +14,7 @@ import QuestionsPage from './pages/QuestionsPages/QuestionsPage';
 import QuestionDetailsPage from './pages/QuestionsPages/QuestionDetailsPage';
 import NewQuestionPage from './pages/QuestionsPages/NewQuestionPage';
 import { CuentaPage } from './pages/CuentaPage';
-import { NewProfile } from './components/ProfileComponents/NewProfile';
+// import { NewProfile } from './components/ProfileComponents/NewProfile';
 import { Crear } from './pages/CrearPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import ResponsesOfQuestion from './components/ResponsesComponents/ResponsesOfQuestion';
@@ -26,11 +26,10 @@ import { RejectCompanyPage } from './pages/RejectCompanyPage';
 import { UpdateProfile } from './components/ProfileComponents/UpdateProfile';
 import { ProfilePublic } from './pages/ProfilePublic';
 
-import { UpdateProject } from './components/UpdateProject';
+// import { UpdateProject } from './components/UpdateProject';
 import { ProjectUpdatePage } from './pages/ProjectUpdatePage';
 
 import { NewProfilePage } from './pages/NewProfilePage';
-
 
 function App() {
     return (

@@ -20,7 +20,7 @@ export const QuestionsListProfile = ({ questionsProfile }) => {
             </ul>
         </section>
     ) : (
-        <p>There are no questions yet ... </p>
+        <p>Todavía no has hecho ninguna consulta... </p>
     );
 };
 QuestionsListProfile.propTypes = {
