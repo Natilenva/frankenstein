@@ -72,13 +72,14 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
             //console.log('project', project); // !
 
             updateProject(updatedProject);
-            navigate('/');
+            // navigate(`/project/${project.project_id}`);
 
             setImage(null);
             toast.success('Actualizado proyecto con éxito');
         } catch (error) {
-            setError(error.message);
-            toast.error('Ha habido un problema al agregar el proyecto');
+            navigate(`/project/${project.project_id.id}`);
+            // setError(error.message);
+            // toast.error('Ha habido un problema al agregar el proyecto');
         } finally {
             setSending(false);
         }
@@ -106,7 +107,11 @@ export const UpdateProject = ({ updateProject, removeProject }) => {
                                 className="aspect-[0.96] w-[158px]"
                             />
                         ) : (
-                            <img  className="h-48 w-full object-cover md:h-full md:w-48" src="/apple-touch-icon.png" alt="Logo de frankenstein" />
+                            <img
+                                className="h-48 w-full object-cover md:h-full md:w-48"
+                                src="/apple-touch-icon.png"
+                                alt="Logo de frankenstein"
+                            />
                         )}
                     </div>
                     {/* FIN Imagen del proyecto -------------------------------- */}

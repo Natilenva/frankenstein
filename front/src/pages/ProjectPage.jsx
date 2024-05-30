@@ -1,13 +1,13 @@
 import { ErrorMessage } from '../components/ErrorMessage';
 import { Link, useParams } from 'react-router-dom';
 import useProject from '../hooks/useProject';
-import { Project } from '../components/Project';
+// import { Project } from '../components/Project';
 
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
-import { UpdateProject } from '../components/UpdateProject';
-import { ProjectPost } from '../components/ProjectPost';
+// import { UpdateProject } from '../components/UpdateProject';
+// import { ProjectPost } from '../components/ProjectPost';
 
 export const ProjectPage = () => {
     const { id } = useParams();
@@ -83,7 +83,7 @@ export const ProjectPage = () => {
                     {console.log(project.project_id)}
                     {user && user.register_id === project.register_id ? (
                         <Link
-                            to={`/updateproject/${project.project_id}`}
+                            to={`/updateproject/${project.project_id.id}`}
                             // state={{ project, updateProject }}
                             className="mt-1 !text-xs text-neutral-500"
                         >
@@ -91,7 +91,7 @@ export const ProjectPage = () => {
                         </Link>
                     ) : (
                         <Link
-                            to={`/updateproject/${project.project_id}`}
+                            to={`/updateproject/${project.project_id.id}`}
                             // state={{ project, updateProject }}
                             className="invisible mt-1 !text-xs text-stone-500"
                         >
