@@ -9,43 +9,41 @@ import { AuthContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 
-
 // Inicializamos el componente.
-const QuestionDetailsInfo = ({ question_title, question_technology, question_description, created_at }) => {
-    
-    const {token}= useContext(AuthContext);
+const QuestionDetailsInfo = ({
+    question_title,
+    question_technology,
+    question_description,
+    created_at,
+}) => {
+    const { token } = useContext(AuthContext);
 
+    const navigete = useNavigate();
 
-    const navigete= useNavigate();
-
-    if(!token){
-        navigete('/login')
-        toast.error('Logeate para ver más')
+    if (!token) {
+        navigete('/login');
+        toast.error('Logeate para ver más');
     }
-    
-    return (
-        <main  className="m-1 p-1  mx-auto rounded-xl shadow-lg   bg-neutral-950">
-        <ul className="pt-4 pb-4">
-          
-            <li className=" text-lg font-bold leading-tight text-white">
-                Pregunta: {question_title}
-            </li>
-            <li  className="text-xs font-normal text-neutral-500">
-                Tecnologia: {question_technology}
-            </li>
-            <li className="text-sm font-medium mt-2 text-neutral-200">
-               {question_description}
-            </li>
-            
-            <li className="text-xs text-neutral-500">
-                Fecha de creación:
-                {moment(created_at).format('DD/MM/YYYY [a las] HH:mm')}
-            </li>
-        </ul>
-     
 
+    return (
+        <main className="m-1 p-1  mx-auto rounded-xl shadow-lg   bg-neutral-800">
+            <ul className="pt-4 pb-4">
+                <li className=" text-lg font-bold leading-tight text-white">
+                    Pregunta: {question_title}
+                </li>
+                <li className="text-xs font-normal text-neutral-500">
+                    Tecnologia: {question_technology}
+                </li>
+                <li className="text-sm font-medium mt-2 text-neutral-200">
+                    {question_description}
+                </li>
+
+                <li className="text-xs text-neutral-500">
+                    Fecha de creación:
+                    {moment(created_at).format('DD/MM/YYYY [a las] HH:mm')}
+                </li>
+            </ul>
         </main>
-     
     );
 };
 
@@ -55,7 +53,6 @@ QuestionDetailsInfo.propTypes = {
     question_technology: PropType.string.isRequired,
     question_description: PropType.string.isRequired,
     created_at: PropType.string.isRequired,
-
 };
 
 export default QuestionDetailsInfo;

@@ -9,55 +9,47 @@ import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import useResponses from '../../hooks/ResponsesHook/useResponses';
 
-
-
 // Inicializamos el componente.
 const ResponsesListItem = ({ response }) => {
-    const {user, token}= useContext(AuthContext)
-    const {addResponseVote}= useResponses(response.response_id)
+    const { user, token } = useContext(AuthContext);
+    const { addResponseVote } = useResponses(response.response_id);
     console.log(user);
-
-
 
     return (
         <section>
-            
             <div className="flex mt-3.5 w-full max-w-[305px]">
                 <div className="flex flex-col flex-1 px-5">
-              
-                        <div className="bg-black">
-                            <div>
-                                <p className="text-xs leading-4 text-white text-opacity-50">
-                                    {response.response_text}
-                                </p>
-                            </div>
-                            <li className="text-xs leading-4 text-white text-opacity-50">
-                                <strong>Media de votos:</strong>{' '}
-                                {!response.votes ? 'Sin votos' : response.votes}
-                            </li>
-                            <div className='text-white'>
-                            <AddVoteForm 
-                                insertResponseVotesService={insertResponseVoteService}
+                    <div className="bg-neutral-800">
+                        <div>
+                            <p className="text-xs leading-4 text-white p-2">
+                                {response.response_text}
+                            </p>
+                        </div>
+                        <li className="text-xs leading-4 text-white p-2">
+                            <strong>Media de votos:</strong>{' '}
+                            {!response.votes ? 'Sin votos' : response.votes}
+                        </li>
+                        <div className="text-white p-1">
+                            <AddVoteForm
+                                insertResponseVotesService={
+                                    insertResponseVoteService
+                                }
                                 addResponseVote={addResponseVote}
                                 votes={response.votes}
                                 response_id={response.response_id}
                                 user={user}
                                 token={token}
                             />
-                            </div>
-
-                          
-                 
-
-                            <div className="text-xs leading-4 text-white text-opacity-50">
-                                <time>
-                                    {moment(response.created_at).format(
-                                        'DD/MM/YYYY [a las] HH:mm'
-                                    )}
-                                </time>
-                            </div>
                         </div>
-                
+
+                        <div className="text-xs leading-4 text-white text-opacity-50 p-1">
+                            <time>
+                                {moment(response.created_at).format(
+                                    'DD/MM/YYYY [a las] HH:mm'
+                                )}
+                            </time>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

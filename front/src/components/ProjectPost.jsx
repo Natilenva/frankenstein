@@ -53,7 +53,7 @@ export const ProjectPost = ({ project, updateProject }) => {
             </div>
 
             {/* Información del proyecto ----------------------------------------------------------*/}
-            <div className="p-8 pb-4">
+            <div className="px-8 pt-2 pb-4">
                 <Link to={`/project/${project.project_id}`}>
                     {/* //^ Title del proyecto ------------------------------------ */}
                     <h1 className="block mt-1 leading-tight !text-lg !font-bold text-black hover:underline">
