@@ -30,7 +30,7 @@ const QuestionDetailsPage = () => {
 
                     <NewResponseForm setIdResponse={setIdResponse} />
 
-                    <ul className="bg-black">
+                    <ul className="bg-neutral-800">
                         {responses.length < 1 && loading ? (
                             <Loading />
                         ) : responses.length === 0 ? (

@@ -58,7 +58,7 @@ export const CuentaPage = () => {
                                 );
                             })}
 
-                        <QuestionsListProfile questionsProfile={questions} />
+                        {/* <QuestionsListProfile questionsProfile={questions} /> */}
                     </div>
                 </article>
             </section>

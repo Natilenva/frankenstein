@@ -23,7 +23,7 @@ const SearchForm = ({ setSearchParams, loading }) => {
         <main className="flex-grow">
             <div className="flex flex-col items-center justify-center m-auto md:px-6 lg:px-8">
                 <div className="text-2xl sm:text-3xl md:text-2xl lg:text-3xl text-center text-black font-semibold m-8">
-                    Buscador de consultas
+                    Buscar y preguntar
                 </div>
                 <form
                     onSubmit={handleSubmit}
